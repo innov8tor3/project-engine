@@ -1,0 +1,22 @@
+Initial steps for a Chrome Book.
+
+1) Download and install Linux Penguin; 2) Download and install Visual Studio Code App; 3) Attempt to install Co Pilot
+
+A standard and highly recommended approach for setting up a GitHub repository, especially when including documentation or static HTML pages, is to use a `docs` directory and leverage GitHub Pages.
+
+Here is the suggested file structure and a brief explanation of each component, which you can use as a guide for your `project-engine` repository.
+
+project-engine/
+├── .github/              # Stores configuration for GitHub features like issue templates.
+│   └── ISSUE_TEMPLATE.md
+├── docs/                 # This is the core folder for your documentation.
+│   ├── index.html        # Main entry point for your documentation site (e.g., Read Me intro).
+│   ├── business-comparison.html  # Dedicated page for "Scale Up Long Term Business Comparison."
+│   ├── ops-screen-design.html    # Dedicated page for "Ops Screen Design Landing Page."
+│   ├── css/              # Optional: Directory for all CSS files to style your HTML pages.
+│   └── images/           # Optional: Directory for images, diagrams, and other assets.
+└── README.md             # The main landing page for the repository itself on GitHub.
+
+Your pages will then be live at a URL like `https://innov8tor3.github.io/project-engine/`. The `index.html` file will be the default page, and your other files will be accessible at their respective paths (e.g., `https://innov8tor3.github.io/project-engine/business-comparison.html`).
+
+A peculiarity about GitHub is that folder creation takes place as new non null files are added and committed.
