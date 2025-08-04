@@ -7,5 +7,6 @@ title: Home
 
 Check out my pages:
 
+- [Scale-Up](about.md)
 - [About](about.md)
 - [Contact](contact.md)
