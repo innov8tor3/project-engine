@@ -1,0 +1,161 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: file:///home/chronos/u-8be2c9848f848aa92eac13b98648d8f41098c724/MyFiles/Downloads/Project%20Engine%20Scaling%20Table.html
+Subject: 
+Date: Fri, 1 Aug 2025 16:02:48 +0100
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--91RG2t5FfWd68dwk8kHZwG1psRzfF6Kx1UiiN0Vyad----"
+
+
+------MultipartBoundary--91RG2t5FfWd68dwk8kHZwG1psRzfF6Kx1UiiN0Vyad----
+Content-Type: text/html
+Content-ID: <frame-0D297B1C8BBBB40716BD97DE52DB9F71@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///home/chronos/u-8be2c9848f848aa92eac13b98648d8f41098c724/MyFiles/Downloads/Project%20Engine%20Scaling%20Table.html
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3DUTF-8"><link rel=3D"stylesheet" type=3D"text/css" href=3D=
+"cid:css-cf15cd0d-6c4f-4ce9-9e47-0cc890f5be8f@mhtml.blink" />
+   =20
+</head>
+<body>
+    <div class=3D"container">
+        <h1>Comparison: Hackathon vs Project Engine vs Palantir</h1>
+       =20
+        <table>
+            <thead>
+                <tr>
+                    <th style=3D"width: 20%">Descriptor</th>
+                    <th style=3D"width: 25%">Hackathon</th>
+                    <th style=3D"width: 25%">Project Engine</th>
+                    <th style=3D"width: 30%">Palantir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class=3D"descriptor">Spaces</td>
+                    <td class=3D"hackathon">Limited</td>
+                    <td class=3D"project-engine">Unlimited</td>
+                    <td class=3D"palantir">Budgetary Capacity (typically en=
+terprise-level with significant financial resources dedicated to projects)<=
+/td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">Winners</td>
+                    <td class=3D"hackathon">Limited</td>
+                    <td class=3D"project-engine">Everyone grows</td>
+                    <td class=3D"palantir">Fortune 100 (primarily serves la=
+rge enterprises, governments, and institutional clients including many Fort=
+une 100 companies)</td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">OG Support</td>
+                    <td class=3D"hackathon">Limited &amp; Time bound</td>
+                    <td class=3D"project-engine">AI Surrogates</td>
+                    <td class=3D"palantir">At a cost (provides extensive co=
+nsulting and implementation support through Forward Deployed Engineers, but=
+ services come with significant price tags)</td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">PM Skills</td>
+                    <td class=3D"hackathon">Unknown</td>
+                    <td class=3D"project-engine">Specific focus and support=
+</td>
+                    <td class=3D"palantir">Very likely (employs highly skil=
+led Project Managers with technical expertise and domain knowledge specific=
+ to client industries)</td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">Prizes</td>
+                    <td class=3D"hackathon">Winners only</td>
+                    <td class=3D"project-engine">Partner &amp; Funding sear=
+ch</td>
+                    <td class=3D"palantir">Access to valuable networks (Pal=
+antir maintains extensive industry connections and government relationships=
+ that can benefit clients, though not explicitly structured as "little blac=
+k books")</td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">Dev Resources</td>
+                    <td class=3D"hackathon">Via "socials"</td>
+                    <td class=3D"project-engine">Use Anthropic gateway</td>
+                    <td class=3D"palantir">In-house (maintains large teams =
+of specialized software engineers, data scientists, and domain experts for =
+platform development and customization)</td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">Github</td>
+                    <td class=3D"hackathon">Manual</td>
+                    <td class=3D"project-engine">Use Anthropic wire frames<=
+/td>
+                    <td class=3D"palantir">Limited open source (primarily m=
+aintains proprietary codebases with select open-source contributions; uses =
+GitHub for specific projects and developer resources)</td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">Winner Growth</td>
+                    <td class=3D"hackathon">Human bias</td>
+                    <td class=3D"project-engine">Marketplace search</td>
+                    <td class=3D"palantir">Client-centric optimization (foc=
+uses on expanding client use cases and driving adoption within existing hig=
+h-value customers rather than traditional marketplace dynamics)</td>
+                </tr>
+                <tr>
+                    <td class=3D"descriptor">Structure</td>
+                    <td class=3D"hackathon">Competitive, Centralised</td>
+                    <td class=3D"project-engine">Collaborative, Decentralis=
+ed</td>
+                    <td class=3D"palantir">Corporate (hierarchical organiza=
+tion with specialized teams organized around products, verticals, and geogr=
+aphic regions)</td>
+                </tr>
+            </tbody>
+        </table>
+       =20
+        <footer>
+            <p>Created on May 10, 2025 =E2=80=A2 Updated with researched Pa=
+lantir information</p>
+        </footer>
+    </div>
+
+</body></html>
+------MultipartBoundary--91RG2t5FfWd68dwk8kHZwG1psRzfF6Kx1UiiN0Vyad----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: cid:css-cf15cd0d-6c4f-4ce9-9e47-0cc890f5be8f@mhtml.blink
+
+@charset "utf-8";
+
+body { font-family: Arial, sans-serif; margin: 20px; background-color: rgb(=
+247, 249, 252); }
+
+.container { width: 100%; max-width: 1000px; margin: 0px auto; }
+
+h1 { text-align: center; color: rgb(44, 62, 80); margin-bottom: 30px; }
+
+table { width: 100%; border-collapse: collapse; box-shadow: rgba(0, 0, 0, 0=
+.1) 0px 4px 8px; background-color: white; }
+
+th { background-color: rgb(52, 73, 94); color: white; text-align: center; p=
+adding: 15px; font-size: 18px; }
+
+td { padding: 12px 15px; border: 1px solid rgb(221, 221, 221); vertical-ali=
+gn: top; }
+
+tr:nth-child(2n) { background-color: rgb(249, 249, 249); }
+
+tr:hover { background-color: rgb(241, 245, 249); }
+
+.descriptor { font-weight: bold; background-color: rgb(52, 152, 219); color=
+: white; }
+
+.hackathon { color: rgb(231, 76, 60); }
+
+.project-engine { color: rgb(39, 174, 96); }
+
+.palantir { color: rgb(142, 68, 173); }
+
+footer { text-align: center; margin-top: 20px; font-size: 12px; color: rgb(=
+127, 140, 141); }
+------MultipartBoundary--91RG2t5FfWd68dwk8kHZwG1psRzfF6Kx1UiiN0Vyad------
