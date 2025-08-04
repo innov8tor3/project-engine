@@ -7,6 +7,6 @@ title: Home
 
 Check out my pages:
 
-- [Scale-Up](about.md)
+- [Scale-Up](https://github.com/innov8tor3/project-engine/blob/main/docs/scale-up/scale-up)
 - [About](about.md)
 - [Contact](contact.md)
