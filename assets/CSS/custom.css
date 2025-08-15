@@ -1,0 +1,9 @@
+a {
+  color: #39FF14 !important; /* Luminous green */
+}
+a:visited {
+  color: #39FF14 !important;
+}
+a:hover, a:active {
+  color: #00FF00 !important; /* Bright green on hover/active */
+}
