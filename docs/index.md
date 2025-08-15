@@ -7,7 +7,12 @@ title: Home
 
 Check out my pages:
 
-| 💚 Pitch Deck<br><br>Why invest time and effort | 💙 Ops Hub<br><br>Landing Page | ❤ [Scale Up](https://innov8tor3.github.io/project-engine/scale-up/scale-up.html)<br><br>Long term scaling potential |
-|---------------------------------------------|---------------------------|-----------------------------------------------------------------------------------------------------------|
+<table>
+  <tr>
+    <td>💚 <b>Pitch Deck</b><br><br>Why invest time and effort</td>
+    <td>💙 <b>Ops Hub</b><br><br>Landing Page</td>
+    <td>❤ <a href="https://innov8tor3.github.io/project-engine/scale-up/scale-up.html">Scale Up</a><br><br>Long term scaling potential</td>
+  </tr>
+</table>
 
 ✅ [About](about.md) 🤳 [Contact](contact.md)
