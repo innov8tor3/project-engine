@@ -1,4 +1,4 @@
-/* Ops Hub Stylesheet for GitHub Pages */
+/* Ops Hub - Innovation Platform Stylesheet */
 
 * {
     box-sizing: border-box;
@@ -40,6 +40,11 @@ header {
     font-weight: bold;
     color: #2563eb;
     text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 0;
 }
 
 .nav-menu a {
@@ -147,7 +152,6 @@ header {
     padding: 20px;
     background-color: #fff;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
 }
 
 .project-card:hover {
@@ -333,15 +337,16 @@ footer {
     .header-content {
         flex-direction: column;
         gap: 15px;
+        text-align: center;
     }
     
     .nav-menu {
-        display: flex;
-        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     
     .nav-menu a {
-        margin-left: 0;
+        margin: 0 10px;
         font-size: 14px;
     }
     
@@ -393,9 +398,13 @@ footer {
         font-size: 14px;
         padding: 12px 16px;
     }
+    
+    .project-listings {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Accessibility Improvements */
+/* Accessibility and Performance */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -406,7 +415,7 @@ footer {
     }
 }
 
-/* Focus styles for better accessibility */
+/* Focus styles for accessibility */
 button:focus,
 input:focus,
 select:focus,
@@ -424,5 +433,9 @@ a:focus {
     .status-label {
         background-color: #000;
         color: #fff;
+    }
+    
+    .tech-tag {
+        border: 1px solid #666;
     }
 }
