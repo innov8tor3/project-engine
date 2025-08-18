@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Platform</title>
+    <link rel="stylesheet" href="ops-hub.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">[Platform Logo] Innovation Hub</div>
+                <nav class="nav-menu">
+                    <a href="#">Home</a>
+                    <a href="#">Projects</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <section class="project-section">
+                <h2 class="section-title">Project Discovery & Exploration</h2>
+                <input type="text" class="search-bar" placeholder="Search Projects...">
+                
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <input type="checkbox" id="filter1">
+                        <label for="filter1">Filter Option 1</label>
+                    </div>
+                    <div class="filter-group">
+                        <input type="checkbox" id="filter2">
+                        <label for="filter2">Filter Option 2</label>
+                    </div>
+                    <select class="sort-dropdown">
+                        <option>Sort By: Latest</option>
+                        <option>Sort By: Valuation (High-Low)</option>
+                        <option>Sort By: Valuation (Low-High)</option>
+                        <option>Sort By: Name (A-Z)</option>
+                    </select>
+                </div>
+                
+                <div class="project-listings">
+                    <!-- Project cards will be rendered here by JS -->
+                </div>
+            </section>
+            
+            <div class="action-buttons">
+                <button class="action-btn">Design a Project</button>
+                <button class="action-btn">Value a Project</button>
+                <button class="action-btn">Register a Project</button>
+                <button class="action-btn">Sell a Project</button>
+            </div>
+            
+            <div class="quick-links">
+                <a href="#">Projects For Sale</a>
+                <a href="#">Register Project Partners</a>
+                <a href="#">Locate Grants & Brokers</a>
+                <a href="#">Build an MVP</a>
+                <a href="#">Identify Scaling Partners</a>
+            </div>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>© 2025 Innovation Platform. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample project data - this would come from a database in a real application
+        const projectsData = [
+            {
+                id: 1,
+                title: "Smart City Traffic Solution",
+                description: "An AI-powered traffic management system that reduces congestion and improves traffic flow in urban areas.",
+                status: "MVP Development",
+                valuation: "$2.4M",
+                category: "Smart City",
+                tech: ["AI", "IoT", "Data Analytics"]
+            },
+            {
+                id: 2,
+                title: "EcoFresh: Sustainable Packaging",
+                description: "Biodegradable packaging solutions made from agricultural waste that decompose within 30 days.",
+                status: "Idea Stage",
+                valuation: "$750K",
+                category: "Green Tech",
+                tech: ["Biodegradable Materials", "Sustainability"]
+            },
+            {
+                id: 3,
+                title: "HealthTrack Wearable",
+                description: "Next-generation health monitoring device with predictive analytics for early disease detection.",
+                status: "Scaling",
+                valuation: "$5.8M",
+                category: "Healthcare",
+                tech: ["IoT", "Machine Learning", "Biotech"]
+            },
+            {
+                id: 4,
+                title: "AquaPure Filtration",
+                description: "Revolutionary water filtration technology that removes microplastics and pharmaceutical residues.",
+                status: "Prototype",
+                valuation: "$1.2M",
+                category: "Clean Tech",
+                tech: ["Filtration", "Water Purification"]
+            },
+            {
+                id: 5,
+                title: "Drone Delivery Network",
+                description: "Urban drone delivery system with optimized routes and automated package handling.",
+                status: "MVP Development",
+                valuation: "$3.7M",
+                category: "Logistics",
+                tech: ["Drones", "AI", "Robotics"]
+            },
+            {
+                id: 6,
+                title: "Virtual Reality Therapy",
+                description: "VR platform providing therapeutic experiences for mental health treatment and rehabilitation.",
+                status: "Clinical Trials",
+                valuation: "$4.1M",
+                category: "Healthcare",
+                tech: ["VR", "Psychology", "Digital Health"]
+            }
+        ];
+
+        // Function to generate project cards
+        function generateProjectCard(project) {
+            return `
+                <div class="project-card" data-id="${project.id}" data-category="${project.category}" data-status="${project.status}">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-description">${project.description}</p>
+                    <div class="project-meta">
+                        <span class="status-label">${project.status}</span>
+                        <span class="valuation">Valuation: ${project.valuation}</span>
+                    </div>
+                    <div class="project-tags">
+                        ${project.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+                    </div>
+                    <button class="view-btn" data-id="${project.id}">View Project</button>
+                </div>
+            `;
+        }
+
+        // Function to render projects
+        function renderProjects(projectsToRender) {
+            const projectListingsElement = document.querySelector('.project-listings');
+            projectListingsElement.innerHTML = '';
+            
+            if (projectsToRender.length === 0) {
+                projectListingsElement.innerHTML = '<div class="no-results">No projects match your search criteria. Try adjusting your filters.</div>';
+                return;
+            }
+            
+            projectsToRender.forEach(project => {
+                projectListingsElement.innerHTML += generateProjectCard(project);
+            });
+            
+            // Reattach event listeners
+            attachEventListeners();
+        }
+
+        // Advanced search functionality
+        function performSearch() {
+            const searchTerm = document.querySelector('.search-bar').value.toLowerCase();
+            const filter1Checked = document.getElementById('filter1').checked;
+            const filter2Checked = document.getElementById('filter2').checked;
+            const sortOption = document.querySelector('.sort-dropdown').value;
+            
+            // Filter projects based on search term and filters
+            let filteredProjects = projectsData.filter(project => {
+                const matchesSearch = project.title.toLowerCase().includes(searchTerm) || 
+                                    project.description.toLowerCase().includes(searchTerm) ||
+                                    project.category.toLowerCase().includes(searchTerm) ||
+                                    project.tech.some(tech => tech.toLowerCase().includes(searchTerm));
+                
+                // Apply checkbox filters (for demo purposes)
+                // Filter1 = Show only Smart City and Healthcare
+                // Filter2 = Show only projects in development stage or beyond
+                const passesFilter1 = !filter1Checked || ['Smart City', 'Healthcare'].includes(project.category);
+                const passesFilter2 = !filter2Checked || !['Idea Stage'].includes(project.status);
+                
+                return matchesSearch && passesFilter1 && passesFilter2;
+            });
+            
+            // Sort projects based on selected option
+            switch(sortOption) {
+                case 'Sort By: Latest':
+                    // No sorting needed as we assume the data is already in chronological order
+                    break;
+                case 'Sort By: Valuation (High-Low)':
+                    filteredProjects.sort((a, b) => {
+                        const valA = parseFloat(a.valuation.replace(/[^0-9.]/g, ''));
+                        const valB = parseFloat(b.valuation.replace(/[^0-9.]/g, ''));
+                        return valB - valA;
+                    });
+                    break;
+                case 'Sort By: Valuation (Low-High)':
+                    filteredProjects.sort((a, b) => {
+                        const valA = parseFloat(a.valuation.replace(/[^0-9.]/g, ''));
+                        const valB = parseFloat(b.valuation.replace(/[^0-9.]/g, ''));
+                        return valA - valB;
+                    });
+                    break;
+                case 'Sort By: Name (A-Z)':
+                    filteredProjects.sort((a, b) => a.title.localeCompare(b.title));
+                    break;
+            }
+            
+            renderProjects(filteredProjects);
+        }
+
+        function attachEventListeners() {
+            // Add event listeners to View Project buttons
+            document.querySelectorAll('.view-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-id');
+                    window.location.href = `project-detail.html?id=${projectId}`;
+                });
+            });
+            
+            // Action button listeners
+            document.querySelectorAll('.action-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const action = this.textContent.trim().toLowerCase();
+                    switch(action) {
+                        case 'design a project':
+                            window.location.href = 'design-project.html';
+                            break;
+                        case 'value a project':
+                            window.location.href = 'value-project.html';
+                            break;
+                        case 'register a project':
+                            window.location.href = 'register-project.html';
+                            break;
+                        case 'sell a project':
+                            window.location.href = 'sell-project.html';
+                            break;
+                    }
+                });
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render all projects initially
+            renderProjects(projectsData);
+            
+            // Set up search event listeners
+            document.querySelector('.search-bar').addEventListener('input', performSearch);
+            document.getElementById('filter1').addEventListener('change', performSearch);
+            document.getElementById('filter2').addEventListener('change', performSearch);
+            document.querySelector('.sort-dropdown').addEventListener('change', performSearch);
+        });
+    </script>
+</body>
+</html>
