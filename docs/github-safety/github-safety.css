@@ -1,0 +1,260 @@
+/* GitHub Safety CSS Stylesheet */
+
+:root {
+    --primary-color: #24292e;
+    --accent-color: #0366d6;
+    --bg-color: #f6f8fa;
+    --card-bg: #ffffff;
+    --text-color: #24292e;
+    --border-color: #e1e4e8;
+    --warning-color: #d73a49;
+    --success-color: #28a745;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.alert-box {
+    background: linear-gradient(135deg, #fff5f5, #fed7d7);
+    border: 2px solid var(--warning-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert-box::before {
+    content: '⚠️';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 4rem;
+    opacity: 0.1;
+}
+
+.alert-box h3 {
+    color: var(--warning-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.trust-reminder {
+    background: linear-gradient(135deg, #f0f9ff, #dbeafe);
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    text-align: center;
+    position: relative;
+}
+
+.trust-reminder::before {
+    content: '🔒';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+}
+
+.trust-reminder h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px;
+    margin: 40px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.section h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--accent-color);
+}
+
+.section h3 {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    margin: 30px 0 15px 0;
+}
+
+.risk-item, .check-item {
+    background: #f8f9fa;
+    border-left: 4px solid var(--accent-color);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.risk-item:hover, .check-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.risk-item h4, .check-item h4 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.solution {
+    color: var(--success-color);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.mitigation {
+    color: var(--success-color);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.risk-label {
+    color: var(--warning-color);
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #586069;
+}
+
+.highlight {
+    background: linear-gradient(120deg, #fef3c7 0%, #fbbf24 100%);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.cta-link {
+    display: inline-block;
+    background: var(--accent-color);
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    margin: 20px 0;
+    transition: background-color 0.3s ease;
+}
+
+.cta-link:hover {
+    background: #0254d4;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+    }
+    
+    .section {
+        padding: 25px;
+    }
+    
+    .section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .alert-box, .trust-reminder {
+        padding: 20px;
+    }
+    
+    .risk-item, .check-item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 40px 0;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section {
+        padding: 20px;
+    }
+    
+    .alert-box, .trust-reminder {
+        padding: 15px;
+    }
+}
