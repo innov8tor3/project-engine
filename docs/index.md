@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-# Welcome to My Site
+# Welcome to Project Engine
 
 Check out my pages:
 
