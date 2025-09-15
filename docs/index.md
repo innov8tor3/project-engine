@@ -14,7 +14,7 @@ Check out my pages:
     <td>❤ <a href="https://innov8tor3.github.io/project-engine/scale-up/scale-up.html">Scale Up</a><br><br>Long term scaling potential</td>
   </tr>
   <tr>
-    <td>🚀 <a href="https://innov8tor3.github.io/project-engine/action-stories/action-stories.html">Action Stories</a><br><br>Transform challenges into adventures</td>
+    <td>🚀 <a href="https://innov8tor3.github.io/project-engine/action-stories/action-stories.html">Action Stories</a><br><br>Creating new adventures</td>
     <td>🚜 <a href="https://innov8tor3.github.io/project-engine/reports/backend/infra.html">Backend Infrastructure</a><br><br>Six steps to provide core functions</td>
     <td>🔊 <a href="https://innov8tor3.github.io/project-engine/reports/report-2025-09/2025-09.html">Report 2025-09</a><br><br>Progress so far and plans</td>
   </tr>
