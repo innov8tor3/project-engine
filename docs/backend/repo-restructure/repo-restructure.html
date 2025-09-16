@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemist's Quest: Developer Guide - Step 1 Repo Restructure</title>
+    <link rel="stylesheet" href="repo-restructure.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="step-indicator">Step 1 of 6</div>
+            <h1>Alchemist's Quest: Developer Guide</h1>
+            <h2>Repository Restructure Specification</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('overview')">Overview</button>
+            <button class="nav-tab" onclick="showTab('tasks')">Tasks</button>
+            <button class="nav-tab" onclick="showTab('acceptance')">Acceptance</button>
+        </div>
+
+        <main>
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <section id="objective">
+                    <h2>🎯 Objective</h2>
+                    <p>
+                        Transform the existing single-directory repository into a modern, full-stack application structure by creating separate <code>frontend/</code> and <code>backend/</code> directories.
+                    </p>
+                    
+                    <div class="explainer">
+                        <p>
+                            <strong>Non-Technical Explainer:</strong> This foundational step is known as <strong>separation of concerns</strong>. Think of it as building two distinct workshops. The <code>frontend/</code> workshop is where the user-facing magic happens—the interactive journey for the Alchemist. The <code>backend/</code> workshop is the engine room, managing all the data, logic, and mystical secrets. This separation allows each part to be developed and scaled independently.
+                        </p>
+                        <p>
+                            In the story, this task is performed by <strong>Lab Assistant Sparky</strong>, who is "organizing our magical library" and gathering tools. This preparation is essential before the <strong>Gordian Mage</strong> (our user) can begin to define their "Mystical Quandary".
+                        </p>
+                    </div>
+                </section>
+
+                <section id="prerequisites">
+                    <h2>📋 Prerequisites</h2>
+                    <div class="prerequisites">
+                        <p>Before starting, ensure you have the following:</p>
+                        <ul>
+                            <li>Access to the project's GitHub repository</li>
+                            <li>Git installed and configured on your local machine</li>
+                            <li>Node.js and npm (or a similar package manager) installed</li>
+                        </ul>
+                        <p><em>Note: These prerequisites are based on standard web development practices.</em></p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Tasks Tab -->
+            <div id="tasks" class="tab-content">
+                <h2>🚀 Sequence of Events and Detailed Tasks</h2>
+
+                <!-- Phase 1 -->
+                <div class="phase-header">
+                    <h3>Phase 1: Directory Scaffolding and Content Migration</h3>
+                </div>
+
+                <div class="task-card">
+                    <h4>1. Clone the Repository</h4>
+                    <p><strong>Task:</strong> Clone the latest version of the main branch to your local development environment.</p>
+                    <div class="code-block">git clone &lt;repository_url&gt;</div>
+                </div>
+
+                <div class="task-card">
+                    <h4>2. Create Core Directories</h4>
+                    <p><strong>Task:</strong> At the root of the project, create two new directories: <code>frontend</code> and <code>backend</code>.</p>
+                    <div class="explainer">
+                        <p><strong>Rationale:</strong> This physically separates the codebase for the user-facing interactive experience from the server-side logic and database interactions. It's the first step in creating our two distinct "workshops".</p>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <h4>3. Migrate Existing Static Content</h4>
+                    <p><strong>Task:</strong> Move all existing static content (HTML, CSS, JavaScript files, images) from the root directory into the new <code>frontend/</code> directory.</p>
+                    <div class="explainer">
+                        <p><strong>Rationale:</strong> This consolidates all the code related to what the user sees and interacts with. This folder will eventually house the UI components for the seven steps of the journey, like the "Mystical Quandary" form.</p>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="phase-header">
+                    <h3>Phase 2: Backend Initialisation and Configuration</h3>
+                </div>
+
+                <div class="task-card">
+                    <h4>1. Initialise the Node.js Backend</h4>
+                    <p><strong>Task:</strong> Navigate into the <code>backend/</code> directory and initialise it as a new Node.js project to create a <code>package.json</code> file.</p>
+                    <div class="code-block">cd backend && npm init -y</div>
+                    <div class="explainer">
+                        <p><strong>Rationale:</strong> This officially establishes the <code>backend/</code> folder as a distinct application with its own list of dependencies and scripts. This <code>package.json</code> file acts as the blueprint for our "engine room," laying the groundwork for the Express backend.</p>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <h4>2. Install Essential Backend Dependencies</h4>
+                    <p><strong>Task:</strong> While inside the <code>backend/</code> directory, install the core Node.js packages needed for the application.</p>
+                    <div class="code-block">npm install express mongoose cors jsonwebtoken bcryptjs</div>
+                    
+                    <div class="explainer">
+                        <p><strong>Dependency Rationale:</strong> These are the magical ingredients Sparky needs for the backend:</p>
+                        
+                        <div class="dependency-grid">
+                            <div class="dependency-card">
+                                <h5>express</h5>
+                                <p>Web framework for building our API</p>
+                            </div>
+                            <div class="dependency-card">
+                                <h5>mongoose</h5>
+                                <p>MongoDB interaction assistant</p>
+                            </div>
+                            <div class="dependency-card">
+                                <h5>cors</h5>
+                                <p>Cross-origin permission middleware</p>
+                            </div>
+                            <div class="dependency-card">
+                                <h5>jsonwebtoken</h5>
+                                <p>Secure token authentication</p>
+                            </div>
+                            <div class="dependency-card">
+                                <h5>bcryptjs</h5>
+                                <p>Password hashing security</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <h4>3. Create Placeholder Backend Directory Structure</h4>
+                    <p><strong>Task:</strong> Inside <code>backend/</code>, create empty folders for an MVC-style pattern:</p>
+                    <ul>
+                        <li><code>controllers/</code>: Logic for handling API requests (e.g., creating a new Quest)</li>
+                        <li><code>models/</code>: Data schemas (structure for User or Quest)</li>
+                        <li><code>routes/</code>: API endpoints (addresses like <code>/api/quests</code>)</li>
+                        <li><code>middleware/</code>: Functions for authentication checks</li>
+                    </ul>
+                    <div class="explainer">
+                        <p><strong>Rationale:</strong> Think of this as setting up labelled shelves in Sparky's library. Establishing this structure now ensures the backend remains <strong>organised, scalable, and maintainable</strong> as we add more features.</p>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <h4>4. Add a .gitignore File</h4>
+                    <p><strong>Task:</strong> Create a <code>.gitignore</code> file in the root directory to prevent sensitive files and unnecessary folders from being committed to version control.</p>
+                    <div class="explainer">
+                        <p><strong>Rationale:</strong> This is a critical security measure. It's like a spell of invisibility that hides secret notes (like API keys) and bulky, auto-generated folders (like <code>node_modules</code>) from being saved in the public repository.</p>
+                    </div>
+                </div>
+
+                <div class="task-card">
+                    <h4>5. Commit and Push the New Structure</h4>
+                    <p><strong>Task:</strong> Stage, commit, and push all changes to the remote GitHub repository.</p>
+                    <div class="code-block">git add .<br>git commit -m "feat: Initialise full-stack repository structure"<br>git push origin main</div>
+                </div>
+            </div>
+
+            <!-- Acceptance Tab -->
+            <div id="acceptance" class="tab-content">
+                <div class="acceptance-criteria">
+                    <h2>✅ Acceptance Criteria</h2>
+                    <p>When you are finished, the repository should meet these conditions:</p>
+                    <ul>
+                        <li>The root directory contains <code>frontend/</code> and <code>backend/</code> directories, along with files like <code>.gitignore</code></li>
+                        <li>All pre-existing static files are now located inside the <code>frontend/</code> directory</li>
+                        <li>The <code>backend/</code> directory contains a <code>package.json</code> file listing <code>express</code>, <code>mongoose</code>, <code>cors</code>, <code>jsonwebtoken</code>, and <code>bcryptjs</code> as dependencies</li>
+                        <li>The <code>backend/</code> directory contains the empty sub-directories: <code>controllers</code>, <code>models</code>, <code>routes</code>, and <code>middleware</code></li>
+                        <li>The new structure is successfully pushed and visible on the remote GitHub repository</li>
+                    </ul>
+                </div>
+
+                <div class="explainer">
+                    <p><strong>What's Next:</strong> Once this repository restructure is complete, you'll be ready to move on to the next steps in the Alchemist's Quest development journey. Each subsequent step will build upon this solid foundation, gradually transforming the separated workshops into a fully functional full-stack application.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>🧙‍♂️ End of Step 1 Specification - Repository Restructure Complete 🧙‍♂️</p>
+            <p><em>Prepared by Lab Assistant Sparky for the Alchemist's Quest Project</em></p>
+        </footer>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Add smooth scrolling animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.task-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
