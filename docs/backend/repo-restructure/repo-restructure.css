@@ -1,0 +1,355 @@
+/* Alchemist's Quest - Repository Restructure Specification Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    border-bottom: 3px solid #3498db;
+    position: relative;
+}
+
+header::before {
+    content: '🧙‍♂️';
+    font-size: 4rem;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #3498db;
+    margin-bottom: 20px;
+    border-left: 5px solid #3498db;
+    padding-left: 15px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin: 30px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+h4 {
+    font-size: 1.2rem;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+.step-indicator {
+    display: inline-block;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+code {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.code-block {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    margin: 15px 0;
+    overflow-x: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #3498db;
+}
+
+.explainer {
+    background: linear-gradient(135deg, #e8f6f3, #d5f4e6);
+    border-left: 6px solid #27ae60;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.1);
+    position: relative;
+}
+
+.explainer::before {
+    content: '💡';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+}
+
+.explainer strong {
+    color: #27ae60;
+}
+
+.task-card {
+    border: 1px solid #e0e6ed;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.task-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.phase-header {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.phase-header::before {
+    content: '⚡';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+}
+
+ul {
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+li::marker {
+    content: '✨ ';
+}
+
+.acceptance-criteria {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 2px solid #f39c12;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.acceptance-criteria h2 {
+    color: #e67e22;
+    border-left-color: #f39c12;
+}
+
+.prerequisites {
+    background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+    border-left: 6px solid #f39c12;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 5px;
+}
+
+.nav-tab {
+    padding: 12px 25px;
+    background: transparent;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.nav-tab.active {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #ecf0f1;
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    width: 16.67%; /* Step 1 of 6 */
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 2px solid #ecf0f1;
+    margin-top: 40px;
+    color: #7f8c8d;
+}
+
+.dependency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.dependency-card {
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.dependency-card h5 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-tab {
+        width: 200px;
+        margin: 2px 0;
+    }
+    
+    header::before {
+        font-size: 3rem;
+        top: -15px;
+    }
+    
+    .dependency-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .phase-header {
+        padding: 15px;
+    }
+    
+    .phase-header::before {
+        left: 15px;
+    }
+    
+    .task-card {
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+    }
+    
+    h4 {
+        font-size: 1.1rem;
+    }
+}
