@@ -1,0 +1,315 @@
+/* The Alchemist's Grand Quest - Main Stylesheet */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #fcf4dc 0%, #f5e6d3 100%);
+    color: #4a2c0f;
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    background: linear-gradient(135deg, #6a0dad, #8b4cb8);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3);
+}
+
+h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    font-size: 1.3em;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+/* Overview Section */
+.overview {
+    background: #fff8e6;
+    padding: 30px;
+    border-radius: 15px;
+    margin: 30px 0;
+    border: 2px solid #d4af37;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.overview h2 {
+    color: #6a0dad;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* Characters Section */
+.characters-section {
+    margin: 40px 0;
+}
+
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.character-card {
+    background: linear-gradient(135deg, #ffffff, #fdf5e6);
+    border-radius: 15px;
+    padding: 25px;
+    border: 2px solid;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.character-card.mage {
+    border-color: #6a0dad;
+}
+
+.character-card.sparky {
+    border-color: #007bff;
+}
+
+.character-card.snail {
+    border-color: #28a745;
+}
+
+.character-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.character-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.mage .character-icon {
+    background: #6a0dad;
+    color: white;
+}
+
+.sparky .character-icon {
+    background: #007bff;
+    color: white;
+}
+
+.snail .character-icon {
+    background: #28a745;
+    color: white;
+}
+
+/* Journey Steps */
+.journey-steps {
+    margin: 40px 0;
+}
+
+.step {
+    background: #fff8e6;
+    border-left: 6px solid #6a0dad;
+    margin: 25px 0;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.step:hover {
+    transform: translateX(10px);
+}
+
+.step-header {
+    background: linear-gradient(135deg, #6a0dad, #8b4cb8);
+    color: white;
+    padding: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.step-content {
+    padding: 25px;
+}
+
+.character-roles {
+    margin-top: 15px;
+}
+
+.role-item {
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid;
+}
+
+.role-mage {
+    background: #f3e8ff;
+    border-color: #6a0dad;
+}
+
+.role-sparky {
+    background: #e6f3ff;
+    border-color: #007bff;
+}
+
+.role-snail {
+    background: #e6ffe6;
+    border-color: #28a745;
+}
+
+.role-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Direction Section */
+.direction-section {
+    background: linear-gradient(135deg, #2c5f2d, #4a8b3a);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin: 40px 0;
+    box-shadow: 0 10px 30px rgba(44, 95, 45, 0.3);
+}
+
+.direction-section h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.direction-section p {
+    margin-bottom: 15px;
+}
+
+/* Haiku Section */
+.haiku-section {
+    background: #f0f0f0;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin: 30px 0;
+    border: 2px solid #8b4513;
+}
+
+.haiku-section h3 {
+    color: #6a0dad;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.haiku {
+    font-size: 1.4em;
+    font-style: italic;
+    line-height: 1.8;
+    color: #4a2c0f;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 2.2em;
+    color: #6a0dad;
+    text-align: center;
+    margin: 40px 0 20px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+    background: #4a2c0f;
+    color: #fcf4dc;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .character-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+    }
+    
+    .subtitle {
+        font-size: 1.1em;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .overview,
+    .direction-section {
+        padding: 20px;
+    }
+    
+    .character-card {
+        padding: 20px;
+    }
+    
+    .step-content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .section-title {
+        font-size: 1.8em;
+    }
+    
+    .character-name {
+        font-size: 1.3em;
+    }
+    
+    .character-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+    
+    .step-header {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+}
