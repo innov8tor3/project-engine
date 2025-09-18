@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemist's Quest: Setting Up Your Development Environment</title>
+    <link rel="stylesheet" href="dev-envt.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Alchemist's Quest: Setting Up Your Development Environment</h1>
+            <p>Preparing Your Workshop for the Repository Restructure</p>
+        </header>
+
+        <main>
+            <div class="section-intro">
+                <p>Welcome, Developer! Before you can begin restructuring the repository, you need to ensure your local environment—your "workshop"—is equipped with the necessary tools. This guide will walk you through setting up and verifying each prerequisite. Upon completion, you will have a functional local clone of the GitHub repository, ready for the structural changes.</p>
+            </div>
+
+            <!-- Prerequisite 1 -->
+            <div class="prerequisite-card">
+                <h3>📋 Prerequisite 1: GitHub Repository Access</h3>
+                <p>Before any work can begin, you must have access to the project's code library.</p>
+                
+                <h4>Technical Steps to Action & Verify:</h4>
+                <ol>
+                    <li><strong>Obtain the Repository URL:</strong> This is the unique web address for the project's GitHub repository.</li>
+                    <li><strong>Verify Access:</strong> Open the URL in your web browser. If the repository is private, you must be logged into a GitHub account that has been granted access as a collaborator.</li>
+                </ol>
+
+                <div class="explainer">
+                    <p><strong>Non-Technical Explainer:</strong> This is like having the correct address and a key to the library. You need to be able to find it and unlock the door before you can start organising the books and scrolls inside.</p>
+                </div>
+            </div>
+
+            <!-- Prerequisite 2 -->
+            <div class="prerequisite-card">
+                <h3>📋 Prerequisite 2: Git Installation and Configuration</h3>
+                <p>Git is the version control system that tracks every change made to the code. It's essential for cloning the repository and saving your progress.</p>
+                
+                <h4>Technical Steps to Action & Verify:</h4>
+                <ol>
+                    <li><strong>Install Git:</strong> If you don't have Git installed, you will need to download it from its official website.</li>
+                    <li><strong>Check the Installation:</strong> Open your terminal and run the following command. It should return a version number.</li>
+                </ol>
+                <div class="code-block">git --version</div>
+                <ol start="3">
+                    <li><strong>Configure Git:</strong> Git needs to know who you are. Run the following commands in your terminal with your details.</li>
+                </ol>
+                <div class="code-block">git config --global user.name "Your Name"
+git config --global user.email "youremail@example.com"</div>
+
+                <div class="explainer">
+                    <p><strong>Non-Technical Explainer:</strong> Git is a magical ledger that records every change made to the project. Installing it gives you this tool. Configuring it is like signing your name in the ledger, so every change you make is attributed to you.</p>
+                </div>
+            </div>
+
+            <!-- Prerequisite 3 -->
+            <div class="prerequisite-card">
+                <h3>📋 Prerequisite 3: Node.js and npm Installation</h3>
+                <p>Node.js is the runtime environment that will power our backend, and npm is the package manager that fetches the tools and dependencies we need.</p>
+
+                <h4>Technical Steps to Action & Verify:</h4>
+                <ol>
+                    <li><strong>Install Node.js and npm:</strong> Download the LTS (Long-Term Support) version from the official Node.js website. Npm is included with the Node.js installation.</li>
+                    <li><strong>Check the Installation:</strong> Open a new terminal window and run these two commands separately. Each should return a version number.</li>
+                </ol>
+                <div class="code-block">node -v
+npm -v</div>
+
+                <div class="explainer">
+                    <p><strong>Non-Technical Explainer:</strong> Think of the `backend/` as an "engine room". <strong>Node.js is the main engine</strong> that provides the power. <strong>npm is the workshop's delivery service</strong>; it fetches all the specific tools and parts (like Express.js) that you'll need to build and run the backend machinery.</p>
+                </div>
+            </div>
+
+            <!-- Final Verification -->
+            <div class="prerequisite-card final-verification">
+                <h3>✅ Final Verification: Clone the Repository</h3>
+                <p>With all prerequisites installed, the final step is to create a local copy (a "clone") of the repository on your computer. This action confirms that all your tools are working together correctly.</p>
+
+                <h4>Technical Steps to Action:</h4>
+                <ol>
+                    <li><strong>Open Your Terminal</strong> and navigate to a directory where you want to store the project.</li>
+                    <li><strong>Clone the Project:</strong> Run the `git clone` command with the repository URL.</li>
+                </ol>
+                <div class="code-block">git clone &lt;repository_url&gt;</div>
+
+                <div class="explainer">
+                    <p><strong>Non-Technical Explainer:</strong> This is the moment you use your key (GitHub access) and your special tools (Git) to create a perfect, personal copy of the entire library on your own desk. Now you can start organising it without affecting the original master copy until you are ready to share your changes.</p>
+                </div>
+            </div>
+
+            <div class="completion-banner">
+                <h3>✨ Your Workshop is Ready! ✨</h3>
+                <p>If the `git clone` command completed without errors, your local development environment is successfully set up. You are now ready to proceed with the main tasks for <strong>Step 1: Repository Restructure</strong>.</p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>🧙‍♂️ Preparation Complete - Ready for the Quest 🧙‍♂️</p>
+        </footer>
+    </div>
+</body>
+</html>
