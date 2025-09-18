@@ -1,0 +1,316 @@
+/* Development Environment Setup Guide Styles */
+
+:root {
+    --bg-color: #0a0a0f;
+    --card-bg-color: #1a1a2e;
+    --primary-accent: #e94560;
+    --secondary-accent: #0f3460;
+    --text-color: #e0e0e0;
+    --header-color: #ffffff;
+    --border-color: #5372f0;
+    --code-bg: #0c162d;
+    --explainer-bg: rgba(83, 114, 240, 0.1);
+    --success-color: #27ae60;
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-color);
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%);
+    color: var(--text-color);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 20px 0 15px 0;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.section-intro {
+    background: linear-gradient(145deg, var(--secondary-accent), rgba(15, 52, 96, 0.8));
+    padding: 30px 40px;
+    border-radius: 16px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 1px solid rgba(83, 114, 240, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+}
+
+.section-intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.prerequisite-card {
+    background: var(--card-bg-color);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(83, 114, 240, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.prerequisite-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.6s;
+}
+
+.prerequisite-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 25px 50px rgba(233, 69, 96, 0.2);
+    border-color: rgba(233, 69, 96, 0.3);
+}
+
+.prerequisite-card:hover::before {
+    left: 100%;
+}
+
+.prerequisite-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+}
+
+.prerequisite-card h3::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-accent), transparent);
+    border-radius: 1px;
+}
+
+h4 {
+    color: var(--header-color);
+    font-size: 1.3rem;
+    margin: 30px 0 15px 0;
+    font-weight: 600;
+}
+
+.code-block {
+    background: var(--code-bg);
+    border-radius: 12px;
+    padding: 20px 25px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    color: #64ffda;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 25px 0;
+    border: 1px solid rgba(83, 114, 240, 0.3);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.code-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 12px 12px 0 0;
+}
+
+.explainer {
+    background: var(--explainer-bg);
+    border: 1px solid rgba(83, 114, 240, 0.3);
+    padding: 20px 25px;
+    margin: 25px 0;
+    border-radius: 12px;
+    font-size: 1rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.explainer::before {
+    content: '💡';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--card-bg-color);
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+}
+
+.explainer strong {
+    color: var(--primary-accent);
+    font-weight: 600;
+}
+
+ol, ul {
+    padding-left: 25px;
+    margin: 20px 0;
+}
+
+li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+li strong {
+    color: var(--header-color);
+    font-weight: 600;
+}
+
+.final-verification {
+    background: linear-gradient(145deg, rgba(39, 174, 96, 0.1), rgba(39, 174, 96, 0.05));
+    border: 2px solid rgba(39, 174, 96, 0.3);
+}
+
+.final-verification h3 {
+    color: var(--success-color);
+}
+
+.completion-banner {
+    background: var(--gradient-primary);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 16px;
+    margin: 50px 0;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.completion-banner h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.completion-banner p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(83, 114, 240, 0.2);
+    font-size: 1.1rem;
+    color: #a0a0a0;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .prerequisite-card {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+    
+    .section-intro {
+        padding: 20px 25px;
+    }
+    
+    .code-block {
+        padding: 15px 20px;
+        font-size: 0.85rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .prerequisite-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    h4 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .prerequisite-card {
+        padding: 20px;
+    }
+    
+    .section-intro {
+        padding: 15px 20px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    header p {
+        font-size: 1.1rem;
+    }
+}
