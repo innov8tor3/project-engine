@@ -5,7 +5,7 @@ title: Home
 
 # Welcome to Project Engine
 
-Check out my pages:
+Check out the key pages:
 
 <table>
   <tr>
