@@ -18,10 +18,11 @@ Check out the key pages:
     <td>🔊 <a href="https://innov8tor3.github.io/project-engine/reports/report-2025-09/2025-09.html">Report 2025-09</a><br><br>Progress so far and plans</td>
   </tr>
   <tr>
-    <td>🚜 <a href="https://innov8tor3.github.io/project-engine/reports/backend/infra.html">Backend Infrastructure</a><br><br>Six steps to provide core functions</td>
+    <td>🚜 <a href="https://innov8tor3.github.io/project-engine/reports/backend/infra.html">Backend Infrastructure</a><br><br>Six core steps</td>
     <td>🌱 <a href="https://innov8tor3.github.io/project-engine/dev-envt/dev-envt.html">Technical Prep</a><br><br>Provide base tech functions</td>
     <td>🗄 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/repo-restructure.html">Repo Restructure</a><br><br>Step 1/6</td>
   </tr>
 </table>
+
 
 ⚔ <a href="https://innov8tor3.github.io/project-engine/github-safety/github-safety.html">Online Safety</a> ✅ <a href="https://innov8tor3.github.io/project-engine/about/about.html">About</a> 🤳 [Contact](contact.md)
