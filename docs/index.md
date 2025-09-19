@@ -24,4 +24,4 @@ Check out the key pages:
   </tr>
 </table>
 
-⚔ <a href="https://innov8tor3.github.io/project-engine/github-safety/github-safety.html">Online Safety</a> ✅ [About](about.md) 🤳 [Contact](contact.md)
+⚔ <a href="https://innov8tor3.github.io/project-engine/github-safety/github-safety.html">Online Safety</a> ✅ <a href="https://innov8tor3.github.io/project-engine/about/about.html">About</a> 🤳 [Contact](contact.md)
