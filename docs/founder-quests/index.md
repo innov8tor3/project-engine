@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Home
+title: Founders Quests
 ---
 
-# Welcome to Founders Journeys
+# Welcome to Founders Quests
 
 Check out the key pages:
 
