@@ -15,7 +15,7 @@ Check out the key pages:
   </tr>
   <tr>
     <td>🚀 <a href="https://innov8tor3.github.io/project-engine/action-stories/action-stories.html">Action Stories</a><br><br>Creating new adventures</td>
-    <td>🌱 <a href="https://innov8tor3.github.io/project-engine/founder-quests/index.md">Founder Quests</a><br><br>100 great adventures</td>
+    <td>🌱 <a href="https://innov8tor3.github.io/project-engine/founder-quests/founder-quest.html">Founder Quests</a><br><br>100 great adventures</td>
     <td>🔊 <a href="https://innov8tor3.github.io/project-engine/reports/report-2025-09/2025-09.html">Report 2025-09</a><br><br>Progress so far and plans</td>
   </tr>
   <tr>
