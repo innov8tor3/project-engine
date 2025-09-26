@@ -1,10 +1,10 @@
-/* CSS Variables for easy customization */
+/* CSS Variables for customization */
 :root {
     --primary-color: #007bff;
     --gradient-bg: linear-gradient(135deg, #6e8efb, #a777e3);
     --text-color: #333;
-    --link-bg: rgba(255, 255, 255, 0.2);
-    --link-hover-bg: rgba(255, 255, 255, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-hover-bg: rgba(255, 255, 255, 0.2);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -22,7 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    padding: 20px;
 }
 
 .container {
@@ -32,88 +32,119 @@ body {
     border-radius: 16px;
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
-    max-width: 600px;
-    width: 90%;
-    margin: 20px;
+    max-width: 1200px;
+    width: 100%;
 }
 
 h1 {
     color: white;
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Menu styling */
-.menu ul {
-    list-style: none;
+/* Search bar styling */
+.search-bar {
+    margin-bottom: 30px;
 }
 
-.menu li {
-    margin: 15px 0;
-}
-
-.menu-link {
-    display: inline-block;
-    text-decoration: none;
+.search-bar label {
     color: white;
     font-size: 1.2rem;
-    font-weight: 500;
-    padding: 12px 24px;
-    background: var(--link-bg);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    margin-right: 10px;
 }
 
-/* Hover and active effects */
-.menu-link:hover {
-    background: var(--link-hover-bg);
-    transform: translateY(-3px) scale(1.05);
+#sector-filter {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+}
+
+#sector-filter:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Project grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.project-card:hover {
+    background: var(--card-hover-bg);
+    transform: translateY(-5px) scale(1.03);
     box-shadow: var(--shadow);
 }
 
-.menu-link:active {
-    transform: translateY(0) scale(0.95);
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
-/* Ripple effect on click */
-.menu-link::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+.project-card h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
-.menu-link:active::before {
-    width: 300px;
-    height: 300px;
+.project-card p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    margin-bottom: 10px;
 }
 
-/* Fade-in animation for header */
+.sector-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.emoji {
+    margin-left: 5px;
+    font-size: 1.2rem;
+}
+
+/* Fade-in animation */
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(-20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive design */
+@media (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 600px) {
-    h1 {
-        font-size: 2rem;
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 
-    .menu-link {
-        font-size: 1rem;
-        padding: 10px 20px;
+    h1 {
+        font-size: 2rem;
     }
 
     .container {
