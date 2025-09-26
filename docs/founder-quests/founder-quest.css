@@ -1,0 +1,122 @@
+/* CSS Variables for easy customization */
+:root {
+    --primary-color: #007bff;
+    --gradient-bg: linear-gradient(135deg, #6e8efb, #a777e3);
+    --text-color: #333;
+    --link-bg: rgba(255, 255, 255, 0.2);
+    --link-hover-bg: rgba(255, 255, 255, 0.4);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    width: 90%;
+    margin: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Menu styling */
+.menu ul {
+    list-style: none;
+}
+
+.menu li {
+    margin: 15px 0;
+}
+
+.menu-link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 12px 24px;
+    background: var(--link-bg);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover and active effects */
+.menu-link:hover {
+    background: var(--link-hover-bg);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow);
+}
+
+.menu-link:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* Ripple effect on click */
+.menu-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.menu-link:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Fade-in animation for header */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .menu-link {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+}
