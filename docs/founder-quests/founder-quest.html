@@ -4,19 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Founder Quests Menu</title>
-    <link rel="stylesheet" href="founder-quest.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Founder Quests</h1>
-        <nav class="menu">
-            <ul>
-                <li><a href="/project-engine/founder-quests/quest1.md" class="menu-link">Quest 1</a></li>
-                <li><a href="/project-engine/founder-quests/quest2.md" class="menu-link">Quest 2</a></li>
-                <li><a href="/project-engine/founder-quests/quest3.md" class="menu-link">Quest 3</a></li>
-                <!-- Add more links as needed -->
-            </ul>
-        </nav>
+        <div class="search-bar">
+            <label for="sector-filter">Filter by Sector:</label>
+            <select id="sector-filter">
+                <option value="all">All Sectors</option>
+                <option value="Tech">Tech</option>
+                <option value="Health">Health</option>
+                <option value="Education">Education</option>
+                <!-- Add more sectors as needed -->
+            </select>
+        </div>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-sector="Tech">
+                <a href="/project-engine/founder-quests/quest1.md" class="project-link">
+                    <h2>AI Startup</h2>
+                    <p>Building an AI-driven platform for automation.</p>
+                    <span class="sector-badge">Tech <span class="emoji">💻</span></span>
+                </a>
+            </div>
+            <!-- Project 2 -->
+            <div class="project-card" data-sector="Health">
+                <a href="/project-engine/founder-quests/quest2.md" class="project-link">
+                    <h2>Telemedicine App</h2>
+                    <p>Connecting patients with doctors remotely.</p>
+                    <span class="sector-badge">Health <span class="emoji">🩺</span></span>
+                </a>
+            </div>
+            <!-- Project 3 -->
+            <div class="project-card" data-sector="Education">
+                <a href="/project-engine/founder-quests/quest3.md" class="project-link">
+                    <h2>Online Learning</h2>
+                    <p>Interactive courses for lifelong learners.</p>
+                    <span class="sector-badge">Education <span class="emoji">📚</span></span>
+                </a>
+            </div>
+            <!-- Project 4 -->
+            <div class="project-card" data-sector="Tech">
+                <a href="/project-engine/founder-quests/quest4.md" class="project-link">
+                    <h2>Blockchain Platform</h2>
+                    <p>Decentralized solutions for finance.</p>
+                    <span class="sector-badge">Tech <span class="emoji">💻</span></span>
+                </a>
+            </div>
+            <!-- Project 5 -->
+            <div class="project-card" data-sector="Health">
+                <a href="/project-engine/founder-quests/quest5.md" class="project-link">
+                    <h2>Wearable Health</h2>
+                    <p>Smart devices for health monitoring.</p>
+                    <span class="sector-badge">Health <span class="emoji">🩺</span></span>
+                </a>
+            </div>
+            <!-- Project 6 -->
+            <div class="project-card" data-sector="Education">
+                <a href="/project-engine/founder-quests/quest6.md" class="project-link">
+                    <h2>EdTech Tools</h2>
+                    <p>Tools for teachers to enhance classrooms.</p>
+                    <span class="sector-badge">Education <span class="emoji">📚</span></span>
+                </a>
+            </div>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
