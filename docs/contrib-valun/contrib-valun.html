@@ -10,7 +10,7 @@
 
     <div class="contribution-dashboard">
         <h1>Project & Contribution Detail Plan 🚀</h1>
-        <p class="summary-text">This plan outlines the detailed tasks, criteria for completion, and the **contribution credit** allocated to the team upon successful delivery of each item. All tasks are contingent on signing the **Contributor License Agreement (CLA)**.</p>
+        <p class="summary-text">This plan outlines the detailed tasks, criteria for completion, and the **contribution credit** allocated to the team upon successful delivery of each item. **Transparency is key:** Review the detailed subtasks for each phase to ensure the workload distribution is fair and clearly defined. All tasks are contingent on signing the **Contributor License Agreement (CLA)**.</p>
 
         <div class="summary-card">
             <h2>Final Contribution Credit Summary</h2>
@@ -46,14 +46,15 @@
                             <h4>1. GitHub Infrastructure Setup</h4>
                             <div class="task-credit founder">Credit: 10.0% (Founder)</div>
                         </div>
-                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <p class="task-description">**Expected Task Load & Deliverables:**</p>
                         <ul>
-                            <li>Create and secure private GitHub Organization and core repository.</li>
-                            <li>Implement **2FA enforcement** for all team members.</li>
-                            <li>Define and implement **Branch Protection Rules** for `main` branch.</li>
-                            <li>Enable **Secret Scanning** and **Dependabot** on the repository.</li>
+                            <li>**Repository Creation & Access:** Create the core organization and private repository; assign initial access roles and set up teams.</li>
+                            <li>**Security Mandates:** Implement and enforce **Two-Factor Authentication (2FA)** for all organizational members and outside collaborators.</li>
+                            <li>**Code Protection:** Configure **Branch Protection Rules** for `main` (require reviews, prevent force pushes).</li>
+                            <li>**Automated Scanning:** Enable and configure GitHub Advanced Security features: **Secret Scanning** (for push protection) and **Dependabot** (for vulnerability alerting).</li>
+                            <li>**Documentation Stubs:** Commit template files for `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `CODE_OF_CONDUCT.md`.</li>
                         </ul>
-                        <p class="completion-criteria">**Definition of Done (DoD):** Security Audit log confirms 2FA enforcement and Secret Scanning is active. All security files (`SECURITY.md`, `CODE_OF_CONDUCT.md`) are committed to `main`.</p>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Security Audit log confirms 2FA enforcement and Secret Scanning is active. All security and contribution guideline stubs are committed to `main` and approved by partners.</p>
                     </div>
                     
                     <div class="task-detail-card">
@@ -61,13 +62,14 @@
                             <h4>2. Legal/Agreement Setup</h4>
                             <div class="task-credit founder">Credit: 5.0% (Founder)</div>
                         </div>
-                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <p class="task-description">**Expected Task Load & Deliverables:**</p>
                         <ul>
-                            <li>Finalize and execute **NDA** with all partners.</li>
-                            <li>Draft and finalize **Contributor License Agreement (CLA)** for IP assignment.</li>
-                            <li>Define and draft smart contract parameters for automated contribution rewards.</li>
+                            <li>**NDA Finalization:** Present, review, and secure signatures for the **Non-Disclosure Agreement (NDA)** from all partners to protect project confidentiality.</li>
+                            <li>**IP Assignment:** Present, review, and secure signatures for the **Contributor License Agreement (CLA)** to legally assign all partner contributions (code, documentation) to the project owner/company.</li>
+                            <li>**Compensation Structure:** Draft the final compensation schedule based on this plan for inclusion in the partnership contract.</li>
+                            <li>**Smart Contract Parameters:** Define the **if-then logic** (oracle triggers, payout wallet addresses, token amounts) for the contribution smart contract.</li>
                         </ul>
-                        <p class="completion-criteria">**Definition of Done (DoD):** Fully signed NDA and CLA documents are secured for all named contributors (Founder, Market, Tech).</p>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Fully signed NDA and CLA documents are secured for all named contributors. Smart contract parameters document is finalized.</p>
                     </div>
 
                     <div class="task-detail-card">
@@ -75,13 +77,14 @@
                             <h4>3. Initial Tech Review</h4>
                             <div class="task-credit tech">Credit: 10.0% (Technical Assistant)</div>
                         </div>
-                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <p class="task-description">**Expected Task Load & Deliverables:**</p>
                         <ul>
-                            <li>Select core technology stack (e.g., Python/Django, Node/Express, Solidity/EVM).</li>
-                            <li>Define high-level architecture diagram (e.g., database, hosting, CI/CD pipeline).</li>
-                            <li>Create and document a basic **development environment setup** guide.</li>
+                            <li>**Stack Selection:** Research and propose the optimal technology stack (e.g., specific backend framework, database, blockchain layer/EVM compatibility).</li>
+                            <li>**Architectural Blueprint:** Create a high-level **system architecture diagram** showing data flow, hosting environment (e.g., AWS/Azure/GCP), and external service integrations.</li>
+                            <li>**Repository Standardization:** Implement initial linter/formatter configurations (e.g., ESLint, Prettier) and define commit message standards.</li>
+                            <li>**Dev Environment Setup:** Create and test a standard local development setup configuration (e.g., using Docker or a clear `setup.sh` script).</li>
                         </ul>
-                        <p class="completion-criteria">**Definition of Done (DoD):** Architecture document and toolchain selection are approved by the Founder. Local development environment is verified working.</p>
+                        <p class="completion-criteria">**Definition of Done (DoD):** A comprehensive architecture document is approved by the Founder. The development environment setup script runs successfully on a test machine, and code standardization tools are configured in the repo.</p>
                     </div>
                 </div>
             </div>
@@ -95,13 +98,15 @@
                             <h4>4. Backend Setup (API, Database, Logic)</h4>
                             <div class="task-credit tech">Credit: 15.0% (Tech Assistant) + 5.0% (Founder)</div>
                         </div>
-                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <p class="task-description">**Expected Task Load & Deliverables:**</p>
                         <ul>
-                            <li>Implement core data models and database schema.</li>
-                            <li>Develop **CRUD API endpoints** for story and asset management.</li>
-                            <li>Implement the core business logic (e.g., asset minting and transfer protocols).</li>
+                            <li>**Database Implementation:** Set up and initialize the chosen database (SQL/NoSQL) and implement the core schema (users, stories, assets).</li>
+                            <li>**Core API Development:** Build essential **CRUD (Create, Read, Update, Delete)** API endpoints required for the MVP to manage story states and user data.</li>
+                            <li>**Blockchain Integration (If applicable):** Implement the initial smart contract logic for asset creation (minting) and transfer, and integrate the backend service with the chosen blockchain node.</li>
+                            <li>**Authentication:** Implement secure user authentication and authorization logic (e.g., OAuth, token-based).</li>
+                            <li>**Unit Testing:** Write and pass **unit tests** for all critical backend functions to achieve at least $70\%$ code coverage.</li>
                         </ul>
-                        <p class="completion-criteria">**Definition of Done (DoD):** All core API endpoints are functional and tested. Unit test coverage meets $70\%$ minimum requirement. (Total 20.0%)</p>
+                        <p class="completion-criteria">**Definition of Done (DoD):** All core API endpoints are functional, documented (e.g., Swagger/OpenAPI), and pass unit tests. The founder can successfully register and retrieve basic data. (Total 20.0%)</p>
                     </div>
                     
                     <div class="task-detail-card">
@@ -109,13 +114,15 @@
                             <h4>5. Story Animation / Front-End</h4>
                             <div class="task-credit tech">Credit: 10.0% (Tech Assistant) + 5.0% (Founder)</div>
                         </div>
-                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <p class="task-description">**Expected Task Load & Deliverables:**</p>
                         <ul>
-                            <li>Develop user interface (UI) to display an animated story example.</li>
-                            <li>Implement front-end functionality to interact with core backend API (e.g., 'View Asset' button).</li>
-                            <li>Ensure responsive design across desktop and mobile browsers.</li>
+                            <li>**UI Framework Setup:** Select and configure the front-end framework (e.g., React, Vue, Svelte).</li>
+                            <li>**Core Component Library:** Build a small, reusable component library (buttons, cards, navigation) for consistent design.</li>
+                            <li>**Asset Visualization:** Develop the front-end logic to fetch and visually render an animated story/asset from the API.</li>
+                            <li>**User Interaction:** Implement key interactive features, such as the ability to initiate an asset transfer or view a detailed asset history.</li>
+                            <li>**Responsiveness:** Ensure the design is fully responsive and displays correctly across major desktop and mobile resolutions.</li>
                         </ul>
-                        <p class="completion-criteria">**Definition of Done (DoD):** A functional, fully styled, and responsive front-end demo connects successfully to the live backend service. (Total 15.0%)</p>
+                        <p class="completion-criteria">**Definition of Done (DoD):** A single, end-to-end user flow (e.g., Login -> View Story -> Initiate Action) is fully implemented, functional, and approved by the Founder for aesthetics and responsiveness. (Total 15.0%)</p>
                     </div>
 
                     <div class="task-detail-card">
@@ -123,13 +130,13 @@
                             <h4>6. Tech Support (Founder Empowerment)</h4>
                             <div class="task-credit tech">Credit: 5.0% (Technical Assistant)</div>
                         </div>
-                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <p class="task-description">**Expected Task Load & Deliverables:**</p>
                         <ul>
-                            <li>Develop and conduct a training session on using the platform and asset creation tools.</li>
-                            <li>Create clear documentation/tutorials for technical onboarding.</li>
-                            <li>Provide direct support for trading and platform interactions.</li>
+                            <li>**Training Materials:** Develop a **two-hour training module** focusing on platform administration, basic debugging, and using the asset creation tools.</li>
+                            <li>**Knowledge Base:** Create clear, beginner-friendly tutorials and a **FAQ document** covering common platform actions (e.g., "How to Mint a New Story," "Troubleshooting API Errors").</li>
+                            <li>**Direct Onboarding:** Conduct one-on-one session to ensure the Founder is proficient in using the platform for core administrative and creation tasks.</li>
                         </ul>
-                        <p class="completion-criteria">**Definition of Done (DoD):** Founder confirms successful completion of training and is able to independently create, deploy, and trade a test asset using the new documentation. (Total 5.0%)</p>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Training materials and KB documents are finalized. The Founder successfully completes the training session and is able to independently perform all core administrative actions. (Total 5.0%)</p>
                     </div>
                 </div>
             </div>
