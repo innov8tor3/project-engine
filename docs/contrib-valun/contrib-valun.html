@@ -4,7 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detailed Project & Contribution Plan</title>
-    <link rel="stylesheet" href="contrib-valun.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Embedding the key CSS rules for the tab functionality */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tabs input[type="radio"] {
+            display: none;
+        }
+        
+        /* The content display logic: */
+        .tab-content {
+            width: 100%;
+            /* ... other styles ... */
+            display: none; /* Hides all content initially */
+        }
+        
+        /* FIX: When the input is checked, we find the label (+ label) and then the content (+ .tab-content)
+           This only works if the HTML elements are grouped: <input> <label> <div.tab-content> */
+        .tabs input[type="radio"]:checked + label + .tab-content {
+            display: block;
+        }
+
+        /* All other CSS from the previous response remains valid for styling */
+    </style>
 </head>
 <body>
 
@@ -30,160 +58,80 @@
         </div>
         
         <div class="tabs">
+            
             <input type="radio" name="tabs" id="tab1" checked>
             <label for="tab1">Phase I: Foundation (25%)</label>
-            <input type="radio" name="tabs" id="tab2">
-            <label for="tab2">Phase II: Core MVP (40%)</label>
-            <input type="radio" name="tabs" id="tab3">
-            <label for="tab3">Phase III: Market Strategy (35%)</label>
-
             <div class="tab-content" id="content1">
                 <h3>Phase I: IP & Infrastructure Setup (25% Weight)</h3>
                 <div class="task-list-container">
-
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>1. GitHub Infrastructure Setup</h4>
-                            <div class="task-credit founder">Credit: 10.0% (Founder)</div>
-                        </div>
+                        <div class="task-header"><h4>1. GitHub Infrastructure Setup</h4><div class="task-credit founder">Credit: 10.0% (Founder)</div></div>
                         <p class="task-description">**Expected Task Load & Deliverables:**</p>
-                        <ul>
-                            <li>**Repository Creation & Access:** Create the core organization and private repository; assign initial access roles and set up teams.</li>
-                            <li>**Security Mandates:** Implement and enforce **Two-Factor Authentication (2FA)** for all organizational members and outside collaborators.</li>
-                            <li>**Code Protection:** Configure **Branch Protection Rules** for `main` (require reviews, prevent force pushes).</li>
-                            <li>**Automated Scanning:** Enable and configure GitHub Advanced Security features: **Secret Scanning** (for push protection) and **Dependabot** (for vulnerability alerting).</li>
-                            <li>**Documentation Stubs:** Commit template files for `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `CODE_OF_CONDUCT.md`.</li>
-                        </ul>
+                        <ul><li>**Repository Creation & Access:** Create the core organization and private repository; assign initial access roles and set up teams.</li><li>**Security Mandates:** Implement and enforce **Two-Factor Authentication (2FA)** for all organizational members and outside collaborators.</li><li>**Code Protection:** Configure **Branch Protection Rules** for `main` (require reviews, prevent force pushes).</li><li>**Automated Scanning:** Enable and configure GitHub Advanced Security features: **Secret Scanning** (for push protection) and **Dependabot** (for vulnerability alerting).</li><li>**Documentation Stubs:** Commit template files for `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `CODE_OF_CONDUCT.md`.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** Security Audit log confirms 2FA enforcement and Secret Scanning is active. All security and contribution guideline stubs are committed to `main` and approved by partners.</p>
                     </div>
-                    
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>2. Legal/Agreement Setup</h4>
-                            <div class="task-credit founder">Credit: 5.0% (Founder)</div>
-                        </div>
+                        <div class="task-header"><h4>2. Legal/Agreement Setup</h4><div class="task-credit founder">Credit: 5.0% (Founder)</div></div>
                         <p class="task-description">**Expected Task Load & Deliverables:**</p>
-                        <ul>
-                            <li>**NDA Finalization:** Present, review, and secure signatures for the **Non-Disclosure Agreement (NDA)** from all partners to protect project confidentiality.</li>
-                            <li>**IP Assignment:** Present, review, and secure signatures for the **Contributor License Agreement (CLA)** to legally assign all partner contributions (code, documentation) to the project owner/company.</li>
-                            <li>**Compensation Structure:** Draft the final compensation schedule based on this plan for inclusion in the partnership contract.</li>
-                            <li>**Smart Contract Parameters:** Define the **if-then logic** (oracle triggers, payout wallet addresses, token amounts) for the contribution smart contract.</li>
-                        </ul>
+                        <ul><li>**NDA Finalization:** Present, review, and secure signatures for the **Non-Disclosure Agreement (NDA)** from all partners to protect project confidentiality.</li><li>**IP Assignment:** Present, review, and secure signatures for the **Contributor License Agreement (CLA)** to legally assign all partner contributions (code, documentation) to the project owner/company.</li><li>**Compensation Structure:** Draft the final compensation schedule based on this plan for inclusion in the partnership contract.</li><li>**Smart Contract Parameters:** Define the **if-then logic** (oracle triggers, payout wallet addresses, token amounts) for the contribution smart contract.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** Fully signed NDA and CLA documents are secured for all named contributors. Smart contract parameters document is finalized.</p>
                     </div>
-
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>3. Initial Tech Review</h4>
-                            <div class="task-credit tech">Credit: 10.0% (Technical Assistant)</div>
-                        </div>
+                        <div class="task-header"><h4>3. Initial Tech Review</h4><div class="task-credit tech">Credit: 10.0% (Technical Assistant)</div></div>
                         <p class="task-description">**Expected Task Load & Deliverables:**</p>
-                        <ul>
-                            <li>**Stack Selection:** Research and propose the optimal technology stack (e.g., specific backend framework, database, blockchain layer/EVM compatibility).</li>
-                            <li>**Architectural Blueprint:** Create a high-level **system architecture diagram** showing data flow, hosting environment (e.g., AWS/Azure/GCP), and external service integrations.</li>
-                            <li>**Repository Standardization:** Implement initial linter/formatter configurations (e.g., ESLint, Prettier) and define commit message standards.</li>
-                            <li>**Dev Environment Setup:** Create and test a standard local development setup configuration (e.g., using Docker or a clear `setup.sh` script).</li>
-                        </ul>
+                        <ul><li>**Stack Selection:** Research and propose the optimal technology stack (e.g., specific backend framework, database, blockchain layer/EVM compatibility).</li><li>**Architectural Blueprint:** Create a high-level **system architecture diagram** showing data flow, hosting environment (e.g., AWS/Azure/GCP), and external service integrations.</li><li>**Repository Standardization:** Implement initial linter/formatter configurations (e.g., ESLint, Prettier) and define commit message standards.</li><li>**Dev Environment Setup:** Create and test a standard local development setup configuration (e.g., using Docker or a clear `setup.sh` script).</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** A comprehensive architecture document is approved by the Founder. The development environment setup script runs successfully on a test machine, and code standardization tools are configured in the repo.</p>
                     </div>
                 </div>
             </div>
 
+            <input type="radio" name="tabs" id="tab2">
+            <label for="tab2">Phase II: Core MVP (40%)</label>
             <div class="tab-content" id="content2">
                 <h3>Phase II: Core Product Development (40% Weight)</h3>
                 <div class="task-list-container">
-
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>4. Backend Setup (API, Database, Logic)</h4>
-                            <div class="task-credit tech">Credit: 15.0% (Tech Assistant) + 5.0% (Founder)</div>
-                        </div>
+                        <div class="task-header"><h4>4. Backend Setup (API, Database, Logic)</h4><div class="task-credit tech">Credit: 15.0% (Tech Assistant) + 5.0% (Founder)</div></div>
                         <p class="task-description">**Expected Task Load & Deliverables:**</p>
-                        <ul>
-                            <li>**Database Implementation:** Set up and initialize the chosen database (SQL/NoSQL) and implement the core schema (users, stories, assets).</li>
-                            <li>**Core API Development:** Build essential **CRUD (Create, Read, Update, Delete)** API endpoints required for the MVP to manage story states and user data.</li>
-                            <li>**Blockchain Integration (If applicable):** Implement the initial smart contract logic for asset creation (minting) and transfer, and integrate the backend service with the chosen blockchain node.</li>
-                            <li>**Authentication:** Implement secure user authentication and authorization logic (e.g., OAuth, token-based).</li>
-                            <li>**Unit Testing:** Write and pass **unit tests** for all critical backend functions to achieve at least $70\%$ code coverage.</li>
-                        </ul>
+                        <ul><li>**Database Implementation:** Set up and initialize the chosen database (SQL/NoSQL) and implement the core schema (users, stories, assets).</li><li>**Core API Development:** Build essential **CRUD (Create, Read, Update, Delete)** API endpoints required for the MVP to manage story states and user data.</li><li>**Blockchain Integration (If applicable):** Implement the initial smart contract logic for asset creation (minting) and transfer, and integrate the backend service with the chosen blockchain node.</li><li>**Authentication:** Implement secure user authentication and authorization logic (e.g., OAuth, token-based).</li><li>**Unit Testing:** Write and pass **unit tests** for all critical backend functions to achieve at least $70\%$ code coverage.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** All core API endpoints are functional, documented (e.g., Swagger/OpenAPI), and pass unit tests. The founder can successfully register and retrieve basic data. (Total 20.0%)</p>
                     </div>
-                    
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>5. Story Animation / Front-End</h4>
-                            <div class="task-credit tech">Credit: 10.0% (Tech Assistant) + 5.0% (Founder)</div>
-                        </div>
+                        <div class="task-header"><h4>5. Story Animation / Front-End</h4><div class="task-credit tech">Credit: 10.0% (Tech Assistant) + 5.0% (Founder)</div></div>
                         <p class="task-description">**Expected Task Load & Deliverables:**</p>
-                        <ul>
-                            <li>**UI Framework Setup:** Select and configure the front-end framework (e.g., React, Vue, Svelte).</li>
-                            <li>**Core Component Library:** Build a small, reusable component library (buttons, cards, navigation) for consistent design.</li>
-                            <li>**Asset Visualization:** Develop the front-end logic to fetch and visually render an animated story/asset from the API.</li>
-                            <li>**User Interaction:** Implement key interactive features, such as the ability to initiate an asset transfer or view a detailed asset history.</li>
-                            <li>**Responsiveness:** Ensure the design is fully responsive and displays correctly across major desktop and mobile resolutions.</li>
-                        </ul>
+                        <ul><li>**UI Framework Setup:** Select and configure the front-end framework (e.g., React, Vue, Svelte).</li><li>**Core Component Library:** Build a small, reusable component library (buttons, cards, navigation) for consistent design.</li><li>**Asset Visualization:** Develop the front-end logic to fetch and visually render an animated story/asset from the API.</li><li>**User Interaction:** Implement key interactive features, such as the ability to initiate an asset transfer or view a detailed asset history.</li><li>**Responsiveness:** Ensure the design is fully responsive and displays correctly across major desktop and mobile resolutions.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** A single, end-to-end user flow (e.g., Login -> View Story -> Initiate Action) is fully implemented, functional, and approved by the Founder for aesthetics and responsiveness. (Total 15.0%)</p>
                     </div>
-
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>6. Tech Support (Founder Empowerment)</h4>
-                            <div class="task-credit tech">Credit: 5.0% (Technical Assistant)</div>
-                        </div>
+                        <div class="task-header"><h4>6. Tech Support (Founder Empowerment)</h4><div class="task-credit tech">Credit: 5.0% (Technical Assistant)</div></div>
                         <p class="task-description">**Expected Task Load & Deliverables:**</p>
-                        <ul>
-                            <li>**Training Materials:** Develop a **two-hour training module** focusing on platform administration, basic debugging, and using the asset creation tools.</li>
-                            <li>**Knowledge Base:** Create clear, beginner-friendly tutorials and a **FAQ document** covering common platform actions (e.g., "How to Mint a New Story," "Troubleshooting API Errors").</li>
-                            <li>**Direct Onboarding:** Conduct one-on-one session to ensure the Founder is proficient in using the platform for core administrative and creation tasks.</li>
-                        </ul>
+                        <ul><li>**Training Materials:** Develop a **two-hour training module** focusing on platform administration, basic debugging, and using the asset creation tools.</li><li>**Knowledge Base:** Create clear, beginner-friendly tutorials and a **FAQ document** covering common platform actions (e.g., "How to Mint a New Story," "Troubleshooting API Errors").</li><li>**Direct Onboarding:** Conduct one-on-one session to ensure the Founder is proficient in using the platform for core administrative and creation tasks.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** Training materials and KB documents are finalized. The Founder successfully completes the training session and is able to independently perform all core administrative actions. (Total 5.0%)</p>
                     </div>
                 </div>
             </div>
-
+            
+            <input type="radio" name="tabs" id="tab3">
+            <label for="tab3">Phase III: Market Strategy (35%)</label>
             <div class="tab-content" id="content3">
                 <h3>Phase III: Market & Growth Strategy (35% Weight)</h3>
                 <div class="task-list-container">
-
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>7. Story Generation (Content/IP)</h4>
-                            <div class="task-credit founder">Credit: 10.0% (Founder) + 5.0% (Market Liaison)</div>
-                        </div>
+                        <div class="task-header"><h4>7. Story Generation (Content/IP)</h4><div class="task-credit founder">Credit: 10.0% (Founder) + 5.0% (Market Liaison)</div></div>
                         <p class="task-description">**Actionable Subtasks:**</p>
-                        <ul>
-                            <li>Finalize the core IP, narrative, and brand identity of the project.</li>
-                            <li>Draft the **Whitepaper/Litepaper** defining project vision and mechanics.</li>
-                            <li>Identify three core use cases for the platform's assets.</li>
-                        </ul>
+                        <ul><li>Finalize the core IP, narrative, and brand identity of the project.</li><li>Draft the **Whitepaper/Litepaper** defining project vision and mechanics.</li><li>Identify three core use cases for the platform's assets.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** Whitepaper/Litepaper is drafted, reviewed, and finalized. Core IP is registered (if applicable) or legally protected. (Total 15.0%)</p>
                     </div>
-                    
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>8. Market Valuation & Pricing</h4>
-                            <div class="task-credit market">Credit: 10.0% (Market Liaison)</div>
-                        </div>
+                        <div class="task-header"><h4>8. Market Valuation & Pricing</h4><div class="task-credit market">Credit: 10.0% (Market Liaison)</div></div>
                         <p class="task-description">**Actionable Subtasks:**</p>
-                        <ul>
-                            <li>Conduct a competitive analysis of similar platforms/projects.</li>
-                            <li>Develop a detailed **pricing model** and initial revenue projections.</li>
-                            <li>Define the Target Audience (TA) profile and key communication channels.</li>
-                        </ul>
+                        <ul><li>Conduct a competitive analysis of similar platforms/projects.</li><li>Develop a detailed **pricing model** and initial revenue projections.</li><li>Define the Target Audience (TA) profile and key communication channels.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** A formal market analysis and pricing strategy document is delivered and approved by the Founder. (Total 10.0%)</p>
                     </div>
-                    
                     <div class="task-detail-card">
-                        <div class="task-header">
-                            <h4>9. Founder Recruitment</h4>
-                            <div class="task-credit market">Credit: 5.0% (Market Liaison) + 5.0% (Founder)</div>
-                        </div>
+                        <div class="task-header"><h4>9. Founder Recruitment</h4><div class="task-credit market">Credit: 5.0% (Market Liaison) + 5.0% (Founder)</div></div>
                         <p class="task-description">**Actionable Subtasks:**</p>
-                        <ul>
-                            <li>Establish contact and partnership with key LDN university departments/incubators.</li>
-                            <li>Develop pitch deck and recruitment materials.</li>
-                            <li>Secure commitments from the **first three external project founders/contributors**.</li>
-                        </ul>
+                        <ul><li>Establish contact and partnership with key LDN university departments/incubators.</li><li>Develop pitch deck and recruitment materials.</li><li>Secure commitments from the **first three external project founders/contributors**.</li></ul>
                         <p class="completion-criteria">**Definition of Done (DoD):** Three external founders/contributors are legally onboarded (signed NDA/CLA) and have begun their initial task. (Total 10.0%)</p>
                     </div>
                 </div>
@@ -191,4 +139,4 @@
         </div>
     </div>
 </body>
-</html>
+    </html>
