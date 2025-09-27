@@ -1,0 +1,186 @@
+:root {
+    --primary-color: #4a90e2; /* Modern Blue */
+    --secondary-color: #f7f7f7; /* Light Grey Background */
+    --text-color: #333;
+    --card-background: #fff;
+    --border-color: #ddd;
+    --founder-color: #ff9800; /* Orange */
+    --market-color: #4caf50; /* Green */
+    --tech-color: #9c27b0; /* Purple */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.contribution-dashboard {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--card-background);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.summary-text {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* --- Summary Card Styling --- */
+.summary-card {
+    background-color: #e3f2fd; /* Light Blue/Cyan */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--primary-color);
+}
+
+.summary-card h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 20px;
+    font-weight: bold;
+}
+
+.role-header, .percent-header {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    padding: 8px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.role-name, .role-percent {
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.founder { background-color: #fff3e0; color: var(--founder-color); }
+.market { background-color: #e8f5e9; color: var(--market-color); }
+.tech { background-color: #f3e5f5; color: var(--tech-color); }
+
+.role-percent { text-align: right; }
+
+/* --- Tabs Styling --- */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tabs input[type="radio"] {
+    display: none;
+}
+
+.tabs label {
+    padding: 12px 20px;
+    background: var(--border-color);
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
+}
+
+.tabs label:hover {
+    background-color: #ccc;
+}
+
+.tabs input[type="radio"]:checked + label {
+    background: var(--primary-color);
+    color: var(--card-background);
+    z-index: 1;
+}
+
+.tab-content {
+    order: 99; /* Push content below tabs */
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 0 8px 8px 8px;
+    padding: 20px;
+    background: var(--card-background);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: none; /* Hide all content initially */
+}
+
+/* Show content for the checked tab */
+.tabs input[type="radio"]:checked + label + .tab-content {
+    display: block;
+}
+
+/* --- Task Table Styling --- */
+.task-table {
+    display: grid;
+    grid-template-columns: 2fr repeat(4, 1fr); /* Task, 3 Roles, Total */
+    gap: 1px;
+    margin-top: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table-header {
+    background-color: var(--primary-color);
+    color: var(--card-background);
+    padding: 10px 8px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.task-row {
+    background-color: var(--secondary-color);
+    font-weight: 500;
+    padding: 10px 8px;
+    text-align: left;
+}
+
+.task-cell {
+    background-color: var(--card-background);
+    padding: 10px 8px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.task-cell.total {
+    background-color: #e0f7fa; /* Light cyan for total */
+    color: var(--primary-color);
+}
+
+/* Role-specific header colors for better visual grouping */
+.table-header.founder { background-color: var(--founder-color); }
+.table-header.market { background-color: var(--market-color); }
+.table-header.tech { background-color: var(--tech-color); }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .task-table {
+        grid-template-columns: 1fr 1fr; /* Simplifies to Task and Total on small screens */
+    }
+    .table-header.founder, .table-header.market, .table-header.tech,
+    .task-cell.founder, .task-cell.market, .task-cell.tech {
+        display: none; /* Hide individual role percentages on mobile for readability */
+    }
+    .task-table {
+        grid-template-columns: 2fr 1fr;
+    }
+}
