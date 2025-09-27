@@ -23,6 +23,10 @@ Check out the key pages:
     <td>🛠 <a href="https://innov8tor3.github.io/project-engine/dev-envt/dev-envt.html">Technical Prep</a><br><br>Provide base tech functions</td>
     <td>🗄 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/repo-restructure.html">Repo Restructure</a><br><br>Step 1/6</td>
   </tr>
+  <tr>
+    <td>🧮 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Contributor Valuations</a><br><br>Reward schemes for collaborators</td>
+    potential</td>
+  </tr>
 </table>
 
 
