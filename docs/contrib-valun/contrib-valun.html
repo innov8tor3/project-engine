@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Contribution & Value Breakdown</title>
-    <link rel="stylesheet" href="contrib-valun.css">
+    <title>Detailed Project & Contribution Plan</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div class="contribution-dashboard">
-        <h1>Project Contribution & Value Breakdown 📊</h1>
-        <p class="summary-text">The total contribution pool is 100%, distributed and earned upon completion of defined tasks across three phases. All contributions require prior IP assignment (CLA).</p>
+        <h1>Project & Contribution Detail Plan 🚀</h1>
+        <p class="summary-text">This plan outlines the detailed tasks, criteria for completion, and the **contribution credit** allocated to the team upon successful delivery of each item. All tasks are contingent on signing the **Contributor License Agreement (CLA)**.</p>
 
         <div class="summary-card">
-            <h2>Final Contribution Distribution Summary</h2>
+            <h2>Final Contribution Credit Summary</h2>
             <div class="summary-grid">
                 <div class="role-header">Role</div>
-                <div class="percent-header">Total Earned %</div>
+                <div class="percent-header">Total Credit %</div>
 
                 <div class="role-name founder">Founder</div>
                 <div class="role-percent founder">40.0%</div>
@@ -31,96 +31,154 @@
         
         <div class="tabs">
             <input type="radio" name="tabs" id="tab1" checked>
-            <label for="tab1">Phase I (25%)</label>
+            <label for="tab1">Phase I: Foundation (25%)</label>
             <input type="radio" name="tabs" id="tab2">
-            <label for="tab2">Phase II (40%)</label>
+            <label for="tab2">Phase II: Core MVP (40%)</label>
             <input type="radio" name="tabs" id="tab3">
-            <label for="tab3">Phase III (35%)</label>
+            <label for="tab3">Phase III: Market Strategy (35%)</label>
 
             <div class="tab-content" id="content1">
                 <h3>Phase I: IP & Infrastructure Setup (25% Weight)</h3>
-                <div class="task-table">
-                    <div class="table-header">Task</div>
-                    <div class="table-header founder">Founder (%)</div>
-                    <div class="table-header market">Market Liaison (%)</div>
-                    <div class="table-header tech">Technical Assistant (%)</div>
-                    <div class="table-header total">Total Value (%)</div>
+                <div class="task-list-container">
 
-                    <div class="task-row">GitHub Infrastructure Setup (Security, Standards)</div>
-                    <div class="task-cell founder">10.0</div>
-                    <div class="task-cell market">0.0</div>
-                    <div class="task-cell tech">0.0</div>
-                    <div class="task-cell total">10.0</div>
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>1. GitHub Infrastructure Setup</h4>
+                            <div class="task-credit founder">Credit: 10.0% (Founder)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Create and secure private GitHub Organization and core repository.</li>
+                            <li>Implement **2FA enforcement** for all team members.</li>
+                            <li>Define and implement **Branch Protection Rules** for `main` branch.</li>
+                            <li>Enable **Secret Scanning** and **Dependabot** on the repository.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Security Audit log confirms 2FA enforcement and Secret Scanning is active. All security files (`SECURITY.md`, `CODE_OF_CONDUCT.md`) are committed to `main`.</p>
+                    </div>
+                    
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>2. Legal/Agreement Setup</h4>
+                            <div class="task-credit founder">Credit: 5.0% (Founder)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Finalize and execute **NDA** with all partners.</li>
+                            <li>Draft and finalize **Contributor License Agreement (CLA)** for IP assignment.</li>
+                            <li>Define and draft smart contract parameters for automated contribution rewards.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Fully signed NDA and CLA documents are secured for all named contributors (Founder, Market, Tech).</p>
+                    </div>
 
-                    <div class="task-row">Legal/Agreement Setup (NDAs, CLAs)</div>
-                    <div class="task-cell founder">5.0</div>
-                    <div class="task-cell market">0.0</div>
-                    <div class="task-cell tech">0.0</div>
-                    <div class="task-cell total">5.0</div>
-
-                    <div class="task-row">Initial Tech Review (Toolchain, Architecture)</div>
-                    <div class="task-cell founder">0.0</div>
-                    <div class="task-cell market">0.0</div>
-                    <div class="task-cell tech">10.0</div>
-                    <div class="task-cell total">10.0</div>
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>3. Initial Tech Review</h4>
+                            <div class="task-credit tech">Credit: 10.0% (Technical Assistant)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Select core technology stack (e.g., Python/Django, Node/Express, Solidity/EVM).</li>
+                            <li>Define high-level architecture diagram (e.g., database, hosting, CI/CD pipeline).</li>
+                            <li>Create and document a basic **development environment setup** guide.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Architecture document and toolchain selection are approved by the Founder. Local development environment is verified working.</p>
+                    </div>
                 </div>
             </div>
 
             <div class="tab-content" id="content2">
                 <h3>Phase II: Core Product Development (40% Weight)</h3>
-                <div class="task-table">
-                    <div class="table-header">Task</div>
-                    <div class="table-header founder">Founder (%)</div>
-                    <div class="table-header market">Market Liaison (%)</div>
-                    <div class="table-header tech">Technical Assistant (%)</div>
-                    <div class="table-header total">Total Value (%)</div>
+                <div class="task-list-container">
 
-                    <div class="task-row">Backend Setup (API, Database, Logic)</div>
-                    <div class="task-cell founder">5.0</div>
-                    <div class="task-cell market">0.0</div>
-                    <div class="task-cell tech">15.0</div>
-                    <div class="task-cell total">20.0</div>
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>4. Backend Setup (API, Database, Logic)</h4>
+                            <div class="task-credit tech">Credit: 15.0% (Tech Assistant) + 5.0% (Founder)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Implement core data models and database schema.</li>
+                            <li>Develop **CRUD API endpoints** for story and asset management.</li>
+                            <li>Implement the core business logic (e.g., asset minting and transfer protocols).</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** All core API endpoints are functional and tested. Unit test coverage meets $70\%$ minimum requirement. (Total 20.0%)</p>
+                    </div>
+                    
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>5. Story Animation / Front-End</h4>
+                            <div class="task-credit tech">Credit: 10.0% (Tech Assistant) + 5.0% (Founder)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Develop user interface (UI) to display an animated story example.</li>
+                            <li>Implement front-end functionality to interact with core backend API (e.g., 'View Asset' button).</li>
+                            <li>Ensure responsive design across desktop and mobile browsers.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** A functional, fully styled, and responsive front-end demo connects successfully to the live backend service. (Total 15.0%)</p>
+                    </div>
 
-                    <div class="task-row">Story Animation / Front-End (Functionality)</div>
-                    <div class="task-cell founder">5.0</div>
-                    <div class="task-cell market">0.0</div>
-                    <div class="task-cell tech">10.0</div>
-                    <div class="task-cell total">15.0</div>
-
-                    <div class="task-row">Tech Support (Founder Empowerment)</div>
-                    <div class="task-cell founder">0.0</div>
-                    <div class="task-cell market">0.0</div>
-                    <div class="task-cell tech">5.0</div>
-                    <div class="task-cell total">5.0</div>
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>6. Tech Support (Founder Empowerment)</h4>
+                            <div class="task-credit tech">Credit: 5.0% (Technical Assistant)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Develop and conduct a training session on using the platform and asset creation tools.</li>
+                            <li>Create clear documentation/tutorials for technical onboarding.</li>
+                            <li>Provide direct support for trading and platform interactions.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Founder confirms successful completion of training and is able to independently create, deploy, and trade a test asset using the new documentation. (Total 5.0%)</p>
+                    </div>
                 </div>
             </div>
-            
+
             <div class="tab-content" id="content3">
                 <h3>Phase III: Market & Growth Strategy (35% Weight)</h3>
-                <div class="task-table">
-                    <div class="table-header">Task</div>
-                    <div class="table-header founder">Founder (%)</div>
-                    <div class="table-header market">Market Liaison (%)</div>
-                    <div class="table-header tech">Technical Assistant (%)</div>
-                    <div class="table-header total">Total Value (%)</div>
+                <div class="task-list-container">
 
-                    <div class="task-row">Story Generation (Define core narrative/value)</div>
-                    <div class="task-cell founder">10.0</div>
-                    <div class="task-cell market">5.0</div>
-                    <div class="task-cell tech">0.0</div>
-                    <div class="task-cell total">15.0</div>
-
-                    <div class="task-row">Market Valuation & Pricing (Viability Analysis)</div>
-                    <div class="task-cell founder">0.0</div>
-                    <div class="task-cell market">10.0</div>
-                    <div class="task-cell tech">0.0</div>
-                    <div class="task-cell total">10.0</div>
-
-                    <div class="task-row">Founder Recruitment (Sourcing first contributors)</div>
-                    <div class="task-cell founder">5.0</div>
-                    <div class="task-cell market">5.0</div>
-                    <div class="task-cell tech">0.0</div>
-                    <div class="task-cell total">10.0</div>
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>7. Story Generation (Content/IP)</h4>
+                            <div class="task-credit founder">Credit: 10.0% (Founder) + 5.0% (Market Liaison)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Finalize the core IP, narrative, and brand identity of the project.</li>
+                            <li>Draft the **Whitepaper/Litepaper** defining project vision and mechanics.</li>
+                            <li>Identify three core use cases for the platform's assets.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Whitepaper/Litepaper is drafted, reviewed, and finalized. Core IP is registered (if applicable) or legally protected. (Total 15.0%)</p>
+                    </div>
+                    
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>8. Market Valuation & Pricing</h4>
+                            <div class="task-credit market">Credit: 10.0% (Market Liaison)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Conduct a competitive analysis of similar platforms/projects.</li>
+                            <li>Develop a detailed **pricing model** and initial revenue projections.</li>
+                            <li>Define the Target Audience (TA) profile and key communication channels.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** A formal market analysis and pricing strategy document is delivered and approved by the Founder. (Total 10.0%)</p>
+                    </div>
+                    
+                    <div class="task-detail-card">
+                        <div class="task-header">
+                            <h4>9. Founder Recruitment</h4>
+                            <div class="task-credit market">Credit: 5.0% (Market Liaison) + 5.0% (Founder)</div>
+                        </div>
+                        <p class="task-description">**Actionable Subtasks:**</p>
+                        <ul>
+                            <li>Establish contact and partnership with key LDN university departments/incubators.</li>
+                            <li>Develop pitch deck and recruitment materials.</li>
+                            <li>Secure commitments from the **first three external project founders/contributors**.</li>
+                        </ul>
+                        <p class="completion-criteria">**Definition of Done (DoD):** Three external founders/contributors are legally onboarded (signed NDA/CLA) and have begun their initial task. (Total 10.0%)</p>
+                    </div>
                 </div>
             </div>
         </div>
