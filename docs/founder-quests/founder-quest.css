@@ -286,6 +286,10 @@ select option {
     background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
+.project-card[data-sector="Gaming"] .sector-badge {
+    background: linear-gradient(135deg, #edbd40 0%, #fed600 100%);
+}
+
 .project-card[data-sector="Entertainment"] .sector-badge {
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
 }
