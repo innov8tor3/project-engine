@@ -1,356 +1,117 @@
 /* The Founder's Odyssey - Indie Game Dev Quest Styles */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Body and Page Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: #ffffff;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 2em;
+    line-height: 1.7;
 }
 
-/* Animated Background Elements */
-.stars {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: transparent;
-}
+.header { text-align: center; margin-bottom: 3em; border-bottom: 2px solid #0f3460; padding-bottom: 1.5em; }
+.header h1 { color: #f2a900; font-size: 2.5rem; margin: 0; }
+.header p { font-size: 1.1rem; max-width: 800px; margin: 0.5em auto 0; }
+.odyssey-container { max-width: 900px; margin: auto; }
+.journey-steps { list-style: none; padding-left: 0; counter-reset: step-counter; }
 
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 3s infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
-}
-
-/* Layout Structure */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 80px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    margin: 20px 0;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientShift 4s ease infinite;
-}
-
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.hero p {
-    font-size: 1.3rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* Timeline Structure */
-.timeline {
-    position: relative;
-    margin: 60px 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: linear-gradient(to bottom, #ff6b6b, #4ecdc4, #45b7d1);
-    transform: translateX(-50%);
-    border-radius: 2px;
-}
-
-/* Step Components */
-.step {
-    position: relative;
-    margin: 60px 0;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
-}
-
-.step.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.step-content {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    padding: 30px;
-    margin: 0 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-    cursor: pointer;
+.journey-steps li {
+    background-color: #16213e;
+    border-left: 4px solid #f2a900;
+    padding: 1.5em 2em;
+    margin-bottom: 2em;
+    border-radius: 0 8px 8px 0;
     position: relative;
 }
 
-.step:nth-child(odd) .step-content {
-    margin-left: 60%;
-}
-
-.step:nth-child(even) .step-content {
-    margin-right: 60%;
-}
-
-.step-content:hover {
-    transform: scale(1.02);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.step-number {
+.journey-steps li::before {
+    counter-increment: step-counter;
+    content: counter(step-counter);
     position: absolute;
-    left: 50%;
-    top: 30px;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    left: -22px;
+    top: 1.2em;
+    background-color: #e94560;
+    color: #fff;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-weight: bold;
     font-size: 1.2rem;
-    border: 4px solid #1e3c72;
-    z-index: 10;
+    border: 2px solid #1a1a2e;
 }
 
-.step h2 {
-    color: #4ecdc4;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+.journey-steps h3 { color: #c0c0c0; margin-top: 0; font-size: 1.6rem; }
 
-.step-icon {
-    font-size: 1.5rem;
-}
+/* --- Clickable Trigger Button Styling --- */
+.character-trigger {
+    /* Reset default button styles */
+    all: unset;
 
-.step p {
-    line-height: 1.7;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-/* Character Highlighting */
-.character {
-    background: linear-gradient(45deg, #8e44ad, #e74c3c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    /* Custom styles for an "in-text link" look */
+    color: #50c878;
     font-weight: bold;
-    padding: 2px 4px;
-    border-radius: 4px;
+    text-decoration: underline dotted;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    border-radius: 3px;
+    padding: 0 4px;
+}
+
+.character-trigger:hover,
+.character-trigger:focus {
+    color: #f2a900;
+    background-color: rgba(242, 169, 0, 0.1);
+    outline: none;
+}
+
+/* --- Profile Card Pop-up --- */
+.profile-cards-container {
     position: relative;
 }
 
-/* Obstacle and Success Callouts */
-.obstacle {
-    background: rgba(231, 76, 60, 0.2);
-    border-left: 4px solid #e74c3c;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 0 10px 10px 0;
-    font-style: italic;
+.profile-card {
+    /* Hide the card by default */
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+
+    position: fixed; /* Position relative to the viewport */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -40%); /* Center and move up slightly */
+
+    width: 380px;
+    max-width: 90vw;
+    background-color: #1f2a47;
+    border: 1px solid #0f3460;
+    border-radius: 12px;
+    padding: 1.5em;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+    z-gameplay: 100;
+
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
-.obstacle::before {
-    content: "⚠️ ";
-    font-style: normal;
+/* This class is added by JavaScript to show the card */
+.profile-card.is-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Final centered position */
 }
 
-.valuation {
-    background: rgba(46, 204, 113, 0.2);
-    border-left: 4px solid #2ecc71;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 0 10px 10px 0;
-    font-weight: bold;
-}
 
-.valuation::before {
-    content: "💰 ";
-}
-
-/* Progress Bar */
-.progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 4px;
-    background: linear-gradient(to right, #ff6b6b, #4ecdc4, #45b7d1);
-    z-index: 1000;
-    transition: width 0.1s ease;
-}
-
-/* Floating Background Elements */
-.floating-elements {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.floating-icon {
-    position: absolute;
-    font-size: 2rem;
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-/* Call-to-Action Section */
-.cta-section {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    margin: 40px 0;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.cta-button {
-    display: inline-block;
-    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    margin: 10px;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero h1 { 
-        font-size: 2.5rem; 
-    }
-    
-    .timeline::before { 
-        left: 20px; 
-    }
-    
-    .step-number { 
-        left: 20px; 
-        transform: none; 
-    }
-    
-    .step:nth-child(odd) .step-content,
-    .step:nth-child(even) .step-content {
-        margin: 0 0 0 60px;
-    }
-    
-    .hero {
-        padding: 40px 15px;
-    }
-    
-    .step-content {
-        padding: 20px;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-    }
-    
-    .step h2 {
-        font-size: 1.5rem;
-    }
-    
-    .step p {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .hero {
-        padding: 30px 10px;
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-    
-    .step-content {
-        padding: 15px;
-    }
-    
-    .step h2 {
-        font-size: 1.3rem;
-    }
-    
-    .cta-section {
-        padding: 40px 15px;
-    }
-    
-    .cta-button {
-        padding: 12px 25px;
-        font-size: 1rem;
-        margin: 5px;
-        display: block;
-        margin-bottom: 10px;
-    }
-}
+/* --- Profile Card Content Styling --- */
+.profile-card h2 { color: #e94560; font-size: 1.8rem; margin-top: 0; border-bottom: 2px solid #e94560; padding-bottom: 0.5em; }
+.profile-card.founder h2 { color: #50c878; border-bottom-color: #50c878; }
+.profile-card .role { font-style: italic; color: #f2a900; margin-bottom: 1em; }
+.profile-card h3 { color: #c0c0c0; border-left: 3px solid #f2a900; padding-left: 0.5em; margin-top: 1.5em; font-size: 1.1rem; }
+.profile-card p, .profile-card li { line-height: 1.6; }
+.profile-card ul { list-style: none; padding-left: 0; }
+.profile-card ul li { background-color: rgba(255, 255, 255, 0.05); margin-bottom: 0.5em; padding: 0.5em; border-radius: 5px; font-size: 0.9rem; }
+.profile-card strong { color: #ffffff; }
+.pithy-advice { border: 1px dashed #f2a900; padding: 1em; margin-top: 1em; border-radius: 8px; background-color: rgba(242, 169, 0, 0.1); }
+.pithy-advice li { background-color: transparent; }
