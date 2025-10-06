@@ -1,0 +1,276 @@
+/* The Founder's Odyssey - Indie Game Dev Quest Styles */
+
+/* General Body and Page Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+        
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+        
+/* Night Sky Background with Twinkling Stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+        
+.star {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+        
+@keyframes twinkle {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+        
+/* Generate random stars via JS, but for CSS fallback, add some */
+.star:nth-child(1) { top: 10%; left: 20%; width: 2px; height: 2px; animation-delay: 0s; }
+.star:nth-child(2) { top: 20%; left: 80%; width: 1px; height: 1px; animation-delay: 0.5s; }
+.star:nth-child(3) { top: 50%; left: 10%; width: 3px; height: 3px; animation-delay: 1s; }
+.star:nth-child(4) { top: 70%; left: 60%; width: 1.5px; height: 1.5px; animation-delay: 1.5s; }
+.star:nth-child(5) { top: 90%; left: 90%; width: 2px; height: 2px; animation-delay: 0.2s; }
+        
+/* Floating Emojis */
+.emoji-float {
+    position: fixed;
+    font-size: 2rem;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
+    animation: float 20s infinite linear;
+}
+        
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+        
+/* Header */
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 1;
+}
+        
+.top-emojis {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+        
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #00d4ff, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+        
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+        
+/* Sections */
+.section {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative;
+}
+        
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+        
+.section-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #00d4ff, #ff6b6b);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+        
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+        
+.section-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+        
+.section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+        
+.section-content > div {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+        
+.warning {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 107, 107, 0.05));
+    border: 1px solid rgba(255, 107, 107, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    font-style: italic;
+    opacity: 0.9;
+    margin-top: 1rem;
+}
+        
+.warning-icon {
+    color: #ff6b6b;
+    margin-right: 0.5rem;
+}
+        
+.valuation {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    font-weight: 500;
+}
+        
+/* Characters */
+.characters {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+        
+.character {
+    text-align: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+        
+.character:hover {
+    opacity: 1;
+}
+        
+.character-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+        
+/* CTA Section */
+.cta {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 800px;
+    margin: 4rem auto;
+}
+        
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #00d4ff;
+}
+        
+.cta p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+        
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+        
+.btn {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #00d4ff, #ff6b6b);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+        
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+}
+        
+/* Scroll Animations */
+@media (prefers-reduced-motion: no-preference) {
+    .section {
+        scroll-snap-align: start;
+    }
+    
+    body {
+        scroll-snap-type: y mandatory;
+    }
+}
+        
+/* Responsive */
+@media (max-width: 768px) {
+    .section-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
