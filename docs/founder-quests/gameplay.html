@@ -3,311 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Founder's Odyssey</title>
-    <link rel="stylesheet" href="gameplay.css">
+    <title>The Solutionist's Odyssey: Indie Game Dev Quest</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="progress-bar" id="progressBar"></div>
+    
     <div class="stars" id="stars"></div>
     
-    <!-- Floating Emojis -->
-    <div class="emoji-float" style="top: 0; left: 10%; animation-delay: 0s;">🎮</div>
-    <div class="emoji-float" style="top: 0; left: 30%; animation-delay: 5s;">💻</div>
-    <div class="emoji-float" style="top: 0; left: 50%; animation-delay: 10s;">🚀</div>
-    <div class="emoji-float" style="top: 0; left: 70%; animation-delay: 15s;">⭐</div>
-    <div class="emoji-float" style="top: 0; left: 90%; animation-delay: 20s;">🎨</div>
-    
-    <header>
-        <div class="top-emojis">🎮 💻 🚀 ⭐ 🎨 🎯</div>
-        <h1>The Founder's Odyssey</h1>
-        <p class="subtitle">From frustrated developer to indie game success story. Follow the journey of turning dreams into digital reality with AI-powered assistance and community-driven growth.</p>
-    </header>
-    
-    <section class="section" data-step="1">
-        <div class="section-header">
-            <div class="section-number">1</div>
-            <span class="section-icon">💡</span>
-            <h2>The Spark of Inspiration</h2>
+    <div class="floating-elements">
+        <div class="floating-icon" style="top: 10%; left: 10%; animation-delay: 0s;">🎮</div>
+        <div class="floating-icon" style="top: 20%; right: 10%; animation-delay: 1s;">💻</div>
+        <div class="floating-icon" style="top: 60%; left: 5%; animation-delay: 2s;">🚀</div>
+        <div class="floating-icon" style="top: 80%; right: 15%; animation-delay: 3s;">⭐</div>
+        <div class="floating-icon" style="top: 40%; right: 5%; animation-delay: 4s;">🎨</div>
+        <div class="floating-icon" style="top: 70%; left: 15%; animation-delay: 5s;">🎯</div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1>The Solutionist's Odyssey</h1>
+            <p>From frustrated gamer to indie game dev success story. Follow the journey of turning dreams into digital reality with AI-powered assistance and community-driven growth.</p>
         </div>
-        <div class="section-content">
-            <div>
-                <p>The Founder, a hobby game developer, frustrated by repetitive game tropes, dreams of crafting a unique sci-fi RPG with procedurally generated worlds.</p>
+
+        <div class="timeline">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h2><span class="step-icon">💡</span>The Spark of Inspiration</h2>
+                    <p>The Solutionist, a hobby gamer frustrated by repetitive game tropes, dreams of crafting a unique sci-fi RPG with procedurally generated worlds. <span class="character">Gordian Mage</span> guides them to use ChatGPT to brainstorm a narrative about a rogue AI terraformer, aligning with market trends (e.g., No Man's Sky's appeal). <span class="character">Lab Assistant Sparky</span> sets up a GitHub repo for version control. <span class="character">Sergeant Robo Snail</span> connects the Solutionist to itch.io forums to validate the concept.</p>
+                    <div class="obstacle">Doubt creeps in—can a solo dev compete in a saturated market?</div>
+                </div>
             </div>
-            <div>
-                <p><strong>Sparky</strong> guides them to use ChatGPT to brainstorm a narrative about a rogue AI terraformer, aligning with market trends (e.g., No Man's Sky's appeal).</p>
-                <p><strong>Gordian Mage</strong> sets up a GitHub repo for version control.</p>
-                <p><strong>Robo Snail</strong> connects the Founder to itch.io forums to validate the concept.</p>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h2><span class="step-icon">🎯</span>Forging the Vision</h2>
+                    <p>The Solutionist refines the game's scope: a 2D RPG with AI-generated planets. <span class="character">Gordian Mage</span> uses market data from SteamDB to target a niche (retro RPG fans). <span class="character">Sparky</span> experiments with Stable Diffusion to create pixel-art assets, training on sci-fi aesthetics. <span class="character">Robo Snail</span> identifies Epic MegaGrants as a funding target, drafting a pitch.</p>
+                    <div class="obstacle">AI-generated art lacks cohesion, requiring manual tweaks in Blender.</div>
+                </div>
             </div>
-        </div>
-        <div class="warning">
-            <span class="warning-icon">⚠️</span> Doubt creeps in—can a solo dev compete in a saturated market?
-        </div>
-        <div class="characters">
-            <div class="character">
-                <span class="character-icon">🧙‍♂️</span>
-                <p>Gordian Mage</p>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h2><span class="step-icon">⚙️</span>Building the Prototype</h2>
+                    <p>The Solutionist codes core mechanics (exploration, combat) in Unity, with <span class="character">Sparky</span> leveraging GitHub Copilot to speed up scripting. <span class="character">Gordian Mage</span> ensures the game loop aligns with player retention metrics. <span class="character">Robo Snail</span> recruits alpha testers from Discord, gathering early feedback on gameplay.</p>
+                    <div class="obstacle">Bugs in procedural generation cause crashes, delaying testing.</div>
+                </div>
             </div>
-            <div class="character">
-                <span class="character-icon">⚡</span>
-                <p>Lab Assistant Sparky</p>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h2><span class="step-icon">👥</span>Rallying the Community</h2>
+                    <p>The Solutionist shares a demo on itch.io, with <span class="character">Robo Snail</span> organizing a game jam to boost visibility. <span class="character">Sparky</span> integrates community feedback to refine controls. <span class="character">Gordian Mage</span> strategizes a Kickstarter campaign, using AI analytics to target backers.</p>
+                    <div class="obstacle">Low initial engagement risks fading into obscurity.</div>
+                </div>
             </div>
-            <div class="character">
-                <span class="character-icon">🐌</span>
-                <p>Sergeant Robo Snail</p>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h2><span class="step-icon">💰</span>Securing the Resources</h2>
+                    <p>The Solutionist wins a $10K Epic MegaGrant, guided by <span class="character">Gordian Mage</span>'s polished pitch. <span class="character">Sparky</span> upgrades to premium Unity tools for multiplayer (Netcode). <span class="character">Robo Snail</span> negotiates a small publisher deal with Devolver Digital for marketing support.</p>
+                    <div class="obstacle">Grant funds are limited, forcing prioritization of features.</div>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <section class="section" data-step="2">
-        <div class="section-header">
-            <div class="section-number">2</div>
-            <span class="section-icon">🎯</span>
-            <h2>Forging the Vision</h2>
-        </div>
-        <div class="section-content">
-            <div>
-                <p>The Founder refines the game's scope: a 2D RPG with AI-generated planets.</p>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h2><span class="step-icon">✨</span>Polishing the Dream</h2>
+                    <p>The Solutionist iterates the game for Steam Early Access, with <span class="character">Sparky</span> debugging multiplayer features and optimizing for Oculus Quest VR. <span class="character">Gordian Mage</span> ensures narrative polish via AI text generation. <span class="character">Robo Snail</span> builds hype via X posts and Twitch streamer outreach.</p>
+                    <div class="obstacle">Burnout looms as deadlines pile up.</div>
+                </div>
             </div>
-            <div>
-                <p><strong>Sparky</strong> uses market data from SteamDB to target a niche (retro RPG fans).</p>
-                <p><strong>Gordian Mage</strong> experiments with Stable Diffusion to create pixel-art assets, training on sci-fi aesthetics.</p>
-                <p><strong>Robo Snail</strong> identifies Epic MegaGrants as a funding target, drafting a pitch.</p>
-            </div>
-        </div>
-        <div class="warning">
-            <span class="warning-icon">⚠️</span> AI-generated art lacks cohesion, requiring manual tweaks in Blender.
-        </div>
-        <div class="characters">
-            <div class="character">
-                <span class="character-icon">🧙‍♂️</span>
-                <p>Gordian Mage</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">⚡</span>
-                <p>Lab Assistant Sparky</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">🐌</span>
-                <p>Sergeant Robo Snail</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" data-step="3">
-        <div class="section-header">
-            <div class="section-number">3</div>
-            <span class="section-icon">⚙️</span>
-            <h2>Building the Prototype</h2>
-        </div>
-        <div class="section-content">
-            <div>
-                <p>The Founder codes core mechanics (exploration, combat) in Unity.</p>
-            </div>
-            <div>
-                <p><strong>Sparky</strong> leveraging GitHub Copilot to speed up scripting.</p>
-                <p><strong>Gordian Mage</strong> ensures the game loop aligns with player retention metrics.</p>
-                <p><strong>Robo Snail</strong> recruits alpha testers from Discord, gathering early feedback on gameplay.</p>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <h2><span class="step-icon">🚀</span>The Launch Triumph</h2>
+                    <p>The game launches on Steam and itch.io, earning 2.5% market share among indie RPGs ($5M ARR potential). <span class="character">Gordian Mage</span> plans a VR sequel. <span class="character">Sparky</span> releases open-source tools for other devs. <span class="character">Robo Snail</span> fosters a modding community, ensuring longevity. The Solutionist transforms from a dreamer to a recognized indie dev, proving the 99% effort can be tamed with AI and community.</p>
+                    <div class="obstacle">Post-launch bugs and mixed reviews demand quick patches.</div>
+                    <div class="valuation">Valuation Estimate: $22M (2.5% of $200B gaming market = $5M ARR × 7x multiple, driven by Steam virality).</div>
+                </div>
             </div>
         </div>
-        <div class="warning">
-            <span class="warning-icon">⚠️</span> Bugs in procedural generation cause crashes, delaying testing.
+
+        <div class="cta-section">
+            <h2 style="color: #4ecdc4; margin-bottom: 20px;">Ready to Start Your Own Odyssey?</h2>
+            <p style="margin-bottom: 30px; font-size: 1.2rem;">Every great indie game starts with a single idea and the courage to pursue it.</p>
+            <a href="#" class="cta-button">Begin Your Journey</a>
+            <a href="#" class="cta-button">Join the Community</a>
         </div>
-        <div class="characters">
-            <div class="character">
-                <span class="character-icon">🧙‍♂️</span>
-                <p>Gordian Mage</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">⚡</span>
-                <p>Lab Assistant Sparky</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">🐌</span>
-                <p>Sergeant Robo Snail</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" data-step="4">
-        <div class="section-header">
-            <div class="section-number">4</div>
-            <span class="section-icon">👥</span>
-            <h2>Rallying the Community</h2>
-        </div>
-        <div class="section-content">
-            <div>
-                <p>The Founder shares a demo on itch.io.</p>
-            </div>
-            <div>
-                <p><strong>Robo Snail</strong> organizing a game jam to boost visibility.</p>
-                <p><strong>Sparky</strong> integrates community feedback to refine controls.</p>
-                <p><strong>Gordian Mage</strong> strategizes a Kickstarter campaign, using AI analytics to target backers.</p>
-            </div>
-        </div>
-        <div class="warning">
-            <span class="warning-icon">⚠️</span> Low initial engagement risks fading into obscurity.
-        </div>
-        <div class="characters">
-            <div class="character">
-                <span class="character-icon">🧙‍♂️</span>
-                <p>Gordian Mage</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">⚡</span>
-                <p>Lab Assistant Sparky</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">🐌</span>
-                <p>Sergeant Robo Snail</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" data-step="5">
-        <div class="section-header">
-            <div class="section-number">5</div>
-            <span class="section-icon">💰</span>
-            <h2>Securing the Resources</h2>
-        </div>
-        <div class="section-content">
-            <div>
-                <p>The Founder wins a $10K Epic MegaGrant.</p>
-            </div>
-            <div>
-                <p><strong>Gordian Mage</strong>'s polished pitch.</p>
-                <p><strong>Sparky</strong> upgrades to premium Unity tools for multiplayer (Netcode).</p>
-                <p><strong>Robo Snail</strong> negotiates a small publisher deal with Devolver Digital for marketing support.</p>
-            </div>
-        </div>
-        <div class="warning">
-            <span class="warning-icon">⚠️</span> Grant funds are limited, forcing prioritization of features.
-        </div>
-        <div class="characters">
-            <div class="character">
-                <span class="character-icon">🧙‍♂️</span>
-                <p>Gordian Mage</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">⚡</span>
-                <p>Lab Assistant Sparky</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">🐌</span>
-                <p>Sergeant Robo Snail</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" data-step="6">
-        <div class="section-header">
-            <div class="section-number">6</div>
-            <span class="section-icon">✨</span>
-            <h2>Polishing the Dream</h2>
-        </div>
-        <div class="section-content">
-            <div>
-                <p>The Founder iterates the game for Steam Early Access.</p>
-            </div>
-            <div>
-                <p><strong>Sparky</strong> debugging multiplayer features and optimizing for Oculus Quest VR.</p>
-                <p><strong>Gordian Mage</strong> ensures narrative polish via AI text generation.</p>
-                <p><strong>Robo Snail</strong> builds hype via X posts and Twitch streamer outreach.</p>
-            </div>
-        </div>
-        <div class="warning">
-            <span class="warning-icon">⚠️</span> Burnout looms as deadlines pile up.
-        </div>
-        <div class="characters">
-            <div class="character">
-                <span class="character-icon">🧙‍♂️</span>
-                <p>Gordian Mage</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">⚡</span>
-                <p>Lab Assistant Sparky</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">🐌</span>
-                <p>Sergeant Robo Snail</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section" data-step="7">
-        <div class="section-header">
-            <div class="section-number">7</div>
-            <span class="section-icon">🚀</span>
-            <h2>The Launch Triumph</h2>
-        </div>
-        <div class="section-content">
-            <div>
-                <p>The game launches on Steam and itch.io, earning 2.5% market share among indie RPGs ($5M ARR potential).</p>
-                <p><strong>Sparky</strong> plans a VR sequel.</p>
-                <p><strong>Gordian Mage</strong> releases open-source tools for other devs.</p>
-                <p><strong>Robo Snail</strong> fosters a modding community, ensuring longevity. The Founder transforms from a dreamer to a recognized indie dev, proving the 99% effort can be tamed with AI and community.</p>
-            </div>
-            <div></div> <!-- Empty for balance -->
-        </div>
-        <div class="warning">
-            <span class="warning-icon">⚠️</span> Post-launch bugs and mixed reviews demand quick patches.
-        </div>
-        <div class="warning valuation">
-            <span class="warning-icon">💰</span> Valuation Estimate: $22M (2.5% of $200B gaming market = $5M ARR × 7x multiple, driven by Steam virality).
-        </div>
-        <div class="characters">
-            <div class="character">
-                <span class="character-icon">🧙‍♂️</span>
-                <p>Gordian Mage</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">⚡</span>
-                <p>Lab Assistant Sparky</p>
-            </div>
-            <div class="character">
-                <span class="character-icon">🐌</span>
-                <p>Sergeant Robo Snail</p>
-            </div>
-        </div>
-    </section>
-    
-    <section class="cta">
-        <h2>Ready to Start Your Own Odyssey?</h2>
-        <p>Every great indie game starts with a single idea and the courage to pursue it.</p>
-        <div class="cta-buttons">
-            <a href="#" class="btn">Begin Your Journey</a>
-            <a href="#" class="btn">Join the Community</a>
-        </div>
-    </section>
-    
+    </div>
+
     <script>
-        // Generate more stars
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 50; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
-            star.style.animationDelay = Math.random() * 2 + 's';
-            starsContainer.appendChild(star);
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numStars = 100;
+            
+            for (let i = 0; i < numStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
         }
-        
-        // Scroll-triggered animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+
+        // Animate steps on scroll
+        function animateOnScroll() {
+            const steps = document.querySelectorAll('.step');
+            const windowHeight = window.innerHeight;
+            
+            steps.forEach(step => {
+                const elementTop = step.getBoundingClientRect().top;
+                if (elementTop < windowHeight * 0.8) {
+                    step.classList.add('animate');
                 }
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        }
+
+        // Add hover effects to step contents
+        function addHoverEffects() {
+            const stepContents = document.querySelectorAll('.step-content');
+            stepContents.forEach(content => {
+                content.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02) translateY(-5px)';
+                });
+                
+                content.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) translateY(0)';
+                });
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            animateOnScroll();
+            addHoverEffects();
+            
+            // Add scroll listeners
+            window.addEventListener('scroll', function() {
+                animateOnScroll();
+                updateProgressBar();
+            });
+            
+            // Trigger initial animation
+            setTimeout(animateOnScroll, 500);
         });
     </script>
 </body>
-</html>
+    </html>
