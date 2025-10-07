@@ -1,0 +1,276 @@
+/* The Founder's Odyssey - Indie Game Dev Quest Styles - A Base Point for other Stories */
+
+/* General Body and Page Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: transparent;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    margin: 20px 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hero p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.timeline {
+    position: relative;
+    margin: 60px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #ff6b6b, #4ecdc4, #45b7d1);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.step {
+    position: relative;
+    margin: 60px 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.step.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.step:nth-child(odd) .step-content {
+    margin-left: 60%;
+}
+
+.step:nth-child(even) .step-content {
+    margin-right: 60%;
+}
+
+.step-content:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.step-number {
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 4px solid #1e3c72;
+    z-index: 10;
+}
+
+.step h2 {
+    color: #4ecdc4;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-icon {
+    font-size: 1.5rem;
+}
+
+.step p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.character {
+    background: linear-gradient(45deg, #8e44ad, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.obstacle {
+    background: rgba(231, 76, 60, 0.2);
+    border-left: 4px solid #e74c3c;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+    font-style: italic;
+}
+
+.obstacle::before {
+    content: "⚠️ ";
+    font-style: normal;
+}
+
+.valuation {
+    background: rgba(46, 204, 113, 0.2);
+    border-left: 4px solid #2ecc71;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 0 10px 10px 0;
+    font-weight: bold;
+}
+
+.valuation::before {
+    content: "💰 ";
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, #ff6b6b, #4ecdc4, #45b7d1);
+    z-index: 1000;
+    transition: width 0.1s ease;
+}
+
+.floating-elements {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.cta-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    margin: 40px 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .timeline::before { left: 20px; }
+    .step-number { left: 20px; transform: none; }
+    .step:nth-child(odd) .step-content,
+    .step:nth-child(even) .step-content {
+        margin: 0 0 0 60px;
+    }
+}
