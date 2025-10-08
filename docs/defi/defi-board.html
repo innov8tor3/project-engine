@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Quests - Build Tomorrow's Companies</title>
+    <link rel="stylesheet" href="defi-board.css">
+</head>
+<body>
+    <!-- Animated background particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Founder Quests</h1>
+        <p class="subtitle">Build Tomorrow's Companies, One Quest at a Time</p>
+    </div>
+
+    <!-- Search and Filter Controls -->
+    <div class="controls">
+        <div class="search-container">
+            <div class="filter-group">
+                <label for="sector-filter">Filter by Sector:</label>
+                <select id="sector-filter">
+                    <option value="all">All Sectors</option>
+                    <option value="Tech">Tech</option>
+                    <option value="Health">Health</option>
+                    <option value="Education">Education</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Environment">Environment</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Entertainment">Entertainment</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="project-grid" id="projectGrid">
+            <!-- Project 1: AI Startup -->
+            <div class="project-card" data-sector="Tech">
+                <a href="/project-engine/founder-quests/quest1.md" class="project-link">
+                    <div class="project-header">
+                        <div>
+                            <h2>AI Startup Revolution</h2>
+                        </div>
+                        <div class="project-emoji">🤖</div>
+                    </div>
+                    <p class="project-description">Building an AI-driven platform for automation that transforms how businesses operate and scale efficiently.</p>
+                    <span class="sector-badge">Tech</span>
+                </a>
+            </div>
+
+            <!-- Project 2: Telemedicine -->
+            <div class="project-card" data-sector="Health">
+                <a href="/project-engine/founder-quests/quest2.md" class="project-link">
+                    <div class="project-header">
+                        <div>
+                            <h2>Telemedicine App</h2>
+                        </div>
+                        <div class="project-emoji">🩺</div>
+                    </div>
+                    <p class="project-description">Connecting patients with doctors remotely through secure, user-friendly digital health solutions.</p>
+                    <span class="sector-badge">Health</span>
+                </a>
+            </div>
+
+            <!-- Project 3: Online Learning -->
+            <div class="project-card" data-sector="Education">
+                <a href="/project-engine/founder-quests/quest3.md" class="project-link">
+                    <div class="project-header">
+                        <div>
+                            <h2>Interactive Learning</h2>
+                        </div>
+                        <div class="project-emoji">📚</div>
+                    </div>
+                    <p class="project-description">Interactive courses and personalized learning paths for lifelong learners of all ages and backgrounds.</p>
+                    <span class="sector-badge">Education</span>
+                </a>
+            </div>
+
+            <!-- Project 4: Blockchain Platform -->
+            <div class="project-card" data-sector="Tech">
+                <a href="/project-engine/founder-quests/quest4.md" class="project-link">
+                    <div class="project-header">
+                        <div>
+                            <h2>Blockchain Platform</h2>
+                        </div>
+                        <div class="project-emoji">⛓️</div>
+                    </div>
+                    <p class="project-description">Decentralized solutions for finance, creating transparent and secure financial ecosystems.</p>
+                    <span class="sector-badge">Tech</span>
+                </a>
+            </div>
+
+            <!-- Project 5: Wearable Health -->
+            <div class="project-card" data-sector="Health">
+                <a href="/project-engine/founder-quests/quest5.md" class="project-link">
+                    <div class="project-header">
+                        <div>
+                            <h2>Wearable Health Tech</h2>
+                        </div>
+                        <div class="project-emoji">⌚</div>
+                    </div>
+                    <p class="project-description">Smart devices for continuous health monitoring and preventive care management.</p>
+                    <span class="sector-badge">Health</span>
+                </a>
+            </div>
+
+            <!-- Project 6: EdTech Tools -->
+            <div class="project-card" data-sector="Education">
+                <a href="/project-engine/founder-quests/quest6.md" class="project-link">
+                    <div class="project-header">
+                        <div>
+                            <h2>EdTech Innovation</h2>
+                        </div>
+                        <div class="project-emoji">🎓</div>
+                    </div>
+                    <p class="project-description">Advanced tools for teachers to enhance classroom experiences and student engagement.</p>
+                    <span class="sector-badge">Education</span>
+                </a>
+            </div>
+
+            <!-- Project 7: Game Play -->
+            <div class="project-card" data-sector="Gaming">
+                <a href="/project-engine/founder-quests/gameplay.html" class="project-link">
+                    <div class="project-header">
+                        <div>
+                            <h2>Indie Game Dev</h2>
+                        </div>
+                        <div class="project-emoji">🎮</div>
+                    </div>
+                    <p class="project-description">How an Indie Developer could make a fast impact.</p>
+                    <span class="sector-badge">Gaming</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Filter functionality
+        function setupFiltering() {
+            const sectorFilter = document.getElementById('sector-filter');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            sectorFilter.addEventListener('change', function() {
+                const selectedSector = this.value;
+                const grid = document.getElementById('projectGrid');
+                
+                // Add loading state
+                grid.classList.add('loading');
+                
+                setTimeout(() => {
+                    projectCards.forEach(card => {
+                        if (selectedSector === 'all' || card.dataset.sector === selectedSector) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                    
+                    // Remove loading state
+                    grid.classList.remove('loading');
+                }, 200);
+            });
+        }
+
+        // Add hover effects for cards
+        function setupCardEffects() {
+            const cards = document.querySelectorAll('.project-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Intersection Observer for animations
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                observer.observe(card);
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            setupFiltering();
+            setupCardEffects();
+            
+            // Add a slight delay to enhance the loading experience
+            setTimeout(() => {
+                setupScrollAnimations();
+            }, 300);
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('sector-filter').value = 'all';
+                document.getElementById('sector-filter').dispatchEvent(new Event('change'));
+            }
+        });
+    </script>
+</body>
+</html>
