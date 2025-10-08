@@ -290,6 +290,10 @@ select option {
     background: linear-gradient(135deg, #edbd40 0%, #fed600 100%);
 }
 
+.project-card[data-sector="TradeAfrica"] .sector-badge {
+    background: linear-gradient(135deg, #6d6d40 0%, #5e5600 100%);
+}
+
 .project-card[data-sector="Entertainment"] .sector-badge {
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
 }
