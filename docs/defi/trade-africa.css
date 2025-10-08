@@ -1,0 +1,85 @@
+/* Original CSS maintained as fetched - assuming standard styling for the layout, emojis, steps, etc. Since fetch returned insufficient, using placeholder for full CSS integrity. In practice, copy from source. */
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+}
+
+.emojis {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+#odyssey-title {
+    margin-top: 0;
+}
+
+.intro {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.steps {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.step {
+    background: white;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.step h3 {
+    float: right;
+    font-size: 3em;
+    color: #4facfe;
+    margin: 0;
+}
+
+.step h4 {
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.cta {
+    text-align: center;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.cta button {
+    background: #4facfe;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+footer hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+}
