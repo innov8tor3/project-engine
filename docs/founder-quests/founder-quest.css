@@ -298,6 +298,10 @@ select option {
     background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
 }
 
+.project-card[data-sector="Community"] .sector-badge {
+    background: linear-gradient(135deg, #18edea 0%, #18d6e3 100%);
+}
+
 /* Animation keyframes */
 @keyframes slideDown {
     0% { opacity: 0; transform: translateY(-50px); }
