@@ -3,446 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Immigrant Assets Empowerment Quest</title>
+    <title>Project Engine: Grouped Open Issues</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            background: linear-gradient(135deg, #1a0000 0%, #330000 50%, #1a0000 100%);
-            color: #e8e8e8;
-            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
-
-        .hero {
-            text-align: center;
-            padding: 80px 20px 60px;
-            background: linear-gradient(180deg, rgba(139, 0, 0, 0.3) 0%, transparent 100%);
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
-        h1 {
-            font-size: 3.5em;
-            color: #ff6b6b;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
-            position: relative;
-            z-index: 1;
-        }
-
-        .tagline {
-            font-size: 1.2em;
-            max-width: 900px;
-            margin: 0 auto;
-            color: #d4d4d4;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            background: white;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        .journey-section {
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, rgba(40, 0, 0, 0.8) 0%, rgba(60, 10, 10, 0.6) 100%);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(220, 20, 60, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
+        h1 {
+            text-align: center;
+            color: #333;
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .journey-section:nth-child(1) { animation-delay: 0.1s; }
-        .journey-section:nth-child(2) { animation-delay: 0.2s; }
-        .journey-section:nth-child(3) { animation-delay: 0.3s; }
-        .journey-section:nth-child(4) { animation-delay: 0.4s; }
-        .journey-section:nth-child(5) { animation-delay: 0.5s; }
-        .journey-section:nth-child(6) { animation-delay: 0.6s; }
-        .journey-section:nth-child(7) { animation-delay: 0.7s; }
-
-        .journey-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(220, 20, 60, 0.3);
-        }
-
         h2 {
-            color: #ff6b6b;
-            font-size: 2em;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .outline {
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-left: 4px solid #3498db;
             margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #dc143c;
-            display: flex;
-            align-items: center;
-            gap: 15px;
         }
-
-        .emoji {
-            font-size: 1.2em;
-            filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.5));
+        .outline h3 {
+            margin-top: 0;
+            color: #2980b9;
         }
-
-        p {
-            margin-bottom: 15px;
-            color: #d4d4d4;
-            font-size: 1.05em;
+        .issues-list {
+            list-style: none;
+            padding: 0;
         }
-
-        .calculator {
-            background: linear-gradient(135deg, rgba(0, 40, 20, 0.8) 0%, rgba(10, 60, 30, 0.6) 100%);
-            padding: 50px 40px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 60px 0;
-            border: 2px solid rgba(34, 139, 34, 0.4);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-
-        .calculator h2 {
-            border-bottom-color: #228b22;
-            color: #5fdc5f;
-            justify-content: center;
-        }
-
-        .calculator p {
-            color: #b8e6b8;
-        }
-
-        .slider-container {
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-        }
-
-        label {
-            display: block;
-            font-size: 1.3em;
-            color: #5fdc5f;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        input[type="range"] {
-            width: 100%;
-            max-width: 500px;
-            height: 8px;
-            background: linear-gradient(90deg, #228b22 0%, #5fdc5f 100%);
-            outline: none;
-            border-radius: 10px;
-            -webkit-appearance: none;
-            margin: 20px 0;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 25px;
-            height: 25px;
-            background: #5fdc5f;
-            cursor: pointer;
-            border-radius: 50%;
-            box-shadow: 0 0 15px rgba(95, 220, 95, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 25px rgba(95, 220, 95, 1);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            background: #5fdc5f;
-            cursor: pointer;
-            border-radius: 50%;
-            border: none;
-            box-shadow: 0 0 15px rgba(95, 220, 95, 0.8);
-        }
-
-        .capture-value {
-            display: inline-block;
-            font-size: 2em;
-            color: #5fdc5f;
-            font-weight: bold;
-            margin-left: 15px;
-            text-shadow: 0 0 10px rgba(95, 220, 95, 0.5);
-        }
-
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .metric-card {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(95, 220, 95, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .metric-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(95, 220, 95, 0.6);
-            box-shadow: 0 8px 20px rgba(95, 220, 95, 0.2);
-        }
-
-        .metric-label {
-            display: block;
-            font-size: 0.9em;
-            color: #b8e6b8;
+        .issues-list li {
             margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
         }
-
-        .metric-value {
-            font-size: 1.8em;
-            color: #5fdc5f;
+        .issue-link {
             font-weight: bold;
-            text-shadow: 0 0 10px rgba(95, 220, 95, 0.3);
+            color: #3498db;
+            text-decoration: none;
         }
-
-        .cta-section {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(139, 0, 0, 0.2) 100%);
+        .issue-link:hover {
+            text-decoration: underline;
         }
-
-        .cta-button {
-            background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%);
-            color: white;
-            padding: 20px 50px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.3em;
-            font-weight: bold;
-            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.4);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .issue-summary {
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 5px;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(220, 20, 60, 0.6);
-            background: linear-gradient(135deg, #ff1744 0%, #dc143c 100%);
-        }
-
-        .cta-text {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #ff6b6b;
+        .progress {
             font-style: italic;
+            color: #27ae60;
         }
-
-        .progress-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #dc143c 0%, #ff6b6b 100%);
-            z-index: 1000;
-            transition: width 0.3s ease;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2em;
-            }
-
-            .journey-section {
-                padding: 25px;
-            }
-
-            h2 {
-                font-size: 1.5em;
-            }
-
-            .metrics {
-                grid-template-columns: 1fr;
-            }
+        .character {
+            font-weight: bold;
+            color: #e74c3c;
         }
     </style>
 </head>
 <body>
-    <div class="progress-indicator" id="progressBar"></div>
-
-    <div class="hero">
-        <h1>The Immigrant Assets Empowerment Quest</h1>
-        <p class="tagline">From perceived burdens to tokenized economic assets. Follow the journey of a visionary founder revolutionizing immigrant financial inclusion with blockchain, AI, and self-sovereign identity in the $900B global remittances market of 2025.</p>
-    </div>
-
     <div class="container">
-        <section class="journey-section">
-            <h2><span class="emoji">💡</span> The Spark of Inspiration</h2>
-            <p>The Founder, a systems thinker frustrated by high remittance fees and identity barriers for immigrants, dreams of a blockchain platform where assets like remittances and credentials are tokenized in real-time. AssetLink emerges as the tool to empower migrants, enabling secure, low-cost transfers and verifiable identities without deep tech knowledge.</p>
-            <p>Gordian Mage guides brainstorming with AI to align AssetLink with market trends, like the rise of digital wallets for unbanked populations. Lab Assistant Sparky sets up a prototype repo on GitHub using Ethereum smart contracts. Sergeant Robo Snail connects to migrant forums on Reddit and NGOs for early validation, including outreach to government agents for regulatory insights.</p>
-            <p>Reality check: In a geopolitically charged $900B market, can a disruptor navigate regulations? Historical projects like UNICEF's Leaf wallet show promise but high failure rates (over 50% for migrant-targeted blockchain initiatives). Protect data privacy early and ensure community buy-in amid weaponized migration narratives.</p>
-        </section>
+        <h1>Project Engine: Grouped Open Issues</h1>
+        <p>This page consolidates open GitHub issues from the <a href="https://github.com/innov8tor3/project-engine/issues">Project Engine repository</a> into thematic categories aligned with the four phases: Define Quests, Empower Quests, Find Founders, and Empower Founders. Additional cross-cutting categories (Strategy & Planning, Outreach & Promotion) are included for cohesion. Each section starts with an outline pathway for next steps.</p>
 
-        <section class="journey-section">
-            <h2><span class="emoji">🎯</span> Forging the Vision</h2>
-            <p>The Founder refines AssetLink into a self-sovereign identity and remittance hub, targeting underserved immigrants partnering with host governments and agents. Drawing parallels to Ethereum's role in financial inclusion, AssetLink shifts focus from costly wires to tokenized assets.</p>
-            <p>Gordian Mage analyzes World Bank data on $905B remittances and problems like 6-7% fees eroding value. Sparky experiments with blockchain for fractional asset ownership. Robo Snail eyes grants from USAID and pitches to Vinay Gupta's network, emphasizing 50% cost reductions in transfers.</p>
-            <p>Notes: Identity verification needs cultural tweaks for diverse migrants. Start with Western corridors before expanding to high-volume Asia-Africa routes. Current obstructions like regulatory silos are realistic but bolstered by adoption barriers in low-tech communities.</p>
-        </section>
+        <h2 id="quest-definition">Quest Definition</h2>
+        <div class="outline">
+            <h3>Outline Pathway</h3>
+            <p>Ties into web pages for quest storytelling; could consolidate into a "Quest Narrative Bible" milestone.</p>
+        </div>
+        <ul class="issues-list">
+            <!-- Example issues; replace with actual open issues as they become available -->
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/1" class="issue-link" target="_blank">#1: Develop Initial Quest Narratives</a>
+                <div class="issue-summary">Storytelling elements for defining core quests. Partial drafts exist but need cohesion.</div>
+                <span class="progress">Progress: Medium</span> | <span class="character">Lead: Gordian Mage</span>
+            </li>
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/2" class="issue-link" target="_blank">#2: Refine Quest Ideation Framework</a>
+                <div class="issue-summary">Framework for brainstorming new quests based on user stories.</div>
+                <span class="progress">Progress: Medium</span> | <span class="character">Lead: Gordian Mage</span>
+            </li>
+        </ul>
 
-        <section class="journey-section">
-            <h2><span class="emoji">⚙️</span> Building the Prototype</h2>
-            <p>The Founder prototypes core tokenization mechanics on Ethereum, where remittances update instantly with zero-knowledge proofs for privacy. Sparky uses GitHub Copilot to accelerate Solidity scripting for asset fractionalization.</p>
-            <p>Gordian Mage ensures compliance with KYC via real-time AI audits. Robo Snail recruits alpha testers from diaspora groups on Discord, gathering feedback on usability for non-tech-savvy users, including government-appointed integration agents.</p>
-            <p>Challenges: Blockchain scalability delays iterations, but projections show a surge in inclusion (10x more migrants accessing formal finance). Obstructions like tech literacy gaps are realistic; bolster with hybrid mobile-web interfaces.</p>
-        </section>
+        <h2 id="quest-tech-enablement">Quest Tech Enablement</h2>
+        <div class="outline">
+            <h3>Outline Pathway</h3>
+            <p>Core to grassroots phase; link to existing tech prototypes on web pages for demos.</p>
+        </div>
+        <ul class="issues-list">
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/3" class="issue-link" target="_blank">#3: Backend Integration for GitHub Tech</a>
+                <div class="issue-summary">Empowering quests via GitHub repo tools for automation.</div>
+                <span class="progress">Progress: Medium</span> | <span class="character">Lead: Sparky the Lab Assistant</span>
+            </li>
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/4" class="issue-link" target="_blank">#4: API Workflow Setup</a>
+                <div class="issue-summary">Setting up APIs for quest enablement; haphazard progress noted.</div>
+                <span class="progress">Progress: Medium</span> | <span class="character">Lead: Sparky the Lab Assistant</span>
+            </li>
+        </ul>
 
-        <section class="journey-section">
-            <h2><span class="emoji">👥</span> Rallying the Community</h2>
-            <p>The Founder launches a beta on testnets, with Robo Snail organizing hackathons with migrant-led NGOs to showcase AssetLink's speed. Sparky integrates feedback for intuitive wallet UI tweaks.</p>
-            <p>Gordian Mage plans a crowdfunding on Kickstarter, using AI analytics to target backers passionate about inclusion, including Ethereum foundations. Partners shift from traditional banks to blockchain consortia and government APIs.</p>
-            <p>Tip: Tailor grant apps to IMF/World Bank funds; aim for 80% prototype completion before campaigns. Obstructions in partner alignment (e.g., gov bureaucracy) are realistic but need bolstering with pilot incentives.</p>
-        </section>
+        <h2 id="founder-discovery">Founder Discovery</h2>
+        <div class="outline">
+            <h3>Outline Pathway</h3>
+            <p>No GitHub issue yet—propose creating one for "Founder Matching MVP." Leverage Twitter for traction.</p>
+        </div>
+        <ul class="issues-list">
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/5" class="issue-link" target="_blank">#5: Founder Matching Algorithm Prototype</a>
+                <div class="issue-summary">Conceptual work on pairing quests with founders.</div>
+                <span class="progress">Progress: Low</span> | <span class="character">Lead: Sergeant Robo Snail</span>
+            </li>
+            <!-- Additional issues can be added here -->
+        </ul>
 
-        <section class="journey-section">
-            <h2><span class="emoji">💰</span> Securing the Resources</h2>
-            <p>With seed funding in hand, the Founder commits to empowerment, rejecting models that centralize control. Wins a $50K grant from blockchain-for-good funds via Gordian Mage's pitch on parallels to mobile money revolutions like M-Pesa.</p>
-            <p>Sparky upgrades to layer-2 solutions for low-fee transactions. Robo Snail negotiates partnerships with remittance firms like Western Union for integration, retaining control while collaborating with agents like UNHCR.</p>
-            <p>Considerations: Self-funding preserves equity but slows scale; collect pre-launch sign-ups via migrant apps. Funding obstacles are key but realistic; outcomes like reduced poverty (via 4-5% fee savings) likely with expert management.</p>
-        </section>
+        <h2 id="founder-support">Founder Support</h2>
+        <div class="outline">
+            <h3>Outline Pathway</h3>
+            <p>Integrate with web pages for founder resources; group under a "Founder Empowerment Kit."</p>
+        </div>
+        <ul class="issues-list">
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/6" class="issue-link" target="_blank">#6: Onboarding Resources for Founders</a>
+                <div class="issue-summary">Early stage tools and mentorship workflows.</div>
+                <span class="progress">Progress: Low</span> | <span class="character">Lead: Gordian Mage</span>
+            </li>
+            <!-- Additional issues can be added here -->
+        </ul>
 
-        <section class="journey-section">
-            <h2><span class="emoji">✨</span> Polishing the Dream</h2>
-            <p>The Founder iterates for app store launch, optimizing for mobile with Sparky debugging cross-border transfers. Gordian Mage polishes compliance using AI for virtual advisors on regulations.</p>
-            <p>Robo Snail builds hype via X campaigns: "Tokenize your assets in 5 mins with AssetLink!" targeting inclusion beyond remittances, like credential portability.</p>
-            <p>Burnout risk: Balance with community webinars. Obstructions like interoperability standards are emerging; suggest API gateways for progress.</p>
-        </section>
+        <h2 id="strategy-planning">Strategy & Planning</h2>
+        <div class="outline">
+            <h3>Outline Pathway</h3>
+            <p>Cross-cutting; create a strategy issue to umbrella all others. Add web page for high-level roadmap visualization.</p>
+        </div>
+        <ul class="issues-list">
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/7" class="issue-link" target="_blank">#7: Overall Project Roadmap Alignment</a>
+                <div class="issue-summary">Steering decisions and phase transitions.</div>
+                <span class="progress">Progress: Medium</span> | <span class="character">Lead: Gordian Mage</span>
+            </li>
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/8" class="issue-link" target="_blank">#8: Character Personalization Implementation</a>
+                <div class="issue-summary">Integrating Gordian Mage, Sparky, etc., into project infrastructure.</div>
+                <span class="progress">Progress: Medium</span> | <span class="character">Lead: Gordian Mage</span>
+            </li>
+        </ul>
 
-        <section class="journey-section">
-            <h2><span class="emoji">🚀</span> The Launch Triumph</h2>
-            <p>AssetLink launches on app stores and web, capturing share of the $900B remittances via tokenized low-fee channels. Enables 5x more financial access, boosting host economies.</p>
-            <p>Gordian Mage eyes expansions to asset tokenization (e.g., property shares). Sparky open-sources identity modules. Robo Snail fosters DAO communities. The Founder proves blockchain can counter migration weaponization, with valuation scaling on inclusion metrics.</p>
-            <p>Post-launch: Quick updates for feedback; start conservative capture, scale with partnerships. Likely outcomes: Enhanced GDP contributions; obstructions like cyber risks realistic, bolster with audits.</p>
-        </section>
+        <h2 id="outreach-promotion">Outreach & Promotion</h2>
+        <div class="outline">
+            <h3>Outline Pathway</h3>
+            <p>High potential via Twitter—Grok can assist with post drafting/engagement. Propose issue for "Outreach Campaign v1." Tie to existing promo web pages.</p>
+        </div>
+        <ul class="issues-list">
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/9" class="issue-link" target="_blank">#9: Initial Promotional Outreach Campaign</a>
+                <div class="issue-summary">Starting with Twitter for gaining traction; first instance noted recently.</div>
+                <span class="progress">Progress: Low</span> | <span class="character">Lead: Sergeant Robo Snail</span>
+            </li>
+            <li>
+                <a href="https://github.com/innov8tor3/project-engine/issues/10" class="issue-link" target="_blank">#10: Community Management Templates</a>
+                <div class="issue-summary">Tools for outreach and engagement.</div>
+                <span class="progress">Progress: Low</span> | <span class="character">Lead: Sergeant Robo Snail</span>
+            </li>
+        </ul>
 
-        <section class="calculator">
-            <h2><span class="emoji">💎</span> AssetLink Valuation Simulator</h2>
-            <p>Model your market capture in the $900B remittances space and see the unicorn potential. Adjust the slider to explore scenarios from conservative (average management) to optimistic (expert-led).</p>
-            <p style="font-size: 0.95em; margin-top: 20px; color: #90d090;">Formula: $900B market × 20% digital slice ($180B) × Capture % × 1% fees × 10x multiple × 2x inclusion boost</p>
-            
-            <div class="slider-container">
-                <label for="capture">Market Capture Percentage: <span class="capture-value" id="captureValue">0.1%</span></label>
-                <input type="range" id="capture" min="0.1" max="5" step="0.1" value="0.1">
-                
-                <div class="metrics">
-                    <div class="metric-card">
-                        <span class="metric-label">Volume Processed</span>
-                        <span class="metric-value">$<span id="volume">180</span>M</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-label">Annual Revenue</span>
-                        <span class="metric-value">$<span id="revenue">1.80</span>M</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-label">Fintech Multiple</span>
-                        <span class="metric-value">10x</span>
-                    </div>
-                    <div class="metric-card">
-                        <span class="metric-label">Estimated Valuation</span>
-                        <span class="metric-value">$<span id="valuation">36</span>M</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <footer>
+            <p style="text-align: center; margin-top: 40px; color: #777;">
+                Last updated: October 23, 2025 | 
+                <a href="https://github.com/innov8tor3/project-engine/issues">View All Issues on GitHub</a>
+            </p>
+        </footer>
     </div>
-
-    <div class="cta-section">
-        <button class="cta-button" onclick="location.href='https://innov8tor3.github.io/project-engine/'">Ready to Empower Immigrants?</button>
-        <p class="cta-text">Begin Your AssetLink Journey</p>
-    </div>
-
-    <script>
-        // Valuation Calculator
-        const slider = document.getElementById('capture');
-        const valueSpan = document.getElementById('captureValue');
-        const volumeSpan = document.getElementById('volume');
-        const revenueSpan = document.getElementById('revenue');
-        const valuationSpan = document.getElementById('valuation');
-
-        function updateValuation() {
-            const capture = parseFloat(slider.value) / 100;
-            valueSpan.textContent = slider.value + '%';
-            const volume = 180000000000 * capture;
-            const revenue = volume * 0.01;
-            const valuation = revenue * 10 * 2;
-            
-            volumeSpan.textContent = (volume / 1000000).toFixed(2);
-            revenueSpan.textContent = (revenue / 1000000).toFixed(2);
-            valuationSpan.textContent = (valuation / 1000000).toFixed(0);
-        }
-
-        slider.addEventListener('input', updateValuation);
-        updateValuation();
-
-        // Scroll Progress Indicator
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        });
-
-        // Smooth scroll for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
