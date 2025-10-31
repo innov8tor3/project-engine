@@ -24,7 +24,7 @@ Check out the key pages:
     <td>🗄 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/repo-restructure.html">Repo Restructure</a><br><br>Step 1/6</td>
   </tr>
   <tr>
-    <td>🧮 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Contributor Valuations</a><br><br>Reward schemes for collaborators</td>
+    <td>🧮 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Contributor Valuations</a><br><br>Rewarding collaborators</td>
     <td>🔬 <a href="https://innov8tor3.github.io/project-engine/backup/test.html">Current Testing</a><br><br>Latest Quest WIP needing edits</td>
   </tr>
 </table>
