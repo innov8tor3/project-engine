@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Modern Styles for Vibe Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* --------- Modern Dashboard Effects Demonstration CSS --------- */
+
+    :root {
+      --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --dark-bg: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-hover: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.85);
+      --shadow-light: 0 8px 32px rgba(31, 38, 135, 0.37);
+      --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      box-shadow: var(--shadow-light);
+      backdrop-filter: blur(12px);
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-align: center;
+      background: var(--primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-top: 36px;
+      background: var(--secondary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .desc {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      font-size: 1.1rem;
+    }
+    /* Demo particles effect */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: float 8s infinite linear;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    /* Glass card demo */
+    .effect-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      box-shadow: var(--shadow-light);
+      backdrop-filter: blur(20px);
+      padding: 28px;
+      margin-bottom: 18px;
+      transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+      color: var(--text-primary);
+    }
+    .effect-card:hover {
+      background: var(--card-hover);
+      box-shadow: var(--shadow-heavy);
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255,255,255,0.3);
+    }
+    .sector-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 7px 16px;
+      border-radius: 25px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+      transition: all 0.3s ease;
+      margin-right: 12px;
+      margin-bottom: 9px;
+    }
+    select, .effect-select {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 4px 12px;
+      margin: 0 4px;
+      transition: all 0.3s ease;
+    }
+    select:focus,
+    .effect-select:focus {
+      outline: 2px solid rgba(102,126,234,0.5);
+      outline-offset: 2px;
+    }
+    select option, .effect-select option {
+      background: #1a1a2e;
+      color: white;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .container {
+        padding: 16px 6px;
+        border-radius: 14px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles">
+    <div class="particle" style="left:12vw; animation-delay:0s;"></div>
+    <div class="particle" style="left:26vw; animation-delay:1s;"></div>
+    <div class="particle" style="left:61vw; animation-delay:2.5s;"></div>
+    <div class="particle" style="left:35vw; animation-delay:2.1s;"></div>
+    <div class="particle" style="left:74vw; animation-delay:3.4s;"></div>
+  </div>
+  <div class="container">
+    <h1>Smart Modern Styles Explained</h1>
+    <div class="desc">
+      Discover how gradients, glass effects, particle backgrounds, smooth animations, and responsive grids create a dynamic, modern website experience. Use these techniques to bring "Vibe Code" design into your next project.
+    </div>
+    
+    <h2>Background Gradients & Particles</h2>
+    <div class="effect-card">
+      <strong>Gradient backgrounds</strong> give depth and vibrancy.<br>
+      <strong>Particle animation</strong> (see live dots above) adds subtle motion for a tech vibe.
+    </div>
+
+    <h2>Glassmorphic Cards & Filters</h2>
+    <div class="effect-card">
+      <strong>Glassmorphic cards</strong> use transparency and blur for a frosted look.<br>
+      Hover to see how <strong>cards lift and brighten</strong> (try it!).
+    </div>
+
+    <h2>Gradient Text Headers</h2>
+    <div class="effect-card" style="background:none;box-shadow:none;">
+      <span style="font-size:1.7rem;font-weight:700;background:var(--primary);
+        -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        This is gradient header text!
+      </span>
+    </div>
+    <div class="desc">
+      <strong>Gradient clipped text</strong> draws attention. Use for main titles and important callouts.
+    </div>
+
+    <h2>Animated Entrances & Interaction</h2>
+    <div class="effect-card">
+      Cards gracefully <strong>fade in</strong> and titles <strong>slide in</strong> when loaded.<br>
+      <strong>Buttons and badges animate</strong> on hover for energetic feedback.
+    </div>
+    <div class="desc">
+      Try hovering the badge below:
+      <span class="sector-badge">TECH</span>
+    </div>
+
+    <h2>Modern Forms & Selects</h2>
+    <div class="effect-card">
+      <label for="examples" style="color:var(--text-secondary);font-size:1rem;">Filter:</label>
+      <select id="examples" class="effect-select">
+        <option>All Projects</option>
+        <option>Tech</option>
+        <option>Health</option>
+        <option>Education</option>
+      </select>
+      <br><small style="color:var(--text-secondary)">Custom selects match your site's modern glass style.</small>
+    </div>
+
+    <h2>Responsive Design</h2>
+    <div class="effect-card">
+      The layout adjusts for <strong>desktop, tablet and mobile</strong>.<br>
+      Try resizing the window to see the effect.
+    </div>
+    
+    <h2>Start Using These Effects</h2>
+    <div class="desc" style="margin-bottom:0;">
+      <strong>Copy and adapt</strong>: All styles can be reused by including these rules in your style sheets. Use glass cards, gradient accents, animated headers, and responsive CSS Grid for beautiful, smart websites.<br>
+      <br>
+      Explore, modify, and bring next-level design to your Vibe Code projects!
+    </div>
+  </div>
+</body>
+</html>
