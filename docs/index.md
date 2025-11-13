@@ -19,7 +19,7 @@ Check out the key pages:
     <td>🔊 <a href="https://innov8tor3.github.io/project-engine/reports/report-2025-09/2025-09.html">Report 2025-09</a><br><br>Progress so far and plans</td>
   </tr>
   <tr>
-    <td>🚜 <a href="https://innov8tor3.github.io/project-engine/reports/backend/infra.html">Backend Infrastructure</a><br><br>Six core steps</td>
+    <td>🚜 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">Backend Infrastructure</a><br><br>Six core steps</td>
     <td>🛠 <a href="https://innov8tor3.github.io/project-engine/dev-envt/dev-envt.html">Technical Prep</a><br><br>Provide base tech functions</td>
     <td>🗄 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/repo-restructure.html">Repo Restructure</a><br><br>Step 1/6</td>
   </tr>
