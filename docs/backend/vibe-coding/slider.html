@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Experience Slider</title>
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        
+        #web3-slider {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            margin-bottom: 20px;
+        }
+        
+        #web3-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4a90e2;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        
+        #web3-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #4a90e2;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        
+        #web3-slider::-webkit-slider-runnable-track {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 5px;
+        }
+        
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .labels span {
+            flex: 1;
+            position: relative;
+        }
+        
+        .labels span:not(:first-child):not(:last-child)::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 10px;
+            background: #ccc;
+        }
+        
+        #web3-slider::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: transparent;
+            pointer-events: none;
+        }
+        
+        /* Add tick marks */
+        .slider-container::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background-image: 
+                linear-gradient(to right, 
+                    #ccc 0%, #ccc 2px, transparent 2px, transparent 25%, 
+                    #ccc 25%, #ccc 27px, transparent 27px, transparent 50%, 
+                    #ccc 50%, #ccc 52px, transparent 52px, transparent 75%, 
+                    #ccc 75%, #ccc 77px, transparent 77px, transparent 100%
+                );
+            background-size: 100% 12px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <input type="range" id="web3-slider" min="0" max="4" value="0" step="1">
+        <div class="labels">
+            <span>Novice</span>
+            <span>Contributor</span>
+            <span>Builder</span>
+            <span>Founder</span>
+            <span>OG</span>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById('web3-slider');
+        const labels = document.querySelectorAll('.labels span');
+        
+        slider.addEventListener('input', function() {
+            // Optional: Add dynamic highlighting or value display
+            labels.forEach((label, index) => {
+                label.style.fontWeight = index <= this.value ? 'bold' : 'normal';
+                label.style.color = index <= this.value ? '#4a90e2' : '#666';
+            });
+        });
+    </script>
+</body>
+</html>
