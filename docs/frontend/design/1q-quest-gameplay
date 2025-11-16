@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Advisory: Crafting Interactive Game Play Stories</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .explainer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            margin: 0 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #764ba2;
+        }
+        section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .section-break {
+            height: 1px;
+            background: linear-gradient(90deg, #e3f2fd, #f3e5f5, #e8f5e8);
+            margin: 2rem auto;
+            width: 80%;
+        }
+        h2 {
+            color: #4a4a4a;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+        .comment {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid #ddd;
+        }
+        .timeline-item {
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #f1f1f1;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; }
+            section { margin: 1rem; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Development Advisory: Crafting Interactive Game Play Stories</h1>
+        <p>A Guide to UX-Driven Indie Dev Narratives</p>
+    </header>
+
+    <div class="explainer">
+        <p><strong>Quick Integration Note:</strong> This advisory page distills the GitHub issue #28 journey into actionable sections for easy reference. Embed it as a standalone resource in your Founder Journeys series or link it from the main router page. Customize avatars and callouts for future "Mage stories" to maintain consistency. Built for GitHub Pages—drop into /docs/ and link via index.html.</p>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#concept">Core Concept</a></li>
+            <li><a href="#hurdles">Development Hurdles</a></li>
+            <li><a href="#iterations">Tool Pivots & Iterations</a></li>
+            <li><a href="#collaboration">Collaboration</a></li>
+            <li><a href="#challenges">Technical Challenges</a></li>
+            <li><a href="#next-steps">Next Steps</a></li>
+        </ul>
+    </nav>
+
+    <div class="section-break"></div>
+
+    <section id="overview">
+        <h2>Project Overview</h2>
+        <p>This advisory captures the evolution of "Game Play Story," the inaugural entry in a series of interactive "Mage stories" designed to support indie game developers. It transforms raw GitHub issue discussions into a navigable guide, emphasizing UX enhancements like avatar callouts for engaging storytelling.</p>
+    </section>
+
+    <div class="section-break"></div>
+
+    <section id="concept">
+        <h2>Core Concept</h2>
+        <div class="comment">
+            <p><strong>Initial Vision:</strong> First of many Mage stories, this one about a possible GamePlay project. It can be used to encourage new indie game developers, because it not only covers typical hurdles to leap during a project, but also provides a highly specific and valuable set of contacts to seek connection with, plus a project valuation. A caveat needs to be set to seek "execution to the max" at every step to achieve projected valuation.</p>
+            <p>Also existing game makers can compare their work against existing marketplace players, but it would need a bit of tweaking for that.</p>
+        </div>
+        <p><em>Key Takeaway:</em> Position as the first entry in Founder Journeys to inspire and benchmark.</p>
+    </section>
+
+    <div class="section-break"></div>
+
+    <section id="hurdles">
+        <h2>Development Hurdles</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Delay Due to AI Limits</h3>
+                <p>This task must be delayed because the Claude artifact generation proved faulty, and I exceeded my 5hr limit inside two hours.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Markdown Submenu Failure</h3>
+                <p>Tried to create a Markdown submenu for this option, because there will be many stories to follow. This didn't work for GitHub Pages, so decided to use Grok to suggest an interim HTML "router page".</p>
+            </div>
+        </div>
+        <p><em>Lesson:</em> Early prototyping reveals platform quirks—pivot quickly to compatible formats like raw HTML.</p>
+    </section>
+
+    <div class="section-break"></div>
+
+    <section id="iterations">
+        <h2>Tool Pivots & Iterations</h2>
+        <div class="comment">
+            <p>The actual sequence is to use Grok to generate the raw HTML, because it has excellent market visibility and processing capability, where Notebook was unable to process the request to produce the raw HTML.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Bug Fix & Repositioning</h3>
+                <p>Bug is now fixed. We just need to position the Game Play Story as the first of many inside the Journey-quest page. Need to insert this into Founder Journeys as first entry.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Code Integration Passes</h3>
+                <p>First pass through defined the extra code needed. Second pass integrated it with existing HTML / CSS pairing, but warned of a limitation on hover function, because touch screen devices don't have a hover capability. Third pass suggest some small use of JavaScript. This will take longer, but will again be useful learning.</p>
+            </div>
+        </div>
+        <p><em>Advisory Tip:</em> Iterate in passes: Define → Integrate → Enhance with JS for cross-device UX.</p>
+    </section>
+
+    <div class="section-break"></div>
+
+    <section id="collaboration">
+        <h2>Collaboration & Refinements</h2>
+        <div class="comment">
+            <p>Now consulting Ems, Ameero to validate / improve the storyline. Reviewed with Ems. Biggest change requested was Support Avatar call outs.</p>
+        </div>
+        <p>Title Evolution: Game Play Story → Game Play Story - To Be Ratified → Game Play Story - Support Avatar Call Outs → Game Play Story - Support Avatar JS Call Outs.</p>
+        <p><em>Best Practice:</em> External reviews refine scope—loop in stakeholders early for UX priorities like interactive avatars.</p>
+    </section>
+
+    <div class="section-break"></div>
+
+    <section id="challenges">
+        <h2>Technical Challenges</h2>
+        <div class="comment">
+            <p>Problem trying to step up to JavaScript. Lost previous configuration, which took a complex prompt to create and had a bunch of manual edits to fine tune. Need a better backup / setup routine.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Backup Strategy</h3>
+                <p>1. Feed the core prompts into Notebook to create a next level prompt. It can be HTML, and a Google Doc landscape file, but not CSS or other code file types. The result can be both copied and saved as a source document for Notebook.</p>
+                <p>2. Use a Grok routine with copied prompts to create the copiable scripts.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Alternative Saves</h3>
+                <p>Possible to save old Web page format as either .txt or .PDF files. Need to save it first as .MHTML files and then read and save using specialist App reader for that type of web page. Grok can rebuild code based on .txt or .pdf files.</p>
+            </div>
+        </div>
+        <p><em>Pro Tip:</em> Document creation processes closely for reproducibility—recreate > debug in vibe coding flows.</p>
+    </section>
+
+    <div class="section-break"></div>
+
+    <section id="next-steps">
+        <h2>Next Steps & Metadata</h2>
+        <ul>
+            <li><strong>Implementation:</strong> Implement this next working day.</li>
+            <li><strong>Labels:</strong> UX (focus on user experience enhancements).</li>
+            <li><strong>Assignees:</strong> None—assign yourself for solo ownership.</li>
+            <li><strong>Projects/Milestones:</strong> None yet; link to a branch or PR for development.</li>
+            <li><strong>Notifications:</strong> Subscribed—unsubscribe if needed.</li>
+        </ul>
+        <p><em>Action Item:</em> Create a branch for this issue and integrate the JS callouts. For future stories, use this as a template to avoid config loss.</p>
+    </section>
+
+    <div class="section-break"></div>
+
+    <footer>
+        <p>&copy; 2025 Innov8tor3 | Part of Project-Engine Founder Journeys | <a href="https://github.com/innov8tor3/project-engine/issues/28">Original Issue #28</a></p>
+    </footer>
+</body>
+</html>
