@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Engine Issues Summary - November 17, 2025</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #93c5fd;
+            --text-color: #1f2937;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .date {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background: var(--card-bg);
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .section-header:hover {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+        }
+
+        .section-header::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .section-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .section-content.active {
+            max-height: 2000px; /* Adjust as needed */
+        }
+
+        .issue-list {
+            padding: 1.5rem;
+            list-style: none;
+            margin: 0;
+        }
+
+        .issue-item {
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: var(--bg-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .issue-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--secondary-color);
+        }
+
+        .issue-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .issue-summary {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+        }
+
+        .issue-progress {
+            font-size: 0.9rem;
+            color: #10b981;
+            font-style: italic;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .issue-progress:empty {
+            display: none;
+        }
+
+        /* Subtle color variations per section */
+        .b1q { --accent-color: #dbeafe; --primary-color: #1e40af; }
+        .b2p { --accent-color: #bfdbfe; --primary-color: #1d4ed8; }
+        .rep { --accent-color: #e0f2fe; --primary-color: #0ea5e9; }
+        .ux { --accent-color: #f0f9ff; --primary-color: #0284c7; }
+
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            .section-header { padding: 1rem; font-size: 1.1rem; }
+            .issue-list { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Engine Issues Summary</h1>
+        <p class="date">Generated on November 17, 2025</p>
+
+        <div class="section b1q">
+            <div class="section-header" data-target="b1q-content">
+                1) BOPE1Q
+            </div>
+            <div class="section-content" id="b1q-content">
+                <ul class="issue-list">
+                    <li class="issue-item">
+                        <div class="issue-title">#23: QUEST1Q - Quest Definition</div>
+                        <div class="issue-summary">Outlines QUEST1Q, a code accelerator to define quest stories (problem, solution, difficulties) using Quest Engine, followed by QUEST2P for animation; aims to turn ideas into realities with utility levels: Unicorn (millions), Zebra (hundreds), Wild Horse (&lt;10).</div>
+                        <div class="issue-progress">The project is developing a structured process for creating and gamifying "Quests" using AI-driven tools like Grok, with a focus on generating HTML-based "Vibe Pages" and integrating valuation tools to support creative design and priority decision-making.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#28: Story #1 - Indie Gamer + Support Cast Call Outs</div>
+                        <div class="issue-summary">First Mage story for indie game developers, addressing hurdles, providing contacts, valuation, and execution maximization; delayed by Claude issues, shifting to Grok for HTML generation.</div>
+                        <div class="issue-progress">The project page remains functional and is being used as a base for further development, with plans to add AI support character descriptions and a valuation slider using code snippets from AI tools like Claude.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#30: Story #2 - Trade Africa - Smart Contracts</div>
+                        <div class="issue-summary">Challenges with Grok for GitHub code location; proposes workflow with Grok, Claude, Google for Trade Africa smart contracts web artefacts: outline in Notebook, market info Grok, artefacts Claude, split code Grok, install GitHub.</div>
+                        <div class="issue-progress">A current web page has been shared, and progress involves Jones stepping aside while searching for smart contract solutions and delegating payment mechanism setup.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#32: Story #3 - Immigrants as Assets</div>
+                        <div class="issue-summary">Complex story requiring more step definition, journey documentation, and polishing; opportunity with leashless missed, but potential for retry.</div>
+                        <div class="issue-progress">The project has progressed to version 0.4, with ongoing efforts to refine a complex narrative involving government bodies and partnerships, and the author is seeking Grok's assistance to create modular code snippets for a web-based quest builder to streamline development and reduce technical overhead.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#33: Story #4 - NFT & Smart Contracts with Max or ...?</div>
+                        <div class="issue-summary">Max's software for smart contracts and NFTs; story weaving possible, CTA not functional yet.</div>
+                        <div class="issue-progress">The project is likely to pivot to separate projects for NFTs and Smart Contracts, with this issue remaining focused on NFTs and clarification needed between this story and Story #7.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#35: Story #5 - Colosseum Booster - October 30, 2025</div>
+                        <div class="issue-summary">Aid navigation of Colosseum for Solana OGs access; use Project Engine Part I to demo capabilities, impress Matty Taylor by Oct 30 without criticism.</div>
+                        <div class="issue-progress">The issue remains open and requires further work as preparation for Colosseum or the next LDN Hackathon, with plans to initiate Phase 2 of Project Engine to empower projects with digital assets and working marketplaces, potentially with assistance from Max and Ems.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#36: Story #7 - Solana Smart Contract Bonanza</div>
+                        <div class="issue-summary">Addresses lack of user-friendly smart contract tools on Solana/etc., opportunities, team (Max et al.), roles, AI alignment, research, audits; uses 7-step Founders Journey, scalable to other chains.</div>
+                        <div class="issue-progress">Recent progress includes developing a browser-based smart contract using natural language for generation and deployment, creating a UX-friendly roadmap and proto pitch deck, and planning to engage testing communities and partnerships to advance the project through Project Engine's phases.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#38: Story #8 - The Libi "Game Play" Quest for Enterprise</div>
+                        <div class="issue-summary">Libi Engine for non-tech quest creation; Project Engine shares simple quests for community mirroring, AI/economic eval; top get permanent quests, hackathon support, traction growth.</div>
+                        <div class="issue-progress">No recent progress.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#40: Quest #9 - QuestPreneur</div>
+                        <div class="issue-summary">Landscape doc for QuestPreneur to attract founders via hot topics/revenue; use Phase 1 to define/ignite via Moonboi competition, AI-judged; winners get quests/assets/access/Phase 2 support.</div>
+                        <div class="issue-progress">Recent progress involves exploring the integration of Libi Engine as a VR build quest platform with specific characters for community outreach to demonstrate mutual benefits, alongside outlining a gamified entrepreneur training structure with defined phases and the need for a job search support page.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#41: Quest #10 - Solving UK Graduate Unemployment</div>
+                        <div class="issue-summary">Gamified entrepreneur training for UK/US unemployed graduates via web/AI, onchain results, AI job support (strategy/marketing/rewards); addresses unemployment, builds self-belief; collaborators noted, live.</div>
+                        <div class="issue-progress">AI can effectively extract relevant information from messy issue page copies, and using a provided web page on modern web styling helps establish a consistent house style while prioritizing speed in development.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section b2p">
+            <div class="section-header" data-target="b2p-content">
+                2) BOPE2P
+            </div>
+            <div class="section-content" id="b2p-content">
+                <ul class="issue-list">
+                    <li class="issue-item">
+                        <div class="issue-title">#1: Team Building / Partner Location</div>
+                        <div class="issue-summary">Finding reliable team for side hustle startup; smart contract for signup/grants/rewards; keep day jobs until income.</div>
+                        <div class="issue-progress">Recent progress includes identifying potential funding partners and target cohorts (Proto Founders, Project Managers, Programme Managers) to improve project success rates in Web3, while emphasizing the need for better project management soft skills and exploring partnerships with entities like Michael Harding, Bonk, and Giveth.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#11: Storyline Funding - Substack</div>
+                        <div class="issue-summary">Project Landscape extracted to Notebook LM for intro storyline; feeds Substack, then Project Engine for funding options identified via Grok.</div>
+                        <div class="issue-progress">No recent progress.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#12: VS Code - For local editing, to follow GitHub Vibe Coding</div>
+                        <div class="issue-summary">Recommend VS Code for local heavy coding, sync to GitHub; overhead vs Vibe Coding with CoPilot; time wasted without context.</div>
+                        <div class="issue-progress">The author is currently unable to configure VS Code properly due to hardware limitations and budget constraints, and is using "vibe coding" as a temporary workaround until a proper setup can be achieved.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#17: Open Starling Bank Account - Transfer to BOTA</div>
+                        <div class="issue-summary">Starling Bank account opening took ~1 hour instead of minutes; transfer to BOTA.</div>
+                        <div class="issue-progress">No recent progress.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#18: QUEST2P - Project Artefacts as NFTs</div>
+                        <div class="issue-summary">Make project artefacts NFTs for trading, blockchain ownership; potential paid service post-demo.</div>
+                        <div class="issue-progress">The issue has evolved into four phases for the BOPE project and is ongoing, with discussions about NFTs and market mechanisms for project assets, and Max now available for discussion after a Solana Hackathon.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#19: Project Details Page - Update or View Only - Registered Users Only</div>
+                        <div class="issue-summary">Update Project Details page for standard steps; owner update vs view-only; registered users only via Gmail etc.</div>
+                        <div class="issue-progress">No recent progress.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#22: Project Engine - Restructuring the Repo</div>
+                        <div class="issue-summary">Restructure repo from GitHub Pages brochure to data-capturing site with Vercel/MongoDB; Ashwini joining soon.</div>
+                        <div class="issue-progress">Recent progress involves establishing asynchronous task planning for Ashwinii using provided reference materials and AI tools, with contributions tracked via an agreement document and payouts pending funding.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#29: Onboarding a Contributor - Security & IP Protocols, Valuing Contribution</div>
+                        <div class="issue-summary">Onboard contributor: security/IP, value contributions; 2-stage via Gemini, optional smart contracts deferred; discuss roles % with Ashwinii; GitHub/AI calc method.</div>
+                        <div class="issue-progress">Recent progress includes developing a smart contract agreement as a starting point for project-specific use and discussing contributor onboarding and role partitioning with Ashwinii, with plans to refine task assignments and adapt as needed.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#34: QUEST2P - Quest Empowerment - Co Create Backend with Grok</div>
+                        <div class="issue-summary">Grok offers co-creation of backend via Twitter; high potential if functional.</div>
+                        <div class="issue-progress">No recent progress.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section rep">
+            <div class="section-header" data-target="rep-content">
+                3) reporting
+            </div>
+            <div class="section-content" id="rep-content">
+                <ul class="issue-list">
+                    <li class="issue-item">
+                        <div class="issue-title">#31: Progress Web Pages - Convert Issue Log to Commentary</div>
+                        <div class="issue-summary">Close issues by converting to Web Pages; under Reporting programme.</div>
+                        <div class="issue-progress">Recent progress includes creating four report files for issues 1-40 after a quick GitHub-Grok code fix, enabling better issue tracking and reporting, with plans for weekly progress updates on Twitter and monthly dashboard reports.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#37: Monthly Progress Report</div>
+                        <div class="issue-summary">Generate PDF reports for issues (closed/paused/open) by Oct 31; compare via Notebook, manual notes, Grok for overview/insights.</div>
+                        <div class="issue-progress">The recent progress involves recognizing the complicated nature of GitHub issues and aiming to maintain a professional standard in progress reporting, while addressing the challenge of translating issues into digestible updates and considering the distinction between weekly and monthly reporting.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section ux">
+            <div class="section-header" data-target="ux-content">
+                4) UX
+            </div>
+            <div class="section-content" id="ux-content">
+                <ul class="issue-list">
+                    <li class="issue-item">
+                        <div class="issue-title">#16: Storyline - Tech Genie - Historic Examples</div>
+                        <div class="issue-summary">Enhance BOPE GH page with Web3 potential examples: rapid (Supernova in tech) vs gradual (e-comm/blockchain) post-Tech Genie release.</div>
+                        <div class="issue-progress">No recent progress.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#26: Add Four Project Roles to About Page</div>
+                        <div class="issue-summary">Add 4 roles (Hipster/Hacker/Hustler AI avatars + Founder) to About page, mapped to corporate: Founder/PM/Programme Mgr/Blockchain OG.</div>
+                        <div class="issue-progress">The About Page has been completed but requires clarification on mapping corporate roles to avatar characters and some text, leading to the issue being reopened.</div>
+                    </li>
+                    <li class="issue-item">
+                        <div class="issue-title">#27: Founder Quest Hot Topics - HTML Snippets</div>
+                        <div class="issue-summary">Project Brochure for viewing; future NFT buy-in/contact; detailed pages via Vibe Coding.</div>
+                        <div class="issue-progress">The Brochure Page has been enhanced with a new Vibe Code Snippets foundation page and improved status/color coding, though further adjustments to positioning and filtering are still needed.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const headers = document.querySelectorAll('.section-header');
+            headers.forEach(header => {
+                header.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const content = document.getElementById(targetId);
+                    const isActive = content.classList.contains('active');
+
+                    // Close all sections
+                    document.querySelectorAll('.section-content').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    document.querySelectorAll('.section-header').forEach(h => {
+                        h.classList.remove('active');
+                    });
+
+                    // Toggle current if not active
+                    if (!isActive) {
+                        content.classList.add('active');
+                        this.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
