@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solana Smart Contract Bonanza – Next Steps Digest</title>
+  <meta name="description" content="Prioritised action plan for Project Engine Issue #36 – Solana Smart Contract Bonanza" />
+
+  <!-- Modern, calm, accessible colour palette -->
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --accent: #8b5cf6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      --radius: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --text: #f1f5f9;
+        --text-light: #94a3b8;
+        --border: #334155;
+      }
+    }
+
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      font-family: -apple-system-ui, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 1rem;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+    }
+
+    main {
+      width: 100%;
+      max-width: 860px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .summary {
+      padding: 2rem 1.5rem;
+      background: #f1f5f9;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .summary { background: #1e293b; }
+    }
+
+    .steps {
+      padding: 1.5rem;
+    }
+
+    .step {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 6px solid;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    }
+
+    .step[data-priority="high"]    { border-left-color: var(--danger); }
+    .step[data-priority="medium"]  { border-left-color: var(--warning); }
+    .step[data-priority="low"]     { border-left-color: var(--success); }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .priority-badge {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: white;
+    }
+
+    .high    .priority-badge { background: var(--danger); }
+    .medium  .priority-badge { background: var(--warning); color: #1f2937; }
+    .low     .priority-badge { background: var(--success); }
+
+    .step-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .explanation {
+      margin-top: 1rem;
+      font-style: italic;
+      color: var(--text-light);
+      background: rgba(0,0,0,0.03);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .discussion {
+      background: #ecfdf5;
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .discussion { background: #064e3b; }
+    }
+
+    .discussion h2 {
+      color: var(--success);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Simple interactive checkbox for team members to mark progress */
+    .checkbox {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 28px;
+      height: 28px;
+      border: 3px solid #cbd5e1;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .step input[type="checkbox"]:checked + .checkbox {
+      background: var(--primary);
+      border-color: var(--primary);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+      background-size: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>Solana Smart Contract Bonanza</h1>
+      <p style="font-size:1.2rem; opacity:0.95; margin-top:0.5rem;">
+        Project Engine – Issue #36
+      </p>
+      <badge>Open • No comments yet</badge>
+    </header>
+
+    <section class="summary>
+      <p>
+        A user-friendly, AI-augmented platform for creating, auditing and deploying smart contracts on Solana (with future multi-chain support). 
+        Focuses on superior UX, built-in audit coverage of the top 20 vulnerabilities, community acceleration, and a seven-step Founders Quest structure.
+      </p>
+    </section>
+
+    <section class="steps" aria-label="Prioritised next steps">
+      <div class="step high" data-priority="high">
+        <input type="checkbox" id="step1" hidden />
+        <label for="step1" class="checkbox" aria-label="Mark as done"></label>
+        <div class="step-header">
+          <span class="priority-badge">HIGH</span>
+          <div class="step-title">1. Conduct Market Research & Validation</div>
+        </div>
+        <p>Deep dive into existing Solana/EVM tools, verify UX gaps, run user interviews, create SWOT, map top 20 vulnerabilities.</p>
+        <div class="explanation">
+          Highest priority: validates the core assumption that a dramatically better UX + audit layer is needed. Prevents building the wrong product.
+        </div>
+      </div>
+
+      <div class="step high" data-priority="high">
+        <input type="checkbox" id="step2" hidden />
+        <label for="step2" class="checkbox" aria-label="Mark as done"></label>
+        <div class="step-header">
+          <span class="priority-badge">HIGH</span>
+          <div class="step-title">2. Assemble & Align Core Team</div>
+        </div>
+        <p>Kick-off with Max Gershfield (AI), Justin Grierson (history), Peter Jones (community), Cap (Superteam UK) and assign AI agents.</p>
+        <div class="explanation">
+          Secures expertise and buy-in early – nothing moves without the right people and clear roles.
+        </div>
+      </div>
+
+      <div class="step medium" data-priority="medium">
+        <input type="checkbox" id="step3" hidden />
+        <label for="step3" class="checkbox" aria-label="Mark as done"></label>
+        <div class="step-header">
+          <span class="priority-badge">MEDIUM</span>
+          <div class="step-title">3. Define Scope with Founders Quest Framework</div>
+        </div>
+        <p>Run the seven-step quest to produce milestones, MVP spec, partnership targets, and scaling roadmap.</p>
+        <div class="explanation">
+          Gives the entire team a shared roadmap and prevents scope creep.
+        </div>
+      </div>
+
+      <div class="step medium" data-priority="medium">
+        <input type="checkbox" id="step4" hidden />
+        <label for="step4" class="checkbox" aria-label="Mark as done"></label>
+        <div class="step-header">
+          <span class="priority-badge">MEDIUM</span>
+          <div class="step-title">4. Build & Test Initial Prototype</div>
+        </div>
+        <p>Minimal Solana contract builder with AI assistance + history tracking; run first audits.</p>
+        <div class="explanation">
+          Turns ideas into something tangible for rapid feedback and technical de-risking.
+        </div>
+      </div>
+
+      <div class="step low" data-priority="low">
+        <input type="checkbox" id="step5" hidden />
+        <label for="step5" class="checkbox" aria-label="Mark as done"></label>
+        <div class="step-header">
+          <span class="priority-badge">LOW (post-MVP)</span>
+          <div class="step-title">5. Launch MVP & Collect Metrics</div>
+        </div>
+        <p>Testnet launch → community promotion → usage data & user feedback loop.</p>
+        <div class="explanation">
+          Only after we have something solid to show; early traction fuels partnerships and funding.
+        </div>
+      </div>
+
+      <div class="step low" data-priority="low">
+        <input type="checkbox" id="step6" hidden />
+        <label for="step6" class="checkbox" aria-label="Mark as done"></label>
+        <div class="step-header">
+          <span class="priority-badge">LOW (post-MVP)</span>
+          <div class="step-title">6. Multi-chain Expansion & Partnerships</div>
+        </div>
+        <p>Ethereum support, marketplace integrations, premium audit services, sunset terms.</p>
+        <div class="explanation">
+          Long-term growth levers – execute only after Solana product-market fit is proven.
+        </div>
+      </div>
+    </section>
+
+    <section class="discussion">
+      <h2>Let’s Discuss & Move Forward</h2>
+      <ul style="margin-top:1rem; padding-left:1.2rem;">
+        <li>How should we integrate Gordian Mage / Sparky / Sergeant RoboSnail most effectively?</li>
+        <li>What are the top 3 UX pain points we can solve in the first 4 weeks?</li>
+        <li>Who do we know with deep Solana audit expertise to bring on board?</li>
+        <li>Realistic MVP timeline – 8 weeks or 12 weeks?</li>
+      </ul>
+      <p style="margin-top:1.5rem; font-style:italic;">
+        Reply directly on GitHub issue #36 or schedule a quick sync – let’s ship!
+      </p>
+    </section>
+
+    <footer>
+      Generated on 18 November 2025 • Fully responsive • Works in light & dark mode
+    </footer>
+  </main>
+</body>
+</html>
