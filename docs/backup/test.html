@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Job Search Support Programme</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f9fafc;
+            color: #222;
+        }
+        header {
+            background: #3557b2;
+            color: #fff;
+            padding: 2rem 1rem 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        main {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.15rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        h2 {
+            margin: 2rem 0 1rem 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #3557b2;
+            letter-spacing: 0.02em;
+        }
+        .category {
+            background: #fff;
+            border-radius: 9px;
+            margin-bottom: 1.85rem;
+            box-shadow: 0 3px 8px rgba(55,86,179,0.08);
+            overflow: hidden;
+        }
+        .category-header {
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e6eaf1;
+            background: #f1f3fb;
+            transition: background 0.24s;
+        }
+        .category-header:hover {
+            background: #e4e9fa;
+        }
+        .steps {
+            padding: 1rem 1.7rem;
+            display: none;
+        }
+        .step {
+            padding: 0.55rem 0;
+            font-size: 1.09rem;
+        }
+        .active .steps {
+            display: block;
+        }
+        .active .category-header {
+            background: #e4e9fa;
+        }
+        @media (max-width: 600px) {
+            main {
+                padding: 1rem 0.3rem;
+            }
+            .category-header, .steps {
+                padding-left: 0.8rem;
+                padding-right: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Digital Job Search Support Programme</h1>
+        <p>A modern, interactive guide for UK job seekers to leverage AI in their digital job search.</p>
+    </header>
+    <main>
+        <!-- Strategy & Market Research -->
+        <section class="category">
+            <div class="category-header" tabindex="0" onclick="toggleCategory(this)">
+                <h2>Strategy & Market Research</h2>
+            </div>
+            <div class="steps">
+                <div class="step">1. Analysing Sector Trends with AI</div>
+                <div class="step">2. AI-Powered Competitor Benchmarking</div>
+                <div class="step">3. Mapping Emerging Skills Demand</div>
+                <div class="step">4. Identifying High-Growth Employers</div>
+                <div class="step">5. Industry Salary & Benefit Intelligence</div>
+                <div class="step">6. Investigating UK Workforce Shifts</div>
+                <div class="step">7. Understanding Company Cultures via AI-generated Profiles</div>
+                <div class="step">8. Researching Typical Hiring Processes</div>
+                <div class="step">9. Exploring Global vs. Local Job Opportunities</div>
+                <div class="step">10. Custom SWOT Analysis for Target Job Sectors</div>
+            </div>
+        </section>
+        <!-- Tech Build Roles -->
+        <section class="category">
+            <div class="category-header" tabindex="0" onclick="toggleCategory(this)">
+                <h2>Tech Build Roles</h2>
+            </div>
+            <div class="steps">
+                <div class="step">1. Generating Technical Role Requirements</div>
+                <div class="step">2. AI-Assisted CV and Portfolio Review</div>
+                <div class="step">3. Mapping Essential Tech Stack Knowledge</div>
+                <div class="step">4. Interview Simulation via AI Chatbots</div>
+                <div class="step">5. Coding Assessment Preparation with AI</div>
+                <div class="step">6. Creating Learning Pathways for Developers</div>
+                <div class="step">7. Exploring Remote and Hybrid Work Tech Functions</div>
+                <div class="step">8. Prioritizing Most-Valued Certifications</div>
+                <div class="step">9. Identifying Typical Tech Project Challenges</div>
+                <div class="step">10. Predicting Employer Tech Team Preferences</div>
+            </div>
+        </section>
+        <!-- Marketing & Outreach Functions -->
+        <section class="category">
+            <div class="category-header" tabindex="0" onclick="toggleCategory(this)">
+                <h2>Marketing & Outreach Functions</h2>
+            </div>
+            <div class="steps">
+                <div class="step">1. Creating AI-Optimised Job Applications</div>
+                <div class="step">2. Crafting Personal Brand Messaging</div>
+                <div class="step">3. Designing Multi-Channel Outreach Campaigns</div>
+                <div class="step">4. Social Media Profile Enhancement with GenAI</div>
+                <div class="step">5. Analysing Effective Networking Tactics</div>
+                <div class="step">6. Tailoring Outreach for Specific Employers</div>
+                <div class="step">7. AI-Driven Response Tracking & Follow-up</div>
+                <div class="step">8. Developing Digital Elevator Pitches</div>
+                <div class="step">9. Targeting Relevant Industry Events</div>
+                <div class="step">10. Building Peer & Mentor Support Communities</div>
+            </div>
+        </section>
+        <!-- Payment, Incentive & Reward Systems -->
+        <section class="category">
+            <div class="category-header" tabindex="0" onclick="toggleCategory(this)">
+                <h2>Payment, Incentive & Reward Systems</h2>
+            </div>
+            <div class="steps">
+                <div class="step">1. Comparing Salary & Incentive Structures</div>
+                <div class="step">2. Forecasting Pay Trends with AI</div>
+                <div class="step">3. Evaluating Reward Packages Across Roles</div>
+                <div class="step">4. Negotiation Simulation using AI Prompts</div>
+                <div class="step">5. Exploring Contract Types and Flexibility</div>
+                <div class="step">6. Reviewing Employee Ratings & Feedback</div>
+                <div class="step">7. Identifying Hidden Benefits</div>
+                <div class="step">8. Assessing Equity, Bonus & Commission Schemes</div>
+                <div class="step">9. Understanding Employer Retention Strategies</div>
+                <div class="step">10. Creating Custom Reward Expectations Lists</div>
+            </div>
+        </section>
+        <!-- General Job Search -->
+        <section class="category">
+            <div class="category-header" tabindex="0" onclick="toggleCategory(this)">
+                <h2>General Job Search</h2>
+            </div>
+            <div class="steps">
+                <div class="step">1. Building AI-Enhanced Job Search Queries</div>
+                <div class="step">2. Automating Job Alerts & Application Tracking</div>
+                <div class="step">3. Generating Role Suitability Assessments</div>
+                <div class="step">4. Improving Interview Readiness via AI</div>
+                <div class="step">5. Identifying Transferable Skills with GenAI</div>
+                <div class="step">6. Tailoring Applications to Job Descriptions</div>
+                <div class="step">7. Tracking Recruiter and Employer Preferences</div>
+                <div class="step">8. Benchmarking Application Success Rates</div>
+                <div class="step">9. Accessing Post-Application Feedback Tools</div>
+                <div class="step">10. Leveraging AI for Continuous Career Upskilling</div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleCategory(header) {
+            var section = header.parentElement;
+            section.classList.toggle('active');
+        }
+        // Optional: allow keyboard access (Enter/Space opens collapsible sections)
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleCategory(header);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
