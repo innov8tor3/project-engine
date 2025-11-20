@@ -3,226 +3,585 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quest #9 - QuestPreneur</title>
+    <title>QuestPreneur - Turn Ideas into Ventures</title>
     <style>
-        /* Embedded CSS for Libi-Engine style adaptation */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
-        header {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
             text-align: center;
-            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
+
         header h1 {
-            margin: 0;
             font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
         }
+
+        header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
         }
-        section {
-            margin-bottom: 3rem;
+
+        .hero-section {
             background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
+
         h2 {
             color: #667eea;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 0.5rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
         }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecf4 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+            border-left-width: 8px;
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .info-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
         .ai-avatars {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            gap: 2rem;
             flex-wrap: wrap;
+            margin: 2rem 0;
         }
+
         .avatar {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            position: relative;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            width: 100px;
-            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 1rem;
-            font-size: 2rem;
-            color: #333;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         }
+
         .avatar:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
         }
-        .steps {
+
+        .avatar-label {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .avatar:hover .avatar-label {
+            opacity: 1;
+        }
+
+        .steps-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
-        .step {
-            background: #f8f9fa;
+
+        .step-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
             padding: 1.5rem;
-            border-left: 4px solid #667eea;
-            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s;
         }
-        .step h3 {
-            margin-top: 0;
-            color: #667eea;
+
+        .step-card::before {
+            content: attr(data-step);
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
+
+        .step-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-card h3 {
+            color: #2d3748;
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
         .market-list {
             list-style: none;
-            padding: 0;
+            margin-top: 1.5rem;
         }
+
         .market-list li {
-            background: #e9ecef;
-            margin: 0.5rem 0;
-            padding: 0.5rem;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecf4 100%);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+            cursor: pointer;
         }
-        #valuation-slider {
-            width: 100%;
-            height: 40px;
-        }
-        #valuation-output {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            font-weight: bold;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #333;
+
+        .market-list li:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
+
+        .valuation-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .valuation-section h2 {
+            color: white;
+        }
+
+        .valuation-section h2::after {
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider-container {
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        #valuation-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        #valuation-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        #valuation-slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        #valuation-output {
+            background: white;
+            color: #667eea;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .metric {
+            display: inline-block;
+            margin: 0 1rem;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            color: #4a5568;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 20px 20px 0 0;
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
             header h1 {
+                font-size: 1.8rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-section,
+            .section-card,
+            .valuation-section {
+                padding: 1.5rem;
+            }
+
+            .content-grid,
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-avatars {
+                gap: 1rem;
+            }
+
+            .avatar {
+                width: 90px;
+                height: 90px;
                 font-size: 2rem;
             }
-            .ai-avatars {
-                flex-direction: column;
-                align-items: center;
-            }
+        }
+
+        .tab-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Quest #9 - QuestPreneur</h1>
+        <h1>🚀 QuestPreneur</h1>
         <p>Turning Ideas into Entrepreneurial Ventures on Solana</p>
     </header>
 
     <div class="container">
-        <section id="intro">
+        <div class="hero-section">
             <h2>Quest Overview</h2>
-            <p>This quest is Phase 1 for Project Engine, asking to engage game players in pursuit of enterprise, and provide players with an introductory landscape document.</p>
-            <p>This landscape aims to provide a hot topic tag into a quest, and draw a likely founder further into the realms of making it to being an entrepreneur. The aim is to create revenue and employment options in the UK, or elsewhere that wants to play.</p>
-            <p>ANIMATING A QUEST FOR GAMERS 
-            <p>How can this work? First a quest definition is needed. Project Engine Phase 1 - QUEST1Q already has ready enough capability to do this, we can see from the emerging pages in the Project Engine Hot Topic Pages.</p>
-            <p>So the first question is how to animate and ignite this first Phase. We can do this by providing the quest outline to a friendly gaming community - Moonboi could be that community - and setting a competition for entrants to create a simple landscape document, with a problem to solve, the proposed solution, and what obstacles are likely along that path. The solution will be judged by AI as to the potential real world impact, the value that could be generated - a sliding score between fledgling and excellent project management - and the realism used in terms of the obstacles to be overcome and the mitigating activity needed to smooth progress past those obstacles.</p>
-            <p>WINNERS
-            <p>Winners would get a tailored Quest page built for them, and digital onchain project assets to help them move forward in discussion with funders and other interested parties. This can include smart contract specs, pitch decks and so on.</p>
-            <p>Winners would get supported access to the Solana community, and the Solana growth ecosystem, via a variety of means. It would also mean graduation, entry to phase 2 of Project Engine, namely how to build a platform that would support the Quest outlined in phase 1. This would seek to accelerate tech learning through Vibe Coding, but also access to experienced Solana engineers who can help with the complicated aspects of any tech build and the nuance about the Solana Landscape and ecosystems, such as which DEX platform Solana recommends and so on.</p>
-            <p>SUSTAINABILITY
-            <p>We will need to develop a sustainability model. For example, say entrance is free, but a smart contract is signed to share 20% of any future funding obtained, with an agreed sunset clause. This could be developed in discussion with Moonboi, as to ways this could work.</p>
-            <p>NEXT STEPS 
-            <p>The project-engine founder now needs to follow a quest regarding a range of different options to see which will yield fruit.
-        </section>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #4a5568;">
+                QuestPreneur is Phase 1 of Project Engine, designed to engage game players in the pursuit of enterprise. 
+                We provide aspiring founders with comprehensive landscape documents and a clear path to entrepreneurship, 
+                creating revenue and employment opportunities in the UK and beyond.
+            </p>
+        </div>
 
-        <section id="landscape">
-            <h2>Market Landscape</h2>
-            <h3>Suitable Marketplaces</h3>
-            <ul class="market-list">
-                <li>SoQuest: Web3 quest platform for earning crypto rewards from projects. <grok:render card_id="9684af" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">5</argument></grok:render></li>
-                <li>Soladex: Platform for Solana projects with token-incentivized quests via GitHub issues. <grok:render card_id="16971b" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">7</argument></grok:render></li>
-                <li>Request for Startups - Solana: Ideas and opportunities for builders. <grok:render card_id="889ad9" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">4</argument></grok:render></li>
-                <li>Solana Renaissance Hackathon: Community events for project development. <grok:render card_id="b59bf2" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">22</argument></grok:render></li>
-                <li>Tensor: Leading NFT marketplace for Solana projects. <grok:render card_id="6216c5" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">13</argument></grok:render></li>
-            </ul>
-            <h3>Key Market Players</h3>
-            <ul class="market-list">
-                <li>Solana Foundation: Core supporter of ecosystem growth. <grok:render card_id="644529" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">22</argument></grok:render></li>
-                <li>Moon Boi Studios: Gaming community focused on Solana Saga and blockchain games. <grok:render card_id="24aa88" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">14</argument></grok:render><grok:render card_id="1960f9" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">19</argument></grok:render></li>
-                <li>Jupiter: Primary onchain trading venue on Solana. <grok:render card_id="f7100a" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">23</argument></grok:render></li>
-                <li>Phantom, Pyth, Orca: Key infrastructure and DeFi players. <grok:render card_id="63c879" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">22</argument></grok:render></li>
-                <li>VanEck: Investors forecasting Solana's growth to $3000 by 2030. <grok:render card_id="0d0fe4" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">27</argument></grok:render></li>
-            </ul>
-        </section>
-
-        <section id="ai-support">
-            <h2>AI Support Avatars</h2>
-            <p>Guided by intelligent AI companions throughout your QuestPreneur journey.</p>
-            <div class="ai-avatars">
-                <div class="avatar" title="AI Quest Definer">🧙‍♂️</div>
-                <div class="avatar" title="AI Community Igniter">🎮</div>
-                <div class="avatar" title="AI Judge">⚖️</div>
-                <div class="avatar" title="AI Asset Builder">🏴‍☠️</div>
+        <div class="section-card">
+            <h2>How It Works</h2>
+            <div class="tab-container">
+                <button class="tab-btn active" onclick="showTab('concept')">The Concept</button>
+                <button class="tab-btn" onclick="showTab('winners')">For Winners</button>
+                <button class="tab-btn" onclick="showTab('sustainability')">Sustainability</button>
             </div>
-        </section>
 
-        <section id="steps">
-            <h2>The Seven Steps to QuestPreneur Success</h2>
-            <div class="steps">
-                <div class="step">
-                    <h3>Step 1: Define the Quest</h3>
+            <div id="concept" class="tab-content active">
+                <div class="content-grid">
+                    <div class="info-card">
+                        <h3>🎯 Quest Definition</h3>
+                        <p>Create a landscape document outlining your problem, proposed solution, and potential obstacles. Project Engine Phase 1 provides the tools you need.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎮 Gaming Community</h3>
+                        <p>Share your quest with communities like Moonboi and participate in competitions to showcase your entrepreneurial vision.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🤖 AI Evaluation</h3>
+                        <p>Solutions are judged by AI on real-world impact, value generation potential, and realistic project management approaches.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="winners" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-card">
+                        <h3>📄 Tailored Quest Pages</h3>
+                        <p>Receive custom-built Quest pages and digital onchain project assets including smart contract specs and pitch decks.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌐 Ecosystem Access</h3>
+                        <p>Gain supported entry to the Solana community, growth ecosystem, and experienced engineers for technical guidance.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎓 Graduation to Phase 2</h3>
+                        <p>Advance to platform building with Vibe Coding acceleration and expert support on DEX selection and Solana nuances.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sustainability" class="tab-content">
+                <div class="content-grid">
+                    <div class="info-card">
+                        <h3>💰 Revenue Model</h3>
+                        <p>Free entry with smart contracts for 20% revenue sharing on future funding, featuring agreed sunset clauses.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🤝 Community Partnership</h3>
+                        <p>Collaborative development with communities like Moonboi to create sustainable, mutually beneficial models.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🔄 Continuous Support</h3>
+                        <p>Ongoing access to resources, mentorship, and the Solana ecosystem as your venture grows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>AI Support Avatars</h2>
+            <p style="text-align: center; color: #718096; margin-bottom: 1rem;">
+                Intelligent AI companions guide you throughout your QuestPreneur journey
+            </p>
+            <div class="ai-avatars">
+                <div class="avatar">
+                    🧙‍♂️
+                    <div class="avatar-label">Quest Definer</div>
+                </div>
+                <div class="avatar">
+                    🎮
+                    <div class="avatar-label">Community Igniter</div>
+                </div>
+                <div class="avatar">
+                    ⚖️
+                    <div class="avatar-label">AI Judge</div>
+                </div>
+                <div class="avatar">
+                    🏴‍☠️
+                    <div class="avatar-label">Asset Builder</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2>Seven Steps to Success</h2>
+            <div class="steps-container">
+                <div class="step-card" data-step="1">
+                    <h3>Define the Quest</h3>
                     <p>Outline your problem, solution, and obstacles using Project Engine Phase 1 tools.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 2: Engage the Community</h3>
+                <div class="step-card" data-step="2">
+                    <h3>Engage Community</h3>
                     <p>Share with gaming communities like Moonboi to ignite interest and participation.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 3: Launch the Competition</h3>
-                    <p>Set up a contest for landscape documents via platforms like SoQuest or Soladex.</p>
+                <div class="step-card" data-step="3">
+                    <h3>Launch Competition</h3>
+                    <p>Set up contests via platforms like SoQuest or Soladex for landscape documents.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 4: AI Judging</h3>
-                    <p>AI evaluates impact, value generation, and realism with a sliding score.</p>
+                <div class="step-card" data-step="4">
+                    <h3>AI Judging</h3>
+                    <p>AI evaluates impact, value generation, and realism with comprehensive scoring.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 5: Award Winners</h3>
-                    <p>Provide tailored Quest pages and digital onchain assets to victors.</p>
+                <div class="step-card" data-step="5">
+                    <h3>Award Winners</h3>
+                    <p>Receive tailored Quest pages and digital onchain assets to accelerate progress.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 6: Ecosystem Access</h3>
-                    <p>Grant supported entry to Solana community, engineers, and growth resources.</p>
+                <div class="step-card" data-step="6">
+                    <h3>Ecosystem Access</h3>
+                    <p>Connect with Solana community, engineers, and growth resources.</p>
                 </div>
-                <div class="step">
-                    <h3>Step 7: Sustainability & Graduation</h3>
-                    <p>Develop funding share models and advance to Phase 2 platform building.</p>
+                <div class="step-card" data-step="7">
+                    <h3>Graduate & Scale</h3>
+                    <p>Develop sustainability models and advance to Phase 2 platform building.</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="valuation">
-            <h2>Potential Economic Impact Valuation</h2>
-            <p>Slide to estimate the value, jobs, and revenue potential based on Solana project benchmarks (e.g., up to $8B ecosystem revenues by 2030). <grok:render card_id="bbb047" card_type="citation_card" type="render_inline_citation"><argument name="citation_id">31</argument></grok:render></p>
-            <input type="range" id="valuation-slider" min="0" max="100" value="0">
-            <div id="valuation-output">Potential Valuation: $100K | Jobs Created: 1-5 | Revenue Potential: Low (20% Share Model)</div>
-        </section>
+        <div class="section-card">
+            <h2>Market Landscape</h2>
+            <h3 style="color: #4a5568; margin-bottom: 1rem;">Suitable Marketplaces</h3>
+            <ul class="market-list">
+                <li><strong>SoQuest</strong> - Web3 quest platform for earning crypto rewards from projects</li>
+                <li><strong>Soladex</strong> - Platform for Solana projects with token-incentivized quests via GitHub</li>
+                <li><strong>Request for Startups</strong> - Solana ideas and opportunities for builders</li>
+                <li><strong>Solana Renaissance Hackathon</strong> - Community events for project development</li>
+                <li><strong>Tensor</strong> - Leading NFT marketplace for Solana projects</li>
+            </ul>
+
+            <h3 style="color: #4a5568; margin: 2rem 0 1rem;">Key Market Players</h3>
+            <ul class="market-list">
+                <li><strong>Solana Foundation</strong> - Core supporter of ecosystem growth</li>
+                <li><strong>Moon Boi Studios</strong> - Gaming community focused on Solana Saga and blockchain games</li>
+                <li><strong>Jupiter</strong> - Primary onchain trading venue on Solana</li>
+                <li><strong>Phantom, Pyth, Orca</strong> - Key infrastructure and DeFi players</li>
+                <li><strong>VanEck</strong> - Investors forecasting Solana's growth to $3000 by 2030</li>
+            </ul>
+        </div>
+
+        <div class="valuation-section">
+            <h2>Economic Impact Calculator</h2>
+            <p style="margin-bottom: 2rem;">
+                Estimate your venture's potential based on Solana ecosystem benchmarks 
+                (projected $8B revenues by 2030)
+            </p>
+            <div class="slider-container">
+                <input type="range" id="valuation-slider" min="0" max="100" value="0">
+                <div id="valuation-output">
+                    <div class="metric">💰 Valuation: $100,000</div>
+                    <div class="metric">👥 Jobs: 1-5</div>
+                    <div class="metric">📈 Revenue: Low</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Project Engine - Innov8tor3. Powered by Solana Ecosystem.</p>
+        <p>&copy; 2025 Project Engine - Innov8tor3 | Powered by Solana Ecosystem</p>
     </footer>
 
     <script>
         const slider = document.getElementById('valuation-slider');
         const output = document.getElementById('valuation-output');
-        const minVal = 100000; // $100K
-        const maxVal = 10000000; // $10M
+        const minVal = 100000;
+        const maxVal = 10000000;
         const maxJobs = 50;
 
         slider.addEventListener('input', (e) => {
@@ -230,8 +589,24 @@
             const valuation = Math.round(minVal + (value / 100) * (maxVal - minVal));
             const jobs = Math.round(1 + (value / 100) * (maxJobs - 1));
             const revenueLevel = value < 30 ? 'Low' : value < 60 ? 'Medium' : 'High';
-            output.textContent = `Potential Valuation: $${valuation.toLocaleString()} | Jobs Created: \( {jobs} | Revenue Potential: \){revenueLevel} (20% Share Model)`;
+            
+            output.innerHTML = `
+                <div class="metric">💰 Valuation: $${valuation.toLocaleString()}</div>
+                <div class="metric">👥 Jobs: ${jobs}</div>
+                <div class="metric">📈 Revenue: ${revenueLevel}</div>
+            `;
         });
+
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const btns = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
     </script>
 </body>
 </html>
