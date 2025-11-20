@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Boom → Bust → Build Cycle | 2025–2030 Projections</title>
+    <meta name="description" content="Realistic projections for the current AI bubble: when the bust will hit, how deep it will be, and how fast the real build phase will follow. Lessons from DotCom + today's acceleration factors.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Simple modern styling, fully self-contained -->
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1f2937;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --gray: #6b7280;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+            --boom: #10b981;
+            --bust: #ef4444;
+            --build: #8b5cf6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --text: #e2e8f0;
+                --light: #1e293b;
+                --border: #334155;
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        main {
+            padding: 3rem 2rem 4rem;
+        }
+
+        section { margin-bottom: 3.5rem; }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        p, li {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        strong { font-weight: 600; color: var(--text); }
+
+        /* Interactive table */
+        .cycle-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 2.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .cycle-table th {
+            background: var(--light);
+            padding: 1.3rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .cycle-table td {
+            padding: 1.4rem 1rem;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.25s ease;
+        }
+
+        .cycle-table tr:hover td {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .phase-boom { background: rgba(16, 185, 129, 0.12); }
+        .phase-bust { background: rgba(239, 68, 68, 0.12); }
+        .phase-build { background: rgba(139, 92, 246, 0.12); }
+
+        .phase-label {
+            font-weight: 700;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .boom-label { color: var(--boom); }
+        .bust-label { color: var(--bust); }
+        .build-label { color: var(--build); }
+
+        .media-hook {
+            font-style: italic;
+            margin-top: 0.8rem;
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        /* Collapsible advice section for interactivity */
+        details {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            cursor: pointer;
+            border: 1px solid var(--border);
+        }
+
+        details[open] {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        summary {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--accent-dark);
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        summary::after {
+            content: '↓';
+            margin-left: auto;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            header p { font-size: 1.1rem; }
+            .cycle-table, .cycle-table thead, .cycle-table tbody, .cycle-table th, .cycle-table td, .cycle-table tr { display: block; }
+            .cycle-table thead tr { position: absolute; top: -9999px; left: left: -9999px; }
+            .cycle-table tr { margin: 1.5rem 0; border: 1px solid var(--border); border-radius: 8px; }
+            .cycle-table td { border: none; position: relative; padding-left: 50%; }
+            .cycle-table td::before { content: attr(data-label); position: absolute; left: 1rem; width: 45%; font-weight: 600; color: var(--accent-dark); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Boom → Bust → Build<br><span style="font-size:1.6rem;font-weight:500;">Realistic 2025–2030 Projections</span></h1>
+            <p>Lessons from the DotCom era + today's acceleration factors<br>Updated November 2025</p>
+        </header>
+
+        <main>
+            <section>
+                <p>Your analogy to the DotCom era is spot-on — hype-driven overinvestment, overstated business cases, and a high dropout rate among smaller players are recurring themes in transformative tech waves.</p>
+                
+                <p>Current projections suggest <strong>90–99% of AI startups could fail by 2026–2027</strong>, driven by poor retention, lack of true innovation, and failure to deliver ROI. At the lower levels, the investor estimate of a 1% success rate feels almost optimistic in this fevered environment.</p>
+
+                <p>We're not in a pure DotCom redux. We have the learnings from e-commerce (profitability > growth at all costs, customer value first, lean operations), existing cloud infrastructure, and AI's self-reinforcing nature that compresses timelines dramatically. Global enterprise adoption is already at ~75%, far ahead of where internet penetration was at the 2000 peak.</p>
+            </section>
+
+            <section>
+                <h2>Projected Timeline: Faster, Sharper, Less Fatal Than DotCom</h2>
+
+                <table class="cycle-table">
+                    <thead>
+                        <tr>
+                            <th>Phase</th>
+                            <th>Timeline</th>
+                            <th>Key Drivers & Signals</th>
+                            <th>Media Soundbite (vs. DotCom)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="phase-boom">
+                            <td data-label="Phase"><span class="phase-label boom-label">● Boom (ongoing)</span></td>
+                            <td data-label="Timeline"><strong>Now → Mid-2026</strong></td>
+                            <td>$500B+ global AI spend in 2026<br>$900B data-center capex peak in 2028<br>70–80% enterprise adoption but mostly pilots</td>
+                            <td class="media-hook">“AI's DotCom on steroids — bigger market caps, but most companies actually profitable this time… until they're not.”</td>
+                        </tr>
+                        <tr class="phase-bust">
+                            <td data-label="Phase"><span class="phase-label bust-label">● Bust</span></td>
+                            <td data-label="Timeline"><strong>Late 2026 → 2028</strong></td>
+                            <td>Capex overshoot meets revenue shortfall (~$800B gap)<br>90–95% startup & pilot extinction<br>Tech sector correction 20–40% (not 78% like Nasdaq 2000)</td>
+                            <td class="media-hook">“The Great AI Reckoning of 2027–28: thousands of startups dead, hundreds of billions in write-downs, but the hyperscalers survive like Amazon did.”</td>
+                        </tr>
+                        <tr class="phase-build">
+                            <td data-label="Phase"><span class="phase-label build-label">● Build</span></td>
+                            <td data-label="Timeline"><strong>2028 onward</strong></td>
+                            <td>Consolidation complete<br>90%+ enterprise adoption by 2030<br>$1.85T+ market<br>Real productivity supercycle begins</td>
+                            <td class="media-hook">“From the ashes of the 2027 bust rises a $10T+ economy — the real AI era finally starts in 2028–29, five years faster than post-DotCom recovery.”</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <details>
+                <summary>For Quiet Builders: How to Capitalize on the Coming Bust</summary>
+                <div style="margin-top:1.5rem;">
+                    <p>You are in the perfect position.</p>
+                    <p>The bust will do the dirty work for you — it will kill the me-too wrappers, the thin-API startups, the "AI-powered-by-ChatGPT" reskins, and leave the field wide open for those who actually solve hard problems with defensible moats.</p>
+                    <p><strong>Best entry window: 2027–early 2028</strong></p>
+                    <ul style="margin-left:1.5rem;margin-top:1rem;font-size:1.1rem;">
+                        <li>VCs will be scarred and hungry for real traction</li>
+                        <li>Talent flood from failed startups (hire top 1% at reasonable prices)</li>
+                        <li>Customer budgets will shift from "experiment" to "must-have ROI"</li>
+                        <li>Press will have moved on from AI panic to the next shiny thing</li>
+                    </ul>
+                    <p style="margin-top:1.5rem;font-weight:600;color:var(--accent-dark);">Keep building in stealth. Launch when the noise dies down. The garden will be weeded for you.</p>
+                </div>
+            </details>
+
+            <p style="text-align:center;font-size:1.1rem;color:var(--gray);margin-top:3rem;">
+                Save this page. Bookmark it. Come back in 2027 and see how accurate it was.
+            </p>
+        </main>
+
+        <footer>
+            Published November 20, 2025 • Built for GitHub Pages • No tracking, no JS frameworks, just HTML + CSS
+        </footer>
+    </div>
+</body>
+</html>
