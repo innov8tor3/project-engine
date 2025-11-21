@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project-Engine | November 2025 Progress Report</title>
+  <meta name="description" content="Live status of open issues in innov8tor3/project-engine with colour-coded categories and recency indicators."/>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --text: #c9d1d9;
+      --border: #30363d;
+      --green: #238636;
+      --blue: #58a6ff;
+      --purple: #bc8cff;
+      --orange: #d29922;
+      --red: #f85149;
+      --gray: #8b949e;
+    }
+    body {
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 { font-size: 2.5rem; margin: 0; color: #fff; }
+    h2 {
+      font-size: 1.8rem;
+      margin: 3rem 0 1.5rem;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      color: #fff;
+    }
+    .section-fresh   { background: rgba(46,160,67,0.15); border-left: 5px solid var(--green); }
+    .section-stale   { background: rgba(248,81,73,0.1);  border-left: 5px solid var(--red); }
+    .cat-quest   h2 { background: rgba(88,166,255,0.2);  border-left-color: var(--blue); }
+    .cat-tech    h2 { background: rgba(188,140,255,0.2); border-left-color: var(--purple); }
+    .cat-ux      h2 { background: rgba(210,153,34,0.2);  border-left-color: var(--orange); }
+    .cat-report  h2 { background: rgba(139,148,158,0.2); border-left-color: var(--gray); }
+
+    .issue {
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .issue-header {
+      padding: 0.9rem 1.2rem;
+      background: #21262d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .issue-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+    }
+    .badge {
+      padding: 0.25rem 0.7rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-fresh { background: var(--green); color: #fff; }
+    .badge-stale { background: var(--red); color: #fff; }
+    .badge-quest { background: var(--blue); color: #fff; }
+    .badge-tech  { background: var(--purple); color: #fff; }
+    .badge-ux    { background: var(--orange); color: #fff; }
+    .badge-report{ background: var(--gray); color: #fff; }
+
+    .issue-body {
+      padding: 1.2rem;
+    }
+    .section {
+      margin-bottom: 1rem;
+    }
+    .section h4 {
+      margin: 1.2rem 0 0.5rem;
+      color: #58a6ff;
+      font-size: 1.1rem;
+    }
+    ul {
+      margin: 0.5rem 0;
+      padding-left: 1.4rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 2rem; }
+      .issue-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Project-Engine Progress Report</h1>
+      <p>November 2025 – innov8tor3/project-engine</p>
+    </header>
+
+    <!-- ==================== FRESH COMMENTS (LAST 7 DAYS) ==================== -->
+    <div class="section-fresh">
+      <h2>Recent Activity (comments in last 7 days)</h2>
+
+      <!-- BOPE1Q (Quests) -->
+      <div class="cat-quest">
+        <h2>BOPE1Q – Quests</h2>
+
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#27 Founder Quest Hot Topics - HTML Snippets</h3>
+            <div>
+              <span class="badge badge-fresh">Fresh</span>
+              <span class="badge badge-quest">BOPE1Q</span>
+            </div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Lack of engaging project brochures for browsing & future buy-in (NFT/contact).</div>
+            <div class="section"><h4>Solution</h4>HTML brochure snippets → detailed pages (initially Vibe Coding).</div>
+            <div class="section"><h4>Recent Progress</h4>20 Nov – refined snippet structure & project page linking.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Prototype one full HTML snippet</li><li>Outline NFT integration timeline with Vibe Coding</li></ul></div>
+          </div>
+        </div>
+
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#23 QUEST1Q - Quest Definition</h3>
+            <div>
+              <span class="badge badge-fresh">Fresh</span>
+              <span class="badge badge-quest">BOPE1Q</span>
+            </div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Turning dreams/web brochures into reality with measurable data traction.</div>
+            <div class="section"><h4>Solution</h4>Two-phase accelerator: QUEST1Q (story) + QUEST2P (animation & data).</div>
+            <div class="section"><h4>Recent Progress</h4>20 Nov – enhanced definitions, links to QUEST2P tools.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Create QUEST1Q template doc</li><li>Test on one dream-to-reality example</li></ul></div>
+          </div>
+        </div>
+
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#40 Quest #9 - QuestPreneur</h3>
+            <div>
+              <span class="badge badge-fresh">Fresh</span>
+              <span class="badge badge-quest">BOPE1Q</span>
+            </div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Pathway from hot-topic idea to funded entrepreneurship (UK focus).</div>
+            <div class="section"><h4>Solution</h4>Gaming-community competitions judged by AI → winners get pages, onchain assets, Solana access.</div>
+            <div class="section"><h4>Recent Progress</h4>19 Nov – winner support & Solana details refined.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Draft competition rules & AI judging criteria</li><li>Contact Moonboi for collaboration</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOPE2P (Tech) -->
+      <div class="cat-tech">
+        <h2>BOPE2P – Tech</h2>
+
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#36 Story #7 - Solana Smart Contract Bonanza</h3>
+            <div>
+              <span class="badge badge-fresh">Fresh</span>
+              <span class="badge badge-tech">BOPE2P</span>
+            </div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Lack of user-friendly cross-chain smart contract tools.</div>
+            <div class="section"><h4>Solution</h4>AI-feed → great-UX contract generator (Solana+), 7-step Founders Quest.</div>
+            <div class="section"><h4>Recent Progress</h4>18 Nov – team/AI role alignment, marketplace research.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Initial competitor scan</li><li>Pilot one contract template with aligned agents</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reporting -->
+      <div class="cat-report">
+        <h2>Reporting</h2>
+
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#31 Progress Web Pages - Convert Issue Log to Commentary</h3>
+            <div>
+              <span class="badge badge-fresh">Fresh</span>
+              <span class="badge badge-report">Reporting</span>
+            </div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Growing issue backlog needing closure via web pages.</div>
+            <div class="section"><h4>Solution</h4>Automated conversion of issue logs → commentary pages.</div>
+            <div class="section"><h4>Recent Progress</h4>18 Nov – workflow outlined.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Pilot conversion of 5 issues</li><li>Create standard commentary template</li></ul></div>
+          </div>
+        </div>
+
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#37 Monthly Progress Report</h3>
+            <div>
+              <span class="badge badge-fresh">Fresh</span>
+              <span class="badge badge-report">Reporting</span>
+            </div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>No structured monthly overview of open/closed/paused issues.</div>
+            <div class="section"><h4>Solution</h4>PDF reports via #31 → NotebookLM comparison → Grok insights.</div>
+            <div class="section"><h4>Recent Progress</h4>17 Nov – October report comparisons.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Generate November PDF</li><li>Run Grok MoM analysis</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uncategorized but Fresh -->
+      <div class="issue">
+        <div class="issue-header">
+          <h3 class="issue-title">#1 Team Building / Partner Location</h3>
+          <div><span class="badge badge-fresh">Fresh</span></div>
+        </div>
+        <div class="issue-body">
+          <div class="section"><h4>Problem</h4>Finding reliable side-hustle teammates + transparent reward contracts.</div>
+          <div class="section"><h4>Recent Progress</h4>17 Nov – partner outreach ideas.</div>
+          <div class="section"><h4>Next Steps</h4><ul><li>List 3–5 talent sources</li><li>Draft basic reward smart-contract template</li></ul></div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-header">
+          <h3 class="issue-title">#11 Storyline Funding - Substack</h3>
+          <div><span class="badge badge-fresh">Fresh</span></div>
+        </div>
+        <div class="issue-body">
+          <div class="section"><h4>Problem</h4>Need funding via compelling narrative.</div>
+          <div class="section"><h4>Recent Progress</h4>17 Nov – Substack flow refined.</div>
+          <div class="section"><h4>Next Steps</h4><ul><li>Publish first storyline post</li><li>Map funding options to sections</li></ul></div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-header">
+          <h3 class="issue-title">#28 Story #1 - Indie Gamer + Support Cast Call Outs</h3>
+          <div><span class="badge badge-fresh">Fresh</span></div>
+        </div>
+        <div class="issue-body">
+          <div class="section"><h4>Problem</h4>Indie devs lack contacts, valuation, encouragement.</div>
+          <div class="section"><h4>Solution</h4>Grok-generated HTML Mage story with valuation model.</div>
+          <div class="section"><h4>Recent Progress</h4>17 Nov – HTML sequence timing.</div>
+          <div class="section"><h4>Next Steps</h4><ul><li>Generate raw HTML story</li><li>Test valuation on sample project</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== NO RECENT COMMENTS ==================== -->
+    <div class="section-stale">
+      <h2>No Comments in Last 7 Days</h2>
+
+      <div class="cat-quest">
+        <h2>BOPE1Q – Quests</h2>
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#41 Quest #10 - Solving UK Graduate Unemployment</h3>
+            <div><span class="badge badge-stale">Stale</span><span class="badge badge-quest">BOPE1Q</span></div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>14% UK graduate unemployment → mental health impact.</div>
+            <div class="section"><h4>Solution</h4>“Pigeon Hole” gamified side-hustle training + AI digital job support.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Research Gen Z barriers</li><li>Prototype one training module</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-ux">
+        <h2>UX</h2>
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#38 Story #8 - The Libi “Game Play” Quest for Enterprise</h3>
+            <div><span class="badge badge-stale">Stale</span><span class="badge badge-ux">UX</span></div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Early traction for Libi autonomous gameplay platform.</div>
+            <div class="section"><h4>Solution</h4>10-step mirroring competition with rewards & hackathons.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Share one quest for mirroring test</li><li>Define economic evaluation criteria</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-tech">
+        <h2>BOPE2P – Tech</h2>
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#30 Full Working Approach for Web Artefact Creation</h3>
+            <div><span class="badge badge-stale">Stale</span><span class="badge badge-tech">BOPE2P</span></div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Grok limitations on GitHub code sourcing.</div>
+            <div class="section"><h4>Solution</h4>6-step Notebook → Grok → Claude → Google Doc → Grok → GitHub workflow.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>End-to-end test on one story</li><li>Document common handoff fixes</li></ul></div>
+          </div>
+        </div>
+
+        <div class="issue">
+          <div class="issue-header">
+            <h3 class="issue-title">#18 QUEST2P - Project Artefacts as NFTs</h3>
+            <div><span class="badge badge-stale">Stale</span><span class="badge badge-tech">BOPE2P</span></div>
+          </div>
+          <div class="issue-body">
+            <div class="section"><h4>Problem</h4>Artefacts lack tradability & proof of ownership.</div>
+            <div class="section"><h4>Solution</h4>NFT minting service once value demonstrated.</div>
+            <div class="section"><h4>Next Steps</h4><ul><li>Mockup NFTs for 3 artefacts</li><li>Research Solana minting costs</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-header">
+          <h3 class="issue-title">#26 Add Four Project Roles to About Page</h3>
+          <div><span class="badge badge-stale">Stale</span></div>
+        </div>
+        <div class="issue-body">
+          <div class="section"><h4>Problem</h4>About page missing key roles.</div>
+          <div class="section"><h4>Solution</h4>Add Hipster/Hacker/Hustler AI avatars + Founder (corporate mapping).</div>
+          <div class="section"><h4>Next Steps</h4><ul><li>Draft role descriptions & visuals</li><li>Integrate into About page</li></ul></div>
+        </div>
+      </div>
+
+      <div class="issue">
+        <div class="issue-header">
+          <h3 class="issue-title">#12 VS Code - For local editing</h3>
+          <div><span class="badge badge-stale">Stale</span></div>
+        </div>
+        <div class="issue-body">
+          <div class="section"><h4>Problem</h4>Local editing overhead vs. direct Vibe Coding.</div>
+          <div class="section"><h4>Solution</h4>Evaluate minimal VS Code or drop entirely.</div>
+          <div class="section"><h4>Next Steps</h4><ul><li>Test CoPilot-only workflow</li><li>Uninstall unused VS Code parts if viable</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Generated on 21 November 2025 • <a href="https://github.com/innov8tor3/project-engine" style="color:#58a6ff;">innov8tor3/project-engine</a>
+    </footer>
+  </div>
+</body>
+</html>
