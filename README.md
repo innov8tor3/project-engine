@@ -1,7 +1,7 @@
 # project-engine
 A project to feed other projects, tokenising project assets<br><br>
-A first exercise in Vibe Coding with CoPilot combined with other AI<br><br>
-We are currently on step 1 of 4, and hopefully looking for funding to accelerate progress:<br><br>
+A first exercise in AI Vibe Coding with occasional CoPilot<br><br>
+We are currently on steps 1 & 3 of 4, and hopefully looking for funding to accelerate progress:<br><br>
 1. Define the Quest - Quest
 2. Bring Function to the Quest - Project
 3. Find the Founder - Traction
