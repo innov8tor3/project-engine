@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>#RustEase – 10 Ways Solana PMs Ship Without Rust Pain</title>
+  <meta name="description" content="Top 10 community-approved ways to build on Solana with minimal or zero Rust – backed by Mert, Toly and the 2025 builder trenches."/>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --accent: #14F195;        /* Solana neon mint */
+      --soft: #e8fff5;
+      --card: #ffffff;
+      --shadow: 0 8px 30px rgba(0,0,0,0.06);
+      --radius: 16px;
+      --transition: all 0.35s ease;
+    }
+    body {
+      margin:0; padding:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #9945FF, #14F195);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem 3rem;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    h1 { margin:0; font-size: 2.6rem; }
+    h1 span { font-weight: 400; }
+    .subtitle { font-size: 1.2rem; opacity: 0.95; margin-top: 0.5rem; }
+    main { max-width: 920px; margin: 0 auto; padding: 2rem 1rem; }
+    .grid {
+      display: grid;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 6px;
+      background: var(--accent);
+    }
+    .num {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      width: 44px; height: 44px;
+      line-height: 44px;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      margin-right: 1rem;
+    }
+    .title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+    }
+    .backing {
+      font-size: 0.9rem;
+      color: #14F195;
+      font-weight: 600;
+      margin-top: 0.4rem;
+    }
+    .desc { margin-top: 0.8rem; opacity: 0.88; }
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #111;
+      color: #aaa;
+      margin-top: 4rem;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 640px) {
+      h1 { font-size: 2.1rem; }
+      .card { padding: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>#RustEase <span>2025</span></h1>
+    <p class="subtitle">10 proven ways Solana PMs & indie builders ship fast — with minimal or zero Rust</p>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <div class="card">
+        <div class="title"><span class="num">1</span> Anchor Framework (TS/JS-first)</div>
+        <div class="backing">Mert & Solana core team favourite</div>
+        <div class="desc">Write programs in TypeScript → Anchor auto-generates Rust & IDL. 5–10× faster iteration for most use-cases.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">2</span> Seahorse (Python → Solana)</div>
+        <div class="backing">Growing dev-rel love</div>
+        <div class="desc">Full smart-contracts in Python. Compiles to Rust under the hood. Perfect for PMs who think in scripts, not borrow-checkers.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">3</span> Claude / Cursor / Grok Code Generation</div>
+        <div class="backing">Mert: “10–20× faster than manual Rust”</div>
+        <div class="desc">Feed the docs + your spec → get working Anchor or client-side code in seconds. Zero compile cycles.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">4</span> Pure Client-Side (web3.js / wallet-adapter)</div>
+        <div class="backing">Toly & Mert both say 90 % of apps don’t need custom programs</div>
+        <div class="desc">Use Metaplex, SPL libraries, Jupiter, etc. All interaction via JS/TS. No Rust required.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">5</span> Helius RPC + Webhooks</div>
+        <div class="backing">Mert’s own stack at Helius</div>
+        <div class="desc">Off-chain logic + instant on-chain events. Build dashboards, bots, alerts without writing a single program.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">6</span> Solana Cookbook + ChatGPT</div>
+        <div class="backing">Community gold standard</div>
+        <div class="desc">Copy-paste battle-tested snippets (airdrop, staking, NFT mint) and adapt in minutes.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">7</span> Bankrun (JS testing for Rust programs)</div>
+        <div class="backing">Solana Labs official</div>
+        <div class="desc">Write tests in JavaScript, spin up local validator in-memory. No local Rust toolchain needed.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">8</span> Nautilus (C instead of Rust)</div>
+        <div class="backing">Alternative high-perf path</div>
+        <div class="desc">For teams allergic to borrow-checker but still want near-Rust speed.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">9</span> SuperteamDAO & Bounties</div>
+        <div class="backing">Earn-to-learn model</div>
+        <div class="desc">Low/no-code bounties let you ship real products while someone else handles the Rust.</div>
+      </div>
+
+      <div class="card">
+        <div class="title"><span class="num">10</span> Jupiter / Birdeye / Thirdweb APIs</div>
+        <div class="backing">Production-grade infra</div>
+        <div class="desc">Swaps, price feeds, token metadata — all accessible via simple REST/JS. Build full front-ends in Webflow/Bubble if you want.</div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Crafted with ❤️ by zebras for zebras • <a href="https://x.com/innov8tor3" target="_blank">@innov8tor3</a> • 2025</p>
+  </footer>
+
+</body>
+</html>
