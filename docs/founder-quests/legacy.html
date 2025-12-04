@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Legacy — Take the First Real Step</title>
+<style>
+  :root {
+    --c1: #0f0f1e;      /* deep background */
+    --c2: #6e56cf;      /* electric purple */
+    --c3: #00f2ff;      /* cyan glow */
+    --c4: #ff2e63;      /* hot coral */
+    --c5: #f8f9fa;      /* light text */
+    --c6: #25253a;      /* card bg */
+  }
+  body { margin:0; font-family: 'Inter', system-ui, sans-serif; background: var(--c1); color:var(--c5); line-height:1.6; }
+  .container { max-width:880px; margin:0 auto; padding:2rem 1rem; }
+  h1, h2 { background: linear-gradient(90deg, var(--c2), var(--c3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .progress { position:fixed; top:0; left:0; width:100%; height:8px; background:#111; z-index:99; }
+  .bar { height:100%; width:0; background:linear-gradient(90deg,var(--c2),var(--c3)); transition:width 0.4s; }
+  .card { background:var(--c6); border-radius:16px; padding:2rem; margin:3rem 0; box-shadow:0 20px 40px rgba(0,0,0,0.4); border:1px solid rgba(110,86,207,0.2); }
+  textarea, input[type="text"] { width:100%; padding:1rem; border-radius:12px; border:2px solid transparent; background:#111; color:white; font-size:1.1rem; transition:border 0.3s; }
+  textarea:focus, input:focus { border-color:var(--c3); outline:none; }
+  .yn { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
+  button.yes, button.no { padding:1rem; font-size:1.2rem; border:none; border-radius:12px; cursor:pointer; transition:all 0.3s; }
+  button.yes { background:var(--c3); color:#000; }
+  button.no  { background:#333; color:#aaa; }
+  button.yes:hover { transform:scale(1.05); }
+  button.no:hover  { background:#555; }
+  .next-btn { background:var(--c2); color:white; padding:1rem 2rem; font-size:1.2rem; border:none; border-radius:50px; cursor:pointer; margin-top:2rem; }
+  .copy-area { background:#111; padding:2rem; border-radius:12px; margin:2rem 0; overflow:auto; display:none; }
+  .highlight { background:var(--c4); color:white; padding:0.2rem 0.5rem; border-radius:6px; }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="progressBar"></div></div>
+
+<div class="container">
+
+  <div class="card" id="intro">
+    <h1>Ready to stop dreaming and start building something that lasts?</h1>
+    <p>Most people never take the first real step. This is yours.</p>
+    <button class="next-btn" onclick="next(1)">Let’s go →</button>
+  </div>
+
+  <!-- ====================== QUESTION 1 – Passion ====================== -->
+  <div class="card" id="q1" style="display:none">
+    <h2>1. What fires you up so much you’d do it for the rest of your life — even if nobody paid you?</h2>
+    <p>Tell us the thing you love, the broken system that drives you mad, or the change you’re willing to fight for.</p>
+    <textarea id="passion" rows="5" placeholder="e.g. Mental health support is broken and nobody is fixing it for teens…"></textarea>
+    <button class="next-btn" onclick="save(1); next(2)">Next →</button>
+  </div>
+
+  <!-- ====================== QUESTIONS 2–8 (Y/N) ====================== -->
+  <div class="card" id="q2" style="display:none">
+    <h2>2. Service</h2>
+    <p>Would you do this full-time even if money was tight at first — because it matters that much?</p>
+    <div class="yn"><button class="yes" onclick="setYes(2)">YES</button><button class="no" onclick="setNo(2)">No</button></div>
+    <button class="next-btn" style="margin-top:3rem" onclick="next(3)">Next →</button>
+  </div>
+
+  <div class="card" id="q3" style="display:none">
+    <h2>3. Creativity</h2>
+    <p>Are you ready to use AI (like Grok, Midjourney, Claude, etc.) as your co-pilot at every single step — ideas, images, code, strategy?</p>
+    <div class="yn"><button class="yes" onclick="setYes(3)">YES</button><button class="no" onclick="setNo(3)">No</button></div>
+    <button class="next-btn" style="margin-top:3rem" onclick="next(4)">Next →</button>
+  </div>
+
+  <div class="card" id="q4" style="display:none">
+    <h2>4. Hard Work</h2>
+    <p>Nothing happens by magic. Are you willing to ship real work, week after week, even when it’s judged (or ignored)?</p>
+    <div class="yn"><button class="yes" onclick="setYes(4)">YES</button><button class="no" onclick="setNo(4)">No</button></div>
+    <button class="next-btn" style="margin-top:3rem" onclick="next(5)">Next →</button>
+  </div>
+
+  <div class="card" id="q5" style="display:none">
+    <h2>5. Determination</h2>
+    <p>Obstacles are guaranteed. Are you aiming to become <span class="highlight">unstoppable</span> — using AI to solve even the messiest, most stuck problems?</p>
+    <div class="yn"><button class="yes" onclick="setYes(5)">YES</button><button class="no" onclick="setNo(5)">No</button></div>
+    <button class="next-btn" style="margin-top:3rem" onclick="next(6)">Next →</button>
+  </div>
+
+  <div class="card" id="q6" style="display:none">
+    <h2>6. Focus</h2>
+    <p>When deadlines hit, can you go full monk-mode while still handling family/life? (Success might be knowledge or impact, not just money.)</p>
+    <div class="yn"><button class="yes" onclick="setYes(6)">YES</button><button class="no" onclick="setNo(6)">No</button></div>
+    <button class="next-btn" style="margin-top:3rem" onclick="next(7)">Next →</button>
+  </div>
+
+  <div class="card" id="q7" style="display:none">
+    <h2>7. Excellence + Initiative</h2>
+    <p>Will you strive for <span class="highlight">excellence</span> and <span class="highlight">take ruthless initiative</span> — spotting gaps others miss and actually shipping better solutions?</p>
+    <div class="yn"><button class="yes" onclick="setYes(7)">YES</button><button class="no" onclick="setNo(7)">No</button></div>
+    <button class="next-btn" style="margin-top:3rem" onclick="next(8)">Next →</button>
+  </div>
+
+  <div class="card" id="q8" style="display:none">
+    <h2>8. Challenge</h2>
+    <p>You’ll face haters, gatekeepers, and dumb rules. Are you brave enough to stay open, accountable, and keep pushing anyway?</p>
+    <div class="yn"><button class="yes" onclick="setYes(8)">YES</button><button class="no" onclick="setNo(8)">No</button></div>
+    <button class="next-btn" style="margin-top:3rem" onclick="next(9)">Next →</button>
+  </div>
+
+  <!-- ====================== FINAL STEP ====================== -->
+  <div class="card" id="final" style="display:none">
+    <h1>Here’s your snapshot</h1>
+    <p>Copy everything below (including the === markers) and paste it into <strong>Grok</strong> (web or app). Grok will instantly give you 10 mind-blowing, tailored pathways + a ready-to-publish personal legacy page.</p>
+
+    <div class="copy-area" id="output">
+      <pre id="dataBlock"></pre>
+    </div>
+
+    <button class="next-btn" onclick="selectAll()">Select All & Copy</button>
+    <p style="margin-top:2rem; opacity:0.8;">
+      After Grok replies, tag <strong>@innov8tor3</strong> on X/Twitter with the conversation link — I’ll help you level it up even more.
+    </p>
+  </div>
+
+</div>
+
+<script>
+// Storage object
+const answers = {
+  passion: "",
+  q2:"?", q3:"?", q4:"?", q5:"?", q6:"?", q7:"?", q8:"?"
+};
+
+function next(step) {
+  // hide all
+  document.querySelectorAll('.card').forEach(c=>c.style.display='none');
+  document.getElementById('q'+step).style.display='block';
+  updateProgress(step);
+  scrollTo(0,0);
+}
+
+function save(step) {
+  if(step===1) answers.passion = document.getElementById('passion').value.trim();
+}
+
+function setYes(q) { answers['q'+q] = "YES"; document.querySelector(`#q${q} .next-btn`).style.opacity=1; }
+function setNo(q)  { answers['q'+q] = "NO";  document.querySelector(`#q${q} .next-btn`).style.opacity=1; }
+
+function updateProgress(step) {
+  const total = 9;
+  const percent = (step / total) * 100;
+  document.getElementById('progressBar').style.width = percent + '%';
+}
+
+// Final screen – generate the block to copy
+function generateBlock() {
+  const block = `=== START LEGACY BUILDER DATA ===
+Passion: ${answers.passion || "(not entered)"}
+
+Service (Q2): ${answers.q2}
+Creativity (Q3): ${answers.q3}
+Hard Work (Q4): ${answers.q4}
+Determination (Q5): ${answers.q5}
+Focus (Q6): ${answers.q6}
+Excellence + Initiative (Q7): ${answers.q7}
+Challenge (Q8): ${answers.q8}
+
+Please give me 10 specific, surprising, and actionable pathways I can start TODAY to turn this passion into a lasting legacy — including current market gaps, who’s already trying, and bold moves most people miss. Also return a complete, beautiful single-page HTML personal site that reflects my answers and these pathways.
+=== END LEGACY BUILDER DATA ===`;
+
+  document.getElementById('dataBlock').textContent = block;
+  document.getElementById('output').style.display = 'block';
+}
+
+// Show final when we reach step 9
+next(9); // we start hidden, so jump straight in after intro
+document.getElementById('intro').style.display='block';
+
+// Override the last "Next" button on Q8 to go to results
+document.querySelector('#q8 .next-btn').onclick = ()=>{
+  generateBlock();
+  document.querySelectorAll('.card').forEach(c=>c.style.display='none');
+  document.getElementById('final').style.display='block';
+  updateProgress(9);
+};
+
+function selectAll() {
+  const range = document.createRange();
+  range.selectNodeContents(document.getElementById('output'));
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  document.execCommand('copy');
+  alert("Copied! Now paste it into Grok →");
+}
+</script>
+</body>
+</html>
