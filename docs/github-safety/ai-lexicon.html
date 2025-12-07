@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lexicon for X Profiles - A Modern Glossary of AI Uses</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .intro {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-color);
+            opacity: 0.6;
+        }
+        .glossary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .term-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-left: 4px solid var(--primary-color);
+        }
+        .term-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+        .term-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .term-header h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .term-header i {
+            color: var(--secondary-color);
+            transition: transform 0.3s;
+        }
+        .term-card.active .term-header i {
+            transform: rotate(180deg);
+        }
+        .term-explanation {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .term-card.active .term-explanation {
+            display: block;
+        }
+        .category {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #64748b;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .glossary {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-robot"></i> AI Lexicon for X Profiles</h1>
+            <p>A curated glossary of hashtags and labels for disclosing AI uses on X (formerly Twitter). Inspired by emerging trends in 2025, this lexicon promotes transparency in an era of bots, assistants, and creators.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="intro">
+            <h2>Explore the Lexicon</h2>
+            <p>Search or click on terms below for Wiki-style explainers. These labels can be added to bios or posts for clarity—e.g., "#AIAugmented Human". Drawn from reported AI instances on X, including sales agents, scam bots, and creative tools.</p>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search terms...">
+            </div>
+        </section>
+
+        <section class="glossary">
+            <div class="category">Collaborative & Augmented AI</div>
+            <div class="term-card" data-term="AIAugmented">
+                <div class="term-header">
+                    <h3>#AIAugmented</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Describes profiles where AI enhances human capabilities, such as content ideation or research, without replacing the user. Common in creators and professionals using tools like Grok or ChatGPT for brainstorming.</p>
+                    <p><strong>Example Use:</strong> "AI-Augmented Writer | #AIAugmented"</p>
+                    <p><strong>Context:</strong> Emerged in 2025 discussions on X about ethical AI collaboration, contrasting with full automation.</p>
+                </div>
+            </div>
+            <div class="term-card" data-term="AICollaborator">
+                <div class="term-header">
+                    <h3>#AICollaborator</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> For accounts treating AI as a creative partner, e.g., co-authoring posts or generating visuals. Highlights symbiotic human-AI workflows.</p>
+                    <p><strong>Example Use:</strong> "Digital Artist x AI | #AICollaborator"</p>
+                    <p><strong>Context:</strong> Popular among indie developers and artists on X, as seen in threads about AI tools like Midjourney.</p>
+                </div>
+            </div>
+
+            <div class="category">Commercial & Sales AI</div>
+            <div class="term-card" data-term="AILeadGen">
+                <div class="term-header">
+                    <h3>#AILeadGen</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Labels profiles using AI for lead generation, such as scraping LinkedIn or qualifying prospects via bots.</p>
+                    <p><strong>Example Use:</strong> "B2B Growth Hacker | #AILeadGen"</p>
+                    <p><strong>Context:</strong> Widespread in 2025 sales automation posts on X, with templates for AI-driven outreach.</p>
+                </div>
+            </div>
+            <div class="term-card" data-term="AISalesBot">
+                <div class="term-header">
+                    <h3>#AISalesBot</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Automated accounts for sales interactions, like voice agents calling leads or drafting emails.</p>
+                    <p><strong>Example Use:</strong> "AI Sales Closer | #AISalesBot"</p>
+                    <p><strong>Context:</strong> Featured in X promotions for tools like AI Voice Sales Agents, emphasizing efficiency in cold outreach.</p>
+                </div>
+            </div>
+            <div class="term-card" data-term="AIVoiceAgent">
+                <div class="term-header">
+                    <h3>#AIVoiceAgent</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Profiles powered by voice-based AI for customer service or prospecting, e.g., handling inbound calls.</p>
+                    <p><strong>Example Use:</strong> "24/7 Support Bot | #AIVoiceAgent"</p>
+                    <p><strong>Context:</strong> Gained traction in 2025 with templates for dental, e-commerce, and travel industries on X.</p>
+                </div>
+            </div>
+
+            <div class="category">Creative & Generative AI</div>
+            <div class="term-card" data-term="AICreator">
+                <div class="term-header">
+                    <h3>#AICreator</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> For users generating content like images, text, or music with AI tools, disclosing the tech behind their work.</p>
+                    <p><strong>Example Use:</strong> "AI-Powered Storyteller | #AICreator"</p>
+                    <p><strong>Context:</strong> Common in X communities sharing AI art and writing, promoting transparency amid deepfake concerns.</p>
+                </div>
+            </div>
+            <div class="term-card" data-term="AIArtist">
+                <div class="term-header">
+                    <h3>#AIArtist</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Profiles focused on AI-generated visuals, such as photo replacements or interior designs.</p>
+                    <p><strong>Example Use:</strong> "Generative Art | #AIArtist"</p>
+                    <p><strong>Context:</strong> Inspired by 2025 X posts on tools like PhotoAI and InteriorAI, disrupting traditional creative roles.</p>
+                </div>
+            </div>
+
+            <div class="category">Utility & Automation AI</div>
+            <div class="term-card" data-term="AIAutomator">
+                <div class="term-header">
+                    <h3>#AIAutomator</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Accounts automating repetitive tasks, like research or scheduling, to save time.</p>
+                    <p><strong>Example Use:</strong> "Workflow Optimizer | #AIAutomator"</p>
+                    <p><strong>Context:</strong> Highlighted in X threads on reclaiming hours via AI agents for non-technical users.</p>
+                </div>
+            </div>
+            <div class="term-card" data-term="AIAssistant">
+                <div class="term-header">
+                    <h3>#AIAssistant</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> General-purpose helpers for queries, reminders, or data analysis, akin to virtual aides.</p>
+                    <p><strong>Example Use:</strong> "Your AI Sidekick | #AIAssistant"</p>
+                    <p><strong>Context:</strong> Evolved from 2025 bot-tagging on X, distinguishing helpful from spammy automation.</p>
+                </div>
+            </div>
+
+            <div class="category">Risky & Malicious AI</div>
+            <div class="term-card" data-term="ScamBot">
+                <div class="term-header">
+                    <h3>#ScamBot</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Fraudulent AI accounts mimicking humans for scams, like promo DMs or phishing.</p>
+                    <p><strong>Example Use:</strong> (Avoid; for flagging) "Flagged Scam | #ScamBot"</p>
+                    <p><strong>Context:</strong> X's 2025 "Automated" tags spotlight these, with engines flagging crypto shills.</p>
+                </div>
+            </div>
+            <div class="term-card" data-term="DeepfakeScammer">
+                <div class="term-header">
+                    <h3>#DeepfakeScammer</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="term-explanation">
+                    <p><strong>Definition:</strong> Profiles using deepfakes for impersonation or fraud, e.g., fake video calls.</p>
+                    <p><strong>Example Use:</strong> (Warning label) "Deepfake Alert | #DeepfakeScammer"</p>
+                    <p><strong>Context:</strong> Rising in late 2025 X warnings about AI fraud trends on platforms like TikTok.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AI Lexicon Project | Inspired by X Community Discussions | Built with ❤️ for Transparency</p>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.term-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const termCards = document.querySelectorAll('.term-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            termCards.forEach(card => {
+                const term = card.dataset.term.toLowerCase();
+                const explanation = card.querySelector('.term-explanation').textContent.toLowerCase();
+                if (term.includes(query) || explanation.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
