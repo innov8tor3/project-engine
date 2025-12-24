@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web3 Categories</title>
+    <style>
+        /* Nighttime theme: soft dark blue */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #001f3f, #000033);
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+
+    /* Container for categories */
+    .container {
+        max-width: 1200px;
+        margin: 50px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Glassmorphic card style */
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .card h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        font-size: 1em;
+        color: #d3d3d3;
+    }
+
+    /* Christmas snow effect */
+    .snowflake {
+        position: absolute;
+        top: -10px;
+        color: #fff;
+        font-size: 1.5em;
+        animation: fall linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh);
+        }
+    }
+
+    /* Header with Christmas touch */
+    header {
+        text-align: center;
+        padding: 40px 0;
+        position: relative;
+    }
+
+    header h1 {
+        font-size: 2.5em;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Add some Christmas lights effect (simple glowing orbs) */
+    .lights {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: transparent;
+    }
+
+    .light {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        0% { box-shadow: 0 0 5px #ff0000; }
+        50% { box-shadow: 0 0 15px #00ff00; }
+        100% { box-shadow: 0 0 5px #ffff00; }
+    }
+</style></head>
+<body>
+    <header>
+        <h1>Web3 Categories</h1>
+        <div class="lights">
+            <!-- Randomly placed lights -->
+        </div>
+    </header>
+
+<div class="container">
+    <div class="card">
+        <h2> UX</h2>
+        <p>What to explain to people to reassure them I'm genuine and serious, e.g., for a GitHub Pages website.</p>
+    </div>
+    <div class="card">
+        <h2> Reporting</h2>
+        <p>Keeping an audience engaged, e.g., Build In Public.</p>
+    </div>
+    <div class="card">
+        <h2> Citizen</h2>
+        <p>Chaos on a community level, or a global level.</p>
+    </div>
+    <div class="card">
+        <h2> Quest</h2>
+        <p>Selected journeys from chaos to clarity, seeking founders to steward ideas to tech platforms.</p>
+    </div>
+    <div class="card">
+        <h2> Traction</h2>
+        <p>A community of supporters who will game solutions and be founders.</p>
+    </div>
+    <div class="card">
+        <h2> Project</h2>
+        <p>Testing recipient communities for grant and funding options, and building tech.</p>
+    </div>
+    <div class="card">
+        <h2> Startup</h2>
+        <p>Business models for sustainability, Operations models to build impact, Risk Management.</p>
+    </div>
+    <div class="card">
+        <h2> Other</h2>
+        <p>Catch-all category for anything hard to define.</p>
+    </div>
+</div>
+
+<script>
+    // JavaScript for falling snow
+    function createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.innerHTML = '';
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2-5s fall
+        snowflake.style.opacity = Math.random();
+        snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+        document.body.appendChild(snowflake);
+
+        setTimeout(() => {
+            snowflake.remove();
+        }, 5000);
+    }
+
+    setInterval(createSnowflake, 100);
+
+    // JavaScript for Christmas lights
+    const lightsContainer = document.querySelector('.lights');
+    for (let i = 0; i < 20; i++) {
+        const light = document.createElement('div');
+        light.classList.add('light');
+        light.style.left = Math.random() * 100 + '%';
+        light.style.top = Math.random() * 50 + 'px';
+        light.style.background = ['#ff0000', '#00ff00', '#ffff00', '#0000ff'][Math.floor(Math.random() * 4)];
+        light.style.animationDelay = Math.random() * 2 + 's';
+        lightsContainer.appendChild(light);
+    }
+</script>
+</body>
+</html>
+
