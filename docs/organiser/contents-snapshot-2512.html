@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Engine Docs Organizer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2E0B1A, #4A0E2A); /* Dark wine red gradient */
+            color: #E8D0D0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(80, 20, 40, 0.25); /* Glassy wine tint */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            overflow: hidden;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #FFB3B3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #D46A6A;
+            border-bottom: 1px solid rgba(212, 106, 106, 0.3);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        details {
+            margin: 15px 0;
+            background: rgba(94, 26, 47, 0.3); /* Virginia Creeper accent */
+            border-radius: 12px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+        details:hover {
+            background: rgba(94, 26, 47, 0.5);
+            transform: translateY(-5px);
+        }
+        summary {
+            font-size: 1.4em;
+            font-weight: bold;
+            cursor: pointer;
+            color: #FF9999;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            color: #F0D0D0;
+        }
+        li.folder {
+            font-weight: bold;
+            color: #B3FFB3; /* Subtle green for folders */
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Engine Docs Organizer</h1>
+        <p style="text-align:center; margin-bottom:40px;">Organized by Web3 Categories for easy navigation and restructuring.</p>
+
+        <details open>
+            <summary>UX</summary>
+            <ul>
+                <li class="folder">frontend/</li>
+                <li>&nbsp;&nbsp;design/</li>
+            </ul>
+        </details>
+
+        <details open>
+            <summary>Reporting</summary>
+            <ul>
+                <li class="folder">reporting/</li>
+                <li class="folder">reports/</li>
+                <li>&nbsp;&nbsp;report-2025-09/</li>
+                <li class="folder">press/</li>
+                <li class="folder">pitch/</li>
+            </ul>
+        </details>
+
+        <details open>
+            <summary>Citizen</summary>
+            <ul>
+                <li class="folder">citizen/</li>
+            </ul>
+        </details>
+
+        <details open>
+            <summary>Quest</summary>
+            <ul>
+                <li class="folder">founder-quests/</li>
+                <li class="folder">action-stories/</li>
+            </ul>
+        </details>
+
+        <details open>
+            <summary>Traction</summary>
+            <ul>
+                <li>(No direct matches; potential overlaps with community folders)</li>
+            </ul>
+        </details>
+
+        <details open>
+            <summary>Project</summary>
+            <ul>
+                <li class="folder">backend/</li>
+                <li class="folder">frontend/ (also in UX)</li>
+                <li class="folder">testing/</li>
+                <li class="folder">dev-envt/</li>
+                <li class="folder">rust-ease/</li>
+            </ul>
+        </details>
+
+        <details open>
+            <summary>Startup</summary>
+            <ul>
+                <li class="folder">ops-hub/</li>
+                <li class="folder">scale-up/</li>
+                <li class="folder">github-safety/</li>
+                <li class="folder">contrib-valun/</li>
+                <li class="folder">defi/</li>
+                <li class="folder">oasis/</li>
+                <li class="folder">backup/</li>
+            </ul>
+        </details>
+
+        <details open>
+            <summary>Other</summary>
+            <ul>
+                <li class="folder">about/</li>
+                <li class="folder">smorgasbord/</li>
+                <li class="folder">organiser/</li>
+                <li>genesis</li>
+                <li>index.md</li>
+                <li>_config.yml</li>
+                <li>.gitkeep</li>
+            </ul>
+        </details>
+
+        <footer>Generated for Project Engine • Dark Wine Red & Virginia Creeper Theme</footer>
+    </div>
+</body>
+</html>
