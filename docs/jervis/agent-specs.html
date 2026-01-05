@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatars Assemble - Project Engine Task Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #003d3d; /* Dark turquoise */
+            color: #e0f7fa; /* Light cyan for contrast */
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, #004d4d, #002626);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3em;
+            color: #00ffff; /* Neon cyan */
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #00ffff; }
+            to { text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff; }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .task-card {
+            background: rgba(0, 64, 64, 0.8); /* Semi-transparent dark teal */
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            margin: 15px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 0 15px #00ffff;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .task-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #00ffff, 0 0 35px #00ffff;
+        }
+        .task-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffd700; /* Gold for task names */
+            margin-top: 0;
+        }
+        .task-card p {
+            font-size: 1.1em;
+        }
+        .assignee {
+            font-weight: bold;
+            color: #ffeb3b; /* Yellow for assignees */
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .task-card.active .details {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #002626;
+            color: #81d4fa;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Avatars Assemble</h1>
+        <p>Project Engine Task Dashboard - AI Agents in Action</p>
+    </header>
+    <div class="container">
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>Agentic AI</h2>
+            <p>Now structured like this, having considered antigravity.</p>
+            <p class="assignee">Assigned to: 13</p>
+            <div class="details">
+                <p>Progress: Structured with considerations for antigravity. Part of #BuildInPublic thread.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>Project Sprawl</h2>
+            <p>Still seeking control.</p>
+            <p class="assignee">Assigned to: Jervis</p>
+            <div class="details">
+                <p>Progress: Seeking methods to control project sprawl in Web3.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>Project Categories</h2>
+            <p>Completed but not published.</p>
+            <p class="assignee">Assigned to: Jervis</p>
+            <div class="details">
+                <p>Progress: Categories defined; awaiting publication.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>AAI Management</h2>
+            <p>Search for supportive tech continues.</p>
+            <p class="assignee">Assigned to: Jervis</p>
+            <div class="details">
+                <p>Progress: Ongoing search for technologies to support Agentic AI management.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>W3 Positive Press</h2>
+            <p>Wow stories growing, needs publishing location.</p>
+            <p class="assignee">Assigned to: Jobba</p>
+            <div class="details">
+                <p>Progress: Collecting positive Web3 stories; requires a platform for publication.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>Digital Creators</h2>
+            <p>First step created for Wireframe.</p>
+            <p class="assignee">Assigned to: Indy Jo</p>
+            <div class="details">
+                <p>Progress: Initial wireframe step completed for digital creators initiative.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>Audience Locator</h2>
+            <p>Key role for AAI.</p>
+            <p class="assignee">Assigned to: Muskrat</p>
+            <div class="details">
+                <p>Progress: Defining key role in Agentic AI for locating audiences.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>Boomer Handoff</h2>
+            <p>Interest, Gen Z support, needs some digital assets.</p>
+            <p class="assignee">Assigned to: Muskrat</p>
+            <div class="details">
+                <p>Progress: Gaining interest from Gen Z; digital assets needed for full rollout. Part of #BuildInPublic thread.</p>
+            </div>
+        </div>
+        <div class="task-card" onclick="toggleDetails(this)">
+            <h2>Reporting</h2>
+            <p>Ideas from X/Grok, Assembly using Google Docs/Grok.</p>
+            <p class="assignee">Assigned to: Sholmes</p>
+            <div class="details">
+                <p>Progress: Ideas compiled; focusing on structured reporting for Web3 projects.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Powered by xAI & Project Engine | Ready for GitHub Pages</p>
+    </footer>
+    <script>
+        function toggleDetails(card) {
+            card.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
+
