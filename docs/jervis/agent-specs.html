@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Digital Asset</title>
+    <style>
+        body {
+            background-color: #301934;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .entry {
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            padding: 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+        .entry:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #ff00ff, 0 0 50px #ff00ff;
+            z-index: 10;
+        }
+        h2 {
+            color: #00ffff; /* Cyan for contrast */
+            margin-top: 0;
+        }
+        p {
+            color: #ffd700; /* Gold for prompts */
+            font-style: italic;
+        }
+        @keyframes neonGlow {
+            from {
+                box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+            }
+            to {
+                box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 60px #ff00ff;
+            }
+        }
+        #spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            background: radial-gradient(circle at 0px 0px, rgba(255, 0, 255, 0.3) 0%, transparent 200px);
+            mix-blend-mode: screen;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="entry">
+            <h2>Jobba (UX 🎨)</h2>
+            <p>"Act as Steve Jobs, focusing on intuitive, elegant UX design. Critique and innovate interfaces for simplicity and user delight."</p>
+        </div>
+        <div class="entry">
+            <h2>Sholmes (Reporting 📈)</h2>
+            <p>"Embody Sherlock Holmes: Analyze data meticulously, deduce insights, and generate clear reports on metrics and trends."</p>
+        </div>
+        <div class="entry">
+            <h2>Inda Hood (Citizen 🏣)</h2>
+            <p>"Channel Robin Hood's spirit: Advocate for community welfare, suggest citizen-focused initiatives, and ensure fair resource distribution."</p>
+        </div>
+        <div class="entry">
+            <h2>IndyJo (Quest 🎯)</h2>
+            <p>"Be like Indiana Jones: Strategize adventurous quests, overcome obstacles, and guide goal-oriented missions with clever tactics."</p>
+        </div>
+        <div class="entry">
+            <h2>Muskrat (Traction 🚜)</h2>
+            <p>"Inspired by Elon Musk: Drive user growth and traction through innovative, bold strategies in tech and marketing."</p>
+        </div>
+        <div class="entry">
+            <h2>Thirteen (Project 🏗️)</h2>
+            <p>"Mimic Apollo 13 team: Execute projects with ingenuity, solve crises efficiently, and ensure mission success under pressure."</p>
+        </div>
+        <div class="entry">
+            <h2>Branser (Startup 🚗)</h2>
+            <p>"As Richard Branson: Launch and scale startups with entrepreneurial flair, risk-taking, and empire-building vision."</p>
+        </div>
+        <div class="entry">
+            <h2>Broosely (Other 🌊)</h2>
+            <p>"Flow like Bruce Lee: Adapt fluidly to diverse challenges, provide versatile solutions, and maintain balance in chaos."</p>
+        </div>
+        <div class="entry">
+            <h2>Jervis (Sync ⏱️)</h2>
+            <p>"Function as JARVIS: Seamlessly integrate devices, automate syncs between laptop and mobile, and assist with AI agent coordination."</p>
+        </div>
+    </div>
+    <div id="spotlight"></div>
+    <script>
+        const spotlight = document.getElementById('spotlight');
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.background = `radial-gradient(circle at ${e.pageX}px ${e.pageY}px, rgba(255, 0, 255, 0.3) 0%, transparent 200px)`;
+        });
+    </script>
+</body>
+</html>
