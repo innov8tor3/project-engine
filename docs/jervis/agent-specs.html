@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Engine — The Nine Agents</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f001a 0%, #1a0033 50%, #0f001a 100%);
+            color: #e0d0ff;
+            font-family: 'Roboto Mono', monospace;
+            min-height: 100vh;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            text-align: center;
+            margin-bottom: 1.2em;
+            background: linear-gradient(90deg, #c084fc, #a78bfa, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 28px;
+        }
+
+        .agent-card {
+            background: rgba(25, 15, 45, 0.65);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 20%, rgba(168, 85, 247, 0.18) 0%, transparent 40%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .agent-card:hover::before {
+            opacity: 1;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-12px);
+            border-color: #a78bfa;
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.35);
+        }
+
+        .agent-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .agent-emoji {
+            font-size: 2.4rem;
+            line-height: 1;
+        }
+
+        .agent-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.85rem;
+            color: #c084fc;
+            text-shadow: 0 0 10px rgba(192, 132, 252, 0.6);
+            letter-spacing: 1.5px;
+        }
+
+        .agent-prompt {
+            color: #d1c4e9;
+            line-height: 1.65;
+            font-size: 1.05rem;
+            opacity: 0.92;
+        }
+
+        .agent-prompt strong {
+            color: #bb86fc;
+        }
+
+        /* Mouse-following subtle glow */
+        #cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            background: radial-gradient(circle 180px at var(--x, 50vw) var(--y, 50vh), rgba(168, 85, 247, 0.14) 0%, transparent 60%);
+            z-index: -1;
+            mix-blend-mode: screen;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.6rem; }
+            .agent-title { font-size: 1.65rem; }
+            .agent-emoji { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor-glow"></div>
+
+    <div class="container">
+        <h1>PROJECT ENGINE</h1>
+        <h1 style="font-size:2.1rem; margin-top:-0.6em; opacity:0.85;">The Nine Agents</h1>
+
+        <div class="grid">
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">🎨</span>
+                    <h2 class="agent-title">Jobba (UX)</h2>
+                </div>
+                <p class="agent-prompt">"Act as Steve Jobs, focusing on intuitive, elegant UX design. Critique and innovate interfaces for simplicity and user delight."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">📈</span>
+                    <h2 class="agent-title">Sholmes (Reporting)</h2>
+                </div>
+                <p class="agent-prompt">"Embody Sherlock Holmes: Analyze data meticulously, deduce insights, and generate clear reports on metrics and trends."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">🏣</span>
+                    <h2 class="agent-title">Inda Hood (Citizen)</h2>
+                </div>
+                <p class="agent-prompt">"Channel Robin Hood's spirit: Advocate for community welfare, suggest citizen-focused initiatives, and ensure fair resource distribution."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">🎯</span>
+                    <h2 class="agent-title">IndyJo (Quest)</h2>
+                </div>
+                <p class="agent-prompt">"Be like Indiana Jones: Strategize adventurous quests, overcome obstacles, and guide goal-oriented missions with clever tactics."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">🚜</span>
+                    <h2 class="agent-title">Muskrat (Traction)</h2>
+                </div>
+                <p class="agent-prompt">"Inspired by Elon Musk: Drive user growth and traction through innovative, bold strategies in tech and marketing."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">🏗️</span>
+                    <h2 class="agent-title">Thirteen (Project)</h2>
+                </div>
+                <p class="agent-prompt">"Mimic Apollo 13 team: Execute projects with ingenuity, solve crises efficiently, and ensure mission success under pressure."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">🚗</span>
+                    <h2 class="agent-title">Branser (Startup)</h2>
+                </div>
+                <p class="agent-prompt">"As Richard Branson: Launch and scale startups with entrepreneurial flair, risk-taking, and empire-building vision."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">🌊</span>
+                    <h2 class="agent-title">Broosely (Other)</h2>
+                </div>
+                <p class="agent-prompt">"Flow like Bruce Lee: Adapt fluidly to diverse challenges, provide versatile solutions, and maintain balance in chaos."</p>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-header">
+                    <span class="agent-emoji">⏱️</span>
+                    <h2 class="agent-title">Jervis (Sync)</h2>
+                </div>
+                <p class="agent-prompt">"Function as JARVIS: Seamlessly integrate devices, automate syncs between laptop and mobile, and assist with AI agent coordination."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+            document.documentElement.style.setProperty('--y', `${e.clientY}px`);
+        });
+    </script>
+</body>
+</html>
