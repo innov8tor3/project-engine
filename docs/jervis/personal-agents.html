@@ -5,32 +5,490 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Engine — The Seven Agents</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #005F5F; /* Deep sea green */
-            color: white;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #004d4d 0%, #006666 50%, #008080 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
         }
-        h1, h2 {
-            color: #2E8B57; /* Sea green */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        strong {
-            color: #2E8B57; /* Sea green for bold text */
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #2E8B57, #3CB371, #20B2AA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            color: #90EE90;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .tagline {
+            font-size: 1.1em;
+            color: #B0E0E6;
+            font-style: italic;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .agent-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(46, 139, 87, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out backwards;
+        }
+
+        .agent-card:nth-child(1) { animation-delay: 0.1s; }
+        .agent-card:nth-child(2) { animation-delay: 0.2s; }
+        .agent-card:nth-child(3) { animation-delay: 0.3s; }
+        .agent-card:nth-child(4) { animation-delay: 0.4s; }
+        .agent-card:nth-child(5) { animation-delay: 0.5s; }
+        .agent-card:nth-child(6) { animation-delay: 0.6s; }
+        .agent-card:nth-child(7) { animation-delay: 0.7s; }
+
+        .agent-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(46, 139, 87, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .agent-card:hover::before {
+            opacity: 1;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(46, 139, 87, 0.8);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                        0 0 30px rgba(46, 139, 87, 0.2);
+        }
+
+        .agent-card.active {
+            background: rgba(46, 139, 87, 0.2);
+            border-color: #2E8B57;
+        }
+
+        .agent-emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .agent-card:hover .agent-emoji {
+            animation: spin 0.6s ease-in-out;
+        }
+
+        .agent-name {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #3CB371;
+            margin-bottom: 8px;
+        }
+
+        .agent-role {
+            font-size: 1.1em;
+            color: #90EE90;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .agent-character {
+            color: #B0E0E6;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .agent-description {
+            color: #E0FFFF;
+            line-height: 1.6;
+            font-size: 1em;
+        }
+
+        .stats-bar {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            color: #B0E0E6;
+        }
+
+        .stat-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 4px;
+        }
+
+        .stat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2E8B57, #3CB371);
+            border-radius: 3px;
+            transition: width 1s ease-out;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #B0E0E6;
+            font-size: 0.95em;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(46, 139, 87, 0.5);
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover {
+            background: rgba(46, 139, 87, 0.3);
+            border-color: #2E8B57;
+            transform: scale(1.05);
+        }
+
+        .filter-btn.active {
+            background: #2E8B57;
+            border-color: #3CB371;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .subtitle {
+                font-size: 1.2em;
+            }
+            .agents-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>PERSONAL ENGINE</h1>
-    <h2>The Seven Agents</h2>
-    <p>✨</p>
-    <ul>
-        <li><strong> Hermiger (Admin)</strong>: "Embody Hermione Granger: Tackle paperwork and email, keeping it in order, finding tech to help support." (Emoji: 📄)</li>
-        <li><strong> Wuffet (Finance)</strong>: "Embody Warren Buffett: Stay on top of personal finances and tech tools to help support." (Emoji: 💰)</li>
-        <li><strong> MoniGeller (Property)</strong>: "Embody Monica Geller: Stay on top of property assets and needs, such as rent and repairs." (Emoji: 🏢)</li>
-        <li><strong> Moppins (Family)</strong>: "Embody Mary Poppins: Provide magical efficiency for family needs." (Emoji: ✨)</li>
-        <li><strong> Doughty (Household)</strong>: "Embody Mrs Doubtfire: Offer nurturing chaos-handling for household tasks." (Emoji: 🏠)</li>
-        <li><strong> Rumple (Legal)</strong>: "Embody Rumpole of the Bailey: Deliver witty legal acumen for personal legal affairs." (Emoji: ⚖️)</li>
-        <li><strong> Tulken (Health)</strong>: "Embody Chris van Tulleken: Stay on top of matters relating to health and strength." (Emoji: 💪)</li>
-    </ul>
+    <div class="container">
+        <header>
+            <h1>PERSONAL ENGINE</h1>
+            <div class="subtitle">The Seven Agents</div>
+            <div class="tagline">Your personal team of experts, inspired by legendary characters</div>
+        </header>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterAgents('all')">All Agents</button>
+            <button class="filter-btn" onclick="filterAgents('lifestyle')">Lifestyle</button>
+            <button class="filter-btn" onclick="filterAgents('professional')">Professional</button>
+        </div>
+
+        <div class="agents-grid" id="agentsGrid">
+            <div class="agent-card" data-category="professional" onclick="toggleCard(this)">
+                <div class="agent-emoji">📄</div>
+                <div class="agent-name">Hermiger</div>
+                <div class="agent-role">Administrative Excellence</div>
+                <div class="agent-character">Embodies Hermione Granger</div>
+                <div class="agent-description">
+                    Master of organization and efficiency, Hermiger tackles paperwork and email management with meticulous precision. Always prepared with the right tech tools and systems to keep your administrative life running smoothly. Every document filed, every deadline met, every process optimized.
+                </div>
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span>Organization</span>
+                        <span>98%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 98%"></div></div>
+                    <div class="stat">
+                        <span>Tech Savvy</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 95%"></div></div>
+                </div>
+            </div>
+
+            <div class="agent-card" data-category="professional" onclick="toggleCard(this)">
+                <div class="agent-emoji">💰</div>
+                <div class="agent-name">Wuffet</div>
+                <div class="agent-role">Financial Wisdom</div>
+                <div class="agent-character">Embodies Warren Buffett</div>
+                <div class="agent-description">
+                    Your personal financial strategist with the wisdom of the Oracle of Omaha. Wuffet monitors your finances, identifies opportunities, and leverages cutting-edge financial technology to maximize value. Long-term thinking meets practical action for sustainable wealth building.
+                </div>
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span>Strategy</span>
+                        <span>97%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 97%"></div></div>
+                    <div class="stat">
+                        <span>Analysis</span>
+                        <span>96%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 96%"></div></div>
+                </div>
+            </div>
+
+            <div class="agent-card" data-category="professional" onclick="toggleCard(this)">
+                <div class="agent-emoji">🏢</div>
+                <div class="agent-name">MoniGeller</div>
+                <div class="agent-role">Property Management</div>
+                <div class="agent-character">Embodies Monica Geller</div>
+                <div class="agent-description">
+                    Obsessively detail-oriented property manager who ensures every asset is maintained to perfection. From coordinating repairs to managing rent collection, MoniGeller keeps your properties in pristine condition. Every corner inspected, every maintenance issue anticipated and resolved.
+                </div>
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span>Attention to Detail</span>
+                        <span>99%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 99%"></div></div>
+                    <div class="stat">
+                        <span>Maintenance</span>
+                        <span>94%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 94%"></div></div>
+                </div>
+            </div>
+
+            <div class="agent-card" data-category="lifestyle" onclick="toggleCard(this)">
+                <div class="agent-emoji">✨</div>
+                <div class="agent-name">Moppins</div>
+                <div class="agent-role">Family Coordination</div>
+                <div class="agent-character">Embodies Mary Poppins</div>
+                <div class="agent-description">
+                    Bringing practically perfect efficiency to family life. Moppins coordinates schedules, plans activities, and ensures everyone's needs are met with a spoonful of magic. From school runs to family events, everything happens seamlessly and joyfully.
+                </div>
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span>Coordination</span>
+                        <span>97%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 97%"></div></div>
+                    <div class="stat">
+                        <span>Creativity</span>
+                        <span>93%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 93%"></div></div>
+                </div>
+            </div>
+
+            <div class="agent-card" data-category="lifestyle" onclick="toggleCard(this)">
+                <div class="agent-emoji">🏠</div>
+                <div class="agent-name">Doughty</div>
+                <div class="agent-role">Household Management</div>
+                <div class="agent-character">Embodies Mrs Doubtfire</div>
+                <div class="agent-description">
+                    Your nurturing household champion who turns chaos into comfort. Doughty manages daily tasks with warmth and efficiency, from meal planning to cleaning schedules. Creates a home environment that's both organized and filled with love.
+                </div>
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span>Multitasking</span>
+                        <span>96%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 96%"></div></div>
+                    <div class="stat">
+                        <span>Care</span>
+                        <span>98%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 98%"></div></div>
+                </div>
+            </div>
+
+            <div class="agent-card" data-category="professional" onclick="toggleCard(this)">
+                <div class="agent-emoji">⚖️</div>
+                <div class="agent-name">Rumple</div>
+                <div class="agent-role">Legal Affairs</div>
+                <div class="agent-character">Embodies Rumpole of the Bailey</div>
+                <div class="agent-description">
+                    Your witty legal counsel with decades of courtroom wisdom. Rumple handles contracts, personal legal matters, and provides sage advice with a touch of dry humor. Navigates legal complexities with confidence and charm, protecting your interests at every turn.
+                </div>
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span>Legal Knowledge</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 95%"></div></div>
+                    <div class="stat">
+                        <span>Strategy</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 92%"></div></div>
+                </div>
+            </div>
+
+            <div class="agent-card" data-category="lifestyle" onclick="toggleCard(this)">
+                <div class="agent-emoji">💪</div>
+                <div class="agent-name">Tulken</div>
+                <div class="agent-role">Health & Wellness</div>
+                <div class="agent-character">Embodies Chris van Tulleken</div>
+                <div class="agent-description">
+                    Your evidence-based health advocate who champions both physical and mental wellbeing. Tulken tracks fitness goals, monitors health metrics, and provides scientifically-backed guidance for optimal living. Because your health is your most valuable asset.
+                </div>
+                <div class="stats-bar">
+                    <div class="stat">
+                        <span>Health Knowledge</span>
+                        <span>97%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 97%"></div></div>
+                    <div class="stat">
+                        <span>Motivation</span>
+                        <span>94%</span>
+                    </div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 94%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Your Personal Engine:</strong> Seven specialized agents working in harmony to optimize every aspect of your life.</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.8;">Click any agent to explore their unique capabilities</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('active');
+        }
+
+        function filterAgents(category) {
+            const cards = document.querySelectorAll('.agent-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = card.dataset.category === category ? 'block' : 'none';
+                }
+            });
+        }
+
+        // Animate stat bars on load
+        window.addEventListener('load', () => {
+            const statFills = document.querySelectorAll('.stat-fill');
+            statFills.forEach((fill, index) => {
+                setTimeout(() => {
+                    fill.style.width = fill.style.width;
+                }, index * 100);
+            });
+        });
+    </script>
 </body>
-</html>
+                </html>
