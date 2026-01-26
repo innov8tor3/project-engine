@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Launch & Community Building Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-start: #0f1a3a;
+            --bg-end:   #2a1a4a;
+            --accent:   #ff6b6b;
+            --accent-light: #ff9e9e;
+            --text:     #f0f4ff;
+            --card:     rgba(255, 255, 255, 0.08);
+            --border:   rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 50%, #3a2a5a 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 1rem 5rem;
+            position: relative;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255,107,107,0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(90deg, #ff9e9e, #ffffff, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.35s ease;
+        }
+
+        section:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            font-size: 2.1rem;
+            margin-bottom: 1.4rem;
+            color: #ff9e9e;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #a78bfa);
+            border-radius: 3px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin: 1rem 0;
+            padding: 1.1rem 1.4rem;
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.25s ease;
+        }
+
+        li:hover {
+            background: rgba(255,255,255,0.09);
+            transform: translateX(8px);
+        }
+
+        li strong {
+            color: #ff9e9e;
+        }
+
+        details {
+            margin: 1.2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 1.2rem 1.6rem;
+            background: rgba(255,255,255,0.06);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            list-style: none;
+        }
+
+        summary:hover {
+            background: rgba(255,107,107,0.15);
+        }
+
+        details[open] summary {
+            background: rgba(255,107,107,0.2);
+        }
+
+        details > div {
+            padding: 1.4rem 1.8rem;
+            background: rgba(0,0,0,0.15);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.6rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Token Launch & Community Building Guide</h1>
+            <p class="subtitle">Practical roadmap for launching tokens (including NFT-prefaced projects) and building sustainable communities in Web3</p>
+        </header>
+
+        <section>
+            <h2>1. Core Community Activities for Success</h2>
+            <p>Strong community is the foundation of any successful token launch — whether utility, meme, or NFT-backed.</p>
+            <ul>
+                <li><strong>Social Channels & Engagement</strong> — Twitter/X, Discord, Telegram. Regular AMAs, live spaces, Q&As, transparent updates.</li>
+                <li><strong>Incentives & Rewards</strong> — Airdrops, giveaways, referral programs. NFT-prefaced projects: reward NFT holders with early token access or bonuses.</li>
+                <li><strong>Partnerships & KOLs</strong> — Collaborate with aligned projects and credible micro/macro influencers for reach & trust.</li>
+                <li><strong>Gamification</strong> — Meme contests, quests, leaderboards, point systems — reward creativity and participation.</li>
+                <li><strong>Transparency</strong> — Public roadmaps, smart contract audits, treasury reports, community polls (Snapshot, Discord votes).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>2. Recommended Launch Timeline</h2>
+            <p>Utility & NFT projects → 3–6+ months prep. Pure meme coins → 2–6 weeks (speed is critical).</p>
+
+            **Summary:**
+Pre-Launch (Foundation Phase)
+                <div>
+                    <p><strong>Months 1–3 (or Weeks 1–4 for memes)</strong></p>
+                    <ul>
+                        <li>Launch socials + teaser content</li>
+                        <li>Grow to 3k–15k engaged followers</li>
+                        <li>Ambassador / whitelist / NFT mint campaigns</li>
+                        <li>Testnet, small drops, feedback loops</li>
+                        <li>Secure audits, finalize tokenomics & liquidity plan</li>
+                    </ul>
+                </div>
+
+            **Summary:**
+Launch Week (T–7 to T+7)
+                <div>
+                    <p><strong>Final hype → deployment → stabilization</strong></p>
+                    <ul>
+                        <li>T–7 → T–1: Heavy marketing, influencer drops, countdowns</li>
+                        <li>Launch day: Token deployment, liquidity lock, airdrop distribution, live events</li>
+                        <li>T+1 → T+7: DEX listing push, immediate contests, holder support</li>
+                    </ul>
+                </div>
+
+            **Summary:**
+Post-Launch (Retention & Growth)
+                <div>
+                    <p><strong>Month 1 onward</strong></p>
+                    <ul>
+                        <li>Weekly updates, AMAs, milestone celebrations</li>
+                        <li>Staking, governance activation, utility rollout</li>
+                        <li>CEX listing applications, ecosystem partnerships</li>
+                        <li>Ongoing contests & retroactive rewards</li>
+                    </ul>
+                </div>
+        </section>
+
+        <section>
+            <h2>3. Sustaining Long-Term Engagement</h2>
+            <p>Post-launch drop-off kills most projects. Focus shifts to ownership & value delivery.</p>
+            <ul>
+                <li><strong>Recurring Events</strong> — Weekly memes/trivia/hackathons, seasonal campaigns</li>
+                <li><strong>Governance & Progression</strong> — DAO voting, ambassador tiers, exclusive NFT/utility perks</li>
+                <li><strong>Transparency & Feedback</strong> — Regular treasury & dev updates, sentiment monitoring</li>
+                <li><strong>Evolving Utility</strong> — New features, NFT integrations, real-world use cases, partnerships</li>
+                <li><strong>Rewards for Loyalty</strong> — Staking boosts, retro airdrops, holder-only drops</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Meme vs Utility — Key Differences</h2>
+
+            **Summary:**
+Meme Coins
+                <div>
+                    <p>Speed + virality > everything else</p>
+                    <ul>
+                        <li>2–6 week timeline common</li>
+                        <li>Focus: memes, TikTok, Twitter raids, instant airdrops</li>
+                        <li>High churn — 90%+ fail within months</li>
+                        <li>Success relies on early momentum & community hype loops</li>
+                    </ul>
+                </div>
+
+            **Summary:**
+Utility / NFT-prefaced Tokens
+                <div>
+                    <p>Longer runway, deeper value creation</p>
+                    <ul>
+                        <li>3–12+ month preparation typical</li>
+                        <li>Education, audits, legal clarity, phased utility rollouts</li>
+                        <li>Retention through real use-cases & governance</li>
+                        <li>NFT-prefaced projects often start meme-style then transition to utility</li>
+                    </ul>
+                </div>
+        </section>
+
+        <footer>
+            <p>Token Launch & Community Building Guide • Built for Web3 creators • 2026</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
