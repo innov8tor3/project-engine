@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerPrise - Transform Your Gaming Passion into a Startup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .header-nav a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .header-nav a:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.6) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(123, 47, 247, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Panel Container */
+        .panels-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Panel Styles */
+        .panel {
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .panel.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .panel:nth-child(even) {
+            transform: translateX(100px);
+        }
+
+        .panel:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .stage-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-right: 1rem;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .panel-title {
+            font-size: 2rem;
+            color: #fff;
+            flex-grow: 1;
+        }
+
+        .panel-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        .panel-content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .panel-content li {
+            margin: 0.8rem 0;
+        }
+
+        /* Infographic Placeholder */
+        .infographic {
+            background: linear-gradient(135deg, rgba(123, 47, 247, 0.2), rgba(0, 212, 255, 0.2));
+            border: 2px dashed rgba(0, 212, 255, 0.5);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .infographic-title {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .infographic-content {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #7b2ff7;
+            text-shadow: 0 0 15px rgba(123, 47, 247, 0.6);
+        }
+
+        /* Selection Interface */
+        .selection-interface {
+            background: rgba(15, 52, 96, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-option {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .project-option:hover {
+            background: rgba(0, 212, 255, 0.3);
+            transform: scale(1.05);
+            border-color: #00d4ff;
+        }
+
+        /* CTA Button Styles */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            margin: 1.5rem 0.5rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(123, 47, 247, 0.6);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(45deg, #ff006e, #ff8c00);
+            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.4);
+        }
+
+        .cta-button.secondary:hover {
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.6);
+        }
+
+        /* Gamification Elements */
+        .game-progression {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            height: 30px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            height: 100%;
+            border-radius: 50px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Discord Hub Styles */
+        .discord-hub {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(114, 137, 218, 0.2));
+            border: 2px solid rgba(88, 101, 242, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .discord-threads {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .thread-card {
+            background: rgba(88, 101, 242, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+        }
+
+        .thread-title {
+            color: #7289da;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Recruitment Options */
+        .recruitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .recruitment-card {
+            background: rgba(15, 52, 96, 0.5);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .recruitment-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .recruitment-card h4 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Competition Scoring */
+        .scoring-criteria {
+            background: rgba(255, 0, 110, 0.1);
+            border: 2px solid rgba(255, 0, 110, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .prize-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0.5rem;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+            z-index: 999;
+            font-size: 1.5rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(123, 47, 247, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 3px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #7b2ff7;
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            color: #888;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .panel {
+                padding: 2rem;
+            }
+
+            .panel-title {
+                font-size: 1.5rem;
+            }
+
+            .stage-number {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-nav {
+                margin-top: 1rem;
+            }
+        }
+
+        /* Proto Founder Process */
+        .proto-founder-cycle {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cycle-step {
+            background: rgba(123, 47, 247, 0.2);
+            border: 2px solid rgba(123, 47, 247, 0.5);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .cycle-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00d4ff;
+            font-size: 2rem;
+        }
+
+        .cycle-step:last-child::after {
+            content: '↻';
+            right: auto;
+            left: 50%;
+            top: auto;
+            bottom: -2rem;
+            transform: translateX(-50%);
+        }
+
+        .cycle-step-title {
+            color: #7b2ff7;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">🎮 GamerPrise</div>
+            <nav class="header-nav">
+                <a href="#pitch">Pitch Deck</a>
+                <a href="#landing">Landing Page</a>
+                <a href="#technical">Technical Prep</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>🚀 GamerPrise</h1>
+        <p>Transform Your Gaming Passion into a Thriving Startup. Journey through six stages from player to founder.</p>
+    </div>
+
+    <!-- Panels Container -->
+    <div class="panels-container">
+        <!-- Stage 1: Onboard Game Player -->
+        <div class="panel" data-panel="1">
+            <div class="panel-header">
+                <div class="stage-number">01</div>
+                <h2 class="panel-title">Onboard Game Player</h2>
+            </div>
+            <div class="panel-content">
+                <p>Welcome to GamerPrise! We're recruiting passionate gamers from gaming communities and recent graduates ready to transform their skills into startup success.</p>
+                
+                <div class="infographic">
+                    <div class="infographic-title">Graduate Unemployment Levels</div>
+                    <div class="infographic-content">UK: 12% | US: 14%</div>
+                    <p style="margin-top: 1rem; color: #b0b0b0;">Join thousands turning passion into profession</p>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">Choose Your Initial Passion Project</h3>
+                <p>Select 1 from 10 exciting projects to kickstart your journey:</p>
+
+                <div class="selection-interface">
+                    <div class="project-grid">
+                        <div class="project-option">🎨 NFT Game Assets</div>
+                        <div class="project-option">🌐 Metaverse Builder</div>
+                        <div class="project-option">⚔️ DeFi Battle Arena</div>
+                        <div class="project-option">🎯 Esports Platform</div>
+                        <div class="project-option">🎲 Blockchain Casino</div>
+                        <div class="project-option">🏆 Tournament Manager</div>
+                        <div class="project-option">🎮 Indie Game Studio</div>
+                        <div class="project-option">📱 Mobile Game Token</div>
+                        <div class="project-option">🔮 GameFi Protocol</div>
+                        <div class="project-option">🎪 Virtual Events</div>
+                    </div>
+                </div>
+
+                <a href="#supercharge" class="cta-button">🚀 Supercharge Passions</a>
+            </div>
+        </div>
+
+        <!-- Stage 2: GitHub Build -->
+        <div class="panel" data-panel="2">
+            <div class="panel-header">
+                <div class="stage-number">02</div>
+                <h2 class="panel-title">GitHub Build</h2>
+            </div>
+            <div class="panel-content">
+                <p>Enter the "long play" game where you acquire Tech and Web3 skills through gamified learning. Inspired by football leagues and The Apprentice, compete and collaborate with fellow builders.</p>
+
+                <div class="game-progression">
+                    <h3 style="color: #00d4ff; margin-bottom: 1rem;">Your Skill Development Journey</h3>
+                    
+                    <div style="margin: 1.5rem 0;">
+                        <strong>Tech Skills</strong>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;">65%</div>
+                        </div>
+                    </div>
+
+                    <div style="margin: 1.5rem 0;">
+                        <strong>Web3 Expertise</strong>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%;">45%</div>
+                        </div>
+                    </div>
+
+                    <div style="margin: 1.5rem 0;">
+                        <strong>GitHub Contributions</strong>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;">80%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">Learning Modules</h3>
+                <ul>
+                    <li>🔧 Smart Contract Development (Solidity, Rust)</li>
+                    <li>⛓️ Blockchain Architecture & Consensus</li>
+                    <li>🎨 Frontend Development (React, Vue, Web3.js)</li>
+                    <li>🗄️ Backend & Database Management</li>
+                    <li>🔐 Web3 Security & Best Practices</li>
+                    <li>📊 DApp Analytics & Optimization</li>
+                </ul>
+
+                <a href="#digital-assets" class="cta-button">📦 View Digital Assets</a>
+            </div>
+        </div>
+
+        <!-- Stage 3: Build Digital Assets -->
+        <div class="panel" data-panel="3">
+            <div class="panel-header">
+                <div class="stage-number">03</div>
+                <h2 class="panel-title">Build Digital Assets</h2>
+            </div>
+            <div class="panel-content">
+                <p>AI coheres your work and calculates novelty to identify market gaps. This is where your passion project transforms into a valuable digital asset.</p>
+
+                <div class="infographic">
+                    <div class="infographic-title">AI Engagement & Analysis</div>
+                    <div class="infographic-content">89% Match</div>
+                    <p style="margin-top: 1rem; color: #b0b0b0;">Your project fills a significant market gap</p>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">The Proto Founder Cycle</h3>
+                <p>A cyclical process of continuous improvement and validation:</p>
+
+                <div class="proto-founder-cycle">
+                    <div class="cycle-step">
+                        <div class="cycle-step-title">🏗️ BUILD</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Create features</p>
+                    </div>
+                    <div class="cycle-step">
+                      
