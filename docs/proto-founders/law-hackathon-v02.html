@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawHack - Transform Your Law Passion into a Startup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .header-nav a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .header-nav a:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.6) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(123, 47, 247, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Panel Container */
+        .panels-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Panel Styles */
+        .panel {
+            background: rgba(22, 33, 62, 0.8);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, opacity;
+            min-height: 200px;
+        }
+
+        .panel.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .panel:nth-child(even) {
+            transform: translateX(100px);
+        }
+
+        .panel:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .stage-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-right: 1rem;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+        }
+
+        .panel-title {
+            font-size: 2rem;
+            color: #fff;
+            flex-grow: 1;
+        }
+
+        .panel-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        .panel-content ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .panel-content li {
+            margin: 0.8rem 0;
+        }
+
+        /* Infographic Placeholder */
+        .infographic {
+            background: linear-gradient(135deg, rgba(123, 47, 247, 0.2), rgba(0, 212, 255, 0.2));
+            border: 2px dashed rgba(0, 212, 255, 0.5);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .infographic-title {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .infographic-content {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #7b2ff7;
+            text-shadow: 0 0 15px rgba(123, 47, 247, 0.6);
+        }
+
+        /* Project Grid - New Improved Style */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-card {
+            background: rgba(15, 52, 96, 0.4);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .project-card-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .project-emoji {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .project-summary {
+            flex-grow: 1;
+        }
+
+        .project-summary h3 {
+            color: #00d4ff;
+            font-size: 1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .expand-icon {
+            color: #7b2ff7;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .project-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card.expanded .project-details {
+            max-height: 1000px;
+            overflow-y: auto;
+        }
+
+        .project-details-content {
+            padding: 1.5rem;
+        }
+
+        .project-details-content p {
+            color: #d0d0d0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .projections {
+            background: rgba(123, 47, 247, 0.15);
+            border-left: 3px solid #7b2ff7;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .projections-title {
+            color: #7b2ff7;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .projections p {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            margin: 0.3rem 0;
+        }
+
+        /* Selection Interface */
+        .selection-interface {
+            background: rgba(15, 52, 96, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* CTA Button Styles */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            margin: 1.5rem 0.5rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(123, 47, 247, 0.6);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(45deg, #ff006e, #ff8c00);
+            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.4);
+        }
+
+        .cta-button.secondary:hover {
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.6);
+        }
+
+        /* Gamification Elements */
+        .game-progression {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            height: 30px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+            height: 100%;
+            border-radius: 50px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Discord Hub Styles */
+        .discord-hub {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(114, 137, 218, 0.2));
+            border: 2px solid rgba(88, 101, 242, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .discord-threads {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .thread-card {
+            background: rgba(88, 101, 242, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+        }
+
+        .thread-title {
+            color: #7289da;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Recruitment Options */
+        .recruitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .recruitment-card {
+            background: rgba(15, 52, 96, 0.5);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .recruitment-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .recruitment-card h4 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Competition Scoring */
+        .scoring-criteria {
+            background: rgba(255, 0, 110, 0.1);
+            border: 2px solid rgba(255, 0, 110, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .prize-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 0.5rem;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #00d4ff, #7b2ff7);
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+            z-index: 999;
+            font-size: 1.5rem;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(123, 47, 247, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 3px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #7b2ff7;
+            transform: translateY(-2px);
+        }
+
+        .footer-copyright {
+            color: #888;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .panel {
+                padding: 1.5rem;
+            }
+
+            .panel-title {
+                font-size: 1.3rem;
+            }
+
+            .stage-number {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-nav {
+                margin-top: 1rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .project-card-header {
+                padding: 1rem;
+            }
+
+            .project-emoji {
+                font-size: 1.5rem;
+            }
+
+            .project-summary h3 {
+                font-size: 0.9rem;
+            }
+
+            .project-details-content {
+                padding: 1rem;
+            }
+
+            .infographic {
+                padding: 2rem 1rem;
+            }
+
+            .infographic-title {
+                font-size: 1.2rem;
+            }
+
+            .infographic-content {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .panel {
+                padding: 1rem;
+                margin: 2rem 0;
+            }
+
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stage-number {
+                font-size: 1.5rem;
+            }
+
+            .panel-title {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0.5rem 0.25rem;
+            }
+        }
+
+        /* Fallback for no JavaScript */
+        noscript .panel {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+        }
+
+        /* Proto Founder Process */
+        .proto-founder-cycle {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cycle-step {
+            background: rgba(123, 47, 247, 0.2);
+            border: 2px solid rgba(123, 47, 247, 0.5);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .cycle-step::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00d4ff;
+            font-size: 2rem;
+        }
+
+        .cycle-step:last-child::after {
+            content: '↻';
+            right: auto;
+            left: 50%;
+            top: auto;
+            bottom: -2rem;
+            transform: translateX(-50%);
+        }
+
+        .cycle-step-title {
+            color: #7b2ff7;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+      
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">🎮 LawHack</div>
+            <nav class="header-nav">
+                <a href="#pitch">Pitch Deck</a>
+                <a href="#landing">Landing Page</a>
+                <a href="#technical">Technical Prep</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>🚀 LawHack</h1>
+        <p>Translate Your Gaming Ability into being a Startup Contender. Journey through six stages from player to founder.</p>
+    </div>
+
+    <!-- Panels Container -->
+    <div class="panels-container">
+        <!-- Stage 1: Onboard Game Player -->
+        <div class="panel" data-panel="1">
+            <div class="panel-header">
+                <div class="stage-number">01</div>
+                <h2 class="panel-title">Onboard Game Players</h2>
+            </div>
+            <div class="panel-content">
+                <p>Welcome to LawHack! We're recruiting passionate gamers wanting more and recent law graduates looking for project skills. Let's transform targeted, structured activity into real world impact.</p>
+                
+                <div class="infographic">
+                    <div class="infographic-title">UK Law Sector Reputation - World Justice Project</div>
+                    <div class="infographic-content">UK: 14/143 | WJP: 2025</div>
+                    <p style="margin-top: 1rem; color: #b0b0b0;">UK "stable" despite Global Law "8 year adherence recession" - interpreting WJP data</p>
+                    <p style="margin-top: 1rem; color: #b0b0b0;">Join thousands turning passion into new opportunity</p>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">Choose Your Initial Passion Project</h3>
+                <p>Select from 10 exciting projects to kickstart your journey. Click any project to view detailed information and revenue projections.</p>
+
+                <div class="selection-interface">
+                    <div class="project-grid">
+                        <!-- Card 1 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">🤖</div>
+                                <div class="project-summary">
+                                    <h3>AI-Powered Legal Research Platform</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Develop an AI-powered platform that uses natural language processing to cross-reference UK statutes, EU retained law, and recent case precedents in real-time, generating customized research briefs for corporate clients.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £3.64M</p>
+                                        <p>Year 5: £19.0M</p>
+                                        <p>Year 10: £38.2M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">⛓️</div>
+                                <div class="project-summary">
+                                    <h3>Blockchain Smart Contracts for M&A</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Create a blockchain-based smart contract template system for corporate mergers and acquisitions, incorporating AI to auto-negotiate clauses based on historical firm data, minimizing disputes and accelerating deal closures.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £4.4M</p>
+                                        <p>Year 5: £23.8M</p>
+                                        <p>Year 10: £48.3M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">💡</div>
+                                <div class="project-summary">
+                                    <h3>AI-Driven IP Portfolio Management</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Build an AI-driven IP portfolio management tool that scans firm clients' tech innovations for patentable elements, predicts infringement risks using machine learning on UK and EU case data, and automates filing processes.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £2.89M</p>
+                                        <p>Year 5: £15.57M</p>
+                                        <p>Year 10: £31.32M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">🔒</div>
+                                <div class="project-summary">
+                                    <h3>Data Capital Optimization for GDPR</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Design a data capital optimization app that treats client data as a strategic asset, employing AI to anonymize and monetize datasets ethically while ensuring full UK GDPR compliance, creating new revenue streams.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £2.64M</p>
+                                        <p>Year 5: £14.2M</p>
+                                        <p>Year 10: £28.7M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">🛡️</div>
+                                <div class="project-summary">
+                                    <h3>Cybersecurity Simulation Platform</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Develop a firm-wide cybersecurity simulation platform using AI to generate realistic phishing and ransomware scenarios tailored to UK legal contexts, training staff and predicting vulnerabilities to prevent breaches.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £1.82M</p>
+                                        <p>Year 5: £9.5M</p>
+                                        <p>Year 10: £19.15M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">📋</div>
+                                <div class="project-summary">
+                                    <h3>RegTech AI Agent for Compliance</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Engineer an AI agent that continuously scans regulatory updates from UK bodies like the FCA and HMRC, integrating with firm workflows to flag compliance gaps and auto-generate remedial action plans, reducing regulatory fines.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £3.39M</p>
+                                        <p>Year 5: £17.95M</p>
+                                        <p>Year 10: £36.2M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">⚖️</div>
+                                <div class="project-summary">
+                                    <h3>Predictive Litigation Dashboard</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Create a predictive litigation dashboard that analyzes anonymized UK High Court and Supreme Court decisions with machine learning to estimate win probabilities and costs for client cases, enabling better settlement decisions.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £2.64M</p>
+                                        <p>Year 5: £14.2M</p>
+                                        <p>Year 10: £28.7M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">💰</div>
+                                <div class="project-summary">
+                                    <h3>Blockchain-Secured Escrow System</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Prototype a blockchain-secured escrow system for corporate transactions, using smart contracts to automate fund releases upon milestone verifications, integrated with AI fraud detection to enhance trust in cross-border deals.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £3.4M</p>
+                                        <p>Year 5: £18.6M</p>
+                                        <p>Year 10: £37.8M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 9 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">✓</div>
+                                <div class="project-summary">
+                                    <h3>AI Ethics Audit Toolkit</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Formulate an AI ethics audit toolkit for the firm, using algorithms to evaluate internal AI tools for bias under proposed UK AI regulations, producing reports that certify ethical compliance and position the firm as a leader in responsible legal tech.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £1.57M</p>
+                                        <p>Year 5: £8.33M</p>
+                                        <p>Year 10: £16.83M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 10 -->
+                        <div class="project-card" onclick="toggleProject(this)">
+                            <div class="project-card-header">
+                                <div class="project-emoji">📚</div>
+                                <div class="project-summary">
+                                    <h3>Intelligent Knowledge Management</h3>
+                                </div>
+                                <div class="expand-icon">▼</div>
+                            </div>
+                            <div class="project-details">
+                                <div class="project-details-content">
+                                    <p>Implement an intelligent knowledge organization system that auto-tags and connects firm documents with external UK legal updates via AI, creating a searchable repository that boosts productivity by surfacing precedents and insights.</p>
+                                    <div class="projections">
+                                        <div class="projections-title">📊 Revenue Projections</div>
+                                        <p>Year 1: £2.64M</p>
+                                        <p>Year 5: £14.2M</p>
+                                        <p>Year 10: £28.7M</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#supercharge" class="cta-button">🚀 Supercharge Passions</a>
+            </div>
+        </div>
+
+        <!-- Stage 2: GitHub Build -->
+        <div class="panel" data-panel="2">
+            <div class="panel-header">
+                <div class="stage-number">02</div>
+                <h2 class="panel-title">GitHub Build</h2>
+            </div>
+            <div class="panel-content">
+                <p>Enter the "long play" game where you acquire lite-version Tech and Web3 skills through gamified stages. Inspired by football leagues and The Apprentice, compete and collaborate with fellow builders.</p>
+                <p style="margin-top: 1rem;">What you get? Your first digital assets, a proof of commitment to audiences. You are taking the long game seriously!</p>
+
+                <div class="game-progression">
+                    <h3 style="color: #00d4ff; margin-bottom: 1rem;">Your Skill Development Journey - Start Low, Build Higher</h3>
+                    
+                    <div style="margin: 1.5rem 0;">
+                        <strong>Tech Skills</strong>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%;">65%</div>
+                        </div>
+                    </div>
+
+                    <div style="margin: 1.5rem 0;">
+                        <strong>Web3 Expertise</strong>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%;">45%</div>
+                        </div>
+                    </div>
+
+                    <div style="margin: 1.5rem 0;">
+                        <strong>GitHub Contributions</strong>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%;">80%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">Opportunity Quests</h3>
+                <ul>
+                    <li>💡 Vibe Coding</li>
+                    <li>🤖 AI Generated Code</li>
+                    <li>🔊 GitHub Pages - Visualising</li>
+                    <li>🔎 View & Edit HTML - Fine Tuning</li>
+                    <li>🧩 Cohesion & Flow - Use Digital Assets</li>
+                    <li>🌱 Digital App - dApp Skeleton</li>
+                    <li>🌳 Activate Components</li>
+                </ul>
+
+                <a href="#digital-assets" class="cta-button">🎁 Create Digital Assets</a>
+                <a href="#cycle" class="cta-button secondary">⛏ Deep Engineering</a>
+            </div>
+        </div>
+
+        <!-- Stage 3: Build Digital Assets -->
+        <div class="panel" data-panel="3">
+            <div class="panel-header">
+                <div class="stage-number">03</div>
+                <h2 class="panel-title">Build Digital Assets</h2>
+            </div>
+            <div class="panel-content">
+                <p>AI coheres your work and calculates novelty to identify market gaps. This is where your passion project transforms into a valuable digital asset.</p>
+                <p style="margin-top: 1rem;">What you get? You build depth to your digital assets, compound assets being what AI loves to see to calculate value.</p>
+
+                <div class="infographic">
+                    <div class="infographic-title">AI Engagement & Analysis</div>
+                    <div class="infographic-content">89% Match</div>
+                    <p style="margin-top: 1rem; color: #b0b0b0;">Your project fills a significant market gap</p>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">The Proto Founder Cycle</h3>
+                <p>A cyclical process of continuous improvement and validation:</p>
+
+                <div class="proto-founder-cycle">
+                    <div class="cycle-step">
+                        <div class="cycle-step-title">🏗️ BUILD</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Create features</p>
+                    </div>
+                    <div class="cycle-step">
+                        <div class="cycle-step-title">📊 EVALUATE</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Measure impact</p>
+                    </div>
+                    <div class="cycle-step">
+                        <div class="cycle-step-title">🔍 ASSESS</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Analyze results</p>
+                    </div>
+                    <div class="cycle-step">
+                        <div class="cycle-step-title">📋 PLAN</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Next iteration</p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 3rem;">This is your judgement call moment: Does your asset have what it takes to compete? Continue iterating or move forward to validation.</p>
+
+                <a href="#valuation" class="cta-button">💰 Readiness Assessment</a>
+                <a href="#cycle" class="cta-button secondary">🔄 Another Cycle</a>
+            </div>
+        </div>
+
+        <!-- Stage 4: Recruit Supportive Audiences -->
+        <div class="panel" data-panel="4">
+            <div class="panel-header">
+                <div class="stage-number">04</div>
+                <h2 class="panel-title">Recruit Supportive Audiences</h2>
+            </div>
+            <div class="panel-content">
+                <p>Validation Phase - Part 1: Build and gamify your support network with AI agents, gaming communities, and token enthusiasts.</p>
+                <p style="margin-top: 1rem;">What you get? Feedback gold, and an audience ready to jump in and play or tell friends when you are ready.</p>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">Recruitment Options</h3>
+
+                <div class="recruitment-grid">
+                    <div class="recruitment-card">
+                        <h4>🤖 AI Agents</h4>
+                        <p><strong>Default Agent:</strong> Pre-configured support bot</p>
+                        <p><strong>Custom Agent:</strong> Tailored to your project</p>
+                        <p><strong>HHH/MoltBook:</strong> Advanced AI models for complex tasks</p>
+                        <a href="#ai-agents" class="cta-button" style="margin-top: 1rem; display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.9rem;">Deploy AI</a>
+                    </div>
+
+                    <div class="recruitment-card">
+                        <h4>🎮 Gaming Communities</h4>
+                        <p>Connect with gamers who understand your vision</p>
+                        <ul style="margin-top: 1rem; font-size: 0.95rem;">
+                            <li>Reddit Gaming Subs</li>
+                            <li>Discord Servers</li>
+                            <li>Twitch Communities</li>
+                            <li>Steam Groups</li>
+                        </ul>
+                        <a href="#gaming" class="cta-button" style="margin-top: 1rem; display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.9rem;">Find Gamers</a>
+                    </div>
+                    
+                    <div class="recruitment-card">
+                        <h4>⚖️ Legal Communities</h4>
+                        <p>Connect with lawyers grinding at the coalface</p>
+                        <ul style="margin-top: 1rem; font-size: 0.95rem;">
+                            <li>Reddit Legal Subs</li>
+                            <li>Discord Servers</li>
+                            <li>LinkedIn Communities</li>
+                            <li>Partner Networking Groups</li>
+                            <li>IP Sensitivity</li>
+                        </ul>
+                        <a href="#gaming" class="cta-button" style="margin-top: 1rem; display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.9rem;">Feedback Gold</a>
+                    </div>
+
+                    <div class="recruitment-card">
+                        <h4>🪙 Token Communities</h4>
+                        <p>Engage crypto enthusiasts and early adopters</p>
+                        <ul style="margin-top: 1rem; font-size: 0.95rem;">
+                            <li>Telegram Groups</li>
+                            <li>Twitter Crypto</li>
+                            <li>DeFi Forums</li>
+                            <li>NFT Collectors</li>
+                        </ul>
+                        <a href="#tokens" class="cta-button" style="margin-top: 1rem; display: inline-block; padding: 0.7rem 1.5rem; font-size: 0.9rem;">Find Liquidity</a>
+                    </div>
+                </div>
+
+                <div class="discord-hub">
+                    <h3 style="color: #7289da; margin-bottom: 1rem;">📢 Your Discord Hub</h3>
+                    <p>Centralize communication with dedicated channels for your growing community. Note gamers and token hunters are very different communities. Channel visibility and control will be very important.</p>
+                    
+                    <div class="discord-threads">
+                        <div class="thread-card">
+                            <div class="thread-title">#gamers-feedback</div>
+                            <p>Player testing, bug reports, feature requests</p>
+                        </div>
+                        <div class="thread-card">
+                            <div class="thread-title">#token-discussion</div>
+                            <p>Tokenomics, investments, governance</p>
+                        </div>
+                        <div class="thread-card">
+                            <div class="thread-title">#dev-updates</div>
+                            <p>Development progress, milestones, releases</p>
+                        </div>
+                        <div class="thread-card">
+                            <div class="thread-title">#build-in-public</div>
+                            <p>X - supportive dev community Build In Public, 243K members</p>
+                        </div>
+                        <div class="thread-card">
+                            <div class="thread-title">#community-chat</div>
+                            <p>General discussion, events, community building</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#validation" class="cta-button">✅ Games For Audiences</a>
+            </div>
+        </div>
+
+        <!-- Stage 5: Enter Triannual Competition -->
+        <div class="panel" data-panel="5">
+            <div class="panel-header">
+                <div class="stage-number">05</div>
+                <h2 class="panel-title">Enter Triannual Competition</h2>
+            </div>
+            <div class="panel-content">
+                <p>Validation Phase - Part 2: Compete with fellow builders three times a year. AI scoring based on published criteria ensures fair assessment.</p>
+                <p style="margin-top: 1rem;">What you get? If the grind is about the all-vital build, here you learn about the shill. Who will come on board with you from cold?</p>
+
+                <div class="scoring-criteria">
+                    <h3 style="color: #ff006e; margin-bottom: 1.5rem;">🏆 Competition Scoring Criteria</h3>
+                    
+                    <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                        <strong style="color: #00d4ff;">Technical Innovation (30%)</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Novel use of technology</li>
+                            <li>Code quality and architecture</li>
+                            <li>Smart contract efficiency</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                        <strong style="color: #00d4ff;">Market Potential (25%)</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Product Market Fit</li>
+                            <li>Solution problem fit</li>
+                            <li>Target market size</li>
+                            <li>Competitive advantage</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                        <strong style="color: #00d4ff;">Team Diversity (20%)</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Skill set variety</li>
+                            <li>Background diversity</li>
+                            <li>Collaboration effectiveness</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+                        <strong style="color: #00d4ff;">Development Progress (25%)</strong>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>Growth since last entry</li>
+                            <li>Feature completion</li>
+                            <li>Community engagement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">🎁 Competition Prizes</h3>
+                <p style="margin-bottom: 1rem;">Recognition and rewards for outstanding projects:</p>
+                <div style="text-align: center; margin: 2rem 0;">
+                    <span class="prize-badge">💰 Sponsor Cash Prize</span>
+                    <span class="prize-badge">🏅 Community Support Award</span>
+                    <span class="prize-badge">🫂 Community Inclusion Award</span>
+                    <span class="prize-badge">🏛 Community Impact Award</span>
+                    <span class="prize-badge">🚀 Most Improved Project</span>
+                    <span class="prize-badge">💡 Innovation Award</span>
+                </div>
+
+                <p style="margin-top: 2rem;"><strong>Competition Schedule:</strong> January | May | September</p>
+
+                <a href="#entry" class="cta-button">🎯 Submit Competition Entry</a>
+                <a href="#rules" class="cta-button secondary">📜 View Full Rules</a>
+            </div>
+        </div>
+
+        <!-- Stage 6: Provide External Support -->
+        <div class="panel" data-panel="6">
+            <div class="panel-header">
+                <div class="stage-number">06</div>
+                <h2 class="panel-title">Enter The Wider World</h2>
+            </div>
+            <div class="panel-content">
+                <p>Congratulations, competition winner! You've earned the "Startup" label. Now we help you transition to the wider ecosystem with support for external hackathons, accelerators, and funding opportunities.</p>
+                <p style="margin-top: 1rem;">What you get? Awards, and peer and founder recognition, plus access to exclusive Discord channels supporting smart next steps.</p>
+
+                <div class="infographic">
+                    <div class="infographic-title">🎓 Your New Status</div>
+                    <div class="infographic-content">STARTUP</div>
+                    <p style="margin-top: 1rem; color: #b0b0b0;">Ready for the big leagues</p>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">External Opportunities</h3>
+                
+                <div class="recruitment-grid">
+                    <div class="recruitment-card">
+                        <h4>🏆 Hackathons</h4>
+                        <ul>
+                            <li>ETHGlobal Events</li>
+                            <li>Polygon Hackathons</li>
+                            <li>Solana Hacker Houses</li>
+                            <li>Web3 Gaming Jams</li>
+                        </ul>
+                    </div>
+
+                    <div class="recruitment-card">
+                        <h4>🚀 Accelerators</h4>
+                        <ul>
+                            <li>Y Combinator</li>
+                            <li>Binance Labs</li>
+                            <li>Consensys Mesh</li>
+                            <li>Alliance DAO</li>
+                        </ul>
+                    </div>
+
+                    <div class="recruitment-card">
+                        <h4>💰 Funding</h4>
+                        <ul>
+                            <li>Seed Investors - Law Springboards</li>
+                            <li>Web3 VCs</li>
+                            <li>Grant Programs</li>
+                            <li>Token Launch Support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 style="color: #00d4ff; margin-top: 2rem;">Ongoing Support</h3>
+                <ul>
+                    <li>🤝 Mentorship from successful founders</li>
+                    <li>🎯 Pitch deck refinement</li>
+                    <li>📊 Financial modeling assistance</li>
+                    <li>🌐 Network introductions</li>
+                    <li>📢 Marketing and PR guidance</li>
+                    <li>⚖️ Legal and compliance support</li>
+                </ul>
+
+                <div style="background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(123, 47, 247, 0.2)); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center;">
+                    <h3 style="color: #fff; margin-bottom: 1rem;">🌟 Your Journey Continues</h3>
+                    <p>From gamer to founder, you've proven you have what it takes. The LawHack community will always be here to support your success.</p>
+                </div>
+
+                <a href="#wider-world" class="cta-button">🌍 Explore The Wider World</a>
+                <a href="#alumni" class="cta-button secondary">👥 Join Alumni Network</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        ↑
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#web3-security">🔐 Web3 Security</a>
+            <a href="#about">💁 About LawHack</a>
+            <a href="#jobsearch">🥗 Job Search Support</a>
+            <a href="#contact">📧 Contact Us</a>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 LawHack - From gaming to founders.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Built with passion by tech explorers, for gamers wanting to make real life impact.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle project card expansion
+            window.toggleProject = function(card) {
+                const wasExpanded = card.classList.contains('expanded');
+                
+                // Close all cards
+                document.querySelectorAll('.project-card').forEach(c => {
+                    c.classList.remove('expanded');
+                });
+                
+                // Open clicked card if it wasn't already open
+                if (!wasExpanded) {
+                    card.classList.add('expanded');
+                }
+            };
+
+            // Intersection Observer for panel animations
+            const observerOptions = {
+                threshold: 0.05,
+                rootMargin: '0px 0px 0px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all panels
+            document.querySelectorAll('.panel').forEach(panel => {
+                observer.observe(panel);
+            });
+
+            // Immediate fallback: Show panels that are already in viewport on load
+            function checkVisiblePanels() {
+                document.querySelectorAll('.panel').forEach(panel => {
+                    const rect = panel.getBoundingClientRect();
+                    const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+                    if (rect.top < viewHeight && rect.bottom > 0) {
+                        panel.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Check immediately and after a short delay
+            checkVisiblePanels();
+            setTimeout(checkVisiblePanels, 100);
+            setTimeout(checkVisiblePanels, 500);
+
+            // Back to Top button functionality
+            const backToTopBtn = document.getElementById('backToTop');
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+                
+                // Check panels on scroll too
+                checkVisiblePanels();
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.length > 1) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Add hover effects to CTA buttons
+            document.querySelectorAll('.cta-button').forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
