@@ -420,13 +420,15 @@
             return files;
         }
 
-        function convertToGitHubPagesUrl(githubUrl) {
-            const match = githubUrl.match(/github\.com\/([^\/]+)\/([^\/]+)\/blob\/[^\/]+\/(.+)/);
-            if (match) {
-                const [, user, repository, path] = match;
-                return `https://${user}.github.io/${repository}/${path}`;
+        function convertToGitHubPagesUrl(username, repo, filePath) {
+            // Remove 'docs/' prefix if it exists since GitHub Pages serves from docs as root
+            let cleanPath = filePath;
+            if (cleanPath.startsWith('docs/')) {
+                cleanPath = cleanPath.substring(5); // Remove 'docs/'
             }
-            return githubUrl;
+            
+            // Build the GitHub Pages URL
+            return `https://${username}.github.io/${repo}/${cleanPath}`;
         }
 
         function showError(message) {
@@ -449,13 +451,12 @@
             }
         }
 
-        function displayResults(files) {
+        function displayResults(files, username, repo) {
             resultsCount.textContent = `Found ${files.length} HTML ${files.length === 1 ? 'File' : 'Files'}`;
             resultsList.innerHTML = '';
             
             files.forEach(file => {
-                const githubUrl = file.html_url;
-                const pagesUrl = convertToGitHubPagesUrl(githubUrl);
+                const pagesUrl = convertToGitHubPagesUrl(username, repo, file.path);
                 
                 const fileItem = document.createElement('div');
                 fileItem.className = 'file-item';
@@ -496,7 +497,7 @@
                 if (files.length === 0) {
                     showError('No HTML files found in this repository');
                 } else {
-                    displayResults(files);
+                    displayResults(files, username, repo);
                 }
             } catch (err) {
                 showError(err.message);
