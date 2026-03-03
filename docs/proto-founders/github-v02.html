@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerPrise · Step 2: Initiative & Self Enablement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Josefin+Sans:wght@300;400;600&family=Merriweather:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --canopy:   #0d2b1a;
+      --deep:     #112e1f;
+      --mid:      #1a4a2e;
+      --leaf:     #2d6a4f;
+      --moss:     #40916c;
+      --fern:     #52b788;
+      --mist:     #74c69d;
+      --dew:      #b7e4c7;
+      --light:    #d8f3dc;
+      --cream:    #f0faf2;
+      --frog-red:    #e63946;
+      --frog-yellow: #f4d35e;
+      --frog-blue:   #48cae4;
+      --frog-orange: #f77f00;
+      --gold:     #d4a017;
+      --text:     #e8f5ec;
+      --muted:    #95c9a8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      background-color: var(--canopy);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── ANIMATED CANOPY BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(64,145,108,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 85% 110%, rgba(45,106,79,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(17,46,31,0.5) 0%, transparent 80%);
+      pointer-events: none; z-index: 0;
+      animation: canopyShift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes canopyShift {
+      0%   { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    /* ── LEAF PARTICLES ── */
+    .leaves-bg {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .leaf-particle {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: var(--leaf);
+      border-radius: 50% 0 50% 0;
+      opacity: 0;
+      animation: leafFall linear infinite;
+    }
+    @keyframes leafFall {
+      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ── TREE FROGS ── */
+    .frog {
+      position: fixed;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+      animation: frogBob 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
+    }
+    .frog-1 { top: 12%; left: 1.5%; animation-delay: 0s; }
+    .frog-2 { top: 55%; right: 1.8%; animation-delay: -1.3s; font-size: 1.8rem; }
+    .frog-3 { top: 78%; left: 2.5%; animation-delay: -2.7s; font-size: 1.5rem; opacity: 0.8; }
+    .frog-4 { top: 32%; right: 2.2%; animation-delay: -0.7s; font-size: 2rem; }
+
+    @keyframes frogBob {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50%       { transform: translateY(-10px) rotate(3deg); }
+    }
+
+    /* Decorative frog SVG badges */
+    .frog-svg {
+      display: inline-block;
+      width: 36px; height: 36px;
+      vertical-align: middle;
+      margin-right: 8px;
+      filter: drop-shadow(0 2px 6px rgba(82,183,136,0.5));
+    }
+
+    /* ── NAV BREADCRUMB ── */
+    .breadcrumb {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; gap: 8px;
+      padding: 14px 32px;
+      background: rgba(13,43,26,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(82,183,136,0.2);
+      font-size: 0.78rem; letter-spacing: 0.08em;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+    .breadcrumb a {
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--dew); }
+    .breadcrumb .sep { color: var(--leaf); }
+    .breadcrumb .current { color: var(--fern); font-weight: 600; }
+    .back-btn {
+      margin-left: auto;
+      padding: 5px 14px;
+      background: rgba(82,183,136,0.12);
+      border: 1px solid rgba(82,183,136,0.3);
+      border-radius: 20px;
+      color: var(--mist);
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      transition: all 0.25s;
+    }
+    .back-btn:hover { background: rgba(82,183,136,0.25); color: var(--dew); }
+
+    /* ── STEP INDICATOR BANNER ── */
+    .step-banner {
+      position: relative; z-index: 10;
+      display: flex; justify-content: center; align-items: center; gap: 0;
+      padding: 10px 24px;
+      background: linear-gradient(90deg, transparent, rgba(64,145,108,0.15), transparent);
+      border-bottom: 1px solid rgba(82,183,136,0.1);
+    }
+    .step-pip {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
+      position: relative;
+    }
+    .step-pip.done   { background: var(--moss); color: var(--canopy); }
+    .step-pip.active { background: var(--fern); color: var(--canopy); box-shadow: 0 0 14px rgba(82,183,136,0.6); }
+    .step-pip.future { background: rgba(82,183,136,0.12); color: var(--muted); border: 1px solid rgba(82,183,136,0.25); }
+    .step-line {
+      width: 28px; height: 2px;
+      background: rgba(82,183,136,0.2);
+    }
+    .step-line.done { background: rgba(64,145,108,0.5); }
+
+    /* ── HERO HEADER ── */
+    .hero {
+      position: relative; z-index: 5;
+      padding: 56px 40px 40px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--fern);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; flex: 1; max-width: 80px;
+      height: 1px; background: linear-gradient(90deg, transparent, var(--leaf));
+    }
+    .hero-eyebrow::after { transform: scaleX(-1); }
+
+    .hero h1 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      color: var(--dew);
+      line-height: 1.2;
+      text-shadow: 0 0 40px rgba(116,198,157,0.3), 0 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--mist);
+      max-width: 580px;
+      margin: 0 auto 20px;
+      line-height: 1.7;
+    }
+    .hero-bridge {
+      display: inline-block;
+      padding: 10px 22px;
+      background: rgba(82,183,136,0.1);
+      border: 1px solid rgba(82,183,136,0.25);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--dew);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .hero-bridge strong { color: var(--fern); }
+
+    /* ── TIMESTAMPS ── */
+    .timestamps {
+      position: relative; z-index: 5;
+      display: flex; justify-content: center; gap: 32px;
+      padding: 12px 32px;
+      font-size: 0.73rem; letter-spacing: 0.06em;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+    .timestamp-item { display: flex; gap: 8px; align-items: center; }
+    .timestamp-item .label { color: var(--leaf); text-transform: uppercase; }
+    .timestamp-item .val { color: var(--mist); }
+
+    /* ── MAIN CONTAINER ── */
+    .container {
+      position: relative; z-index: 5;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: linear-gradient(135deg, rgba(26,74,46,0.6) 0%, rgba(17,46,31,0.7) 100%);
+      border: 1px solid rgba(82,183,136,0.18);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      border-color: rgba(82,183,136,0.35);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 20px rgba(82,183,136,0.08);
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(116,198,157,0.4), transparent);
+    }
+
+    .card-number {
+      position: absolute; top: 20px; right: 24px;
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.5rem;
+      color: rgba(82,183,136,0.08);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .card h2 {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card h2 .icon {
+      width: 28px; height: 28px;
+      background: rgba(82,183,136,0.15);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+
+    /* ── ACCORDION ── */
+    .accordion { margin: 6px 0; }
+    .accordion-toggle {
+      width: 100%;
+      background: rgba(64,145,108,0.12);
+      border: 1px solid rgba(82,183,136,0.18);
+      border-radius: 8px;
+      padding: 11px 16px;
+      text-align: left;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.83rem;
+      letter-spacing: 0.06em;
+      color: var(--dew);
+      transition: all 0.25s;
+      margin-bottom: 0;
+    }
+    .accordion-toggle:hover { background: rgba(64,145,108,0.22); border-color: rgba(82,183,136,0.35); }
+    .accordion-toggle.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; background: rgba(64,145,108,0.22); }
+    .accordion-arrow { font-size: 0.7rem; transition: transform 0.3s; color: var(--fern); }
+    .accordion-toggle.open .accordion-arrow { transform: rotate(90deg); }
+    .accordion-body {
+      background: rgba(13,43,26,0.5);
+      border: 1px solid rgba(82,183,136,0.18);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 0 16px;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      font-size: 0.83rem;
+      line-height: 1.7;
+      color: var(--mist);
+    }
+    .accordion-body.open { max-height: 200px; padding: 12px 16px; }
+
+    /* ── INPUTS ── */
+    label.field-label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+      margin-top: 16px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 11px 14px;
+      background: rgba(13,43,26,0.6);
+      border: 1px solid rgba(82,183,136,0.2);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      outline: none;
+    }
+    input[type="text"]:focus, textarea:focus {
+      border-color: rgba(82,183,136,0.55);
+      box-shadow: 0 0 0 3px rgba(82,183,136,0.1);
+    }
+    input[type="text"]::placeholder, textarea::placeholder { color: rgba(148,193,168,0.4); }
+    textarea { resize: vertical; min-height: 90px; }
+
+    /* ── VALIDATION HINT ── */
+    .validation-hint {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: rgba(82,183,136,0.07);
+      padding: 8px 12px; border-radius: 6px;
+      border-left: 3px solid rgba(82,183,136,0.3);
+    }
+
+    /* ── CHECKLIST ITEM ── */
+    .check-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(82,183,136,0.08);
+      cursor: pointer;
+      transition: opacity 0.25s;
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-item input[type="checkbox"] { display: none; }
+    .check-box {
+      width: 20px; height: 20px; flex-shrink: 0;
+      border: 1.5px solid rgba(82,183,136,0.4);
+      border-radius: 5px;
+      background: rgba(13,43,26,0.5);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+      transition: all 0.25s;
+      font-size: 0.7rem;
+    }
+    .check-item.checked .check-box {
+      background: var(--moss);
+      border-color: var(--fern);
+      box-shadow: 0 0 8px rgba(82,183,136,0.4);
+    }
+    .check-label {
+      font-size: 0.85rem; color: var(--dew); line-height: 1.5;
+      transition: opacity 0.25s;
+    }
+    .check-item.checked .check-label { opacity: 0.5; text-decoration: line-through; color: var(--muted); }
+
+    /* ── PROGRESS ── */
+    .progress-section {
+      margin: 28px 0;
+    }
+    .progress-header {
+      display: flex; justify-content: space-between;
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .progress-track {
+      height: 6px; background: rgba(82,183,136,0.12);
+      border-radius: 10px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, var(--moss), var(--fern), var(--mist));
+      border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 8px rgba(82,183,136,0.5);
+    }
+    .progress-pct {
+      text-align: center; margin-top: 8px;
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 1.4rem;
+      color: var(--fern);
+      transition: all 0.5s;
+    }
+
+    /* ── TWEET TEMPLATE ── */
+    .tweet-box {
+      background: rgba(13,43,26,0.7);
+      border: 1px solid rgba(82,183,136,0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      color: var(--mist);
+      line-height: 1.6;
+      font-style: italic;
+      position: relative;
+    }
+    .tweet-box::before {
+      content: '𝕏';
+      position: absolute; top: 10px; right: 14px;
+      color: rgba(82,183,136,0.3);
+      font-style: normal; font-size: 1.1rem;
+    }
+
+    /* ── COMPLETE BUTTON ── */
+    .complete-btn {
+      width: 100%;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, var(--moss), var(--leaf));
+      border: none; border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--canopy);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(64,145,108,0.3);
+      position: relative; overflow: hidden;
+    }
+    .complete-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .complete-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(64,145,108,0.45);
+    }
+    .complete-btn:hover::before { opacity: 1; }
+    .complete-btn:disabled {
+      opacity: 0.4; cursor: not-allowed; transform: none;
+    }
+
+    /* ── OUTPUT BLOCK ── */
+    .output-block {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    .output-block textarea {
+      height: 320px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      color: var(--mist);
+    }
+    .copy-btn {
+      padding: 10px 20px;
+      background: rgba(82,183,136,0.12);
+      border: 1px solid rgba(82,183,136,0.3);
+      border-radius: 8px;
+      color: var(--dew);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-top: 10px;
+    }
+    .copy-btn:hover { background: rgba(82,183,136,0.22); }
+
+    /* ── PROCEED LINK ── */
+    .proceed-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 20px; flex-wrap: wrap; gap: 12px;
+    }
+    .proceed-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--leaf), var(--mid));
+      border: 1px solid rgba(82,183,136,0.3);
+      border-radius: 10px;
+      color: var(--dew);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      transition: all 0.3s;
+    }
+    .proceed-link:hover { box-shadow: 0 4px 16px rgba(64,145,108,0.35); transform: translateY(-1px); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex; align-items: center; gap: 16px;
+      margin: 8px 0 20px;
+    }
+    .divider-line { flex: 1; height: 1px; background: rgba(82,183,136,0.12); }
+    .divider-icon { font-size: 0.9rem; opacity: 0.5; }
+
+    /* ── UTIL ── */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .tag-green { background: rgba(82,183,136,0.15); color: var(--fern); border: 1px solid rgba(82,183,136,0.2); }
+    .tag-gold  { background: rgba(212,160,23,0.12); color: var(--gold); border: 1px solid rgba(212,160,23,0.2); }
+
+    .section-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 14px;
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    ul.task-list {
+      list-style: none;
+      padding: 0;
+    }
+    ul.task-list li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      font-size: 0.84rem;
+      color: var(--dew);
+      line-height: 1.55;
+    }
+    ul.task-list li::before {
+      content: '▸';
+      position: absolute; left: 0;
+      color: var(--fern);
+    }
+
+    .launch-note {
+      text-align: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    .launch-note strong { color: var(--fern); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--moss);
+      color: var(--canopy);
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.35s;
+      z-index: 999;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 600px) {
+      .hero { padding: 40px 20px 28px; }
+      .card { padding: 20px; }
+      .frog-1, .frog-3 { left: 0.5%; }
+      .frog-2, .frog-4 { right: 0.5%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Animated Leaf Particles -->
+<div class="leaves-bg" id="leaves"></div>
+
+<!-- Floating Frogs -->
+<div class="frog frog-1">🐸</div>
+<div class="frog frog-2">🐸</div>
+<div class="frog frog-3">🐸</div>
+<div class="frog frog-4">🐸</div>
+
+<!-- Breadcrumb Nav -->
+<nav class="breadcrumb">
+  <a href="home-page-v01.html">🌿 Overview</a>
+  <span class="sep">›</span>
+  <a href="legacy-01.html">Step 1: Build Your Legacy</a>
+  <span class="sep">›</span>
+  <span class="current">Step 2: Initiative & Self Enablement</span>
+  <a href="legacy-01.html" class="back-btn">← Back to Step 1</a>
+</nav>
+
+<!-- Step Progress Banner -->
+<div class="step-banner">
+  <div class="step-pip done" title="Step 1: Build Your Legacy">1</div>
+  <div class="step-line done"></div>
+  <div class="step-pip active" title="Step 2: Initiative & Self Enablement">2</div>
+  <div class="step-line"></div>
+  <div class="step-pip future" title="Step 3">3</div>
+  <div class="step-line"></div>
+  <div class="step-pip future" title="Step 4">4</div>
+  <div class="step-line"></div>
+  <div class="step-pip future" title="Step 5">5</div>
+  <div class="step-line"></div>
+  <div class="step-pip future" title="Step 6">6</div>
+</div>
+
+<!-- Hero Header -->
+<header class="hero">
+  <div class="hero-eyebrow">GamerPrise Pathway &nbsp;·&nbsp; <span class="tag tag-green">Step 2 of 6 — Active</span></div>
+  <h1>Initiative &<br>Self Enablement</h1>
+  <p class="hero-sub">Transition from vision to proof-of-work. Your legacy snapshot is live — now it's time to build something the world can see.</p>
+  <div class="hero-bridge">
+    <strong>Building on your legacy snapshot from Step 1,</strong> now turn initiative into proof-of-work — part of the 6-stage GamerPrise pathway outlined in the overview. Set up your public-facing technical home and share your first progress with the community.
+  </div>
+</header>
+
+<!-- Timestamps -->
+<div class="timestamps">
+  <div class="timestamp-item"><span class="label">Started</span><span class="val" id="start-time">—</span></div>
+  <div class="timestamp-item"><span class="label">Completed</span><span class="val" id="completion-time">Not yet complete</span></div>
+</div>
+
+<!-- Main Content -->
+<main class="container">
+
+  <!-- ── SECTION 0: Prior Artefact ── -->
+  <div class="card" id="card-prior">
+    <div class="card-number">01</div>
+    <h2><span class="icon">📋</span>Prior Artefact — Step 1 Snapshot</h2>
+    <p class="section-note">Paste your Step 1 artefact here. Ensure it includes your selected passion project (e.g. NFT Game Assets, Indie Game Studio) and the === markers from your Grok snapshot.</p>
+    <div class="validation-hint">💡 Your Grok reply should include your chosen passion project + 10 tailored pathways. Copy the full artefact to paste here.</div>
+    <label class="field-label" for="prior-text">Step 1 Artefact Content</label>
+    <textarea id="prior-text" rows="5" placeholder="Paste your Step 1 snapshot here, including passion project selection and === section markers…"></textarea>
+
+    <div class="divider" style="margin:18px 0 4px;"></div>
+    <div class="check-item" onclick="toggleCheck(this)" data-key="prior">
+      <input type="checkbox" id="chk-prior">
+      <div class="check-box">✓</div>
+      <span class="check-label">Step 1 artefact pasted and passion project confirmed</span>
+    </div>
+  </div>
+
+  <!-- ── SECTION 1: AI Guide Roles ── -->
+  <div class="card" id="card-ai">
+    <div class="card-number">02</div>
+    <h2><span class="icon">🤖</span>AI Guide Mindset</h2>
+    <p class="section-note">Each AI plays a distinct role in your journey. Expand to understand how to deploy each one effectively.</p>
+
+    <div class="accordion">
+      <button class="accordion-toggle" onclick="toggleAccordion(this)">
+        🗒️ &nbsp;NotebookLM — Prompt Engineering
+        <span class="accordion-arrow">▶</span>
+      </button>
+      <div class="accordion-body">
+        NotebookLM handles structured prompt engineering and workflow guidance. Use it to design the scaffolding of your build process and maintain consistent output formats across sessions.
+      </div>
+    </div>
+    <div class="accordion">
+      <button class="accordion-toggle" onclick="toggleAccordion(this)">
+        ⚡ &nbsp;Grok — Market-Savvy Content
+        <span class="accordion-arrow">▶</span>
+      </button>
+      <div class="accordion-body">
+        Grok provides market-sensitive project plans and rough HTML structures. It's your strategic co-pilot — use it for the big-picture narrative and rough build scaffolding.
+      </div>
+    </div>
+    <div class="accordion">
+      <button class="accordion-toggle" onclick="toggleAccordion(this)">
+        ✦ &nbsp;Claude — Sleek Design Polish
+        <span class="accordion-arrow">▶</span>
+      </button>
+      <div class="accordion-body">
+        Claude refines aesthetics and functional experience. Bring your rough HTML to Claude for visual elevation, UX flow, and cohesive identity — exactly like this page you're reading now.
+      </div>
+    </div>
+    <div class="accordion">
+      <button class="accordion-toggle" onclick="toggleAccordion(this)">
+        🔍 &nbsp;Gemini — General Reference
+        <span class="accordion-arrow">▶</span>
+      </button>
+      <div class="accordion-body">
+        Gemini serves as a broad knowledge base — quick lookups, fact-checking, and general research to fill gaps in your build process.
+      </div>
+    </div>
+
+    <div class="divider" style="margin:18px 0 4px;"></div>
+    <div class="check-item" onclick="toggleCheck(this)" data-key="ai">
+      <input type="checkbox" id="chk-ai">
+      <div class="check-box">✓</div>
+      <span class="check-label">AI roles reviewed and understood</span>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: GitHub Setup ── -->
+  <div class="card" id="card-github">
+    <div class="card-number">03</div>
+    <h2><span class="icon">⚙️</span>Tech Engine Hub — GitHub Setup</h2>
+    <p class="section-note">GitHub is your public proof-of-work engine. Follow each step to establish your technical foundation.</p>
+
+    <ul class="task-list">
+      <li>Create or log into your GitHub account at <strong>github.com</strong></li>
+      <li>Create a new repository named for your passion project (e.g., <em>indie-game-studio-journey</em>)</li>
+      <li>Enable <strong>GitHub Pages</strong> in repo Settings → Pages → Deploy from branch (main)</li>
+      <li>Upload your <strong>index.html</strong> to the root of the repo — this becomes your live page</li>
+      <li>Save your HTML also in Google Docs or Google Keep for platform portability</li>
+    </ul>
+
+    <div class="validation-hint">
+      🔗 Note: The Project Engine browser utility link will be updated once available. For now, navigate GitHub directly via your browser.
+    </div>
+
+    <div class="divider" style="margin:18px 0 4px;"></div>
+    <div class="check-item" onclick="toggleCheck(this)" data-key="github">
+      <input type="checkbox" id="chk-github">
+      <div class="check-box">✓</div>
+      <span class="check-label">GitHub account created, repository set up, GitHub Pages activated</span>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: Digital Asset Bases ── -->
+  <div class="card" id="card-assets">
+    <div class="card-number">04</div>
+    <h2><span class="icon">🔗</span>Digital Asset Bases</h2>
+    <p class="section-note">Capture your proof-of-work links. These become the foundation of your #BuildInPublic trail.</p>
+
+    <label class="field-label" for="github-url">GitHub Repository / Pages URL</label>
+    <input type="text" id="github-url" placeholder="e.g., https://yourusername.github.io/your-repo">
+
+    <label class="field-label" for="discord-link">Discord Progress Post Link</label>
+    <input type="text" id="discord-link" placeholder="e.g., https://discord.com/channels/…">
+
+    <label class="field-label" for="x-link">X (Twitter) Progress Post Link</label>
+    <input type="text" id="x-link" placeholder="e.g., https://x.com/your-post">
+
+    <div class="tweet-box" style="margin: 16px 0 6px;">
+      "Just completed Step 2 of GamerPrise – repo live on GitHub Pages! Passion project: [yours]. #BuildInPublic #GamerPrise @innov8tor3 🐸"
+    </div>
+    <div style="font-size:0.72rem; color: var(--muted); margin-bottom: 4px;">↑ Example tweet template — copy, personalise, post, then paste the link above</div>
+
+    <label class="field-label" for="badge-github">GitHub Repo Badge URL <span class="tag tag-gold">Optional</span></label>
+    <input type="text" id="badge-github" placeholder="Image URL from Grok Imagine or Hugging Face">
+
+    <label class="field-label" for="badge-projects">10 Passion Projects Badge URL <span class="tag tag-gold">Optional</span></label>
+    <input type="text" id="badge-projects" placeholder="Image URL">
+
+    <label class="field-label" for="badge-security">Cyber Security Badge URL <span class="tag tag-gold">Optional</span></label>
+    <input type="text" id="badge-security" placeholder="Image URL">
+
+    <div class="divider" style="margin:18px 0 4px;"></div>
+    <div class="check-item" onclick="toggleCheck(this)" data-key="assets">
+      <input type="checkbox" id="chk-assets">
+      <div class="check-box">✓</div>
+      <span class="check-label">Digital assets and links captured</span>
+    </div>
+  </div>
+
+  <!-- ── PROGRESS ── -->
+  <div class="progress-section">
+    <div class="progress-header">
+      <span>Step 2 Progress</span>
+      <span id="progress-label">0 / 4 complete</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-pct" id="progress-pct">0%</div>
+  </div>
+
+  <!-- ── COMPLETE BUTTON ── -->
+  <button class="complete-btn" id="complete-btn" onclick="completeStep()" disabled>
+    🌿 Complete Step 2 &amp; Generate Artefact
+  </button>
+  <p class="launch-note">Stages 1–2 launched <strong>March 2026</strong> — see <a href="home-page-v01.html" style="color:var(--fern);">Overview</a> for full timeline.</p>
+
+  <!-- ── OUTPUT ── -->
+  <div class="output-block" id="output-block">
+    <div class="card" style="margin-top: 24px;">
+      <h2><span class="icon">📄</span>Generated Step 2 Completion Artefact</h2>
+      <p class="section-note">Copy this HTML. Save as <strong>index.html</strong> in your GitHub repository. This is your v0.1 public proof-of-work page.</p>
+      <textarea id="generated-html" readonly></textarea>
+      <button class="copy-btn" onclick="copyGenerated()">⎘ Copy to Clipboard</button>
+
+      <div class="proceed-row">
+        <a href="legacy-01.html" class="proceed-link">← Step 1: Build Your Legacy</a>
+        <a href="step-03.html" class="proceed-link">Proceed to Step 3 →</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast">Copied to clipboard 🌿</div>
+
+<script>
+  // ── Init ──
+  const startTime = new Date();
+  document.getElementById('start-time').textContent = startTime.toLocaleString();
+
+  // ── Leaf Particles ──
+  const leavesContainer = document.getElementById('leaves');
+  for (let i = 0; i < 18; i++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf-particle';
+    leaf.style.left = Math.random() * 100 + 'vw';
+    leaf.style.top = (Math.random() * -10) + 'px';
+    leaf.style.animationDuration = (8 + Math.random() * 14) + 's';
+    leaf.style.animationDelay = (Math.random() * -20) + 's';
+    const size = 4 + Math.random() * 6;
+    leaf.style.width = size + 'px';
+    leaf.style.height = size + 'px';
+    leaf.style.opacity = 0.3 + Math.random() * 0.4;
+    const hue = 120 + Math.random() * 40;
+    leaf.style.background = `hsl(${hue}, 55%, 30%)`;
+    leavesContainer.appendChild(leaf);
+  }
+
+  // ── Accordion ──
+  function toggleAccordion(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // close all
+    document.querySelectorAll('.accordion-toggle.open').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+
+  // ── Checklist ──
+  const checkKeys = ['prior','ai','github','assets'];
+  const checked = {};
+
+  function toggleCheck(item) {
+    const key = item.dataset.key;
+    checked[key] = !checked[key];
+    item.classList.toggle('checked', checked[key]);
+    // Also toggle if Step 1 paste detected
+    updateProgress();
+  }
+
+  // Auto-partial progress if Step 1 text pasted
+  document.getElementById('prior-text').addEventListener('input', () => {
+    const val = document.getElementById('prior-text').value.trim();
+    const card = document.querySelector('[data-key="prior"]');
+    if (val.length > 50 && !checked['prior']) {
+      // gentle nudge — don't auto-check, just highlight
+      card && (card.style.borderColor = 'rgba(82,183,136,0.5)');
+    }
+  });
+
+  function updateProgress() {
+    const total = checkKeys.length;
+    const done = checkKeys.filter(k => checked[k]).length;
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('progress-label').textContent = `${done} / ${total} complete`;
+    document.getElementById('complete-btn').disabled = (done < total);
+  }
+
+  // ── Complete Step ──
+  function completeStep() {
+    const completionTime = new Date().toLocaleString();
+    document.getElementById('completion-time').textContent = completionTime;
+
+    const priorText    = document.getElementById('prior-text').value || '(not provided)';
+    const githubUrl    = document.getElementById('github-url').value || '#';
+    const discordLink  = document.getElementById('discord-link').value || '#';
+    const xLink        = document.getElementById('x-link').value || '#';
+    const badgeGithub  = document.getElementById('badge-github').value;
+    const badgeProjects= document.getElementById('badge-projects').value;
+    const badgeSecurity= document.getElementById('badge-security').value;
+
+    const badgeHtml = [
+      badgeGithub   ? `<img src="${badgeGithub}"   alt="GitHub Repo Badge" style="max-width:160px;margin:6px;">` : '',
+      badgeProjects ? `<img src="${badgeProjects}" alt="10 Passion Projects Badge" style="max-width:160px;margin:6px;">` : '',
+      badgeSecurity ? `<img src="${badgeSecurity}" alt="Cyber Security Badge" style="max-width:160px;margin:6px;">` : ''
+    ].filter(Boolean).join('\n        ');
+
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GamerPrise · Step 2 Completion Artefact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Josefin Sans', sans-serif; background: #0d2b1a; color: #e8f5ec; padding: 32px 24px; max-width: 740px; margin: 0 auto; }
+    h1 { font-family: 'Cinzel Decorative', cursive; color: #74c69d; font-size: 1.6rem; margin-bottom: 6px; }
+    h2 { font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; color: #52b788; margin: 24px 0 10px; }
+    .card { background: rgba(26,74,46,0.5); border: 1px solid rgba(82,183,136,0.2); border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+    a { color: #74c69d; }
+    .meta { font-size: 0.78rem; color: #95c9a8; margin: 4px 0; }
+    .proceed { display:inline-block; margin-top:16px; padding:12px 24px; background:rgba(64,145,108,0.3); border:1px solid rgba(82,183,136,0.35); border-radius:10px; color:#d8f3dc; text-decoration:none; font-size:0.85rem; letter-spacing:0.08em; }
+    .prior { white-space: pre-wrap; font-size: 0.78rem; color: #95c9a8; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div style="font-size:0.7rem;letter-spacing:0.1em;color:#40916c;margin-bottom:8px;">GAMERPRISE PATHWAY · STEP 2 OF 6</div>
+  <h1>Step 2 Complete 🌿</h1>
+  <div class="meta">Started: ${startTime.toLocaleString()}</div>
+  <div class="meta">Completed: ${completionTime}</div>
+
+  <div class="card">
+    <h2>Step 1 Artefact (Carried Forward)</h2>
+    <div class="prior">${priorText.replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>')}</div>
+  </div>
+
+  <div class="card">
+    <h2>Digital Assets &amp; Proof-of-Work Links</h2>
+    <p class="meta">GitHub Pages: <a href="${githubUrl}">${githubUrl}</a></p>
+    <p class="meta">Discord Post: <a href="${discordLink}">${discordLink}</a></p>
+    <p class="meta">X Post: <a href="${xLink}">${xLink}</a></p>
+    ${badgeHtml ? `<div style="margin-top:12px;">${badgeHtml}</div>` : ''}
+  </div>
+
+  <div class="card">
+    <h2>Next Steps</h2>
+    <p style="font-size:0.83rem;color:#b7e4c7;line-height:1.65;">This is your v0.1 completion artefact. It is live on GitHub Pages as proof-of-work. Continue your journey — the canopy is growing 🐸</p>
+    <a href="step-03.html" class="proceed">Proceed to Step 3 →</a>
+  </div>
+
+  <p style="font-size:0.7rem;color:#40916c;text-align:center;margin-top:32px;">Stages 1–2 launched March 2026 · GamerPrise Pathway · #BuildInPublic</p>
+</body>
+</html>`;
+
+    document.getElementById('generated-html').value = html;
+    document.getElementById('output-block').style.display = 'block';
+    document.getElementById('output-block').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── Copy ──
+  function copyGenerated() {
+    const ta = document.getElementById('generated-html');
+    ta.select();
+    document.execCommand('copy');
+    showToast('Copied to clipboard 🌿');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+</script>
+</body>
+</html>
