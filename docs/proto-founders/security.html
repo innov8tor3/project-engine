@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential HTML Security Checks - Web3 Style</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #00ffcc; }
+            to { text-shadow: 0 0 20px #00ffcc; }
+        }
+        .preface, .conclusion {
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+            text-align: justify;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
+            transition: transform 0.3s;
+        }
+        .preface:hover, .conclusion:hover {
+            transform: scale(1.02);
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 255, 204, 0.3);
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 204, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #00ffcc;
+        }
+        .card p {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Essential HTML Security Checks for Local Platforms</h1>
+    </header>
+    <div class="preface">
+        <p>There is substantial overhead involved in conducting these tests as a positive action, and individuals are advised to use discretion about how far they want to go when testing security.</p>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>1. Validate HTML syntax</h2>
+            <p>Validate HTML syntax to prevent parsing errors that could lead to unexpected behavior or vulnerabilities. Providers: W3C Markup Validation Service (current), and tools like HTMLHint (open-source, heading towards broader integration in IDEs).</p>
+        </div>
+        <div class="card">
+            <h2>2. Scan for inline JavaScript</h2>
+            <p>Scan for inline JavaScript code that could execute malicious scripts locally. Providers: VirusTotal (Google-owned, current), OWASP ZAP (free, current), and Microsoft Defender (built-in for Windows, current).</p>
+        </div>
+        <div class="card">
+            <h2>3. Check external script inclusions</h2>
+            <p>Check for external script inclusions from untrusted or potentially malicious sources. Providers: Burp Suite (PortSwigger, current), Acunetix (Invicti, current), and StackHawk (for DevSecOps, current).</p>
+        </div>
+        <div class="card">
+            <h2>4. Detect XSS vectors</h2>
+            <p>Detect potential cross-site scripting (XSS) vectors, such as unescaped user inputs or dynamic content. Providers: OWASP ZAP (current), Snyk Code (current), and Bright Security (DAST-focused, current).</p>
+        </div>
+        <div class="card">
+            <h2>5. Look for iframe embeds</h2>
+            <p>Look for iframe embeds that might load remote malicious content. Providers: Pentest-Tools Website Vulnerability Scanner (current), ImmuniWeb (AI-driven, current), and GitLab DAST (integrated in CI/CD, current).</p>
+        </div>
+        <div class="card">
+            <h2>6. Identify form elements</h2>
+            <p>Identify form elements with actions pointing to suspicious or phishing URLs. Providers: Sucuri (free scanner, current), Wallarm (cloud-based, current), and Intruder.io (prioritizes high-risk issues, current).</p>
+        </div>
+        <div class="card">
+            <h2>7. Check for autoplay media</h2>
+            <p>Check for autoplay media elements that could trigger exploits or unwanted resource loads. Providers: OWASP ZAP (current), Acunetix (current), and OpenVAS (open-source network scanner adaptable for web, current).</p>
+        </div>
+        <div class="card">
+            <h2>8. Scan for base64-encoded data</h2>
+            <p>Scan for base64-encoded data or data URIs that might hide malware. Providers: VirusTotal (current), Microsoft Defender (current), and Trivy (Aqua Security, expanding to more web assets).</p>
+        </div>
+        <div class="card">
+            <h2>9. Verify no dangerous event handlers</h2>
+            <p>Verify no dangerous event handlers (e.g., onclick with eval) that could lead to code injection. Providers: Snyk Code (current), Burp Suite (current), and Checkmarx (for code analysis, current).</p>
+        </div>
+        <div class="card">
+            <h2>10. Examine CSS rules</h2>
+            <p>Examine CSS rules that could enable clickjacking or overlay attacks. Providers: OWASP ZAP (current), Bright Security (current), and Invicti (Netsparker, current).</p>
+        </div>
+        <div class="card">
+            <h2>11. Ensure proper character encoding</h2>
+            <p>Ensure proper character encoding to prevent encoding-based injections or display issues. Providers: W3C Validator (current), HTMLHint (current), and Sucuri (part of broader scans).</p>
+        </div>
+        <div class="card">
+            <h2>12. Search for HTML comments</h2>
+            <p>Search for HTML comments that might expose sensitive information or paths. Providers: Manual tools like grep, but automated via OWASP ZAP (current) and Snyk (heading towards more static analysis).</p>
+        </div>
+        <div class="card">
+            <h2>13. Check for meta refresh tags</h2>
+            <p>Check for meta refresh tags that could redirect to malicious sites. Providers: Pentest-Tools (current), Acunetix (current), and Wallarm (current).</p>
+        </div>
+        <div class="card">
+            <h2>14. Detect phishing-like elements</h2>
+            <p>Detect phishing-like elements, such as fake login forms or credential prompts. Providers: Sucuri (free for basic checks, current), ImmuniWeb (current), and Microsoft Defender (anti-phishing extensions).</p>
+        </div>
+        <div class="card">
+            <h2>15. Inspect object or embed tags</h2>
+            <p>Inspect &lt;object&gt; or &lt;embed&gt; tags for risky file types or sources. Providers: OWASP ZAP (current), Burp Suite (current), and GitLab DAST (current).</p>
+        </div>
+        <div class="card">
+            <h2>16. Scan for SVG elements</h2>
+            <p>Scan for SVG elements containing embedded scripts or exploits. Providers: Bright Security (current), Trivy (expanding to containerized web apps), and Snyk Code (current).</p>
+        </div>
+        <div class="card">
+            <h2>17. Validate alt texts and attributes</h2>
+            <p>Validate alt texts, titles, and attributes for no embedded scripts or injections. Providers: W3C Validator (current), Acunetix (current), and Checkmarx (code-focused).</p>
+        </div>
+        <div class="card">
+            <h2>18. Look for malicious links</h2>
+            <p>Look for potentially malicious links or open redirects in anchor tags. Providers: Intruder.io (current), Wallarm (current), and OpenVAS (adaptable).</p>
+        </div>
+        <div class="card">
+            <h2>19. Check for deprecated elements</h2>
+            <p>Check for deprecated or vulnerable HTML elements that browsers might handle insecurely. Providers: OWASP ZAP (current), Sucuri (current), and Invicti (current).</p>
+        </div>
+        <div class="card">
+            <h2>20. Perform dynamic analysis</h2>
+            <p>Perform an overall dynamic analysis (DAST) scan to simulate loading and detect runtime issues. Providers: StackHawk (current), Pentest-Tools (current), and Burp Suite (expert manual and automated, current).</p>
+        </div>
+    </div>
+    <div class="conclusion">
+        <p>If a page host is serving a community, the community may ask for added security capability. But it is likely best to avoid a coding overhead at first, and then be responsive to community sentiment.</p>
+    </div>
+    <footer>
+        <p>Powered by Web3 Innovation - Publishable on GitHub Pages</p>
+    </footer>
+</body>
+</html>
