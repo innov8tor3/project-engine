@@ -675,7 +675,7 @@
   <div class="card" id="card-ai">
     <div class="card-number">02</div>
     <h2><span class="icon">🤖</span>AI Guide Mindset</h2>
-    <p class="section-note">Each AI plays a distinct role in your journey. Expand to understand how to deploy each one effectively.</p>
+    <p class="section-note">Each AI plays a distinct role in your journey. Expand to understand how to deploy each one effectively. Note AI evolves very rapidly, so do your own testing on each one to stay up to date with its capabilities.</p>
 
     <div class="accordion">
       <button class="accordion-toggle" onclick="toggleAccordion(this)">
@@ -730,10 +730,14 @@
 
     <ul class="task-list">
       <li>Create or log into your GitHub account at <strong>github.com</strong></li>
-      <li>Create a new repository named for your passion project (e.g., <em>indie-game-studio-journey</em>)</li>
+      <li>Create a new repository named for your chosen passion project (e.g., <em>indie-game-studio-journey</em>)</li>
       <li>Enable <strong>GitHub Pages</strong> in repo Settings → Pages → Deploy from branch (main)</li>
-      <li>Upload your <strong>index.html</strong> to the root of the repo — this becomes your live page</li>
+      <li>Upload your <strong>HTML</strong> to a named subfolder in the /docs folder in the repo — this becomes your live page</li>
+      <li><strong>GitHub Editor Quirk</strong>Subfolders are created in the file creation dialogue with a following slash</li>
       <li>Save your HTML also in Google Docs or Google Keep for platform portability</li>
+      <li>For longer HTML, on a copy and paste, be sure all the HTML was copied, right down to the close HTML tag</li>
+      <li>If HTML won't render in a browser, use Claude to debug, where again copy and paste is your friend</li>
+      <li>Once confidence in GitHub is established, use of Google to "save your work" can become more judicious</li>
     </ul>
 
     <div class="validation-hint">
@@ -768,14 +772,14 @@
     </div>
     <div style="font-size:0.72rem; color: var(--muted); margin-bottom: 4px;">↑ Example tweet template — copy, personalise, post, then paste the link above</div>
 
-    <label class="field-label" for="badge-github">GitHub Repo Badge URL <span class="tag tag-gold">Optional</span></label>
+    <label class="field-label" for="badge-github">GitHub Repo Image URL <span class="tag tag-gold">Key Asset</span></label>
     <input type="text" id="badge-github" placeholder="Image URL from Grok Imagine or Hugging Face">
 
-    <label class="field-label" for="badge-projects">10 Passion Projects Badge URL <span class="tag tag-gold">Optional</span></label>
-    <input type="text" id="badge-projects" placeholder="Image URL">
+    <label class="field-label" for="badge-projects">10 Passion Projects Soulbound Asset URL <span class="tag tag-gold">Key Asset</span></label>
+    <input type="text" id="badge-projects" placeholder="Soulbound Asset URL">
 
-    <label class="field-label" for="badge-security">Cyber Security Badge URL <span class="tag tag-gold">Optional</span></label>
-    <input type="text" id="badge-security" placeholder="Image URL">
+    <label class="field-label" for="badge-security">Cyber Security Soulbound Asset URL <span class="tag tag-gold">Optional</span></label>
+    <input type="text" id="badge-security" placeholder="Soulbound Asset URL">
 
     <div class="divider" style="margin:18px 0 4px;"></div>
     <div class="check-item" onclick="toggleCheck(this)" data-key="assets">
@@ -799,15 +803,15 @@
 
   <!-- ── COMPLETE BUTTON ── -->
   <button class="complete-btn" id="complete-btn" onclick="completeStep()" disabled>
-    🌿 Complete Step 2 &amp; Generate Artefact
+    🚀 Transformation - Complete Step 2 &amp; Generate Artefact
   </button>
-  <p class="launch-note">Stages 1–2 launched <strong>March 2026</strong> — see <a href="home-page-v01.html" style="color:var(--fern);">Overview</a> for full timeline.</p>
+  <p class="launch-note">Stages 1–2 launched <strong>March 2026</strong> — see <a href="home-page-v01.html" style="color:var(--fern);">Overview</a> for full pathway</p>
 
   <!-- ── OUTPUT ── -->
   <div class="output-block" id="output-block">
     <div class="card" style="margin-top: 24px;">
       <h2><span class="icon">📄</span>Generated Step 2 Completion Artefact</h2>
-      <p class="section-note">Copy this HTML. Save as <strong>index.html</strong> in your GitHub repository. This is your v0.1 public proof-of-work page.</p>
+      <p class="section-note">Copy this HTML. Save as <strong>yourchosenname.html</strong> in your GitHub repository. This is your v0.1 public proof-of-work page.</p>
       <textarea id="generated-html" readonly></textarea>
       <button class="copy-btn" onclick="copyGenerated()">⎘ Copy to Clipboard</button>
 
