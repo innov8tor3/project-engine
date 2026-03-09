@@ -22,7 +22,7 @@ To build a clear and safe CONTRIBUTING environment takes some effort and care, a
 We will be heading towards this as a CONTRIBUTING 101 first offering, including to other repos where interested.
 
 ### Stepped Provision - Phase 1 of 3
-1. Welcome & Invitations - We absolutely do want to bring folk onbaord to contribute. Contact @innov8tor3 in X.
+1. Welcome & Invitations - We absolutely do want to bring folk onboard to contribute. Contact @innov8tor3 in X.
 2. Clear Documents - Initial docs are here in GitHub and will evolve. Apply to join an X List with innov8tor3.
 3. Protofounder First Steps - We encourage publication of progress, and testing early digital assets.
 4. Leader Boards - An initial Grats Register will be created in Excel, access via innov8tor3.
