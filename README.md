@@ -9,5 +9,4 @@ We are currently addressing six steps, launching 1&2. With traction, seeking fun
 5. Assess Progress - Evaluation & Competition
 6. Empower the Founder - Startup<br><br></ol>
 This is the [current pitch deck.](https://innov8tor3.github.io/project-engine/pitch/pitch.html)<br><br>
-Longer term, there can be substantial impact, a great reason to keep going on this journey, or hand on to more experienced leaders.<br><br>
-[Longer term impact assessment](https://innov8tor3.github.io/project-engine/scale-up/scale-up.html)
+Longer term, there can be [substantial impact](https://innov8tor3.github.io/project-engine/scale-up/scale-up.html), a great reason to keep going on this journey, or hand on to more experienced leaders.
