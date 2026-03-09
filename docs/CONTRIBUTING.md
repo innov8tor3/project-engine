@@ -25,9 +25,9 @@ We will be heading towards this as a CONTRIBUTING 101 first offering, including 
 1. Welcome & Invitations - We absolutely do want to bring folk onboard to contribute. Contact @innov8tor3 in X.
 2. Clear Documents - Initial docs are here in GitHub and will evolve. Apply to join an X List with innov8tor3.
 3. Protofounder First Steps - We encourage publication of progress, and testing early digital assets.
-   a. Feedback is encouraged and will be noted. Bad actors will not be tolerated and will be expelled.
+   <br>a. Feedback is encouraged and will be noted. Bad actors will not be tolerated and will be expelled.
 5. Leader Boards - An initial Grats Register will be created in Excel, access via innov8tor3.
-   a. Automation is definitely welcome, as are contributors willing to help co-create
+   <br>a. Automation is definitely welcome, as are contributors willing to help co-create
 7. Social Media - We will start with X, and migrate to Discord once a secure set up is achieved.
 
 ### Stepped Provision - Later Phases
