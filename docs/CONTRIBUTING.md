@@ -13,6 +13,11 @@ Before creating a bug report, please check the issues list to see if the problem
 4. Ensure the test suite passes.
 5. Use clear commit messages.
 
+### Progress Visibility
+We will start this in X, posting progress and page creation. We need our participants to be able to show their progress. Each questpreneur will tag @innov8tor3, who will add the QP to his X List so overyone can see progress across the group. We will use the tag #GamerPrise to start with to help identify relevant posts, and Grok to help identify more active contestants.
+
+In time, we will curate a "safe but smart" Discord, when most activity will switch there so as to make it easier for participants.
+
 ## Longer Term Plans
 ### Overview
 We do want to bring folk with us building this future, and we intend it to be Open Source all the way.
