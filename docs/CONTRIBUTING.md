@@ -1,4 +1,4 @@
-# Contributing to [Project Engine]
+# Contributing - Project Engine
 
 First off, thanks for taking the time to contribute! ❤️
 
