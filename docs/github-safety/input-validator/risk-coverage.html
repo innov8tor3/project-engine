@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Validation Risk Explainer - Project Engine Safety</title>
+    <style>
+        /* Dark theme with Web3-inspired modern, striking design */
+        :root {
+            --bg-primary: #121212; /* Deep space black */
+            --bg-secondary: #1e1e1e; /* Dark gray for cards */
+            --text-primary: #e0e0e0; /* Light gray text */
+            --text-accent: #00ff88; /* Neon green for accents */
+            --border-color: #333; /* Subtle borders */
+            --hover-bg: #252525; /* Hover effect */
+            --gradient-bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* Web3 cosmic gradient */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--text-accent);
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .risk-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .risk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 255, 136, 0.2);
+        }
+
+        .risk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--text-accent);
+        }
+
+        .risk-header::after {
+            content: '▼';
+            transition: transform 0.3s;
+        }
+
+        .risk-details {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .risk-card.active .risk-details {
+            display: block;
+        }
+
+        .risk-card.active .risk-header::after {
+            transform: rotate(180deg);
+        }
+
+        .protection-level {
+            font-weight: bold;
+            color: var(--text-accent);
+        }
+
+        .sophistication, .attack-level {
+            background: var(--hover-bg);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--text-accent);
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Interactive components: Accordion behavior */
+        script {
+            /* JS will handle click events for accordions */
+        }
+
+        /* Web3 flair: Neon animations */
+        @keyframes neon-glow {
+            0% { text-shadow: 0 0 5px var(--text-accent); }
+            50% { text-shadow: 0 0 15px var(--text-accent); }
+            100% { text-shadow: 0 0 5px var(--text-accent); }
+        }
+
+        header h1 {
+            animation: neon-glow 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Input Validation Risk Explainer</h1>
+        <p>Understanding Protections from Plain Text & URL Checks in Online Coding Workflows</p>
+    </header>
+
+    <main>
+        <p>This document explains the risks discussed in our conversation about online coding (like using GitHub with AI "vibe coding"). We focus on two new checks: <span class="tooltip">Plain Text Validation<span class="tooltiptext">Checks for safe text without harmful code like scripts or injections.</span></span> and <span class="tooltip">URL Validation<span class="tooltiptext">Verifies URLs are properly formatted and safe from malware using browser checks.</span></span>. For each risk, we show what's protected, what's still vulnerable, and the sophistication/attack levels involved.</p>
+
+        <p>Click on each risk to expand details. Sophistication levels: Low (basic hackers), Medium (skilled attackers), High (advanced pros). Attack levels: Low (minor issues), Medium (data loss), High (major breaches).</p>
+
+        <div class="risk-card">
+            <div class="risk-header">1. Security Oversights in AI-Generated Code (Vibe Coding Risks)</div>
+            <div class="risk-details">
+                <p>This risk comes from AI tools creating code that skips important checks, like authentication, leading to bugs or exploits (e.g., database wipes).</p>
+                <p class="protection-level">Protected By Checks:</p>
+                <ul>
+                    <li>Plain Text: High - Stops injections and bad inputs in forms/APIs.</li>
+                    <li>URL: Medium - Prevents unsafe links in code redirects or embeds.</li>
+                </ul>
+                <p>Remaining Risks: AI might still miss broader logic errors (e.g., no encryption). Without extra scans, code could have hidden vulnerabilities.</p>
+                <div class="sophistication">Sophistication: Medium (attackers exploit known AI flaws).</div>
+                <div class="attack-level">Attack Level: High (could lead to full system compromise).</div>
+            </div>
+        </div>
+
+        <div class="risk-card">
+            <div class="risk-header">2. Sensitive Data Exposure in Repos</div>
+            <div class="risk-details">
+                <p>Accidentally committing secrets (e.g., API keys) to GitHub repos, visible to others.</p>
+                <p class="protection-level">Protected By Checks:</p>
+                <ul>
+                    <li>Plain Text: Medium - Flags sensitive patterns in text inputs before commit.</li>
+                    <li>URL: Low - Might catch leaky URLs but not text secrets.</li>
+                </ul>
+                <p>Remaining Risks: Hardcoded secrets or file uploads bypass inputs. Public repos still expose data without private settings.</p>
+                <div class="sophistication">Sophistication: Low (scanners find exposed repos easily).</div>
+                <div class="attack-level">Attack Level: Medium (leads to unauthorized access).</div>
+            </div>
+        </div>
+
+        <div class="risk-card">
+            <div class="risk-header">3. Account and Access Compromises</div>
+            <div class="risk-details">
+                <p>Hackers stealing your GitHub login via phishing or weak security, then tampering with code.</p>
+                <p class="protection-level">Protected By Checks:</p>
+                <ul>
+                    <li>Plain Text: Low - Helps post-compromise by blocking bad inputs.</li>
+                    <li>URL: Medium - Stops phishing URLs in forms.</li>
+                </ul>
+                <p>Remaining Risks: Core account theft isn't stopped. No 2FA? High vulnerability to brute force.</p>
+                <div class="sophistication">Sophistication: Medium (phishing requires some targeting).</div>
+                <div class="attack-level">Attack Level: High (full control over repos).</div>
+            </div>
+        </div>
+
+        <div class="risk-card">
+            <div class="risk-header">4. Data Loss from Platform Dependencies</div>
+            <div class="risk-details">
+                <p>Online tools like GitHub failing (outages) or no backups, losing code/history.</p>
+                <p class="protection-level">Protected By Checks:</p>
+                <ul>
+                    <li>Plain Text: Low - Prevents input-caused corruption but not platform issues.</li>
+                    <li>URL: None - Irrelevant to backups/outages.</li>
+                </ul>
+                <p>Remaining Risks: No local backups mean total loss in outages. Force-pushes still wipe history.</p>
+                <div class="sophistication">Sophistication: Low (accidental by users) to High (DDoS on platforms).</div>
+                <div class="attack-level">Attack Level: Medium (recoverable with effort, but disruptive).</div>
+            </div>
+        </div>
+
+        <div class="risk-card">
+            <div class="risk-header">5. Malware and Untrusted Code Execution</div>
+            <div class="risk-details">
+                <p>Running bad code from AI suggestions or dependencies, infecting your setup.</p>
+                <p class="protection-level">Protected By Checks:</p>
+                <ul>
+                    <li>Plain Text: Medium - Blocks injected commands in text.</li>
+                    <li>URL: High - Checks for malware links in dependencies.</li>
+                </ul>
+                <p>Remaining Risks: Non-URL malware (e.g., tainted packages) slips through. No sandbox? Spreads fast.</p>
+                <div class="sophistication">Sophistication: High (crafting stealthy malware).</div>
+                <div class="attack-level">Attack Level: High (device takeover).</div>
+            </div>
+        </div>
+
+        <p>These checks are a great start for safer online coding, but always add layers like scans, 2FA, and backups for full protection!</p>
+    </main>
+
+    <footer>
+        <p>Created March 11, 2026 • Project Engine Explainer • Copy and publish via GitHub Pages</p>
+    </footer>
+
+    <script>
+        // Interactive accordion for risk cards
+        document.querySelectorAll('.risk-card').forEach(card => {
+            const header = card.querySelector('.risk-header');
+            header.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+                  </html>
