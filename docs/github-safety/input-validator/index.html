@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Validator – Project Engine Online Safety</title>
+  <link rel="stylesheet" href="../../css/validator.css">  <!-- relative from github-safety/input-validator/css/ -->
+  <link rel="stylesheet" href="../../../css/site.css">     <!-- if you have a global stylesheet at root/css/ -->
+</head>
+<body>
+
+  <header>
+    <h1>Project Engine – Input Field Validator</h1>
+    <p>Simple client-side validation for plain text and URLs (part of Online Safety tools)</p>
+    <nav>
+      <a href="../../index.html">← Back to Online Safety</a> |
+      <a href="https://github.com/innov8tor3/project-engine">GitHub Repo</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Plain Text Input</h2>
+      <p>Rejects HTML tags, script attempts, etc.</p>
+      <input type="text" id="textInput" class="input-field" placeholder="Enter plain text (e.g. Hello world)">
+      <button onclick="checkText()">Validate Text</button>
+      <pre id="textResult"></pre>
+    </section>
+
+    <section>
+      <h2>URL Input</h2>
+      <p>Checks format + browser-safe lookup (Safe Browsing simulation – replace API key in production)</p>
+      <input type="url" id="urlInput" class="url-field input-field" placeholder="Enter URL (https://...)">
+      <button onclick="checkUrl()">Validate URL</button>
+      <pre id="urlResult"></pre>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Project Engine • innov8tor3 • 2026</p>
+  </footer>
+
+  <!-- Load validators (order doesn't matter) -->
+  <script src="js/validator-text.js"></script>
+  <script src="js/validator-url.js"></script>
+
+  <script>
+    // Demo glue code – calls the modular functions
+    function checkText() {
+      const input = document.getElementById('textInput');
+      const resultDiv = document.getElementById('textResult');
+      const result = validatePlainText(input.value);
+      
+      input.classList.toggle('valid', result.isValid);
+      input.classList.toggle('invalid', !result.isValid);
+      
+      resultDiv.textContent = JSON.stringify(result, null, 2);
+      console.log('Text validation result:', result);
+    }
+
+    async function checkUrl() {
+      const input = document.getElementById('urlInput');
+      const resultDiv = document.getElementById('urlResult');
+      const result = await validateUrl(input.value);
+      
+      input.classList.toggle('valid', result.isValid);
+      input.classList.toggle('invalid', !result.isValid);
+      
+      resultDiv.textContent = JSON.stringify(result, null, 2);
+      console.log('URL validation result:', result);
+    }
+  </script>
+
+</body>
+</html>
