@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeShield • 5-Tier Security for Lone Coders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --accent: 165 243 252;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .logo-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at 50% 30%, rgb(165 243 252 / 0.08) 0%, transparent 70%);
+        }
+
+        .tier-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+
+        .shield {
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .floating-lock {
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, #22d3ee, #67e8f9);
+        }
+
+        .details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .tier-card.expanded .details {
+            max-height: 800px;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgb(165 243 252);
+            border-radius: 50%;
+            animation: particle-float 15s linear infinite;
+            opacity: 0.15;
+        }
+    </style>
+</head>
+<body class="tail-container bg-zinc-950 text-zinc-100 overflow-x-hidden">
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/80 backdrop-blur-lg border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-cyan-400 rounded-2xl flex items-center justify-center text-zinc-950 font-bold text-2xl logo-font">V</div>
+                <span class="logo-font text-3xl font-semibold tracking-tighter">VibeShield</span>
+            </div>
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#intro" class="hover:text-cyan-300 transition-colors">Why Platforms Win</a>
+                <a href="#tiers" class="hover:text-cyan-300 transition-colors">The 5 Tiers</a>
+                <a href="#assess" class="hover:text-cyan-300 transition-colors">Assess Your Assets</a>
+            </div>
+            <a href="https://github.com" target="_blank" 
+               class="px-6 py-2.5 bg-white text-zinc-950 font-semibold rounded-2xl text-sm hover:bg-cyan-300 transition-all flex items-center gap-x-2">
+                <span>Deploy to GitHub Pages</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L9 15" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-bg min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <!-- floating fascinators -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-lock absolute top-20 left-10 text-6xl opacity-10">🔒</div>
+            <div class="floating-lock absolute top-40 right-20 text-5xl opacity-10 delay-300" style="animation-delay: 1.2s;">🛡️</div>
+            <div class="floating-lock absolute bottom-32 left-1/3 text-7xl opacity-10" style="animation-delay: 2.5s;">⚡</div>
+            <div class="floating-lock absolute top-1/2 right-1/4 text-4xl opacity-10" style="animation-delay: 0.8s;">🌐</div>
+        </div>
+
+        <!-- canvas particles -->
+        <canvas id="particles" class="absolute inset-0 pointer-events-none z-10"></canvas>
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-20">
+            <div class="inline-flex items-center gap-x-2 px-5 py-2 bg-zinc-900 rounded-3xl border border-cyan-400/30 mb-6">
+                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                <span class="text-xs font-mono tracking-[2px] text-cyan-300">LONE CODER EDITION</span>
+            </div>
+            
+            <h1 class="text-7xl md:text-8xl font-bold logo-font tracking-tighter leading-none mb-4">
+                YOUR CODE.<br>YOUR VIBE.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-emerald-300">PROTECTED.</span>
+            </h1>
+            
+            <p class="max-w-lg mx-auto text-xl text-zinc-400 mb-10">
+                5 security tiers for vibe coders who hate sysadmin hell.<br>
+                From “oops I leaked my keys” to “Google-level fortress” — all free to start.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#tiers" 
+                   class="px-10 py-5 bg-white text-zinc-950 font-semibold rounded-3xl flex items-center justify-center gap-x-3 text-lg hover:scale-105 transition-all">
+                    <span>See the Tiers</span>
+                    <span class="text-2xl">↓</span>
+                </a>
+                <button onclick="document.getElementById('assess').scrollIntoView({ behavior: 'smooth' })"
+                        class="px-10 py-5 border border-cyan-400/50 hover:border-cyan-400 font-medium rounded-3xl text-lg transition-all">
+                    Quick Asset Check →
+                </button>
+            </div>
+
+            <!-- big shield -->
+            <div class="mt-20 mx-auto w-52 h-52 flex items-center justify-center">
+                <svg width="220" height="220" viewBox="0 0 200 200" class="shield drop-shadow-2xl" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 20 L180 50 L180 110 C180 150 140 180 100 195 C60 180 20 150 20 110 L20 50 Z" 
+                          fill="#22d3ee" fill-opacity="0.15" stroke="#67e8f9" stroke-width="12" stroke-linejoin="round"/>
+                    <path d="M100 45 L155 65 L155 105 C155 135 125 155 100 165 C75 155 45 135 45 105 L45 65 Z" 
+                          fill="#0ea5e9" fill-opacity="0.6"/>
+                    <text x="100" y="115" text-anchor="middle" fill="#0f172a" font-size="42" font-weight="700" class="logo-font">VS</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center gap-y-1 text-xs text-zinc-500">
+            <div class="flex gap-x-6">
+                <div class="flex items-center gap-x-1.5">
+                    <div class="w-px h-4 bg-cyan-400"></div>
+                    <span>SCROLL FOR TIERS</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- INTRO EXPLAINER -->
+    <section id="intro" class="max-w-4xl mx-auto px-6 py-24 border-t border-zinc-800">
+        <div class="grid md:grid-cols-12 gap-16 items-center">
+            <div class="md:col-span-7">
+                <h2 class="text-5xl font-semibold tracking-tight mb-8">Why lone coders win with mass platform protection</h2>
+                <div class="prose prose-invert text-lg text-zinc-300">
+                    <p class="mb-6">
+                        When you vibe-code with AI, push to GitHub, and ship instantly, your repo becomes a magnet. 
+                        The moment you have <span class="text-emerald-300 font-medium">any assets</span> — even a few users, a clever idea, or $100 in Stripe — you attract extractive bad actors.
+                    </p>
+                    <p class="mb-6">
+                        Self-managing servers, certs, firewalls, and AI data leaks is exhausting and dangerous. 
+                        That’s why smart builders hand the boring (and scary) stuff to massive platforms — the same reason you use Gmail instead of running your own mail server.
+                    </p>
+                    <p>
+                        These platforms give you <span class="font-semibold text-cyan-300">enterprise-grade security at hobbyist prices</span> because they protect millions of sites at once. 
+                        Their security teams, global edge networks, and constant threat intelligence are your invisible bodyguard.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5 bg-zinc-900 rounded-3xl p-8 border border-zinc-700">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="text-5xl">🧠</div>
+                    <div>
+                        <div class="font-mono text-xs tracking-widest text-emerald-400 mb-1">PRO TIP</div>
+                        <p class="text-zinc-300">Your “asset level” grows silently. A weekend side project one day = valuable IP the next. Re-assess every 30 days.</p>
+                    </div>
+                </div>
+                
+                <div class="h-px bg-zinc-700 my-8"></div>
+                
+                <div class="space-y-6 text-sm">
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 text-xs font-bold">1</div>
+                        <div class="text-zinc-400">Zero assets → Tier 1 is perfect (pure vibe)</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 text-xs font-bold">2</div>
+                        <div class="text-zinc-400">First users or revenue → Tier 3 minimum</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0 w-6 h-6 rounded-2xl bg-cyan-400/10 flex items-center justify-center text-cyan-400 text-xs font-bold">3</div>
+                        <div class="text-zinc-400">Real IP or paying customers → Tier 5 fortress</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIERS SECTION -->
+    <section id="tiers" class="bg-zinc-900 py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex items-end justify-between mb-16">
+                <div>
+                    <span class="px-4 py-1.5 bg-emerald-300 text-emerald-950 text-xs font-bold rounded-3xl">5 TIERS</span>
+                    <h2 class="text-6xl font-semibold tracking-tighter mt-3">From Zero to Fortress</h2>
+                </div>
+                <div class="text-right">
+                    <div class="text-xs font-mono text-zinc-500">CLICK ANY TIER TO EXPAND</div>
+                </div>
+            </div>
+
+            <div class="space-y-8 relative before:absolute before:left-12 before:top-8 before:bottom-8 before:w-1 before:bg-gradient-to-b before:from-cyan-300 before:to-emerald-300">
+                
+                <!-- TIER 1 -->
+                <div onclick="toggleTier(this)" class="tier-card group bg-zinc-950 border border-zinc-800 hover:border-cyan-400 rounded-3xl p-8 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-zinc-900 rounded-2xl flex items-center justify-center text-4xl border border-red-400/30">1️⃣</div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="font-mono text-red-400 text-sm">TIER 1 • BARE VIBE</span>
+                                    <h3 class="text-3xl font-semibold mt-1">Plain Vibe Coding</h3>
+                                </div>
+                                <div class="text-6xl opacity-20 group-hover:opacity-40 transition-all">🔓</div>
+                            </div>
+                            <p class="mt-4 text-zinc-400 max-w-md">You + GitHub + whatever AI you trust. Zero platform protection.</p>
+                            
+                            <div class="details mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-red-400">Who</div>
+                                    <p class="font-medium">Just you (and raw GitHub public/private repos)</p>
+                                </div>
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-red-400">Risks Still Wide Open</div>
+                                    <ul class="space-y-2 text-zinc-400">
+                                        <li class="flex items-center gap-x-2">• Secrets in code or .env pushed to Git</li>
+                                        <li class="flex items-center gap-x-2">• No auto HTTPS / DDoS protection</li>
+                                        <li class="flex items-center gap-x-2">• AI models may train on your IP</li>
+                                        <li class="flex items-center gap-x-2">• One bad deploy = total exposure</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIER 2 -->
+                <div onclick="toggleTier(this)" class="tier-card group bg-zinc-950 border border-zinc-800 hover:border-cyan-400 rounded-3xl p-8 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-zinc-900 rounded-2xl flex items-center justify-center text-4xl border border-cyan-400/30">2️⃣</div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="font-mono text-cyan-300 text-sm">TIER 2 • VERCEL ENTRY</span>
+                                    <h3 class="text-3xl font-semibold mt-1">Vercel</h3>
+                                </div>
+                                <div class="text-6xl opacity-20 group-hover:opacity-40 transition-all">🛡️</div>
+                            </div>
+                            <p class="mt-4 text-zinc-400 max-w-md">The frontend darling for Next.js &amp; friends. Instant deploys with basic mass protection.</p>
+                            
+                            <div class="details mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-cyan-300">Who</div>
+                                    <p class="font-medium">Vercel — built for speed, loved by solo devs</p>
+                                </div>
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-emerald-400">New Protections</div>
+                                    <ul class="space-y-2 text-zinc-400">
+                                        <li class="flex items-center gap-x-2">• Automatic HTTPS everywhere</li>
+                                        <li class="flex items-center gap-x-2">• Free DDoS + basic firewall</li>
+                                        <li class="flex items-center gap-x-2">• Secure environment variables</li>
+                                        <li class="flex items-center gap-x-2">• Serverless isolation (no patching)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIER 3 -->
+                <div onclick="toggleTier(this)" class="tier-card group bg-zinc-950 border border-zinc-800 hover:border-cyan-400 rounded-3xl p-8 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-zinc-900 rounded-2xl flex items-center justify-center text-4xl border border-cyan-400/30">3️⃣</div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="font-mono text-cyan-300 text-sm">TIER 3 • NETLIFY BOOST</span>
+                                    <h3 class="text-3xl font-semibold mt-1">Netlify</h3>
+                                </div>
+                                <div class="text-6xl opacity-20 group-hover:opacity-40 transition-all">🛡️</div>
+                            </div>
+                            <p class="mt-4 text-zinc-400 max-w-md">Privacy-first alternative with generous free commercial use.</p>
+                            
+                            <div class="details mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-cyan-300">Who</div>
+                                    <p class="font-medium">Netlify — forms, functions, and chill analytics</p>
+                                </div>
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-emerald-400">New Protections</div>
+                                    <ul class="space-y-2 text-zinc-400">
+                                        <li class="flex items-center gap-x-2">• Same edge security as Vercel + better privacy analytics</li>
+                                        <li class="flex items-center gap-x-2">• SOC 2 &amp; GDPR by default</li>
+                                        <li class="flex items-center gap-x-2">• Team access controls + secret scanning</li>
+                                        <li class="flex items-center gap-x-2">• Zero-config deploy previews</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIER 4 -->
+                <div onclick="toggleTier(this)" class="tier-card group bg-zinc-950 border border-zinc-800 hover:border-cyan-400 rounded-3xl p-8 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-zinc-900 rounded-2xl flex items-center justify-center text-4xl border border-cyan-400/30">4️⃣</div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="font-mono text-cyan-300 text-sm">TIER 4 • CLOUDFLARE FORTRESS</span>
+                                    <h3 class="text-3xl font-semibold mt-1">Cloudflare Pages + Workers</h3>
+                                </div>
+                                <div class="text-6xl opacity-20 group-hover:opacity-40 transition-all">🛡️</div>
+                            </div>
+                            <p class="mt-4 text-zinc-400 max-w-md">The security-first giant. Unlimited free tier for most projects.</p>
+                            
+                            <div class="details mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-cyan-300">Who</div>
+                                    <p class="font-medium">Cloudflare — built security, not as an afterthought</p>
+                                </div>
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-emerald-400">New Protections</div>
+                                    <ul class="space-y-2 text-zinc-400">
+                                        <li class="flex items-center gap-x-2">• Zero Trust + advanced WAF &amp; bot protection</li>
+                                        <li class="flex items-center gap-x-2">• Industry-leading DDoS (they stop nation-state attacks)</li>
+                                        <li class="flex items-center gap-x-2">• Unlimited bandwidth &amp; requests on free tier</li>
+                                        <li class="flex items-center gap-x-2">• Edge isolation that makes attackers cry</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIER 5 -->
+                <div onclick="toggleTier(this)" class="tier-card group bg-zinc-950 border border-zinc-800 hover:border-cyan-400 rounded-3xl p-8 cursor-pointer">
+                    <div class="flex gap-8 items-start">
+                        <div class="w-14 h-14 flex-shrink-0 bg-zinc-900 rounded-2xl flex items-center justify-center text-4xl border border-cyan-400/30">5️⃣</div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="font-mono text-cyan-300 text-sm">TIER 5 • FULL AI GUARDIAN</span>
+                                    <h3 class="text-3xl font-semibold mt-1">Codeium + Tabnine + GitHub Copilot + Secret Scanning</h3>
+                                </div>
+                                <div class="text-6xl opacity-20 group-hover:opacity-40 transition-all">🔐</div>
+                            </div>
+                            <p class="mt-4 text-zinc-400 max-w-md">The complete stack: secure AI coding + platform + repo armor.</p>
+                            
+                            <div class="details mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-cyan-300">Who</div>
+                                    <p class="font-medium">Codeium / Tabnine (privacy-first AI) + GitHub advanced security</p>
+                                </div>
+                                <div>
+                                    <div class="uppercase text-xs tracking-widest mb-3 text-emerald-400">New Protections</div>
+                                    <ul class="space-y-2 text-zinc-400">
+                                        <li class="flex items-center gap-x-2">• Your code never trains their models (default)</li>
+                                        <li class="flex items-center gap-x-2">• Dependabot + secret scanning + code scanning</li>
+                                        <li class="flex items-center gap-x-2">• Local/self-hosted AI options available</li>
+                                        <li class="flex items-center gap-x-2">• Microsoft/Google-level compliance &amp; monitoring</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center text-xs font-mono text-zinc-500">
+                Tier 5 = Google-level protection for individuals. Free to start, pay only when you grow.
+            </div>
+        </div>
+    </section>
+
+    <!-- ASSESS YOUR ASSETS -->
+    <section id="assess" class="max-w-4xl mx-auto px-6 py-24 border-t border-zinc-800">
+        <div class="bg-zinc-900 rounded-3xl p-12">
+            <h2 class="text-5xl font-semibold tracking-tighter mb-8 text-center">Quick Asset Reality Check</h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div onclick="this.classList.toggle('ring-2'); this.classList.toggle('ring-emerald-400')" 
+                     class="bg-zinc-950 p-8 rounded-3xl cursor-pointer hover:ring-2 hover:ring-emerald-400 transition-all text-center">
+                    <div class="text-6xl mb-4">🥚</div>
+                    <div class="font-semibold mb-1">Hobby / Zero users</div>
+                    <div class="text-emerald-400 text-sm">Tier 1–2 is enough</div>
+                </div>
+                
+                <div onclick="this.classList.toggle('ring-2'); this.classList.toggle('ring-emerald-400')" 
+                     class="bg-zinc-950 p-8 rounded-3xl cursor-pointer hover:ring-2 hover:ring-emerald-400 transition-all text-center ring-2 ring-emerald-400">
+                    <div class="text-6xl mb-4">🚀</div>
+                    <div class="font-semibold mb-1">First traction / paying users</div>
+                    <div class="text-emerald-400 text-sm">Tier 3–4 recommended</div>
+                </div>
+                
+                <div onclick="this.classList.toggle('ring-2'); this.classList.toggle('ring-emerald-400')" 
+                     class="bg-zinc-950 p-8 rounded-3xl cursor-pointer hover:ring-2 hover:ring-emerald-400 transition-all text-center">
+                    <div class="text-6xl mb-4">💎</div>
+                    <div class="font-semibold mb-1">Real IP or revenue &gt;$1k/mo</div>
+                    <div class="text-emerald-400 text-sm">Tier 5 fortress time</div>
+                </div>
+            </div>
+            
+            <p class="text-center text-zinc-400 mt-12 max-w-md mx-auto text-sm">
+                Re-run this check every month. Your project grows faster than you think — and so does the target on your back.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-zinc-800">
+        <div class="max-w-5xl mx-auto px-6 text-center text-xs text-zinc-500 font-mono">
+            Built instantly for GitHub Pages • Dark cyber vibe • No tracking • Pure HTML + Tailwind<br>
+            Copy this file → push to GitHub → live in 60 seconds
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        function initializeTailwind() {
+            // Nothing extra needed — Tailwind CDN auto-scans
+        }
+
+        // Tier toggle
+        function toggleTier(card) {
+            card.classList.toggle('expanded')
+        }
+
+        // Simple particle canvas for hero
+        function createParticles() {
+            const canvas = document.getElementById('particles')
+            const ctx = canvas.getContext('2d')
+            
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+            
+            let particles = []
+            
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width
+                    this.y = Math.random() * canvas.height
+                    this.size = Math.random() * 2.5 + 0.5
+                    this.speedX = Math.random() * 0.5 - 0.25
+                    this.speedY = Math.random() * 0.5 - 0.25
+                }
+                update() {
+                    this.x += this.speedX
+                    this.y += this.speedY
+                    
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1
+                }
+                draw() {
+                    ctx.fillStyle = 'rgb(165, 243, 252)'
+                    ctx.globalAlpha = 0.2
+                    ctx.beginPath()
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+                    ctx.fill()
+                    ctx.globalAlpha = 1
+                }
+            }
+            
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle())
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                particles.forEach(p => {
+                    p.update()
+                    p.draw()
+                })
+                requestAnimationFrame(animate)
+            }
+            
+            animate()
+            
+            // Resize handler
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth
+                canvas.height = window.innerHeight
+            })
+        }
+
+        // Boot everything
+        window.onload = function() {
+            initializeTailwind()
+            createParticles()
+            
+            // Auto-expand Tier 1 on load for demo
+            setTimeout(() => {
+                const firstTier = document.querySelector('.tier-card')
+                if (firstTier) firstTier.classList.add('expanded')
+            }, 1200)
+        }
+    </script>
+</body>
+</html>
