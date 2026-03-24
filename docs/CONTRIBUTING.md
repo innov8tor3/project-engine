@@ -36,4 +36,4 @@ We will be heading towards this as a CONTRIBUTING 101 first offering, including 
 7. Social Media - We will start with X, and migrate to Discord once a secure set up is achieved.
 
 ### Stepped Provision - Later Phases
-There are twenty steps in all to create a solid CONTRIBUTING environment, though some may want to go further!
+There are [twenty steps](https://innov8tor3.github.io/project-engine/proto-founders/contributing.html) in all to create a solid CONTRIBUTING environment, though some may want to go further!
