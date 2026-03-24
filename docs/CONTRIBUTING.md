@@ -20,13 +20,13 @@ In time, we will curate a "safe but smart" Discord, when most activity will swit
 
 ## Longer Term Plans
 ### Overview
-We do want to bring folk with us building this future, and we intend it to be Open Source all the way.
+We do want to bring folk with us building this future. Aiming for Open Source all the way.
 
-To build a clear and safe CONTRIBUTING environment takes some effort and care, as this 3 phase [Contribution Overview](https://innov8tor3.github.io/project-engine/proto-founders/contributing.html) shows.
+To build a clear and safe CONTRIBUTING environment takes effort and care, as this 20 step [3 Phase Contribution Overview](https://innov8tor3.github.io/project-engine/proto-founders/contributing.html) shows.
 
 We will be heading towards this as a CONTRIBUTING 101 first offering, including to other repos where interested.
 
-### Stepped Provision - Phase 1 of 3
+### Stepped Provision - Phase 1 of 3 - Introduction - Live March 20th, 2026
 1. Welcome & Invitations - We absolutely do want to bring folk onboard to contribute. Contact @innov8tor3 in X.
 2. Clear Documents - Initial docs are here in GitHub and will evolve. Apply to join an X List with innov8tor3.
 3. Protofounder First Steps - We encourage publication of progress, and testing early digital assets.
@@ -36,4 +36,4 @@ We will be heading towards this as a CONTRIBUTING 101 first offering, including 
 7. Social Media - We will start with X, and migrate to Discord once a secure set up is achieved.
 
 ### Stepped Provision - Later Phases
-There are [twenty steps](https://innov8tor3.github.io/project-engine/proto-founders/contributing.html) in all to create a solid CONTRIBUTING environment, though some may want to go further!
+There are two more phases to create a solid CONTRIBUTING environment, Intermediate & Intense, in an overall 5-10-5 formation. Though some may want to go further!
