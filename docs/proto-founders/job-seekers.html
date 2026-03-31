@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Job Networks • X Communities for Job Seekers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --space-black: #0a0a0f;
+            --nebula-purple: #6b21a8;
+            --nebula-blue: #1e3a8a;
+            --star-cyan: #67e8f9;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0f2e 100%);
+            color: #e0e7ff;
+            overflow-x: hidden;
+        }
+        
+        .starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 25% 20%, rgba(103, 232, 249, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 75% 60%, rgba(167, 139, 250, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(192, 132, 252, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+            animation: twinkle 8s infinite alternate ease-in-out;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .header-glow {
+            text-shadow: 0 0 30px rgba(103, 232, 249, 0.6),
+                         0 0 60px rgba(167, 139, 250, 0.4);
+        }
+        
+        .card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(103, 232, 249, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #67e8f9;
+            box-shadow: 0 25px 50px -12px rgb(103 232 249 / 0.25);
+        }
+        
+        .neon-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.7s;
+        }
+        
+        .neon-button:hover::before {
+            left: 200%;
+        }
+        
+        table {
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+        
+        th {
+            background: rgba(30, 58, 138, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        
+        tr {
+            transition: all 0.3s ease;
+        }
+        
+        tr:hover {
+            transform: scale(1.01);
+            background: rgba(103, 232, 249, 0.1) !important;
+        }
+        
+        .tag {
+            background: linear-gradient(90deg, #6b21a8, #1e40af);
+        }
+        
+        .rocket {
+            animation: fly 4s linear infinite;
+        }
+        
+        @keyframes fly {
+            0% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(-5deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Starfield Background -->
+    <div class="starfield"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-lg border-b border-cyan-500/30">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl">✦</div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tighter text-white">STELLAR<span class="text-cyan-400">JOBS</span></h1>
+                    <p class="text-[10px] text-cyan-300 -mt-1 tracking-[2px]">X COMMUNITIES • 2026</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-8 text-sm">
+                <a href="#communities" class="hover:text-cyan-400 transition-colors">Communities</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors">Mission</a>
+                <a href="https://x.com" target="_blank" class="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span>Join on X</span>
+                </a>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 flex items-center justify-center text-cyan-400 hover:bg-white/10 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="https://github.com" target="_blank" 
+                   class="neon-button px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-semibold rounded-3xl text-sm flex items-center gap-2 shadow-lg shadow-cyan-500/50">
+                    <i class="fa-brands fa-github"></i>
+                    <span>View on GitHub</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-6 relative">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl text-cyan-300 text-sm mb-6 border border-cyan-400/30">
+                <i class="fa-solid fa-satellite-dish animate-pulse"></i>
+                NAVIGATING THE JOB UNIVERSE
+            </div>
+            
+            <h1 class="text-7xl md:text-8xl font-bold tracking-tighter header-glow mb-6">
+                EXPLORE THE<br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-purple-300 to-pink-300">COSMOS OF CAREERS</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-xl text-slate-300 mb-10">
+                Active X Communities for job seekers • Remote work • Tech careers • 
+                Skills-based growth in the age of AI
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#communities" 
+                   class="neon-button px-10 py-5 bg-white text-black font-semibold rounded-3xl flex items-center gap-3 text-lg group">
+                    LAUNCH INTO COMMUNITIES
+                    <i class="fa-solid fa-rocket group-active:rotate-45 transition-transform"></i>
+                </a>
+                
+                <button onclick="copyToClipboard()" 
+                        class="px-8 py-5 border border-cyan-400/70 hover:border-cyan-400 text-cyan-300 rounded-3xl font-medium flex items-center gap-3 transition-all">
+                    <i class="fa-solid fa-copy"></i>
+                    COPY LIST AS MARKDOWN
+                </button>
+            </div>
+            
+            <div class="mt-16 flex justify-center gap-12 text-xs uppercase tracking-widest text-slate-400">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    12+ ACTIVE HUBS
+                </div>
+                <div>REMOTE • TECH • HR</div>
+                <div>GAMIFIED LEARNING READY</div>
+            </div>
+        </div>
+        
+        <!-- Floating rocket -->
+        <div class="absolute bottom-12 right-12 text-6xl rocket hidden lg:block">🚀</div>
+    </header>
+
+    <!-- Communities Section -->
+    <section id="communities" class="max-w-7xl mx-auto px-6 pb-24">
+        <div class="flex items-end justify-between mb-12">
+            <div>
+                <span class="px-4 py-1 bg-purple-900/50 text-purple-300 text-xs font-mono rounded-full">DATABASE v0.1</span>
+                <h2 class="text-5xl font-semibold tracking-tight mt-3">X Job Seeker Communities</h2>
+            </div>
+            
+            <div class="text-right">
+                <input id="searchInput" 
+                       type="text" 
+                       placeholder="Search communities or focus..." 
+                       onkeyup="filterTable()"
+                       class="bg-slate-900 border border-slate-700 focus:border-cyan-400 rounded-3xl px-6 py-3 w-80 text-sm outline-none">
+            </div>
+        </div>
+        
+        <div class="overflow-x-auto rounded-3xl border border-slate-700/50 bg-slate-950/70 backdrop-blur-xl">
+            <table class="w-full min-w-full">
+                <thead>
+                    <tr class="text-left text-cyan-300 text-sm">
+                        <th class="px-8 py-6 font-medium w-8">#</th>
+                        <th class="px-8 py-6 font-medium">Community Name</th>
+                        <th class="px-8 py-6 font-medium">Focus & Description</th>
+                        <th class="px-8 py-6 font-medium">Members</th>
+                        <th class="px-8 py-6 font-medium">Join on X</th>
+                        <th class="px-8 py-6 font-medium text-center">Gamified / Skills?</th>
+                    </tr>
+                </thead>
+                <tbody id="communitiesTable" class="text-slate-200">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-8 text-center text-xs text-slate-500 flex items-center justify-center gap-6">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                Data current as of March 2026
+            </div>
+            <div>•</div>
+            <div>Member counts approximate • Activity varies</div>
+        </div>
+    </section>
+
+    <!-- About / Mission -->
+    <section id="about" class="bg-black/60 py-24 border-t border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="max-w-md mx-auto mb-10">
+                <div class="inline-block p-4 bg-gradient-to-br from-purple-500/20 to-cyan-500/20 rounded-3xl mb-6">
+                    <i class="fa-solid fa-satellite text-5xl text-cyan-400"></i>
+                </div>
+            </div>
+            
+            <h2 class="text-4xl font-semibold mb-6">Connecting Talent in the New Space Economy</h2>
+            <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
+                In an era of AI-driven hiring freezes and rapid skill evolution, these vibrant X Communities serve as launchpads for job seekers. 
+                Many are highly receptive to gamified learning, skills challenges, and innovative tools like <strong>#ProjectEngine</strong>.
+            </p>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="card p-8 rounded-3xl">
+                    <h3 class="text-cyan-400 font-medium mb-3">REMOTE FIRST</h3>
+                    <p class="text-slate-400">Discover global opportunities without geographic barriers.</p>
+                </div>
+                <div class="card p-8 rounded-3xl">
+                    <h3 class="text-purple-400 font-medium mb-3">TECH & AI FOCUS</h3>
+                    <p class="text-slate-400">Stay ahead with communities discussing upskilling in emerging technologies.</p>
+                </div>
+                <div class="card p-8 rounded-3xl">
+                    <h3 class="text-pink-400 font-medium mb-3">NETWORK & GROW</h3>
+                    <p class="text-slate-400">Connect with peers, recruiters, and mentors ready for collaborative experiments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center text-xl">✦</div>
+                    <div class="text-sm">
+                        <span class="font-mono text-slate-500">BUILT FOR</span><br>
+                        <span class="text-white">THE NEXT FRONTIER OF WORK</span>
+                    </div>
+                </div>
+                
+                <div class="text-xs text-slate-500 text-center md:text-right">
+                    <p>Made as a single-file HTML demo for GitHub Pages</p>
+                    <p class="mt-1">Dark space theme • Tailwind + Custom CSS • Fully interactive</p>
+                    <p class="mt-4">© 2026 • Not affiliated with X Corp. Member data is public and approximate.</p>
+                </div>
+                
+                <div class="flex gap-6 text-2xl text-slate-400">
+                    <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-cyan-400 transition-colors"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already included via CDN
+        
+        const communities = [
+            {
+                id: 1,
+                name: "Remote Jobs Community",
+                description: "Hub for remote-only job postings, remote work life discussions, opportunities, and challenges. High volume of job shares.",
+                members: "21.5K+",
+                url: "https://x.com/i/communities/1509471751608025090",
+                gamified: "Yes — practical tips and networking make it receptive to gamified tools"
+            },
+            {
+                id: 2,
+                name: "Remote Jobs, AI & Tech Hub Discussion",
+                description: "Combines remote job opportunities with AI/tech trends, hiring, and career growth. Very active with job alerts.",
+                members: "24.7K+",
+                url: "https://x.com/i/communities/1808786876314026197",
+                gamified: "Highly likely — tech/AI focus supports skills-based and gamified development"
+            },
+            {
+                id: 3,
+                name: "Remote Work Community",
+                description: "Connects remote workers, companies, and job seekers for tips, support, and opportunity sharing.",
+                members: "17.2K+",
+                url: "https://x.com/i/communities/1503706547322597384",
+                gamified: "Likely yes — tip-sharing culture welcomes innovative approaches"
+            },
+            {
+                id: 4,
+                name: "REMOTE TECH JOBS Community",
+                description: "Dedicated to tech remote jobs, hiring, and career tips specifically for tech talent.",
+                members: "11.3K+",
+                url: "https://x.com/i/communities/1509521362079006724",
+                gamified: "Yes — tech professionals discuss upskilling strategies"
+            },
+            {
+                id: 5,
+                name: "Career Opportunities by CVLOFT",
+                description: "All things career development, job opportunities, and professional growth discussions.",
+                members: "~12K",
+                url: "https://x.com/i/communities/1511724379062915072",
+                gamified: "Yes — explicit career development focus ideal for skills-based learning"
+            },
+            {
+                id: 6,
+                name: "Tech Remote Jobs & Career Tips Discussion",
+                description: "Tech remote jobs + practical career advice, hiring, and skill-building conversations.",
+                members: "N/A",
+                url: "https://x.com/i/communities/1513851597280976896",
+                gamified: "Yes — heavy emphasis on career tips and tech skills"
+            },
+            {
+                id: 7,
+                name: "Career and Tech Twitter Community",
+                description: "Career growth and tech industry discussions, including hiring trends and job market insights.",
+                members: "4.6K+",
+                url: "https://x.com/i/communities/1612637566867542018",
+                gamified: "Likely yes — career + tech crossover"
+            },
+            {
+                id: 8,
+                name: "The World of HR Community",
+                description: "HR professionals, recruiters, and job seekers discussing hiring, talent strategies, and workplace trends.",
+                members: "4.1K+",
+                url: "https://x.com/i/communities/1546094569611223042",
+                gamified: "Likely yes — recruiting audience open to candidate skills tools"
+            },
+            {
+                id: 9,
+                name: "X Financial Careers Community",
+                description: "Finance career advice, trends, job insights, and discussions.",
+                members: "3.2K+",
+                url: "https://x.com/i/communities/1728277593554669896",
+                gamified: "Yes — dedicated to career advice and professional growth"
+            },
+            {
+                id: 10,
+                name: "Recruiting Twitter Community",
+                description: "For those involved in or interested in hiring, recruiting, and talent acquisition.",
+                members: "~1K",
+                url: "https://x.com/i/communities/1506802849455513605",
+                gamified: "Likely yes — open to new tools for candidate engagement"
+            },
+            {
+                id: 11,
+                name: "Job Search and Work. Community",
+                description: "Chronicles the job market, workplace trends, and job search strategies.",
+                members: "262+",
+                url: "https://x.com/i/communities/1864701690710249873",
+                gamified: "Yes — core focus on job search and careers"
+            },
+            {
+                id: 12,
+                name: "Remote Job Opportunities ⚡ Discussion",
+                description: "Latest remote job alerts, career tips, and opportunity discussions.",
+                members: "2.3K+",
+                url: "https://x.com/i/communities/1866496229171212507",
+                gamified: "Likely yes — job-seeker oriented with tips and networking"
+            }
+        ];
+        
+        function populateTable(data) {
+            const tbody = document.getElementById('communitiesTable');
+            tbody.innerHTML = '';
+            
+            data.forEach(community => {
+                const row = document.createElement('tr');
+                row.className = 'card hover:bg-slate-900/80 group';
+                row.innerHTML = `
+                    <td class="px-8 py-7 text-cyan-400 font-mono text-sm">${community.id}</td>
+                    <td class="px-8 py-7 font-semibold text-lg">${community.name}</td>
+                    <td class="px-8 py-7 text-slate-300 text-sm leading-relaxed">${community.description}</td>
+                    <td class="px-8 py-7">
+                        <span class="inline-flex items-center gap-1.5 bg-slate-800 px-4 py-1 rounded-2xl text-cyan-300 text-xs">
+                            <i class="fa-solid fa-users"></i> 
+                            ${community.members}
+                        </span>
+                    </td>
+                    <td class="px-8 py-7">
+                        <a href="${community.url}" 
+                           target="_blank"
+                           class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium text-sm group-hover:underline">
+                            Join Community 
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </td>
+                    <td class="px-8 py-7 text-center">
+                        <span class="tag text-white text-xs px-5 py-2 rounded-3xl inline-block">
+                            ${community.gamified}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function filterTable() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            
+            if (!searchTerm) {
+                populateTable(communities);
+                return;
+            }
+            
+            const filtered = communities.filter(community => 
+                community.name.toLowerCase().includes(searchTerm) ||
+                community.description.toLowerCase().includes(searchTerm) ||
+                community.gamified.toLowerCase().includes(searchTerm)
+            );
+            
+            populateTable(filtered);
+        }
+        
+        function copyToClipboard() {
+            let markdown = "# Active X Job Seeker Communities (March 2026)\n\n";
+            
+            communities.forEach(c => {
+                markdown += `### ${c.id}. ${c.name}\n`;
+                markdown += `${c.description}\n\n`;
+                markdown += `**Members**: ${c.members}\n`;
+                markdown += `**Join**: ${c.url}\n`;
+                markdown += `**Gamified/Skills**: ${c.gamified}\n\n---\n\n`;
+            });
+            
+            navigator.clipboard.writeText(markdown).then(() => {
+                const btn = event.currentTarget;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED!`;
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+        
+        function toggleTheme() {
+            // Simple alert for demo - in real use you could switch to light variant
+            alert("🌌 This demo uses a fixed deep-space dark theme.\n\nThe starfield and neon effects are optimized for dark mode on GitHub Pages.");
+        }
+        
+        // Initialize
+        window.onload = function() {
+            populateTable(communities);
+            
+            // Add subtle parallax to header on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (header) {
+                    const scrollY = window.scrollY;
+                    header.style.transform = `translateY(${scrollY * 0.05}px)`;
+                }
+            });
+            
+            // Keyboard shortcut hint
+            console.log('%c🚀 Stellar Job Networks ready. Press "/" to focus search.', 'color:#67e8f9; font-family:monospace');
+        };
+    </script>
+</body>
+</html>
