@@ -1,0 +1,550 @@
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Top 20 Smart Contract Risks in Web3 – Interactive Explainer with Harms &amp; Mitigations">
+    <title>VOID•SEC • Top 20 Web3 Risks • 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@500&amp;display=swap');
+        
+        :root {
+            --tw-color-purple-night: #0a001f;
+            --tw-color-deep-purple: #1a0033;
+            --tw-color-neon-purple: #c026d3;
+            --tw-color-lavender: #e0d4ff;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        body {
+            background: linear-gradient(180deg, #0a001f 0%, #120028 100%);
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .plush-card {
+            background: rgba(26, 0, 51, 0.92);
+            border: 2px solid #c026d3;
+            box-shadow: 
+                0 25px 50px -12px rgb(192 38 211),
+                0 10px 15px -3px rgb(192 38 211 / 0.3),
+                inset 0 4px 12px rgba(255,255,255,0.1),
+                inset 0 -4px 12px rgba(0,0,0,0.4);
+            backdrop-filter: blur(12px);
+        }
+        
+        .plush-card:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 
+                0 35px 60px -12px rgb(192 38 211),
+                0 20px 25px -5px rgb(192 38 211 / 0.5);
+        }
+        
+        .neon-text {
+            text-shadow: 
+                0 0 10px #c026d3,
+                0 0 20px #c026d3,
+                0 0 40px #c026d3;
+        }
+        
+        .panel-header {
+            background: linear-gradient(90deg, #1a0033, #2a0055);
+        }
+        
+        .risk-number {
+            background: linear-gradient(135deg, #c026d3, #9d4edd);
+            box-shadow: 0 0 25px #c026d3;
+        }
+        
+        .code-block {
+            background: #0f0022;
+            border-left: 4px solid #c026d3;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .accordion-content.open {
+            max-height: 1200px;
+        }
+    </style>
+</head>
+<body class="text-[#e0d4ff] min-h-screen pb-12">
+    <!-- NAVBAR -->
+    <nav class="border-b border-[#c026d3]/30 bg-[#0a001f]/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#c026d3] to-[#9d4edd] flex items-center justify-center text-white text-2xl">🔮</div>
+                <h1 class="heading-font text-3xl tracking-tighter neon-text">VOID•SEC</h1>
+                <span class="px-3 py-1 text-xs font-medium bg-[#c026d3]/10 text-[#c026d3] rounded-3xl border border-[#c026d3]/40">WEB3 RISK VAULT 2026</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#risks" class="hover:text-[#c026d3] flex items-center gap-x-1">
+                    <span>📋</span> TOP 20 RISKS
+                </a>
+                <a href="#mitigation" class="hover:text-[#c026d3]">MITIGATIONS</a>
+                <a href="#css" class="hover:text-[#c026d3]">REUSABLE CSS</a>
+                <div class="h-5 w-px bg-[#c026d3]/30"></div>
+                <a href="https://github.com" target="_blank" class="flex items-center gap-x-2 bg-white/10 hover:bg-white/20 px-5 h-9 rounded-3xl text-xs uppercase tracking-widest font-medium">
+                    <span>🚀</span> INSTANTLY PUBLISH TO GITHUB PAGES
+                </a>
+            </div>
+            
+            <div class="flex items-center gap-x-2">
+                <div class="px-4 py-2 bg-[#c026d3]/10 text-[#c026d3] text-xs font-mono rounded-3xl border border-[#c026d3]/30 flex items-center">
+                    <div class="w-2 h-2 bg-[#c026d3] rounded-full animate-pulse mr-1.5"></div>
+                    LIVE ON-CHAIN THREAT LEVEL
+                </div>
+                <button onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})" 
+                        class="plush-card px-6 py-3 rounded-3xl text-sm font-semibold flex items-center gap-x-2 hover:shadow-xl">
+                    EXPLORE THE VOID
+                    <span class="text-xl">↓</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="hero" class="max-w-screen-2xl mx-auto px-8 pt-16 pb-20 text-center">
+        <div class="inline-flex items-center gap-x-2 px-6 py-2 bg-[#1a0033] border border-[#c026d3]/50 rounded-3xl text-[#c026d3] text-sm mb-6">
+            OWASP SMART CONTRACT TOP 10 • EXTENDED TO TOP 20 • 2026 EDITION
+        </div>
+        
+        <h1 class="heading-font text-7xl md:text-8xl font-semibold tracking-[-3px] leading-none neon-text mb-6">
+            THE 20 RISKS<br>THAT CAN DRAIN<br>YOUR PROTOCOL
+        </h1>
+        
+        <p class="max-w-2xl mx-auto text-xl text-[#d1c0ff] mb-10">
+            Interactive explainer for Web3 builders. Click any panel to see the harm — and the exact Solidity mitigation that stops it.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-widest font-medium">
+            <div class="flex items-center gap-x-2 px-5 h-9 bg-white/5 rounded-3xl border border-white/10">
+                <span class="text-[#c026d3]">💀</span> $905M+ LOST IN 2025
+            </div>
+            <div class="flex items-center gap-x-2 px-5 h-9 bg-white/5 rounded-3xl border border-white/10">
+                <span class="text-[#c026d3]">🔥</span> BASED ON OWASP 2026 DATA
+            </div>
+            <div class="flex items-center gap-x-2 px-5 h-9 bg-white/5 rounded-3xl border border-white/10">
+                <span class="text-[#c026d3]">🛡️</span> CODE MITIGATIONS INCLUDED
+            </div>
+        </div>
+        
+        <div class="mt-16 flex justify-center">
+            <div class="plush-card px-8 py-6 rounded-3xl max-w-xs text-left flex items-start gap-4">
+                <div class="text-4xl">🌌</div>
+                <div>
+                    <p class="text-sm uppercase mb-1 text-[#c026d3]">Deep Night Purple Palette</p>
+                    <p class="text-[#c8b8ff]">Plush interactive panels • Glow effects • Fully self-contained HTML for instant GitHub Pages deploy.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- RISKS SECTION -->
+    <div id="risks" class="max-w-screen-2xl mx-auto px-8">
+        <h2 class="heading-font text-5xl text-center mb-12 tracking-tight neon-text">TOP 20 SMART CONTRACT RISKS • 2026</h2>
+        
+        <div class="space-y-6" id="accordion-container">
+            <!-- Risk cards will be injected via JS below -->
+        </div>
+    </div>
+
+    <!-- REUSABLE CSS SECTION -->
+    <div id="css" class="max-w-screen-2xl mx-auto px-8 mt-24">
+        <div class="plush-card p-10 rounded-3xl">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="heading-font text-4xl mb-6">Can the mitigation be contained in a CSS file?</h3>
+                    <p class="text-lg mb-6 text-[#d1c0ff]">
+                        The <strong>UI styling</strong> (plush panels, neon glows, deep purple theme, hover effects) is 100% contained in this single &lt;style&gt; block + Tailwind CDN.
+                    </p>
+                    <p class="text-[#c8b8ff] mb-8">
+                        Copy the entire &lt;style&gt; tag (and Tailwind config script) into a <strong>shared.css</strong> file. Then link it across every page of your Web3 security site, audit dashboard, or DAO docs. Zero duplication.
+                    </p>
+                    <button onclick="copyCSS()" 
+                            class="plush-card w-full md:w-auto px-8 py-4 rounded-3xl font-medium flex items-center justify-center gap-x-3">
+                        📋 COPY FULL STYLES TO CLIPBOARD
+                    </button>
+                </div>
+                <div class="font-mono text-xs bg-[#0f0022] p-6 rounded-2xl border border-[#c026d3]/30 overflow-auto max-h-96">
+                    <pre>/* REUSABLE VOID•SEC THEME */
+:root {
+  --purple-night: #0a001f;
+  --deep-purple: #1a0033;
+  --neon-purple: #c026d3;
+}
+.plush-card { ... plush shadows ... }
+.neon-text { text-shadow: ... }</pre>
+                    <p class="text-[#c026d3] mt-4 text-sm">→ Perfect for multiple HTML pages, risk databases, or your own GamerPrise security hub.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="max-w-screen-2xl mx-auto px-8 mt-20 pt-12 border-t border-[#c026d3]/20 text-center text-[#b8a8ff] text-sm">
+        <p class="mb-2">Built as a single-file HTML for instant GitHub Pages deployment.</p>
+        <p class="mb-6">Just save as <span class="font-mono bg-[#1a0033] px-2 py-px rounded">index.html</span> → push to any repo → enable GitHub Pages.</p>
+        <p class="flex items-center justify-center gap-x-6 text-xs">
+            <span>DATA SOURCED FROM OWASP SMART CONTRACT TOP 10 2026 + INDUSTRY REPORTS</span>
+            <span class="h-px w-8 bg-[#c026d3]/40"></span>
+            <span>FOR EDUCATIONAL USE ONLY • PROTECT YOUR PROTOCOL</span>
+        </p>
+        <div class="mt-8 text-[#c026d3] text-xs font-mono">VOID•SEC © 2026 • DEEP NIGHT PURPLE EDITION</div>
+    </footer>
+
+    <script>
+        // Tailwind configuration for deep night purple palette
+        function initializeTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: {
+                    extend: {
+                        colors: {
+                            'purple-night': '#0a001f',
+                            'deep-purple': '#1a0033',
+                            'neon-purple': '#c026d3',
+                            'lavender': '#e0d4ff'
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Full list of 20 risks (OWASP Top 10 + 10 additional high-impact risks from 2025-2026 reports)
+        const risks = [
+            {
+                id: 1,
+                number: "SC01",
+                title: "Access Control Vulnerabilities",
+                severity: "CRITICAL",
+                harm: "Unauthorized wallets call admin functions → full protocol drain. 2025 losses exceeded $950M (Bybit-scale incidents).",
+                mitigation: "Use OpenZeppelin AccessControl or custom role-based modifiers. Never rely on tx.origin. Add timelocks + multisig for sensitive ops.",
+                code: `contract Secure {
+    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
+    mapping(address => bool) private _hasRole;
+    
+    modifier onlyRole(bytes32 role) {
+        require(_hasRole[msg.sender], "AccessControl: unauthorized");
+        _;
+    }
+    
+    function sensitiveAction() external onlyRole(ADMIN_ROLE) {
+        // ...
+    }
+}`
+            },
+            {
+                id: 2,
+                number: "SC02",
+                title: "Business Logic Vulnerabilities",
+                severity: "CRITICAL",
+                harm: "Protocol executes as written but breaks economic invariants → attackers extract value silently. Multiple $50M+ exploits in 2025.",
+                mitigation: "Add invariant checks after every state change. Use formal verification or fuzzing for complex AMM/lending logic.",
+                code: `function swap(...) external {
+    // ... core logic
+    require(totalAssets() == calculateExpectedAssets(), "Invariant broken");
+}`
+            },
+            {
+                id: 3,
+                number: "SC03",
+                title: "Price Oracle Manipulation",
+                severity: "CRITICAL",
+                harm: "Attacker skews oracle price in one tx → under-collateralized loans or unfair liquidations. Flash-loan amplified losses common.",
+                mitigation: "Use Chainlink + secondary oracle fallback. Implement time-weighted average price (TWAP) or circuit breakers.",
+                code: `require(oraclePrice > minPrice && oraclePrice < maxPrice, "Oracle manipulated");`
+            },
+            {
+                id: 4,
+                number: "SC04",
+                title: "Flash Loan–Facilitated Attacks",
+                severity: "HIGH",
+                harm: "Zero-capital attacker borrows billions in one tx to amplify tiny bugs into protocol-wide drains.",
+                mitigation: "Add minimum time delays or position-size caps that prevent instant multi-step exploits.",
+                code: `// Prevent flash-loan sized actions in same block
+require(block.number > lastActionBlock[msg.sender] + 1, "Flash loan detected");`
+            },
+            {
+                id: 5,
+                number: "SC05",
+                title: "Lack of Input Validation",
+                severity: "HIGH",
+                harm: "Unsafe parameters reach core logic → corrupted state or direct fund theft.",
+                mitigation: "Always use require() / assert() for every external input. Prefer SafeERC20.",
+                code: `require(amount > 0 && amount <= maxAmount, "Invalid input");`
+            },
+            {
+                id: 6,
+                number: "SC06",
+                title: "Unchecked External Calls",
+                severity: "HIGH",
+                harm: "Call fails silently → inconsistent state or reentrancy vector.",
+                mitigation: "Always check return values or use low-level call with explicit handling.",
+                code: `(bool success, ) = target.call{value: amount}(""); require(success, "External call failed");`
+            },
+            {
+                id: 7,
+                number: "SC07",
+                title: "Arithmetic Errors",
+                severity: "HIGH",
+                harm: "Precision loss in shares/interest calculations → repeated siphoning of value.",
+                mitigation: "Use Solidity 0.8+ built-in overflow checks or SafeMath for legacy code.",
+                code: `// Solidity 0.8+ automatically reverts on overflow`
+            },
+            {
+                id: 8,
+                number: "SC08",
+                title: "Reentrancy Attacks",
+                severity: "HIGH",
+                harm: "Attacker re-enters before state update → repeated withdrawals (DAO-style $60M+ losses).",
+                mitigation: "Follow Checks-Effects-Interactions. Use ReentrancyGuard.",
+                code: `modifier nonReentrant() {
+    require(!_locked, "Reentrant call");
+    _locked = true;
+    _;
+    _locked = false;
+}`
+            },
+            {
+                id: 9,
+                number: "SC09",
+                title: "Integer Overflow and Underflow",
+                severity: "MEDIUM",
+                harm: "Wrapped values break accounting → massive unauthorized mints or drains.",
+                mitigation: "Solidity 0.8+ prevents it automatically. For older versions use SafeMath.",
+                code: `using SafeMath for uint256;`
+            },
+            {
+                id: 10,
+                number: "SC10",
+                title: "Proxy & Upgradeability Vulnerabilities",
+                severity: "CRITICAL",
+                harm: "Attacker seizes proxy control or reinitializes storage → total takeover.",
+                mitigation: "Use UUPS or Transparent proxies with proper initialization guards.",
+                code: `function initialize() external initializer {
+    // only once
+}`
+            },
+            // Additional 10 high-impact risks (still frequently exploited in 2025-2026)
+            {
+                id: 11,
+                number: "11",
+                title: "Denial of Service (Gas Griefing)",
+                severity: "MEDIUM",
+                harm: "Attacker forces high gas consumption → contract becomes unusable for legitimate users.",
+                mitigation: "Avoid unbounded loops. Use pull-over-push patterns for withdrawals.",
+                code: `// Limit iterations
+for(uint i = 0; i < min(users.length, 50); i++) { ... }`
+            },
+            {
+                id: 12,
+                number: "12",
+                title: "Front-Running / MEV Exploitation",
+                severity: "HIGH",
+                harm: "Attacker sees pending tx and submits higher-gas tx first → unfair advantage.",
+                mitigation: "Use commit-reveal schemes or decentralized sequencers.",
+                code: `// Commit phase first, reveal later`
+            },
+            {
+                id: 13,
+                number: "13",
+                title: "Timestamp Dependence",
+                severity: "MEDIUM",
+                harm: "Miner can manipulate block.timestamp → unfair lotteries or vesting unlocks.",
+                mitigation: "Use block.number for timing-critical logic instead.",
+                code: `// Prefer block.number over block.timestamp`
+            },
+            {
+                id: 14,
+                number: "14",
+                title: "Delegatecall to Untrusted Contracts",
+                severity: "CRITICAL",
+                harm: "Attacker injects malicious code into your context via delegatecall → full control.",
+                mitigation: "Only delegatecall to trusted, immutable libraries.",
+                code: `require(whitelisted[libraryAddress], "Untrusted delegatecall");`
+            },
+            {
+                id: 15,
+                number: "15",
+                title: "tx.origin Authentication",
+                severity: "MEDIUM",
+                harm: "Phishing contracts can impersonate users via tx.origin.",
+                mitigation: "Always use msg.sender instead.",
+                code: `require(msg.sender == owner, "Not authorized"); // never tx.origin`
+            },
+            {
+                id: 16,
+                number: "16",
+                title: "Insecure Randomness",
+                severity: "HIGH",
+                harm: "Predictable randomness (blockhash) → attackers game lotteries / NFTs.",
+                mitigation: "Use Chainlink VRF or commit-reveal.",
+                code: `// Chainlink VRF request & fulfill`
+            },
+            {
+                id: 17,
+                number: "17",
+                title: "Governance Manipulation",
+                severity: "CRITICAL",
+                harm: "Flash-loan or Sybil attack votes through governance → malicious proposals pass.",
+                mitigation: "Time-locks, quorum requirements, and vote weighting.",
+                code: `require(voteDelay > 2 days, "Timelock required");`
+            },
+            {
+                id: 18,
+                number: "18",
+                title: "Cross-Chain Bridge Vulnerabilities",
+                severity: "CRITICAL",
+                harm: "Proof validation failure → duplicate mints or stolen funds across chains.",
+                mitigation: "Multi-sig validation + economic finality checks.",
+                code: `// Verify Merkle proof + signature threshold`
+            },
+            {
+                id: 19,
+                number: "19",
+                title: "Storage Slot Collisions (Upgrades)",
+                severity: "HIGH",
+                harm: "New implementation overwrites old storage → corrupted state.",
+                mitigation: "Use gap arrays or inheritance-based storage in proxies.",
+                code: `uint256[50] private __gap; // for future upgrades`
+            },
+            {
+                id: 20,
+                number: "20",
+                title: "Uninitialized Storage Pointers",
+                severity: "MEDIUM",
+                harm: "Variables point to attacker-controlled slots → arbitrary writes.",
+                mitigation: "Always initialize variables explicitly.",
+                code: `address public owner = msg.sender; // explicit init`
+            }
+        ]
+       
+        // Render all 20 interactive plush panels
+        function renderRisks() {
+            const container = document.getElementById('accordion-container')
+            container.innerHTML = ''
+           
+            risks.forEach((risk, index) => {
+                const cardHTML = `
+                <div class="plush-card rounded-3xl overflow-hidden mb-6" data-risk="${risk.id}">
+                    <div onclick="togglePanel(${risk.id})" class="panel-header px-8 py-6 flex items-center justify-between cursor-pointer">
+                        <div class="flex items-center gap-x-5">
+                            <div class="risk-number text-white text-xl font-bold w-10 h-10 flex items-center justify-center rounded-2xl">${risk.number}</div>
+                            <div>
+                                <span class="text-xs uppercase tracking-widest font-medium px-4 py-1 bg-[#c026d3]/10 text-[#c026d3] rounded-3xl">${risk.severity}</span>
+                                <h3 class="text-2xl font-semibold heading-font mt-1">${risk.title}</h3>
+                            </div>
+                        </div>
+                       
+                        <div class="flex items-center gap-x-3">
+                            <span id="chevron-${risk.id}" class="text-4xl text-[#c026d3]">›</span>
+                        </div>
+                    </div>
+                   
+                    <!-- Hidden content -->
+                    <div id="content-${risk.id}" class="accordion-content px-8 pb-8">
+                        <div class="grid md:grid-cols-12 gap-8">
+                            <!-- Harm -->
+                            <div class="md:col-span-5">
+                                <h4 class="text-[#c026d3] uppercase text-sm font-medium mb-3 flex items-center">
+                                    <span class="text-2xl mr-2">💥</span> HARM IF UNMITIGATED
+                                </h4>
+                                <p class="text-[#f0e0ff] leading-relaxed">${risk.harm}</p>
+                            </div>
+                           
+                            <!-- Mitigation -->
+                            <div class="md:col-span-7">
+                                <h4 class="text-[#c026d3] uppercase text-sm font-medium mb-3 flex items-center">
+                                    <span class="text-2xl mr-2">🛠️</span> MITIGATION OUTLINE + CODE
+                                </h4>
+                                <p class="mb-4 text-[#d1c0ff]">${risk.mitigation}</p>
+                                <div class="code-block p-5 rounded-2xl font-mono text-xs text-[#c8b8ff] overflow-x-auto">
+                                    <pre>${risk.code}</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+               
+                container.innerHTML += cardHTML
+            })
+        }
+       
+        // Toggle plush panel
+        window.togglePanel = function(id) {
+            const content = document.getElementById(`content-${id}`)
+            const chevron = document.getElementById(`chevron-${id}`)
+           
+            if (content.classList.contains('open')) {
+                content.style.maxHeight = '0px'
+                content.classList.remove('open')
+                chevron.style.transform = 'rotate(0deg)'
+            } else {
+                // Close all others first
+                document.querySelectorAll('.accordion-content').forEach(el => {
+                    el.style.maxHeight = '0px'
+                    el.classList.remove('open')
+                })
+                document.querySelectorAll('[id^="chevron-"]').forEach(el => el.style.transform = 'rotate(0deg)')
+               
+                // Open this one
+                content.style.maxHeight = content.scrollHeight + 'px'
+                content.classList.add('open')
+                chevron.style.transform = 'rotate(90deg)'
+            }
+        }
+       
+        // Copy reusable CSS to clipboard
+        function copyCSS() {
+            const css = document.querySelector('style').innerHTML
+            navigator.clipboard.writeText(css).then(() => {
+                const btn = event.currentTarget
+                const original = btn.innerHTML
+                btn.innerHTML = '✅ COPIED!'
+                setTimeout(() => btn.innerHTML = original, 2000)
+            })
+        }
+       
+        // Initialize everything
+        window.onload = function() {
+            initializeTailwind()
+            renderRisks()
+           
+            // Easter egg: press 'K' for Konami-style glow
+            let konami = ''
+            document.addEventListener('keydown', (e) => {
+                konami += e.key
+                if (konami.length > 10) konami = konami.slice(-10)
+                if (konami.includes('voidsec')) {
+                    document.querySelectorAll('.plush-card').forEach(card => {
+                        card.style.boxShadow = '0 0 80px 30px #c026d3'
+                    })
+                    konami = ''
+                    setTimeout(() => {
+                        document.querySelectorAll('.plush-card').forEach(card => card.style.boxShadow = '')
+                    }, 1200)
+                }
+            })
+           
+            console.log('%c🚀 VOID•SEC loaded – ready for GitHub Pages!', 'background:#c026d3;color:#0a001f;padding:2px 6px;border-radius:4px')
+        }
+    </script>
+</body>
+</html>
