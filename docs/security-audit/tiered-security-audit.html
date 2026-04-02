@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Engine • Tiered Security Scanner</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 20px; }
+    .panel { border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 8px; }
+    .critical { background: #ffe6e6; border-color: #f00; }
+    .high { background: #fff4e6; border-color: #f80; }
+    .medium { background: #f0f4ff; border-color: #08f; }
+    .severity { font-weight: bold; padding: 2px 8px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🔒 Tiered Security Scanner</h1>
+  <p>Scans any GitHub folder (default: your /docs). Runs Tier 1 checks + auto Tier 3 for smart contracts.</p>
+
+  <label>Owner/Repo: <input id="repo" value="innov8tor3/project-engine" size="30"></label><br>
+  <label>Branch: <input id="branch" value="main" size="10"></label><br>
+  <label>Path (e.g. docs): <input id="path" value="docs" size="20"></label><br>
+  <label>GitHub Token (optional, for higher limits): <input id="token" type="password" size="40"></label><br><br>
+
+  <button onclick="scanFolder()">🚀 Scan Folder & Run Tier 1 Security Check</button>
+
+  <div id="progress"></div>
+  <div id="results"></div>
+
+  <script>
+    async function githubAPI(endpoint, token) {
+      const headers = token ? { Authorization: `token ${token}` } : {};
+      const res = await fetch(`https://api.github.com${endpoint}`, { headers });
+      if (!res.ok) throw new Error(await res.text());
+      return res.json();
+    }
+
+    async function scanFolder() {
+      const ownerRepo = document.getElementById('repo').value;
+      const branch = document.getElementById('branch').value;
+      const path = document.getElementById('path').value || '';
+      const token = document.getElementById('token').value.trim();
+
+      const progress = document.getElementById('progress');
+      const results = document.getElementById('results');
+      progress.innerHTML = 'Scanning tree...';
+      results.innerHTML = '';
+
+      // Get recursive tree
+      const treeRes = await githubAPI(`/repos/${ownerRepo}/git/trees/${branch}?recursive=1`, token);
+      const files = treeRes.tree.filter(item => item.type === 'blob' && (path === '' || item.path.startsWith(path)));
+
+      let html = `<h2>Files found: ${files.length}</h2><ul>`;
+      let tier1Findings = [];
+      let hasSol = false;
+
+      for (const file of files) {
+        const ext = file.path.split('.').pop().toLowerCase();
+        html += `<li>${file.path} <small>(${file.size} bytes)</small></li>`;
+
+        if (['html','js','json','md','txt','env'].includes(ext)) {
+          // Fetch raw content for Tier 1 scan (public repos only)
+          try {
+            const rawUrl = `https://raw.githubusercontent.com/${ownerRepo}/${branch}/${file.path}`;
+            const contentRes = await fetch(rawUrl);
+            const text = await contentRes.text();
+
+            // Tier 1 regex patterns
+            const patterns = [
+              { re: /sk_live_[a-z0-9]{20,}/i, issue: 'Live Stripe secret key', sev: 'Critical' },
+              { re: /pk_live_[a-z0-9]{20,}/i, issue: 'Live Stripe publishable key', sev: 'Critical' },
+              { re: /AIza[0-9A-Za-z_-]{35}/, issue: 'Google API key', sev: 'Critical' },
+              { re: /API_KEY|SECRET|TOKEN\s*[:=]\s*["'][^"']{8,}/i, issue: 'Hardcoded API key / secret', sev: 'Critical' },
+              { re: /\.env/i, issue: '.env file committed', sev: 'Critical' },
+              { re: /Bearer\s+[A-Za-z0-9_-]{20,}/, issue: 'Hardcoded Bearer token', sev: 'High' }
+            ];
+
+            for (const p of patterns) {
+              if (p.re.test(text)) {
+                tier1Findings.push({ file: file.path, issue: p.issue, severity: p.sev });
+              }
+            }
+          } catch(e) { /* rate-limit or private file */ }
+        }
+
+        if (file.path.endsWith('.sol')) hasSol = true;
+      }
+      html += '</ul>';
+
+      // Tier 1 results
+      if (tier1Findings.length) {
+        html += `<h2 class="critical">🚨 Tier 1 Findings (${tier1Findings.length})</h2>`;
+        tier1Findings.forEach(f => {
+          html += `<div class="panel ${f.severity.toLowerCase()}">
+            <span class="severity">${f.severity}</span> <strong>${f.file}</strong><br>
+            ${f.issue}
+          </div>`;
+        });
+      } else {
+        html += `<p>✅ No Tier 1 issues found in scanned text files.</p>`;
+      }
+
+      // Tier 3 Smart Contract trigger
+      if (hasSol) {
+        html += `<h2>🛡️ Tier 3 Triggered – Smart Contract Files Detected</h2>`;
+        html += `<p>See full <a href="security-risks.html" target="_blank">TOP 20 SMART CONTRACT RISKS • 2026</a> (SC01–SC20 with severities) for detailed checks.</p>`;
+      }
+
+      results.innerHTML = html;
+      progress.innerHTML = 'Scan complete.';
+    }
+  </script>
+</body>
+</html>
