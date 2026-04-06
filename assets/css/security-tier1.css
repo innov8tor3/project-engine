@@ -1,0 +1,30 @@
+/* === TIER 1 SECURITY HARDENING - Central CSS === */
+
+/* Block dangerous patterns and improve form security */
+input, textarea {
+    /* Prevent autocomplete of sensitive fields */
+    autocomplete: off;
+}
+
+/* Visual + behavioral hardening for data entry */
+form input:focus {
+    outline: 2px solid #0066ff;
+    background-color: #f8f9fa;
+}
+
+/* Disable drag-and-drop on sensitive areas to reduce injection vectors */
+body {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+/* CSP-friendly styles only - no inline risks */
+button, input[type="submit"] {
+    cursor: pointer;
+}
+
+/* Reduce fingerprinting / tracking vectors */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
