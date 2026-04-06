@@ -1,0 +1,9 @@
+# === TIER 1 SECURITY - PROTECT SECRETS ===
+.env
+.env.local
+.env.*.local
+*.env
+secrets.json
+config.secret.*
+*.pem
+*.key
