@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'">
+  <meta name="description" content="Plain English guide to page security and repo security for new entrants to tech, coding, and Web3.">
+  <title>Page Security and Repo Security</title>
+  <link rel="stylesheet" href="./csp.css">
+  <script src="./csp.js" defer></script>
+</head>
+<body>
+  <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <main class="shell">
+    <section class="hero glass">
+      <div class="eyebrow">Security for fast-moving web projects</div>
+      <h1>Page Security and Repo Security</h1>
+      <p class="lead">
+        Building something quickly is useful. Building something safely is what lets it survive contact with real users, real growth, and real attackers.
+      </p>
+      <div class="cta-row">
+        <a class="button primary" href="#page-security">Read the page security view</a>
+        <a class="button secondary" href="#repo-security">Read the repo security view</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card glass">
+        <h2>Why this matters</h2>
+        <p>
+          A feature can look fine on a local machine and still create risk when it reaches the public web.
+          If a project gains traction, any weak code patterns are more likely to be probed, copied, or abused.
+        </p>
+      </article>
+
+      <article class="card glass">
+        <h2>What grows over time</h2>
+        <p>
+          The further a project moves downstream, the more corrective work is usually needed.
+          Early cleanup is cheaper than retrofitting security into a large set of pages, scripts, and linked assets.
+        </p>
+      </article>
+
+      <article class="card glass">
+        <h2>Good tooling helps</h2>
+        <p>
+          GitHub-based utilities can help identify unsafe patterns and suggest safer code.
+          That is useful for teams, and also a service opportunity for people who can spot risk before it becomes an incident.
+        </p>
+      </article>
+    </section>
+
+    <section id="page-security" class="panel glass">
+      <h2>Page security</h2>
+      <p>
+        Page security means protecting the browser session itself. The main concerns are unsafe HTML insertion, inline script exposure, weak link handling, and third-party resources that may expand your attack surface.
+      </p>
+      <ul>
+        <li>Use text insertion APIs for text, not raw HTML sinks.</li>
+        <li>Keep scripts external where practical so CSP can be strict.</li>
+        <li>Add <code>rel="noopener noreferrer"</code> to external links that open in a new tab.</li>
+        <li>Prefer a CSP that allows only the resources the page actually needs.</li>
+      </ul>
+    </section>
+
+    <section id="repo-security" class="panel glass">
+      <h2>Repo security</h2>
+      <p>
+        Repo security is broader than a single page. It covers how JavaScript, HTML, JSON, XML, generated assets, and configuration files work together across the whole repository.
+      </p>
+      <ul>
+        <li>Search for risky patterns across all file types, not only HTML.</li>
+        <li>Replace unsafe DOM writes in JavaScript and template code.</li>
+        <li>Remove secrets and browser-side token handling.</li>
+        <li>Keep shared headers, policies, and external links consistent.</li>
+      </ul>
+    </section>
+
+    <section class="panel glass">
+      <h2>Practical message</h2>
+      <p>
+        Basic functionality is not enough once a site becomes visible. If a project starts to get traction, developers should expect to revisit early code and make corrections before small weaknesses become public problems.
+      </p>
+      <p>
+        That is normal engineering work, not a failure. The goal is to make the site harder to misuse while keeping it usable, maintainable, and easy to extend.
+      </p>
+    </section>
+
+    <section class="panel glass">
+      <h2>Common fixes</h2>
+      <div class="fix-list">
+        <div>
+          <h3>Safer DOM writes</h3>
+          <p>Use <code>textContent</code> for plain text and sanitise any HTML you genuinely need to render.</p>
+        </div>
+        <div>
+          <h3>Safer event wiring</h3>
+          <p>Use <code>addEventListener</code> instead of inline handlers.</p>
+        </div>
+        <div>
+          <h3>Safer navigation</h3>
+          <p>Add <code>noopener noreferrer</code> when opening external links in a new tab.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Built for people learning modern web development, security basics, and the cost of fixing things later.</p>
+    </footer>
+  </main>
+
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+</body>
+</html>
