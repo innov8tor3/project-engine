@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://YOUR-BACKEND-URL; base-uri 'self'; object-src 'none'; frame-ancestors 'none'">
+  <meta name="description" content="Public repository security audit tool for HTML, JS, XML and related text files.">
+  <title>Public Repo Security Audit</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero glass">
+      <h1>Public Repository Security Audit</h1>
+      <p>
+        Enter a public GitHub repository, branch, and path such as <code>/docs</code>.
+        The backend will scan recursively and list files as red, green, or grey.
+      </p>
+      <p class="warning">
+        This tool is for public repositories only. Private repository scanning should be discussed separately with platform admins.
+      </p>
+
+      <form id="auditForm" class="form">
+        <label>
+          Owner
+          <input id="owner" name="owner" type="text" placeholder="org-or-user" required>
+        </label>
+
+        <label>
+          Repository
+          <input id="repo" name="repo" type="text" placeholder="repo-name" required>
+        </label>
+
+        <label>
+          Branch
+          <input id="branch" name="branch" type="text" value="main" required>
+        </label>
+
+        <label>
+          Path to scan
+          <input id="path" name="path" type="text" value="/docs" required>
+        </label>
+
+        <button type="submit">Run audit</button>
+      </form>
+
+      <div id="status" class="status" aria-live="polite"></div>
+      <div id="summary" class="summary"></div>
+      <div id="results" class="results"></div>
+    </section>
+  </main>
+</body>
+</html>
