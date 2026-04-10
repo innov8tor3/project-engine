@@ -1,0 +1,117 @@
+:root{
+  --bg:#07111f;
+  --panel:rgba(255,255,255,.08);
+  --panel-border:rgba(255,255,255,.12);
+  --text:#eef4ff;
+  --muted:#a6b7d3;
+  --red:#ff6b6b;
+  --green:#4ee29a;
+  --grey:#94a3b8;
+  --accent:#7c8cff;
+  --shadow:0 24px 80px rgba(0,0,0,.45);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(124,140,255,.25), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(78,226,154,.16), transparent 30%),
+    linear-gradient(180deg,#040912,var(--bg));
+}
+
+.shell{
+  width:min(1100px, calc(100% - 32px));
+  margin:0 auto;
+  padding:32px 0 56px;
+}
+
+.glass{
+  background:var(--panel);
+  border:1px solid var(--panel-border);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-radius:24px;
+  padding:24px;
+}
+
+.hero h1{
+  margin:0 0 12px;
+  font-size:clamp(2rem,5vw,4rem);
+  line-height:1;
+}
+
+.hero p{
+  color:var(--muted);
+  line-height:1.7;
+  max-width:72ch;
+}
+
+.warning{
+  color:#ffd58a;
+  padding:12px 14px;
+  border-left:3px solid #ffd58a;
+  background:rgba(255,213,138,.08);
+  border-radius:12px;
+}
+
+.form{
+  display:grid;
+  gap:14px;
+  max-width:680px;
+  margin-top:18px;
+}
+
+label{
+  display:grid;
+  gap:8px;
+  color:var(--text);
+}
+
+input,button{
+  font:inherit;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+}
+
+input{
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  padding:14px 16px;
+}
+
+button{
+  width:max-content;
+  margin-top:4px;
+  padding:14px 18px;
+  background:linear-gradient(135deg,var(--accent),#53d7c8);
+  color:#fff;
+  cursor:pointer;
+}
+
+.status,.summary,.results{
+  margin-top:18px;
+  white-space:pre-wrap;
+  color:var(--muted);
+}
+
+.file-group{
+  margin-top:16px;
+  padding:16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.red{color:var(--red)}
+.green{color:var(--green)}
+.grey{color:var(--grey)}
+
+@media (max-width: 700px){
+  .glass{padding:18px}
+  button{width:100%}
+}
