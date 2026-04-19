@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Handoff page for the public repository security audit tool and backend deployment.">
+  <title>Security Audit Handoff</title>
+  <link rel="stylesheet" href="./handoff.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <h1>Security Audit Handoff</h1>
+      <p>
+        This page is a transfer point for a coding AI. It summarises the project, the current state,
+        the known problems, and the next action.
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>Project summary</h2>
+      <p>
+        Build a public-repository security audit tool. The front end is on GitHub Pages and the backend
+        is a Python service that scans a repository path such as <code>/docs</code> recursively.
+      </p>
+      <p>
+        The audit classifies files as <strong>red</strong> (unsecure), <strong>green</strong> (secured),
+        or <strong>grey</strong> (unnecessary / out of scope).
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Current repositories</h2>
+      <ul>
+        <li><strong>GitHub Pages repo:</strong> <code>innov8tor3/project-engine</code></li>
+        <li><strong>GitHub Pages path:</strong> <code>/docs/security-audit</code></li>
+        <li><strong>Backend repo:</strong> <code>csp-audit-api</code></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Current front end files</h2>
+      <ul>
+        <li><code>csp-audit.html</code></li>
+        <li><code>csp-audit.css</code></li>
+        <li><code>csp-audit.js</code></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Current backend files</h2>
+      <ul>
+        <li><code>main.py</code></li>
+        <li><code>audit.py</code></li>
+        <li><code>requirements.txt</code></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>What has been completed</h2>
+      <ul>
+        <li>The GitHub Pages front end has been created.</li>
+        <li>The backend repo has been created.</li>
+        <li>The backend Python files have been moved to the repo root.</li>
+        <li>The Render deployment process has been started.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Current problem</h2>
+      <p>
+        The AI session has repeatedly truncated the <code>audit.py</code> code during transmission.
+        The user needs a full, exact, pasteable version of the file.
+      </p>
+      <p>
+        There was also a naming collision in <code>main.py</code> because the route function was named
+        <code>audit</code> while the module import was also <code>audit</code>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Security model</h2>
+      <ul>
+        <li>This tool is for public repositories only.</li>
+        <li>Private repository scanning should be discussed separately with platform admins.</li>
+        <li>No user token field should be used in the public version.</li>
+        <li>The backend may use its own server-side token later if needed, but the browser should not.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Audit rules</h2>
+      <p>The backend should scan files recursively and flag these five patterns:</p>
+      <ol>
+        <li><code>innerHTML</code></li>
+        <li>Inline event handlers such as <code>onclick=</code></li>
+        <li><code>target="_blank"</code> links missing <code>rel="noopener noreferrer"</code></li>
+        <li><code>unsafe-inline</code> in CSP-related files</li>
+        <li>Client-side GitHub token handling or <code>Authorization: token</code></li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Known deployment target</h2>
+      <p>
+        The backend is intended to be deployed on Render as a Python web service.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Next action required</h2>
+      <p>
+        Provide the complete corrected <code>audit.py</code> file, in a form that can be pasted directly
+        into the repository without truncation.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Prompt for the next AI</h2>
+      <pre>Continue the security audit API work.
+
+Context:
+- GitHub Pages front end is in innov8tor3/project-engine at /docs/security-audit.
+- The front-end files are csp-audit.html, csp-audit.css, and csp-audit.js.
+- The backend repo is csp-audit-api.
+- The backend Python files are at the repo root.
+- The public version is for public repositories only.
+- Do not add a user token field.
+
+Current problem:
+- The conversation has repeatedly truncated the audit.py code.
+- The route function in main.py must not be called audit because that collides with the imported audit module.
+
+Task:
+Output the full corrected audit.py only, with no extra commentary, and keep it complete and pasteable.</pre>
+    </section>
+  </main>
+</body>
+</html>
