@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MemegRidLock Life Grid — A futuristic, interactive operating system for mastering home life, responsibilities, and reducing anxiety. Deep red glassmorphic design.">
+    <title>MemegRidLock • Life Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --deep-red: #9f1239;
+            --neon-red: #ff3366;
+            --dark-bg: #1a0308;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .glass {
+            background: rgba(159, 18, 57, 0.12);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 51, 102, 0.25);
+            box-shadow: 
+                0 0 40px -10px rgb(255 51 102),
+                inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+        
+        .layer-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .layer-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(159 18 57);
+        }
+        
+        .neon-text {
+            text-shadow: 
+                0 0 10px rgb(255 51 102),
+                0 0 20px rgb(255 51 102);
+        }
+        
+        /* Dynamic Cursor */
+        #custom-cursor {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            border: 2px solid #ff3366;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            box-shadow: 
+                0 0 15px #ff3366,
+                0 0 30px #ff3366;
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            #custom-cursor {
+                display: block;
+            }
+        }
+        
+        /* Animated background grid */
+        .bg-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255,51,102,0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,51,102,0.08) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: grid-move 40s linear infinite;
+        }
+        
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: -60px -60px; }
+        }
+        
+        /* Layer glow rings */
+        .glow-ring {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        
+        .modal {
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .connector {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff3366, transparent);
+            animation: connectorFlow 3s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#1a0308] text-white overflow-x-hidden bg-grid">
+    <!-- Dynamic Cursor -->
+    <div id="custom-cursor"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 rounded-2xl bg-[#9f1239] flex items-center justify-center text-xl shadow-inner neon-text">🧬</div>
+                <h1 class="title-font text-3xl tracking-[-2px] neon-text">MEMEGRIDLOCK</h1>
+                <span class="text-xs font-mono bg-white/10 px-3 py-1 rounded-3xl border border-white/20">LIFE OS v2.0</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#grid" onclick="document.getElementById('grid-section').scrollIntoView({ behavior: 'smooth' })" class="hover:text-[#ff3366] flex items-center gap-x-1">
+                    <span class="text-[#ff3366]">●</span> THE GRID
+                </a>
+                <a href="#command" onclick="document.getElementById('command-center').scrollIntoView({ behavior: 'smooth' })" class="hover:text-[#ff3366]">COMMAND CENTER</a>
+                <a href="#how" onclick="document.getElementById('how-to-use').scrollIntoView({ behavior: 'smooth' })" class="hover:text-[#ff3366]">HOW TO USE</a>
+                <a href="https://github.com" target="_blank" class="px-6 py-2 bg-white/10 hover:bg-[#ff3366] hover:text-white border border-white/30 rounded-3xl text-sm font-medium flex items-center gap-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 4L2 8l4 4" />
+                    </svg>
+                    DEPLOY TO GITHUB PAGES
+                </a>
+            </div>
+            
+            <div class="flex items-center gap-x-4">
+                <div onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-2xl border border-white/20 hover:border-[#ff3366] cursor-pointer text-xl">🌑</div>
+                <div class="text-xs font-mono px-4 py-2 bg-[#9f1239]/20 rounded-3xl border border-[#ff3366]/30 flex items-center">
+                    <div class="w-2 h-2 bg-[#ff3366] rounded-full animate-pulse mr-1.5"></div>
+                    LIVE • APR 21 2026
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="min-h-screen pt-24 flex items-center relative">
+        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center">
+            <!-- Left visual -->
+            <div class="md:col-span-7 relative">
+                <div class="absolute -left-12 -top-12 w-96 h-96 bg-[#9f1239] rounded-[4rem] blur-3xl opacity-20"></div>
+                
+                <div class="relative">
+                    <div class="inline-flex items-center gap-x-2 bg-white/10 text-xs font-mono tracking-[2px] px-6 py-3 rounded-3xl border border-[#ff3366]/30 mb-6">
+                        <span class="text-[#ff3366]">★</span>
+                        ORIGINAL INSPIRATION: CULTURAL TRAFFIC JAM • THE MEMEGRIDLOCK
+                    </div>
+                    
+                    <h1 class="title-font text-7xl md:text-8xl leading-none tracking-[-4px] neon-text mb-4">
+                    WHAT AM I<br>RESPONSIBLE FOR?
+                    </h1>
+                    
+                    <p class="text-3xl text-white/70 max-w-lg">The ultimate home-life operating system.<br>Deep red. Glassmorphic. Anxiety-proof.</p>
+                    
+                    <div class="flex items-center gap-x-6 mt-12">
+                        <button onclick="document.getElementById('grid-section').scrollIntoView({ behavior: 'smooth' })" 
+                                class="px-10 py-6 bg-[#9f1239] hover:bg-[#ff3366] text-white text-xl font-medium rounded-3xl flex items-center gap-x-3 shadow-2xl shadow-[#9f1239]/50">
+                            ENTER THE GRID
+                            <span class="text-4xl">→</span>
+                        </button>
+                        
+                        <div class="text-sm max-w-[200px] leading-tight">
+                            Built for the invisible labor of home.<br>
+                            <span class="text-[#ff3366]">Financial • Logistical • Emotional</span><br>
+                            mastery in one futuristic interface.
+                        </div>
+                    </div>
+                    
+                    <!-- Fake original image frame -->
+                    <div class="mt-16 md:mt-8 border border-white/20 rounded-3xl p-4 bg-black/40 glass max-w-md">
+                        <div class="bg-[#2a0a14] rounded-2xl p-6 text-center text-white/60 text-sm">
+                            <div class="flex justify-center mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-[#9f1239] to-[#ff3366] rounded-2xl flex items-center justify-center text-3xl rotate-12">📖</div>
+                            </div>
+                            <p class="font-mono text-xs mb-1">CULTURAL TRAFFIC JAM: THE MEMEGRIDLOCK</p>
+                            <p class="text-[#ff3366] text-xs">STUCK IN STASIS • D.O.D.O. LOOP</p>
+                            <p class="mt-6 text-white/80 text-lg">“Home responsibilities don’t have to feel heavier than work.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right visual / floating layers preview -->
+            <div class="md:col-span-5 relative flex justify-center">
+                <div class="relative w-full max-w-xs md:max-w-md">
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#9f1239] via-[#ff3366] to-transparent rounded-[4rem] blur-3xl opacity-30"></div>
+                    
+                    <!-- Floating mini cards -->
+                    <div class="relative space-y-6">
+                        <div class="glass rounded-3xl p-5 flex items-center gap-4 shadow-2xl -rotate-6 hover:rotate-0">
+                            <div class="text-5xl">①</div>
+                            <div>
+                                <div class="text-[#ff3366] font-medium">INNER WORLD</div>
+                                <div class="text-sm text-white/70">Thoughts • Focus • Attitude</div>
+                            </div>
+                            <div class="ml-auto text-4xl">🧠</div>
+                        </div>
+                        
+                        <div class="glass rounded-3xl p-5 flex items-center gap-4 shadow-2xl rotate-3 hover:rotate-0 ml-12">
+                            <div class="text-5xl">⑥</div>
+                            <div>
+                                <div class="text-[#ff3366] font-medium">ACTION &amp; OUTCOMES</div>
+                                <div class="text-sm text-white/70">Financial Success • Logistics</div>
+                            </div>
+                            <div class="ml-auto text-4xl">📈</div>
+                        </div>
+                        
+                        <div class="glass rounded-3xl p-5 flex items-center gap-4 shadow-2xl -rotate-3 hover:rotate-0">
+                            <div class="text-5xl">③</div>
+                            <div>
+                                <div class="text-[#ff3366] font-medium">ENERGY &amp; MAINTENANCE</div>
+                                <div class="text-sm text-white/70">Bills • Home systems • Bed</div>
+                            </div>
+                            <div class="ml-auto text-4xl">⚡</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll prompt -->
+        <div class="absolute bottom-12 left-1/2 flex flex-col items-center text-xs font-mono text-white/40">
+            <div class="animate-bounce">↓</div>
+            SCROLL FOR THE GRID
+        </div>
+    </header>
+
+    <!-- THE GRID SECTION -->
+    <section id="grid-section" class="max-w-screen-2xl mx-auto px-8 pb-24">
+        <div class="text-center mb-16">
+            <span class="px-5 py-2 rounded-3xl bg-white/10 text-[#ff3366] text-sm font-medium">6 LAYERS • INTERDEPENDENT • HOME-OPTIMIZED</span>
+            <h2 class="title-font text-6xl mt-4 tracking-[-2px]">YOUR LIFE OPERATING SYSTEM</h2>
+            <p class="max-w-xl mx-auto mt-6 text-white/70 text-xl">Click any layer to dive deep. Glassmorphic. Dynamic. Built to turn anxiety into clarity.</p>
+        </div>
+        
+        <!-- Layers Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="layers-grid">
+            <!-- Populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- COMMAND CENTER (Financial &amp; Logistics focus) -->
+    <section id="command-center" class="bg-[#120205] py-20 border-t border-b border-[#ff3366]/20">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <div class="md:w-2/5">
+                    <div class="sticky top-8">
+                        <span class="text-[#ff3366] text-sm font-medium">HOME COMMAND CENTER</span>
+                        <h2 class="title-font text-5xl tracking-[-2px] mt-3">Financial &amp; Logistical Mastery</h2>
+                        <p class="mt-6 text-xl text-white/80">The part most people dread — now a single pane of glass. Auto-routines, buffers, and wins logged forever.</p>
+                        
+                        <div class="mt-8 p-6 glass rounded-3xl">
+                            <div class="flex justify-between text-xs font-mono mb-4">
+                                <div>THIS MONTH’S BUFFER</div>
+                                <div class="text-[#ff3366]" id="buffer-amount">$1,842</div>
+                            </div>
+                            <div class="h-3 bg-white/10 rounded-3xl overflow-hidden">
+                                <div class="h-full w-3/4 bg-gradient-to-r from-[#9f1239] to-[#ff3366]"></div>
+                            </div>
+                            <div class="text-xs mt-6 flex items-center justify-between font-medium">
+                                <div>✅ 4 bills auto-paid</div>
+                                <div>✅ Groceries batched</div>
+                                <div>✅ Repair queued</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interactive mini-dashboard -->
+                <div class="md:w-3/5 glass rounded-3xl p-8 md:p-12">
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-medium text-lg mb-6 flex items-center"><span class="text-[#ff3366] mr-2">💰</span>Financial Snapshot</h4>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-baseline"><span class="text-white/70">Income after home costs</span><span class="text-3xl font-semibold">$3,920</span></div>
+                                <div class="flex justify-between items-baseline"><span class="text-white/70">Emergency buffer</span><span class="text-3xl font-semibold text-[#ff3366]">3.2 months</span></div>
+                                <div class="flex justify-between items-baseline"><span class="text-white/70">Next big win</span><span class="text-white/80">Auto-save $200 → Freedom Fund</span></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-lg mb-6 flex items-center"><span class="text-[#ff3366] mr-2">📍</span>Logistics Dashboard</h4>
+                            <div class="bg-[#1a0308] rounded-2xl p-5 text-sm space-y-4">
+                                <div class="flex items-center justify-between"><div class="flex items-center"><span class="inline-block w-3 h-3 bg-[#ff3366] rounded mr-3"></span> Groceries</div><span class="font-mono text-[#ff3366]">Due in 2 days</span></div>
+                                <div class="flex items-center justify-between"><div class="flex items-center"><span class="inline-block w-3 h-3 bg-[#ff3366] rounded mr-3"></span> Car registration</div><span class="font-mono">Automated</span></div>
+                                <div class="flex items-center justify-between"><div class="flex items-center"><span class="inline-block w-3 h-3 bg-[#ff3366] rounded mr-3"></span> Home insurance</div><span class="font-mono text-green-400">✅ Paid</span></div>
+                                <button onclick="simulateWin()" class="mt-4 w-full py-4 bg-[#ff3366] hover:bg-white hover:text-[#9f1239] text-white rounded-3xl font-medium">LOG A WIN +10pts</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO USE -->
+    <section id="how-to-use" class="max-w-screen-2xl mx-auto px-8 py-20">
+        <div class="grid md:grid-cols-12 gap-16">
+            <div class="md:col-span-4">
+                <h2 class="title-font text-5xl tracking-[-2px]">How to run your life with this grid</h2>
+                <div class="mt-10 space-y-8">
+                    <div class="flex gap-4">
+                        <div class="text-4xl text-[#ff3366]">01</div>
+                        <div>
+                            <p class="font-medium">Daily 60-second scan</p>
+                            <p class="text-white/70 text-sm">Open the grid → rate each layer 1–10 → instant clarity.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-4xl text-[#ff3366]">02</div>
+                        <div>
+                            <p class="font-medium">Weekly 15-minute ritual</p>
+                            <p class="text-white/70 text-sm">Pick ONE action per layer. Especially the financial/logistical ones causing anxiety.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="text-4xl text-[#ff3366]">03</div>
+                        <div>
+                            <p class="font-medium">Anxiety → Action pipeline</p>
+                            <p class="text-white/70 text-sm">Layer 1 reframes → Layer 6 executes. The system does the heavy lifting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-8">
+                <div class="glass rounded-3xl p-10 text-white/90">
+                    <p class="text-xl leading-relaxed">This HTML is your living asset.<br>It was designed to be the single source of truth for every future conversation you have with any AI (including me). Bookmark it, host it on GitHub Pages, and simply say:</p>
+                    <div class="mt-8 p-6 bg-black/40 rounded-2xl font-mono text-sm">"Open the Life Grid and help me optimize Layer 6 financials this week."</div>
+                    <p class="mt-6 text-[#ff3366]">The grid will always be here — beautiful, interactive, and deeply red — ready to support you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 text-white/40 text-xs font-mono">
+        <div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
+            <div>Made as a perpetual asset • April 21, 2026 • Inspired by the original MemegRidLock image</div>
+            <div class="flex gap-x-6 mt-6 md:mt-0">
+                <a href="#" onclick="window.location.reload()" class="hover:text-[#ff3366]">RESET GRID</a>
+                <a href="https://github.com" target="_blank" class="hover:text-[#ff3366]">HOST THIS ON GITHUB PAGES</a>
+                <span>Deep red • Glassmorphic • Built for home-life dominance</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div onclick="if(event.target.id === 'modal-backdrop')hideModal()" id="modal-backdrop" class="hidden fixed inset-0 bg-black/80 backdrop-blur-xl z-[9999] flex items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" id="modal-content" class="modal glass max-w-2xl w-full mx-4 rounded-3xl p-10 max-h-[90vh] overflow-auto">
+            <!-- Filled by JS -->
+        </div>
+    </div>
+
+    <script>
+        /**
+         * TAILWIND INITIALIZATION
+         */
+        function initializeTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: {
+                    extend: {
+                        colors: {
+                            'deep-red': '#9f1239',
+                            'neon-red': '#ff3366',
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * Dynamic Cursor
+         */
+        function initCursor() {
+            const cursor = document.getElementById('custom-cursor')
+            let timeout
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX - 14}px`
+                cursor.style.top = `${e.clientY - 14}px`
+                
+                // Pulse effect
+                cursor.style.transform = 'scale(1)'
+                clearTimeout(timeout)
+                timeout = setTimeout(() => {
+                    cursor.style.transform = 'scale(0.6)'
+                }, 120)
+            })
+            
+            // Hover effect on interactive elements
+            const interactables = document.querySelectorAll('button, a, .layer-card')
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.borderColor = '#ffffff'
+                    cursor.style.boxShadow = '0 0 25px #ffffff'
+                    cursor.style.width = '40px'
+                    cursor.style.height = '40px'
+                })
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.borderColor = '#ff3366'
+                    cursor.style.boxShadow = '0 0 15px #ff3366, 0 0 30px #ff3366'
+                    cursor.style.width = '28px'
+                    cursor.style.height = '28px'
+                })
+            })
+        }
+
+        /**
+         * Layer data — original + deep home-life upgrades
+         */
+        const layersData = [
+            {
+                id: 1,
+                number: "01",
+                title: "Inner World",
+                subtitle: "Epistemic & Perceptual Layer",
+                accent: "#ff3366",
+                emoji: "🧠",
+                colorClass: "border-[#ff3366]",
+                description: "Where anxiety is born. Your thoughts, opinions, focus and attitude are the operating system.",
+                subs: [
+                    "1.1 My Thoughts",
+                    "1.2 My Opinions",
+                    "1.3 How I See The World",
+                    "1.4 My Focus",
+                    "1.5 My Attitude"
+                ],
+                homeUpgrade: "60-second Financial & Logistical Reframe every morning: “I am not failing — I am executing an invisible maintenance system.” Keep one-page Anxiety Script on your phone."
+            },
+            {
+                id: 2,
+                number: "02",
+                title: "Self & Identity",
+                subtitle: "Character & Values Layer",
+                accent: "#f59e0b",
+                emoji: "🛡️",
+                colorClass: "border-[#f59e0b]",
+                description: "Who you are when no one is watching. The foundation of self-worth at home.",
+                subs: [
+                    "2.1 My Character",
+                    "2.2 Living My Values",
+                    "2.3 My Self Image & Self Worth",
+                    "2.4 My Presence"
+                ],
+                homeUpgrade: "Tie self-worth directly to home stewardship: “I keep my household running so my future self feels safe.” Weekly 2-minute Values Check."
+            },
+            {
+                id: 3,
+                number: "03",
+                title: "Wellbeing & Energy",
+                subtitle: "Somatic & Maintenance Layer",
+                accent: "#eab308",
+                emoji: "⚡",
+                colorClass: "border-[#eab308]",
+                description: "The hidden engine. Health, energy, and the tiny rituals that prevent burnout.",
+                subs: [
+                    "3.1 My Health & Wellbeing",
+                    "3.2 My Energy Levels",
+                    "3.3 My Happiness",
+                    "3.4 My State",
+                    "3.5 Making My Bed"
+                ],
+                homeUpgrade: "Add: 3.6 Home Logistics Baseline (bills, groceries, repairs). Make the bed + 3-minute kitchen reset = instant momentum. Batch bills on the 1st & 15th."
+            },
+            {
+                id: 4,
+                number: "04",
+                title: "Relationships & Social",
+                subtitle: "Interpersonal Layer",
+                accent: "#10b981",
+                emoji: "👥",
+                colorClass: "border-[#10b981]",
+                description: "Your household team. Delegating without guilt is a skill.",
+                subs: [
+                    "4.1 My Relationships",
+                    "4.2 My Social Life",
+                    "4.3 Getting My Needs Met",
+                    "4.4 What I Look Forward To"
+                ],
+                homeUpgrade: "Include household relationships & 4.5 Delegating Home Tasks Without Guilt. Weekly 10-minute Home Team Huddle (even solo)."
+            },
+            {
+                id: 5,
+                number: "05",
+                title: "Purpose & Direction",
+                subtitle: "Teleological & Growth Layer",
+                accent: "#06b67f",
+                emoji: "🚀",
+                colorClass: "border-[#06b67f]",
+                description: "Why you do any of this. Your home as a launchpad for freedom.",
+                subs: [
+                    "5.1 My Direction in Life",
+                    "5.2 My Ambition & Drive",
+                    "5.3 My Education",
+                    "5.4 My Contribution"
+                ],
+                homeUpgrade: "Add: 5.5 Home as a Launchpad (financial freedom, peace, legacy). Learn one new labor-saving system per month."
+            },
+            {
+                id: 6,
+                number: "06",
+                title: "Action & Outcomes",
+                subtitle: "Execution & Results Layer",
+                accent: "#c026d3",
+                emoji: "📍",
+                colorClass: "border-[#c026d3]",
+                description: "The scoreboard. Where financial success and logistical wins become visible.",
+                subs: [
+                    "6.1 Taking Action",
+                    "6.2 Getting Things Done",
+                    "6.3 My Choices",
+                    "6.4 My Career Success",
+                    "6.5 My Financial Success",
+                    "6.6 My Quality of Life"
+                ],
+                homeUpgrade: "HIGH PRIORITY. Monthly Budget Snapshot, Logistics Dashboard, Emergency Fund, Automated Routines, Quarterly Home Audit. 2-Minute Rule for any task &lt; 2 minutes."
+            }
+        ]
+
+        /**
+         * Render the interactive layer cards
+         */
+        function renderLayers() {
+            const container = document.getElementById('layers-grid')
+            container.innerHTML = ''
+            
+            layersData.forEach(layer => {
+                const cardHTML = `
+                <div onclick="showModal(${layer.id})" class="layer-card cursor-pointer glass rounded-3xl p-8 ${layer.colorClass} border-2 flex flex-col h-full">
+                    <div class="flex items-start justify-between">
+                        <div class="text-7xl opacity-20">${layer.number}</div>
+                        <div class="text-6xl">${layer.emoji}</div>
+                    </div>
+                    
+                    <div class="mt-auto">
+                        <h3 class="title-font text-3xl tracking-[-1px]">${layer.title}</h3>
+                        <p class="text-[#ff3366] text-sm font-medium">${layer.subtitle}</p>
+                        <p class="mt-4 text-white/70 text-[15px] leading-tight">${layer.description}</p>
+                        
+                        <div class="mt-8 flex flex-wrap gap-2">
+                            ${layer.subs.slice(0, 3).map(sub => `
+                                <div class="text-xs px-4 py-1 bg-white/10 rounded-3xl">${sub}</div>
+                            `).join('')}
+                            ${layer.subs.length > 3 ? `<div class="text-xs px-4 py-1 bg-white/10 rounded-3xl">+${layer.subs.length - 3} more</div>` : ''}
+                        </div>
+                        
+                        <div class="mt-6 text-xs uppercase font-medium flex items-center text-white/60">
+                            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                            <span class="mx-4">HOME EDITION</span>
+                            <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+                        </div>
+                    </div>
+                </div>`
+                
+                container.innerHTML += cardHTML
+            })
+        }
+
+        /**
+         * Show modal with full details
+         */
+        function showModal(id) {
+            const layer = layersData.find(l => l.id === id)
+            if (!layer) return
+            
+            const modalContent = document.getElementById('modal-content')
+            modalContent.innerHTML = `
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-x-4">
+                        <span class="text-7xl">${layer.emoji}</span>
+                        <div>
+                            <div class="text-5xl title-font">${layer.number} ${layer.title}</div>
+                            <div class="text-[#ff3366]">${layer.subtitle}</div>
+                        </div>
+                    </div>
+                    <button onclick="hideModal()" class="text-4xl leading-none text-white/60 hover:text-white">×</button>
+                </div>
+                
+                <p class="text-xl text-white/90 mb-8">${layer.description}</p>
+                
+                <div class="mb-10">
+                    <h4 class="uppercase text-xs tracking-widest text-white/60 mb-4">Core Responsibilities</h4>
+                    <ul class="grid grid-cols-2 gap-x-8 gap-y-3 text-white/90">
+                        ${layer.subs.map(sub => `<li class="flex items-center"><span class="text-[#ff3366] mr-3">◉</span>${sub}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="bg-black/40 rounded-3xl p-8 mb-10">
+                    <h4 class="uppercase text-xs tracking-widest text-[#ff3366] mb-4">🏠 HOME-LIFE UPGRADES (Anxiety Reducers)</h4>
+                    <p class="leading-relaxed">${layer.homeUpgrade}</p>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                    <div onclick="hideModal()" class="text-sm font-medium cursor-pointer flex items-center">
+                        ← BACK TO GRID
+                    </div>
+                    <button onclick="hideModal();setTimeout(()=>{alert('✅ Action logged to your Life OS. You are handling it.')},300)" 
+                            class="px-8 py-4 rounded-3xl bg-[#ff3366] text-white font-medium flex items-center">
+                        MARK THIS LAYER AS ALIGNED
+                        <span class="ml-3 text-xl">✓</span>
+                    </button>
+                </div>
+            `
+            document.getElementById('modal-backdrop').classList.remove('hidden')
+            document.getElementById('modal-backdrop').classList.add('flex')
+        }
+
+        function hideModal() {
+            const backdrop = document.getElementById('modal-backdrop')
+            backdrop.classList.add('hidden')
+            backdrop.classList.remove('flex')
+        }
+
+        /**
+         * Fake a command center win
+         */
+        function simulateWin() {
+            const buffer = document.getElementById('buffer-amount')
+            let value = parseInt(buffer.textContent.replace('$', '').replace(',', ''))
+            value += Math.floor(Math.random() * 180) + 80
+            buffer.textContent = '$' + value.toLocaleString()
+            
+            const notif = document.createElement('div')
+            notif.className = 'fixed bottom-8 right-8 bg-[#ff3366] text-white text-sm font-medium px-6 py-4 rounded-3xl shadow-2xl flex items-center'
+            notif.innerHTML = `🎉 WIN LOGGED • +40pts to Layer 6`
+            document.body.appendChild(notif)
+            
+            setTimeout(() => {
+                notif.style.transform = 'translateY(100px)'
+                notif.style.opacity = '0'
+                setTimeout(() => notif.remove(), 800)
+            }, 2200)
+        }
+
+        function toggleTheme() {
+            // Simple easter-egg toggle (deep red is already dominant)
+            alert("🌑 You are already in the deepest red mode. This OS was built exclusively for it.")
+        }
+
+        /**
+         * MAIN BOOT SEQUENCE
+         */
+        window.onload = function() {
+            initializeTailwind()
+            renderLayers()
+            initCursor()
+            
+            console.log('%c🚀 MemegRidLock Life Grid v2.0 loaded successfully. Deep red glassmorphic interface active.', 'color:#ff3366; font-family:monospace; font-size:13px')
+            console.log('%cThis HTML file is 100% self-contained and ready for GitHub Pages.', 'color:#ff3366; font-family:monospace')
+        }
+    </script>
+</body>
+</html>
