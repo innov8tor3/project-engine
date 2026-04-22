@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figaro Protocol | Advanced Coordination</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #05010d;
+            --purple-glow: #8b5cf6;
+            --neon-accent: #d8b4fe;
+            --glass-bg: rgba(26, 11, 46, 0.6);
+            --glass-border: rgba(139, 92, 246, 0.3);
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
+                linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Hero Styling */
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, var(--neon-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* Modern Glass Cards */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--purple-glow), transparent);
+        }
+
+        /* Tooltip Terms */
+        .jargon-hint {
+            color: var(--neon-accent);
+            text-decoration: underline dotted;
+            cursor: help;
+            font-weight: 600;
+        }
+
+        .jargon-hint:hover {
+            color: #fff;
+        }
+
+        /* Opportunities Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .grid-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .grid-item:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--glass-border);
+            transform: scale(1.02);
+        }
+
+        .grid-item h3 {
+            color: var(--neon-accent);
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+
+        /* Buttons & Interaction */
+        .btn {
+            display: inline-block;
+            background: var(--purple-glow);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* Accordion Logic styling */
+        .details-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-left: 3px solid var(--purple-glow);
+            background: rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>FIGARO</h1>
+            <p class="tagline">The Digital Honesty Protocol</p>
+        </header>
+
+        <section class="card">
+            <h2>Making Coordination Rational</h2>
+            <p>
+                The Figaro Protocol creates a "safety zone" for groups to work together. Using 
+                <span class="jargon-hint" title="A system where everyone puts down deposits in stages, making it too expensive to quit halfway.">Progressive Collateralization</span>, 
+                it ensures that everyone has "skin in the game." 
+            </p>
+            <p>
+                By following <span class="jargon-hint" title="A safety rule that updates the system's books before any money leaves, preventing hacks.">CEI-First sequencing</span>, 
+                the protocol eliminates common security risks like reentrancy, keeping your capital protected behind mathematical certainty.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>Market Opportunities</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3>Secure Marketplaces</h3>
+                    <p>Safe escrow for services or digital goods across borders.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Milestone Funding</h3>
+                    <p>Unlock budgets only when research or project goals are proven.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Collective Action</h3>
+                    <p>Pool funds for group buys that only execute if everyone commits.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>DAO Logistics</h3>
+                    <p>Automate payments for community contributors based on verified work.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Ethical Value & Consulting</h2>
+            <p>Built with transparency as a core value. Market participants and the protocol owner benefit through:</p>
+            <ul>
+                <li><strong>Capped Fees:</strong> Built-in fee math ensures costs are predictable and never exceed established limits.</li>
+                <li><strong>Custom Mechanics:</strong> Clients can plug in custom <span class="jargon-hint" title="Special hooks like voting or reputation scores that attach to the core escrow.">IMechanism Hooks</span> for tailored business models.</li>
+                <li><strong>Verified Integrity:</strong> The owner provides <span class="jargon-hint" title="High-level mathematical models that prove the code can't fail in unexpected ways.">TLA+ specs</span> to guarantee system reliability for large-scale operations.</li>
+            </ul>
+            <p style="margin-top: 2rem;">
+                <a href="https://github.com/adaliana/FigaroProtocol" class="btn">Explore the Architecture</a>
+            </p>
+        </section>
+
+        <footer>
+            <p>© 2026 Figaro Framework • Documented via adaliana/FigaroProtocol</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple interactive feature for tooltips on mobile
+        document.querySelectorAll('.jargon-hint').forEach(item => {
+            item.addEventListener('click', () => {
+                alert(item.getAttribute('title'));
+            });
+        });
+    </script>
+</body>
+</html>
