@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Engine: Gamified Sprints 4–6 • Smart • Fun • Secure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --orange: #ff8a00;
+            --yellow: #ffd000;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 138, 0, 0.4);
+        }
+
+        .nav-glass {
+            background: rgba(15, 15, 20, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .section-header {
+            background: linear-gradient(90deg, #ff8a00, #ffd000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .orange-panel {
+            background: linear-gradient(135deg, rgba(255, 138, 0, 0.15), rgba(255, 200, 0, 0.08));
+            border: 1px solid rgba(255, 138, 0, 0.3);
+        }
+
+        .yellow-panel {
+            background: linear-gradient(135deg, rgba(255, 220, 0, 0.12), rgba(255, 138, 0, 0.08));
+            border: 1px solid rgba(255, 220, 0, 0.3);
+        }
+
+        .card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tab-active {
+            border-bottom: 3px solid #ff8a00;
+            color: #ff8a00;
+        }
+
+        .bg-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0f] text-white min-h-screen bg-grid overflow-x-hidden">
+    <!-- Navbar -->
+    <nav class="nav-glass fixed top-0 left-0 right-0 z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-orange-500 to-yellow-400 flex items-center justify-center text-black font-bold text-2xl">🚀</div>
+                <div>
+                    <h1 class="title-font text-2xl font-semibold tracking-tighter">Project Engine</h1>
+                    <p class="text-xs text-white/60 -mt-1">Gamified Sprints 4–6</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-8 text-sm">
+                <a href="#smart" onclick="scrollToSection('smart')" class="hover:text-orange-400 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-brain"></i> Smart
+                </a>
+                <a href="#fun" onclick="scrollToSection('fun')" class="hover:text-yellow-400 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad"></i> Fun
+                </a>
+                <a href="#secure" onclick="scrollToSection('secure')" class="hover:text-orange-400 transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved"></i> Secure
+                </a>
+                <a href="#opportunities" class="px-5 py-2 rounded-2xl bg-white/10 hover:bg-white/20 transition-all text-sm font-medium">
+                    Replication Opportunities
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pt-32 pb-20 relative">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-3xl bg-white/5 border border-white/10 text-sm mb-6">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                Real Blockchain Examples • Ready to Replicate
+            </div>
+            <h1 class="title-font text-7xl font-bold tracking-tighter leading-none mb-6">
+                Gamify Your Sprints.<br>
+                <span class="section-header">Add Depth.</span> 
+                <span class="text-yellow-300">Add Fun.</span> 
+                <span class="section-header">Add Safety.</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-xl text-white/70 mb-10">
+                Explore 30 proven gamification mechanics from live blockchain games. 
+                Each sprint builds on the last — Smart progression, addictive fun loops, and secure data capture.
+            </p>
+            <div class="flex items-center justify-center gap-4">
+                <button onclick="scrollToSection('smart')" 
+                        class="px-8 py-4 rounded-3xl bg-gradient-to-r from-orange-500 to-amber-500 font-semibold flex items-center gap-3 hover:scale-105 transition-all">
+                    <i class="fa-solid fa-layer-group"></i>
+                    Start with Smart (Sprint 4)
+                </button>
+                <button onclick="document.getElementById('opportunities').scrollIntoView({ behavior: 'smooth' })" 
+                        class="px-8 py-4 rounded-3xl border border-white/30 hover:border-white/50 font-medium flex items-center gap-3 transition-all">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    See Replication Opportunities
+                </button>
+            </div>
+            <div class="mt-16 text-xs text-white/50 flex justify-center gap-8">
+                <div>30 Real Examples</div>
+                <div>Documented Uptake &amp; Blockchains</div>
+                <div>Secure On-Chain Data Capture</div>
+            </div>
+        </div>
+        
+        <!-- Subtle background accent -->
+        <div class="absolute top-40 right-20 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-20 w-80 h-80 bg-yellow-400/10 rounded-full blur-3xl"></div>
+    </header>
+
+    <!-- Three Main Sections -->
+    <div class="max-w-7xl mx-auto px-6 pb-24">
+        
+        <!-- Smart Section -->
+        <section id="smart" class="mb-32 scroll-mt-24">
+            <div class="flex items-end justify-between mb-10">
+                <div>
+                    <div class="inline-flex items-center gap-3 px-6 py-3 rounded-3xl orange-panel">
+                        <i class="fa-solid fa-brain text-3xl text-orange-400"></i>
+                        <div>
+                            <h2 class="text-4xl title-font font-semibold tracking-tight">Sprint 4: Smart</h2>
+                            <p class="text-orange-300">Adding Project Depth</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="max-w-md text-white/70 text-right">
+                    Complex progression systems, breeding, AI agents, skill trees, and strategic smart-contract economies that add meaningful depth.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="smart-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Fun Section -->
+        <section id="fun" class="mb-32 scroll-mt-24">
+            <div class="flex items-end justify-between mb-10">
+                <div>
+                    <div class="inline-flex items-center gap-3 px-6 py-3 rounded-3xl yellow-panel">
+                        <i class="fa-solid fa-gamepad text-3xl text-yellow-400"></i>
+                        <div>
+                            <h2 class="text-4xl title-font font-semibold tracking-tight">Sprint 5: Gamification</h2>
+                            <p class="text-yellow-300">Adding Project Fun</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="max-w-md text-white/70 text-right">
+                    Quests, leaderboards, casual loops, social features, and play-to-earn mechanics that drive engagement and enjoyment.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="fun-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Secure Section -->
+        <section id="secure" class="mb-32 scroll-mt-24">
+            <div class="flex items-end justify-between mb-10">
+                <div>
+                    <div class="inline-flex items-center gap-3 px-6 py-3 rounded-3xl orange-panel">
+                        <i class="fa-solid fa-shield-halved text-3xl text-orange-400"></i>
+                        <div>
+                            <h2 class="text-4xl title-font font-semibold tracking-tight">Sprint 6: Security</h2>
+                            <p class="text-orange-300">Adding Project Safety</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="max-w-md text-white/70 text-right">
+                    Verifiable ownership, zero-knowledge mechanics, bug-bounty incentives, and immutable on-chain data capture for secure progress tracking.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="secure-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Opportunities Section -->
+    <section id="opportunities" class="bg-black/40 py-24 border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="px-5 py-2 text-xs tracking-widest border border-yellow-400/30 rounded-full text-yellow-300">OPPORTUNITIES</span>
+                <h2 class="title-font text-5xl font-semibold tracking-tight mt-6 mb-4">Replicate &amp; Simplify on Other Blockchains</h2>
+                <p class="max-w-2xl mx-auto text-white/70">
+                    All 30 examples are already live and documented. You can recreate many of them in simpler formats — using fewer features, lighter smart contracts, or more accessible chains like Solana, Base, Polygon, or even TON for Telegram mini-apps. Lower gas fees and faster iteration make these ideas perfect for your Project Engine.
+                </p>
+            </div>
+            
+            <div class="glass rounded-3xl p-10 max-w-3xl mx-auto">
+                <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-lightbulb text-yellow-400"></i>
+                    Why Replicate These?
+                </h3>
+                <ul class="space-y-6 text-white/80">
+                    <li class="flex gap-4">
+                        <div class="w-6 h-6 rounded-xl bg-orange-500/20 flex-shrink-0 flex items-center justify-center text-orange-400 text-sm font-bold">1</div>
+                        <div>
+                            <strong class="text-white">Simpler Versions Work Better</strong><br>
+                            Many full-featured games can be distilled into core mechanics (e.g., basic breeding or simple quests) that run efficiently on cheaper or faster chains.
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="w-6 h-6 rounded-xl bg-orange-500/20 flex-shrink-0 flex items-center justify-center text-orange-400 text-sm font-bold">2</div>
+                        <div>
+                            <strong class="text-white">Cross-Chain Experimentation</strong><br>
+                            Port mechanics from Ethereum/Ronin to Solana or Aptos for lower costs and higher throughput while keeping on-chain data capture secure.
+                        </div>
+                    </li>
+                    <li class="flex gap-4">
+                        <div class="w-6 h-6 rounded-xl bg-orange-500/20 flex-shrink-0 flex items-center justify-center text-orange-400 text-sm font-bold">3</div>
+                        <div>
+                            <strong class="text-white">Focus on Data Capture</strong><br>
+                            Use immutable smart contracts for progress, rewards, and reputation — even in minimal viable versions — to ensure tamper-proof, verifiable results.
+                        </div>
+                    </li>
+                </ul>
+                <div class="mt-10 pt-8 border-t border-white/10 text-center text-sm text-white/60">
+                    Start small. Launch fast. Scale depth, fun, and security across sprints.<br>
+                    <span class="text-orange-400">Your Project Engine can become the next success story.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-white/50 text-sm">
+            <p>Built as a single-file explainer for GitHub Pages • Inspired by real 2025–2026 blockchain games</p>
+            <p class="mt-2">Copy this HTML into <strong>index.html</strong> and push to your GitHub repo → enable Pages. Instant live site.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind script already included via CDN
+        
+        const mechanics = {
+            smart: [
+                {
+                    title: "Breeding & Evolution System",
+                    game: "Axie Infinity",
+                    provider: "Sky Mavis",
+                    uptake: "1M+ active players",
+                    chain: "Ronin",
+                    icon: "fa-solid fa-egg"
+                },
+                {
+                    title: "Deck-Building & Card Strategy",
+                    game: "Splinterlands",
+                    provider: "Splinterlands Team",
+                    uptake: "Hundreds of thousands active",
+                    chain: "Hive",
+                    icon: "fa-solid fa-layer-group"
+                },
+                {
+                    title: "AI-Agent Autonomous Play",
+                    game: "House of TEN",
+                    provider: "House of TEN",
+                    uptake: "Growing on-chain adoption 2026",
+                    chain: "Ethereum",
+                    icon: "fa-solid fa-robot"
+                },
+                {
+                    title: "Skill-Tree & Leveling",
+                    game: "My Crypto Heroes",
+                    provider: "My Crypto Heroes Team",
+                    uptake: "Sustained Ethereum play",
+                    chain: "Ethereum",
+                    icon: "fa-solid fa-tree"
+                },
+                {
+                    title: "NFT Asset Degradation & Upgrades",
+                    game: "ZeroLimit",
+                    provider: "ZeroLimit Team",
+                    uptake: "2026 racing wave",
+                    chain: "Multi-chain",
+                    icon: "fa-solid fa-wrench"
+                },
+                {
+                    title: "On-Chain AI Inference",
+                    game: "Ultiverse Platform",
+                    provider: "Ultiverse / Delabs",
+                    uptake: "Thousands of AI games",
+                    chain: "Avalanche / Ethereum",
+                    icon: "fa-solid fa-microchip"
+                }
+            ],
+            fun: [
+                {
+                    title: "Play-to-Earn Quests & Missions",
+                    game: "Pixels",
+                    provider: "Pixels Team",
+                    uptake: "1M+ daily active users",
+                    chain: "Solana",
+                    icon: "fa-solid fa-scroll"
+                },
+                {
+                    title: "Leaderboard & Competitive Rewards",
+                    game: "Powday Farm",
+                    provider: "Evah Studio",
+                    uptake: "Top Solana browser game",
+                    chain: "Solana",
+                    icon: "fa-solid fa-trophy"
+                },
+                {
+                    title: "Idle & Casual Rewards",
+                    game: "Sprout",
+                    provider: "Sprout Team",
+                    uptake: "#1 PlayToEarn score 2026",
+                    chain: "Solana",
+                    icon: "fa-solid fa-seedling"
+                },
+                {
+                    title: "Land Ownership & Creator Economy",
+                    game: "The Sandbox",
+                    provider: "Animoca Brands",
+                    uptake: "Millions of users",
+                    chain: "Ethereum",
+                    icon: "fa-solid fa-map"
+                },
+                {
+                    title: "Mini-Game Telegram Loops",
+                    game: "GAMEE (ARC8)",
+                    provider: "GAMEE",
+                    uptake: "High TON engagement",
+                    chain: "TON",
+                    icon: "fa-solid fa-bolt"
+                },
+                {
+                    title: "Guild & Reputation Rewards",
+                    game: "KGeN",
+                    provider: "KGeN (ex-Yield Guild)",
+                    uptake: "800K daily active",
+                    chain: "Aptos",
+                    icon: "fa-solid fa-users"
+                }
+            ],
+            secure: [
+                {
+                    title: "NFT Ownership Verification",
+                    game: "Axie Infinity",
+                    provider: "Sky Mavis",
+                    uptake: "1M+ with traded assets",
+                    chain: "Ronin",
+                    icon: "fa-solid fa-key"
+                },
+                {
+                    title: "Bug-Bounty Reward Incentives",
+                    game: "Immunefi integrations",
+                    provider: "Immunefi / Project Teams",
+                    uptake: "Millions paid industry-wide",
+                    chain: "Multi-chain",
+                    icon: "fa-solid fa-bug"
+                },
+                {
+                    title: "Zero-Knowledge Private Actions",
+                    game: "Immutable ZK Games",
+                    provider: "Immutable Team",
+                    uptake: "Top 2026 lists",
+                    chain: "Immutable",
+                    icon: "fa-solid fa-lock"
+                },
+                {
+                    title: "On-Chain Reputation Verification",
+                    game: "KGeN VeriFi",
+                    provider: "KGeN",
+                    uptake: "800K DAU",
+                    chain: "Aptos",
+                    icon: "fa-solid fa-shield"
+                },
+                {
+                    title: "Immutable Progress Tracking",
+                    game: "Splinterlands",
+                    provider: "Splinterlands",
+                    uptake: "Top card rankings",
+                    chain: "Hive / Ethereum",
+                    icon: "fa-solid fa-database"
+                },
+                {
+                    title: "Anti-Bot & Identity Verification",
+                    game: "Hytopia / Gigaverse",
+                    provider: "On-chain teams",
+                    uptake: "80K+ players",
+                    chain: "Abstract",
+                    icon: "fa-solid fa-fingerprint"
+                }
+            ]
+        };
+
+        function createCard(mechanic) {
+            const card = document.createElement('div');
+            card.className = `glass rounded-3xl p-7 card hover:scale-[1.02] group`;
+            card.innerHTML = `
+                <div class="flex items-start justify-between mb-6">
+                    <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="${mechanic.icon}"></i>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-xs uppercase tracking-widest text-white/50">${mechanic.chain}</div>
+                    </div>
+                </div>
+                <h3 class="font-semibold text-xl leading-tight mb-2">${mechanic.title}</h3>
+                <p class="text-white/70 text-sm mb-6 line-clamp-2">${mechanic.game} • ${mechanic.provider}</p>
+                
+                <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs">
+                    <div>
+                        <span class="text-white/50">Uptake:</span><br>
+                        <span class="font-medium">${mechanic.uptake}</span>
+                    </div>
+                    <button onclick="alert('Great choice! This mechanic can be simplified and deployed on your preferred chain for Sprint ${mechanic.title.includes("Breeding") || mechanic.title.includes("AI") ? "4" : mechanic.title.includes("Quest") || mechanic.title.includes("Leaderboard") ? "5" : "6"}.')"
+                            class="px-5 py-2.5 text-xs rounded-2xl bg-white/10 hover:bg-orange-500/20 hover:text-orange-300 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        Replicate
+                    </button>
+                </div>
+            `;
+            return card;
+        }
+
+        // Populate sections
+        function populateSections() {
+            const smartGrid = document.getElementById('smart-grid');
+            mechanics.smart.forEach(m => smartGrid.appendChild(createCard(m)));
+            
+            const funGrid = document.getElementById('fun-grid');
+            mechanics.fun.forEach(m => funGrid.appendChild(createCard(m)));
+            
+            const secureGrid = document.getElementById('secure-grid');
+            mechanics.secure.forEach(m => secureGrid.appendChild(createCard(m)));
+        }
+
+        function scrollToSection(section) {
+            document.getElementById(section).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize
+        window.onload = function() {
+            populateSections();
+            
+            // Optional: Add subtle scroll progress or other interactions if desired
+            console.log('%cProject Engine Explainer ready. Copy this file as index.html for GitHub Pages.', 'color:#ff8a00; font-family:monospace');
+        };
+    </script>
+</body>
+</html>
