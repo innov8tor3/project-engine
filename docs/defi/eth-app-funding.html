@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ETH App Building Grants 2026</title>
+<style>
+  :root {
+    --bg1: #020617;
+    --bg2: #0f172a;
+    --bg3: #1e3a8a;
+    --glass: rgba(30, 58, 138, 0.15);
+    --glass-border: rgba(148, 163, 184, 0.2);
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.5);
+  }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+  }
+
+  /* Cursor glow effect */
+  .cursor-glow {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+  }
+
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .glass:hover {
+    border-color: rgba(59, 130, 246, 0.4);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+  }
+
+  .section {
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
+  .section-header {
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  .section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .chevron {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    color: var(--accent);
+  }
+
+  .section.open .chevron { transform: rotate(90deg); }
+
+  .section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 1.5rem;
+  }
+
+  .section.open .section-content {
+    max-height: 1000px;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .grant-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .grant {
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+  }
+
+  .grant h3 {
+    color: #60a5fa;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .grant p { color: var(--text-dim); line-height: 1.6; font-size: 0.95rem; }
+  .grant strong { color: var(--text); }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .copy-btn {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bg1);
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  }
+
+  .copy-btn:active { transform: translateY(0); }
+
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .section-header { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="container">
+  <header>
+    <h1>ETH App Building Grants 2026</h1>
+    <p class="subtitle">Funding programs for builders focused on users, not just infra</p>
+  </header>
+
+  <div class="section glass open">
+    <div class="section-header">
+      <h2>Ethereum Foundation ESP - Usability</h2>
+      <span class="chevron">›</span>
+    </div>
+    <div class="section-content">
+      <div class="grant-list">
+        <div class="grant">
+          <h3>Tokenless End User Products</h3>
+          <p>EF explicitly funds apps that don't require tokens. Goal: mainstream UX without Web3 friction.</p>
+          <span class="tag">EF Wishlist</span>
+        </div>
+        <div class="grant">
+          <h3>Alternative Wallets & Clients</h3>
+          <p>New wallet designs, better key management, standards for portability between wallets.</p>
+          <span class="tag">Usability</span>
+        </div>
+        <div class="grant">
+          <h3>Hackternships</h3>
+          <p><strong>$10K</strong> for 10-week spare-time projects building on Ethereum. Perfect for side-project apps.</p>
+          <span class="tag">$10K</span><span class="tag">10 weeks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section glass">
+    <div class="section-header">
+      <h2>Layer 2 App Programs</h2>
+      <span class="chevron">›</span>
+    </div>
+    <div class="section-content">
+      <div class="grant-list">
+        <div class="grant">
+          <h3>Base Builder Grants</h3>
+          <p>Weekly <strong>2 ETH Builder Rewards</strong> + 1–5 ETH retroactive grants. Prioritizes unique projects live on Base that bring users onchain.</p>
+          <span class="tag">Base</span><span class="tag">1-5 ETH</span>
+        </div>
+        <div class="grant">
+          <h3>Arbitrum Grants</h3>
+          <p>Milestone-based funding for projects strengthening Arbitrum. <strong>ArbiFuel</strong> covers gas fees until Jan 31, 2026.</p>
+          <span class="tag">Arbitrum</span><span class="tag">Gas Covered</span>
+        </div>
+        <div class="grant">
+          <h3>Opinion Builders Program</h3>
+          <p>Funds applications on Opinion ecosystem. Grants linked to real usage and liquidity contribution.</p>
+          <span class="tag">Usage-Based</span>
+        </div>
+        <div class="grant">
+          <h3>Polymarket Builders</h3>
+          <p><strong>$2.5M+</strong> for trading interfaces, analytics, bots. Weekly payouts tied to volume.</p>
+          <span class="tag">$2.5M+</span><span class="tag">Volume-Based</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section glass">
+    <div class="section-header">
+      <h2>Recent EF Rounds & Research</h2>
+      <span class="chevron">›</span>
+    </div>
+    <div class="section-content">
+      <div class="grant-list">
+        <div class="grant">
+          <h3>Q1 2025: $32.65M Allocated</h3>
+          <p>Includes "Community & Education" track specifically for onboarding users via apps and content.</p>
+          <span class="tag">$32.65M</span>
+        </div>
+        <div class="grant">
+          <h3>EcoDev Research Fellowship</h3>
+          <p>6-month funding for research into "underdeveloped Ethereum application scenarios". They don't want more AMMs. They want new use cases with real-world benefits.</p>
+          <span class="tag">6 months</span><span class="tag">Research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section glass">
+    <div class="section-header">
+      <h2>Key Strategy Notes</h2>
+      <span class="chevron">›</span>
+    </div>
+    <div class="section-content">
+      <div class="grant-list">
+        <div class="grant">
+          <h3>The Shift in 2025</h3>
+          <p>EF moved from "open application" to "proactive, needs-driven". Now targeting ecosystem-wide impact and real apps with users, not just protocol work.</p>
+        </div>
+        <div class="grant">
+          <h3>L2 vs EF Approach</h3>
+          <p><strong>Base/Arbitrum/Optimism</strong>: Faster turnaround, care about users/traction.<br>
+          <strong>Ethereum Foundation</strong>: Still leans technical/public-goods, but "Usability" wishlist + Hackternships are best for pure app ideas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="copy-btn" id="copyBtn">Copy Page HTML</button>
+
+  <footer>
+    Data current as of April 2026. Check official grant pages for deadlines.
+  </footer>
+</div>
+
+<script>
+  // Accordion
+  document.querySelectorAll('.section-header').forEach(header => {
+    header.addEventListener('click', () => {
+      header.parentElement.classList.toggle('open');
+    });
+  });
+
+  // Cursor glow
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', (e) => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+    glow.style.opacity = '1';
+  });
+  document.addEventListener('mouseleave', () => glow.style.opacity = '0');
+
+  // Copy button
+  document.getElementById('copyBtn').addEventListener('click', async () => {
+    const html = document.documentElement.outerHTML;
+    await navigator.clipboard.writeText(html);
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy Page HTML', 2000);
+  });
+</script>
+</body>
+</html>
