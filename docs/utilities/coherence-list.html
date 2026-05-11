@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Engine — Coherence & Coordination Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --indigo: #1a1b3a;
+            --sky: #4cc9f0;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: linear-gradient(135deg, #1a1b3a 0%, #0f0f2a 100%);
+            color: #e0e0ff;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border: 1px solid rgba(76, 201, 240, 0.2);
+        }
+        
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #4cc9f0, #a0e0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .category {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            border: 1px solid rgba(76, 201, 240, 0.15);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .category-header {
+            background: linear-gradient(90deg, #4cc9f0, #7dd3fc);
+            color: #0f172a;
+            padding: 1.25rem 2rem;
+            font-weight: 600;
+            font-size: 1.35rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        
+        .category-content {
+            padding: 1.5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1rem;
+        }
+        
+        .file-item {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            border: 1px solid rgba(76, 201, 240, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+        
+        .file-item:hover {
+            transform: translateY(-4px);
+            border-color: #4cc9f0;
+            box-shadow: 0 10px 20px rgba(76, 201, 240, 0.15);
+        }
+        
+        .file-path {
+            color: #a5b4fc;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+            opacity: 0.85;
+        }
+        
+        .file-name {
+            color: #e0f2fe;
+            font-weight: 500;
+        }
+        
+        .search-bar {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(76, 201, 240, 0.3);
+            border-radius: 50px;
+            color: white;
+            font-size: 1.05rem;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav a {
+            color: #bae6fd;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            background: rgba(76, 201, 240, 0.1);
+            transition: all 0.2s;
+        }
+        
+        .nav a:hover {
+            background: #4cc9f0;
+            color: #0f172a;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Project Engine</h1>
+            <p class="subtitle">Coherence & Coordination Category Hub • docs/</p>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">Trajectory toward <strong>GamerPrise</strong> — Depth, Fun & Safety in Project Construction</p>
+        </header>
+
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search files or categories..." onkeyup="filterFiles()">
+
+        <div class="nav">
+            <a href="#quest">Quest & Narrative</a>
+            <a href="#pitch">Pitch & Vision</a>
+            <a href="#ops">Operations</a>
+            <a href="#infra">Infrastructure</a>
+            <a href="#safety">Safety & Governance</a>
+            <a href="#community">Community</a>
+            <a href="#archive">Archives</a>
+        </div>
+
+        <!-- Quest & Narrative Core -->
+        <div class="category" id="quest">
+            <div class="category-header">🌟 Quest & Narrative Core</div>
+            <div class="category-content">
+                <div class="file-item"><div class="file-path">docs/action-stories/</div><div class="file-name">action-stories.html</div></div>
+                <div class="file-item"><div class="file-path">docs/founder-quests/</div><div class="file-name">founder-quest.html</div></div>
+                <div class="file-item"><div class="file-path">docs/founder-quests/</div><div class="file-name">gameplay.html</div></div>
+                <div class="file-item"><div class="file-path">docs/founder-quests/</div><div class="file-name">gamer-odyssey.html</div></div>
+                <div class="file-item"><div class="file-path">docs/founder-quests/</div><div class="file-name">quest-preneur.html</div></div>
+                <div class="file-item"><div class="file-path">docs/genesis/</div><div class="file-name">genesis.html (or index)</div></div>
+            </div>
+        </div>
+
+        <!-- Pitch & Vision -->
+        <div class="category" id="pitch">
+            <div class="category-header">🚀 Pitch & Vision</div>
+            <div class="category-content">
+                <div class="file-item"><div class="file-path">docs/pitch/</div><div class="file-name">pitch.html</div></div>
+                <div class="file-item"><div class="file-path">docs/scale-up/</div><div class="file-name">scale-up.html</div></div>
+                <div class="file-item"><div class="file-path">docs/traction/</div><div class="file-name">traction.html (incl. dao-communities.html)</div></div>
+            </div>
+        </div>
+
+        <!-- Operations & Hub -->
+        <div class="category" id="ops">
+            <div class="category-header">⚙️ Operations & Hub</div>
+            <div class="category-content">
+                <div class="file-item"><div class="file-path">docs/ops-hub/</div><div class="file-name">ops-hub.html</div></div>
+                <div class="file-item"><div class="file-path">docs/contrib-valun/</div><div class="file-name">contrib-valun.html</div></div>
+                <div class="file-item"><div class="file-path">docs/organiser/</div><div class="file-name">organiser.html</div></div>
+                <div class="file-item"><div class="file-path">docs/personal-agent/</div><div class="file-name">personal-agent.html</div></div>
+                <div class="file-item"><div class="file-path">docs/proto-founders/</div><div class="file-name">algo-value.html</div></div>
+            </div>
+        </div>
+
+        <!-- Infrastructure & Tech -->
+        <div class="category" id="infra">
+            <div class="category-header">🔧 Infrastructure & Tech</div>
+            <div class="category-content">
+                <div class="file-item"><div class="file-path">docs/backend/repo-restructure/</div><div class="file-name">repo-restructure.html</div></div>
+                <div class="file-item"><div class="file-path">docs/backend/repo-restructure/</div><div class="file-name">infra.html</div></div>
+                <div class="file-item"><div class="file-path">docs/dev-envt/</div><div class="file-name">dev-envt.html</div></div>
+                <div class="file-item"><div class="file-path">docs/frontend/design/</div><div class="file-name">design files</div></div>
+                <div class="file-item"><div class="file-path">docs/rust-ease/</div><div class="file-name">rust-ease.html</div></div>
+                <div class="file-item"><div class="file-path">docs/tokens/</div><div class="file-name">token launch guides</div></div>
+                <div class="file-item"><div class="file-path">docs/defi/</div><div class="file-name">defi-related.html</div></div>
+            </div>
+        </div>
+
+        <!-- Safety, Governance & Reporting -->
+        <div class="category" id="safety">
+            <div class="category-header">🛡️ Safety, Governance & Reporting</div>
+            <div class="category-content">
+                <div class="file-item"><div class="file-path">docs/github-safety/</div><div class="file-name">github-safety.html</div></div>
+                <div class="file-item"><div class="file-path">docs/security-audit/</div><div class="file-name">security-audit files</div></div>
+                <div class="file-item"><div class="file-path">docs/reporting/</div><div class="file-name">reporting.html</div></div>
+                <div class="file-item"><div class="file-path">docs/reports/report-2025-09/</div><div class="file-name">2025-09.html</div></div>
+            </div>
+        </div>
+
+        <!-- Community & Ecosystem -->
+        <div class="category" id="community">
+            <div class="category-header">🌐 Community & Ecosystem</div>
+            <div class="category-content">
+                <div class="file-item"><div class="file-path">docs/citizen/</div><div class="file-name">citizen / immigr-asset.html</div></div>
+                <div class="file-item"><div class="file-path">docs/gaming/</div><div class="file-name">gaming files</div></div>
+                <div class="file-item"><div class="file-path">docs/oasis/</div><div class="file-name">oasis / star-eval.html</div></div>
+                <div class="file-item"><div class="file-path">docs/press/</div><div class="file-name">press.html</div></div>
+                <div class="file-item"><div class="file-path">docs/smorgasbord/</div><div class="file-name">smorgasbord.html</div></div>
+            </div>
+        </div>
+
+        <!-- Utilities & Archives -->
+        <div class="category" id="archive">
+            <div class="category-header">📁 Utilities & Archives</div>
+            <div class="category-content">
+                <div class="file-item"><div class="file-path">docs/about/</div><div class="file-name">about.html</div></div>
+                <div class="file-item"><div class="file-path">docs/backup/</div><div class="file-name">backup files (e.g. test.html)</div></div>
+                <div class="file-item"><div class="file-path">docs/jervis/</div><div class="file-name">jervis / bob-roundup.html</div></div>
+                <div class="file-item"><div class="file-path">docs/testing/</div><div class="file-name">testing files</div></div>
+                <div class="file-item"><div class="file-path">docs/utilities/</div><div class="file-name">github-pages-directory.html</div></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Project Engine — Coherence Category Strategy | GitHub Pages Ready • Glass Morphic Design</p>
+            <p style="margin-top: 0.5rem;">Copy this entire page into <strong>docs/coherence-hub.html</strong> and push to main.</p>
+        </footer>
+    </div>
+
+    <script>
+        function filterFiles() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.file-item');
+            
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        }
+        
+        // Add click handlers for category headers (collapsible)
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                if (content.style.display === 'none') {
+                    content.style.display = 'grid';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
