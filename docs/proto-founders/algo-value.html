@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soulbound • GamerPrise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --umber: #2C2118;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass {
+            background: rgba(44, 33, 24, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .burnt-orange {
+            color: #f97316;
+        }
+
+        .facet-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .facet-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgb(249 115 22 / 0.25);
+        }
+
+        .score-slider {
+            accent-color: #f97316;
+        }
+
+        .cursor-glow {
+            cursor: none;
+        }
+    </style>
+</head>
+<body class="bg-[#2C2118] text-white min-h-screen overflow-x-hidden cursor-glow">
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="hidden md:block fixed w-6 h-6 border border-orange-500 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-200"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-16">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 bg-gradient-to-br from-orange-500 to-amber-600 rounded-2xl flex items-center justify-center text-2xl">⚔️</div>
+                <div>
+                    <h1 class="heading-font text-5xl font-bold tracking-tighter">SOULBOUND</h1>
+                    <p class="text-orange-400 text-sm tracking-[3px] -mt-1">ALGORITHM v1.0</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <p class="text-2xl font-medium">GamerPrise Project Evaluator</p>
+                <p class="text-orange-300/70 text-sm">Projected Value • Gaming Metrics</p>
+            </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="glass border border-orange-500/20 rounded-3xl p-10 mb-16 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent"></div>
+            <h2 class="heading-font text-6xl font-bold mb-4 tracking-tighter">Soulbound Valgojection</h2>
+            <p class="max-w-2xl mx-auto text-xl text-orange-100/90">
+                The definitive 15-facet algorithm for calculating the true projected value of GamerPrise projects. 
+                Designed for unicorns, zebras, and wild horses alike.
+            </p>
+            <div class="flex justify-center gap-8 mt-8 text-sm">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span>Unicorn Potential</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-sky-400 rounded-full"></div>
+                    <span>Zebra Potential</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-amber-400 rounded-full"></div>
+                    <span>Wild Horse / Mushroom</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex flex-wrap gap-6 mb-12 items-end">
+            <div class="flex-1">
+                <label class="block text-orange-300 text-sm mb-2 font-medium">PROJECT TYPE</label>
+                <select id="projectType" onchange="updateWeights()" 
+                        class="glass border border-orange-500/30 rounded-2xl px-6 py-5 w-full text-lg focus:outline-none focus:border-orange-500">
+                    <option value="unicorn">Unicorn (Massive Scale)</option>
+                    <option value="zebra" selected>Zebra (Sustainable Growth)</option>
+                    <option value="wildhorse">Wild Horse / Mushroom (Niche Communities)</option>
+                </select>
+            </div>
+            
+            <div>
+                <button onclick="calculateScore()" 
+                        class="bg-orange-600 hover:bg-orange-500 transition-colors px-10 py-5 rounded-2xl font-semibold text-lg flex items-center gap-3">
+                    <i class="fa-solid fa-calculator"></i>
+                    CALCULATE VALGOJECTION
+                </button>
+            </div>
+        </div>
+
+        <!-- Facets -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="facets-container">
+            <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Overall Score -->
+        <div class="mt-20 glass border border-orange-500/30 rounded-3xl p-10">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="heading-font text-4xl font-semibold">Overall Soulbound Score</h3>
+                <div id="total-score" class="text-7xl heading-font font-bold text-orange-400 tabular-nums">0</div>
+            </div>
+            
+            <div class="h-4 bg-[#3C2F2F] rounded-2xl overflow-hidden mb-8">
+                <div id="score-bar" class="h-4 bg-gradient-to-r from-orange-500 to-amber-500 w-0 transition-all duration-700"></div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-6 text-center text-sm">
+                <div>
+                    <div class="text-emerald-400 font-mono text-2xl" id="unicorn-prob">0%</div>
+                    <div class="text-white/60">Unicorn Likelihood</div>
+                </div>
+                <div>
+                    <div class="text-sky-400 font-mono text-2xl" id="zebra-prob">0%</div>
+                    <div class="text-white/60">Zebra Likelihood</div>
+                </div>
+                <div>
+                    <div class="text-amber-400 font-mono text-2xl" id="horse-prob">0%</div>
+                    <div class="text-white/60">Wild Horse Likelihood</div>
+                </div>
+            </div>
+            
+            <div id="recommendation" class="mt-10 text-center text-xl font-medium py-6 border border-dashed border-orange-500/30 rounded-2xl"></div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script already included via CDN
+        function initializeTailwind() {
+            // Already loaded via CDN
+        }
+
+        const facets = [
+            {
+                id: 1,
+                category: "Market & Problem",
+                name: "Problem Prevalence & Pain Intensity",
+                desc: "How widespread and acute is the problem across gaming communities?"
+            },
+            {
+                id: 2,
+                category: "Market & Problem",
+                name: "Market Size & Opportunity (TAM/SAM/SOM)",
+                desc: "Total addressable market with realistic serviceable portions."
+            },
+            {
+                id: 3,
+                category: "Solution & Tech",
+                name: "Technological Capability & Transformative Potential",
+                desc: "How enabling or disruptive is the core technology?"
+            },
+            {
+                id: 4,
+                category: "Solution & Tech",
+                name: "Solution Uniqueness & Competitive Advantage",
+                desc: "Differentiation and defensibility of the solution."
+            },
+            {
+                id: 5,
+                category: "Solution & Tech",
+                name: "Content / Experience Depth",
+                desc: "How rich, layered, and compounding is the content for AI and players?"
+            },
+            {
+                id: 6,
+                category: "Engagement",
+                name: "Fun & Gamification",
+                desc: "Degree of gamification driving habitual returns."
+            },
+            {
+                id: 7,
+                category: "Engagement",
+                name: "Market Fit & Validation",
+                desc: "Evidence of real demand and early traction."
+            },
+            {
+                id: 8,
+                category: "Execution",
+                name: "Scalability & Execution Feasibility",
+                desc: "Ability to grow efficiently."
+            },
+            {
+                id: 9,
+                category: "Team",
+                name: "Team / Founder Strength & Sustainability",
+                desc: "Experience, passion, and founder runway."
+            },
+            {
+                id: 10,
+                category: "Financials",
+                name: "Business Model & Monetization Viability",
+                desc: "Revenue streams and unit economics."
+            },
+            {
+                id: 11,
+                category: "Financials",
+                name: "Investment Readiness & Capital Requirements",
+                desc: "Funding needs and attractiveness to investors."
+            },
+            {
+                id: 12,
+                category: "Risk",
+                name: "Safety & Security",
+                desc: "Technical security, privacy, and trust measures."
+            },
+            {
+                id: 13,
+                category: "Risk",
+                name: "Risks, Competition & External Factors",
+                desc: "Overall risk landscape and mitigation."
+            },
+            {
+                id: 14,
+                category: "Impact",
+                name: "Impact & Broader Value",
+                desc: "Societal, community, or ecosystem contribution."
+            },
+            {
+                id: 15,
+                category: "Realization",
+                name: "Exit / Realization Potential",
+                desc: "Paths to sustained value or liquidity."
+            }
+        ]
+
+        let scores = {}
+
+        function createFacets() {
+            const container = document.getElementById('facets-container')
+            container.innerHTML = ''
+            
+            const categories = {}
+            facets.forEach(f => {
+                if (!categories[f.category]) categories[f.category] = []
+                categories[f.category].push(f)
+            })
+            
+            Object.keys(categories).forEach(cat => {
+                const card = document.createElement('div')
+                card.className = `facet-card glass border border-orange-500/20 rounded-3xl p-6`
+                
+                let html = `
+                    <h3 class="text-orange-400 font-semibold mb-6 text-lg tracking-widest">${cat.toUpperCase()}</h3>
+                    <div class="space-y-8">
+                `
+                categories[cat].forEach(facet => {
+                    html += `
+                        <div>
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <div class="font-medium">${facet.name}</div>
+                                    <div class="text-xs text-orange-300/70 mt-1">${facet.desc}</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <input type="range" min="1" max="10" value="5" 
+                                       class="score-slider flex-1" 
+                                       id="slider-${facet.id}"
+                                       oninput="updateScore(${facet.id}, this.value)">
+                                <div class="w-12 text-right font-mono text-xl text-orange-400" id="score-${facet.id}">5</div>
+                            </div>
+                        </div>
+                    `
+                })
+                
+                html += `</div>`
+                card.innerHTML = html
+                container.appendChild(card)
+            })
+        }
+
+        function updateScore(id, value) {
+            scores[id] = parseInt(value)
+            document.getElementById(`score-${id}`).textContent = value
+        }
+
+        function calculateScore() {
+            const totalFacets = Object.keys(scores).length || 15
+            let sum = 0
+            
+            for (let i = 1; i <= 15; i++) {
+                if (scores[i]) sum += scores[i]
+                else sum += 5 // default
+            }
+            
+            const average = Math.round((sum / 15) * 10) / 10
+            const percentage = Math.round((average / 10) * 100)
+            
+            document.getElementById('total-score').textContent = average.toFixed(1)
+            document.getElementById('score-bar').style.width = `${percentage}%`
+            
+            // Simple likelihoods based on score
+            const unicorn = Math.max(0, Math.round((average - 6) * 25))
+            const zebra = Math.max(30, Math.round(average * 8))
+            const horse = Math.max(0, Math.round((9 - average) * 18))
+            
+            document.getElementById('unicorn-prob').textContent = Math.min(95, unicorn) + '%'
+            document.getElementById('zebra-prob').textContent = Math.min(95, zebra) + '%'
+            document.getElementById('horse-prob').textContent = Math.min(95, horse) + '%'
+            
+            // Recommendation
+            let rec = ""
+            if (average >= 8.5) {
+                rec = "🌟 Exceptional Soulbound Project — Strong Unicorn or Zebra Candidate"
+            } else if (average >= 7) {
+                rec = "🔥 High Potential — Ready for serious development"
+            } else if (average >= 5.5) {
+                rec = "✅ Solid Foundation — Promising with iteration"
+            } else {
+                rec = "⚠️ Needs significant refinement before heavy investment"
+            }
+            document.getElementById('recommendation').innerHTML = rec
+        }
+
+        function updateWeights() {
+            // Future weighting logic can be expanded here
+            console.log('Project type changed — weights can be adjusted')
+        }
+
+        // Custom Cursor
+        function initCursor() {
+            const cursor = document.getElementById('custom-cursor')
+            if (window.innerWidth < 768) return
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px'
+                cursor.style.top = e.clientY + 'px'
+            })
+            
+            document.querySelectorAll('button, select, input[type="range"]').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(1.8)'
+                })
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)'
+                })
+            })
+        }
+
+        // Initialize
+        window.onload = function() {
+            createFacets()
+            initCursor()
+            
+            // Initialize default scores
+            for (let i = 1; i <= 15; i++) {
+                scores[i] = 5
+            }
+            
+            // Auto calculate after 800ms
+            setTimeout(() => {
+                calculateScore()
+            }, 800)
+        }
+    </script>
+</body>
+</html>
