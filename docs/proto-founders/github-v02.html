@@ -547,6 +547,56 @@
       font-weight: 300;
     }
 
+    .card h3,
+    .next-sprint-teaser h3 {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fern);
+      margin: 18px 0 10px;
+    }
+
+    .security-checklist {
+      margin: 4px 0 0 20px;
+      color: var(--dew);
+    }
+    .security-checklist li {
+      margin-bottom: 6px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .prompt-box {
+      background: rgba(13,43,26,0.72);
+      border: 1px solid rgba(82,183,136,0.26);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--mist);
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .next-sprint-teaser {
+      margin: 4px 0 28px;
+      padding: 18px 20px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(82,183,136,0.14), rgba(17,46,31,0.55));
+      border: 1px solid rgba(82,183,136,0.28);
+      border-left: 4px solid var(--fern);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .next-sprint-teaser p {
+      color: var(--dew);
+      font-size: 0.86rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
     ul.task-list {
       list-style: none;
       padding: 0;
@@ -714,6 +764,18 @@
       </div>
     </div>
 
+    <h3>AI Prototype Prompt</h3>
+    <pre class="prompt-box">Create a simple HTML prototype of a "Questor Soulbound Asset".
+
+Include:
+- title
+- description
+- owner wallet
+- achievement level
+- visual badge
+
+Return clean HTML and minimal CSS.</pre>
+
     <div class="divider" style="margin:18px 0 4px;"></div>
     <div class="check-item" onclick="toggleCheck(this)" data-key="ai">
       <input type="checkbox" id="chk-ai">
@@ -745,6 +807,14 @@
       <li>📏 For longer HTML, on a copy and paste, be sure all the HTML was copied, right down to the close HTML tag</li>
       <li>🕵 If HTML won't render in a browser, use Claude to debug, where again copy and paste is your friend</li>
       <li>😁 Once confidence in GitHub is established, use of Google to "save your work" can become more judicious</li>
+    </ul>
+
+    <h3>Security Checklist</h3>
+    <ul class="security-checklist">
+      <li>Store project URLs in a Google Spreadsheet</li>
+      <li>Avoid storing sensitive information in GitHub repositories</li>
+      <li>Review GitHub security alerts regularly</li>
+      <li>Use secure sharing practices for project assets</li>
     </ul>
 
     <div class="validation-hint">
@@ -795,6 +865,14 @@
       <span class="check-label">Digital assets and links captured</span>
     </div>
   </div>
+
+  <section class="next-sprint-teaser">
+    <h3>Next Sprint Teaser</h3>
+    <p>
+      In the next sprint we will explore security practices for founders,
+      including managing project resources and protecting links and data.
+    </p>
+  </section>
 
   <!-- ── PROGRESS ── -->
   <div class="progress-section">
