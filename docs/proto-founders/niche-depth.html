@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GamerPrise • Step 3: Smart • Sticky • Secure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --royal-blue: #4169E1;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: linear-gradient(135deg, #0a1428 0%, #1a2338 100%);
+            color: #e0f0ff;
+            overflow-x: hidden;
+        }
+        
+        .title-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass {
+            background: rgba(30, 50, 100, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(100, 150, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-glass {
+            background: rgba(15, 30, 70, 0.6);
+            backdrop-filter: blur(16px);
+        }
+
+        .section-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .section-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgb(65 105 225 / 0.4);
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 2px solid rgba(65, 105, 225, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: all 0.1s ease;
+            display: none;
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .dropdown-open .dropdown-content {
+            max-height: 800px;
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at center, rgba(65, 105, 225, 0.15) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24">
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="cursor-glow hidden md:block"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-glass fixed top-0 left-0 right-0 z-50 border-b border-blue-400/20">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div onclick="window.location.href='https://innov8tor3.github.io/project-engine/proto-founders/home-page-v01.html'" 
+                     class="w-9 h-9 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold cursor-pointer hover:scale-110 transition-transform">
+                    GP
+                </div>
+                <div>
+                    <span class="title-font text-2xl font-semibold tracking-tighter text-white">GamerPrise</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-8 text-sm">
+                <a href="#" onclick="navigateToStep(2)" class="hover:text-blue-300 transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left"></i> Step 2
+                </a>
+                <div class="px-5 py-2 bg-blue-600/80 text-white rounded-3xl font-medium flex items-center gap-2 shadow-inner">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>STEP 3</span>
+                </div>
+                <a href="#" onclick="navigateToStep(4)" class="hover:text-blue-300 transition-colors">Step 4 →</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" 
+                        class="w-9 h-9 flex items-center justify-center rounded-2xl glass hover:bg-white/10 transition-colors">
+                    <i class="fa-solid fa-moon text-blue-300"></i>
+                </button>
+                <a href="https://github.com/innov8tor3" target="_blank"
+                   class="px-6 py-3 glass rounded-3xl text-sm font-medium hover:border-blue-400/50 transition-all flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-28 max-w-7xl mx-auto px-6">
+        <!-- Hero -->
+        <div class="hero-bg rounded-3xl glass p-16 mb-16 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(#4169E1_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
+            
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 bg-white/10 px-6 py-2 rounded-full mb-6 text-sm">
+                    <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                    CYCLE 3 — DELIVER
+                </div>
+                
+                <h1 class="title-font text-6xl md:text-7xl font-semibold tracking-tighter mb-6 leading-none">
+                    Smart.<br>
+                    <span class="text-blue-400">Sticky.</span><br>
+                    <span class="text-indigo-300">Secure.</span>
+                </h1>
+                
+                <p class="max-w-2xl mx-auto text-xl text-blue-100/90 mb-10">
+                    Build applications that think deeply, engage passionately, and protect fiercely. 
+                    Turn your GitHub chaos into sovereign value.
+                </p>
+                
+                <div onclick="document.getElementById('smart-section').scrollIntoView({ behavior: 'smooth' })" 
+                     class="inline-flex items-center gap-3 bg-white text-blue-950 px-10 py-5 rounded-3xl font-semibold text-lg cursor-pointer hover:scale-105 active:scale-95 transition-all shadow-2xl">
+                    <span>Begin Building Depth</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Three Pillars -->
+        <div class="grid md:grid-cols-3 gap-8 mb-24">
+            <!-- Smart -->
+            <div id="smart-section" onclick="toggleDropdown(this)" 
+                 class="section-card glass rounded-3xl p-8 cursor-pointer dropdown">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-brain text-2xl"></i>
+                        </div>
+                        <h2 class="title-font text-4xl font-semibold">SMART</h2>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-3xl text-blue-400 transition-transform dropdown-icon"></i>
+                </div>
+                <p class="text-blue-100/80 mb-8 text-lg">Find depth. Discover gaps. Turn chaos into opportunity.</p>
+                
+                <div class="dropdown-content space-y-6 text-sm">
+                    <div class="bg-black/30 rounded-2xl p-6">
+                        <h3 class="font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i> Project Depth Analysis
+                        </h3>
+                        <p class="text-blue-100/70">Drill into your GitHub repositories. Identify core themes, strengths, and hidden connections across your digital assets.</p>
+                    </div>
+                    
+                    <div class="bg-black/30 rounded-2xl p-6">
+                        <h3 class="font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line"></i> Market Gap Scanner
+                        </h3>
+                        <p class="text-blue-100/70">AI-powered analysis of trends, competitors, and user needs. Spot opportunities others miss.</p>
+                    </div>
+                    
+                    <div onclick="event.stopImmediatePropagation()" class="mt-8 pt-6 border-t border-blue-400/30">
+                        <h4 class="uppercase text-xs tracking-widest text-blue-300 mb-4">Utilities</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="#" class="block glass rounded-2xl p-5 hover:bg-white/10 transition-colors">
+                                <i class="fa-solid fa-github text-xl mb-2"></i>
+                                <div class="font-medium">Repo Auditor</div>
+                                <div class="text-xs text-blue-400">Soulbound valuation engine</div>
+                            </a>
+                            <a href="#" class="block glass rounded-2xl p-5 hover:bg-white/10 transition-colors">
+                                <i class="fa-solid fa-robot text-xl mb-2"></i>
+                                <div class="font-medium">AI Order Agent</div>
+                                <div class="text-xs text-blue-400">Chaos to clarity</div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Side Hustle & Job Resources -->
+                    <div class="mt-10 pt-8 border-t border-blue-400/30">
+                        <h4 class="uppercase text-xs tracking-widest text-emerald-300 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-briefcase"></i> SIDE HUSTLE + JOB RESOURCES
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="flex gap-4 items-center glass rounded-2xl p-5">
+                                <div class="flex-1">
+                                    <div class="font-medium">Side Hustle Toolkit</div>
+                                    <div class="text-xs text-blue-400">Passion → Revenue pathways</div>
+                                </div>
+                                <button onclick="event.stopImmediatePropagation(); alert('Side Hustle resources would link here in full build')" 
+                                        class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-2xl text-sm">Explore</button>
+                            </div>
+                            <div class="flex gap-4 items-center glass rounded-2xl p-5">
+                                <div class="flex-1">
+                                    <div class="font-medium">Job Seeker Bridge</div>
+                                    <div class="text-xs text-blue-400">Stable income while you build</div>
+                                </div>
+                                <button onclick="event.stopImmediatePropagation(); alert('Job matching utilities coming soon')" 
+                                        class="px-5 py-2 bg-blue-600 hover:bg-blue-500 rounded-2xl text-sm">Find Roles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky -->
+            <div onclick="toggleDropdown(this)" 
+                 class="section-card glass rounded-3xl p-8 cursor-pointer dropdown">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-gamepad text-2xl"></i>
+                        </div>
+                        <h2 class="title-font text-4xl font-semibold">STICKY</h2>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-3xl text-purple-400 transition-transform dropdown-icon"></i>
+                </div>
+                <p class="text-blue-100/80 mb-8 text-lg">Gamification that turns users into believers and community into family.</p>
+                
+                <div class="dropdown-content space-y-6">
+                    <div class="bg-gradient-to-br from-purple-900/40 to-pink-900/30 border border-purple-400/30 rounded-3xl p-8 text-center">
+                        <div class="text-6xl mb-4">🏆</div>
+                        <div class="text-2xl font-medium mb-2">Progression Dashboard</div>
+                        <p class="text-sm opacity-75">Track your journey, achievements, and impact in real time.</p>
+                    </div>
+                    
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex gap-3 items-center"><i class="fa-solid fa-check text-emerald-400"></i> Personal XP &amp; Leveling</li>
+                        <li class="flex gap-3 items-center"><i class="fa-solid fa-check text-emerald-400"></i> Marketplace Performance</li>
+                        <li class="flex gap-3 items-center"><i class="fa-solid fa-check text-emerald-400"></i> Community Support Score</li>
+                        <li class="flex gap-3 items-center"><i class="fa-solid fa-check text-emerald-400"></i> Leaderboards &amp; Badges</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Secure -->
+            <div onclick="toggleDropdown(this)" 
+                 class="section-card glass rounded-3xl p-8 cursor-pointer dropdown">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mb-4">
+                            <i class="fa-solid fa-shield-halved text-2xl"></i>
+                        </div>
+                        <h2 class="title-font text-4xl font-semibold">SECURE</h2>
+                    </div>
+                    <i class="fa-solid fa-chevron-down text-3xl text-amber-400 transition-transform dropdown-icon"></i>
+                </div>
+                <p class="text-blue-100/80 mb-8 text-lg">Build with confidence. Protect what matters.</p>
+                
+                <div class="dropdown-content space-y-6 text-sm">
+                    <div class="glass rounded-2xl p-6 border border-amber-400/30">
+                        <h3 class="font-semibold mb-4 flex items-center gap-2 text-amber-300">
+                            <i class="fa-solid fa-bug"></i> GitHub Security Scanner
+                        </h3>
+                        <p class="opacity-75">Automated checks for data entry vulnerabilities, token exposure, and dependency risks.</p>
+                    </div>
+                    
+                    <div class="text-xs uppercase tracking-widest text-amber-300/70 pt-6 border-t border-amber-400/20">
+                        Coming after full launch:
+                    </div>
+                    <div class="text-lg font-medium">Smart Contract Auditing Engine</div>
+                    <div class="text-xs opacity-60">Soulbound security layers for decentralized applications</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="glass rounded-3xl p-12 text-center max-w-3xl mx-auto">
+            <h2 class="title-font text-4xl font-semibold mb-6">Ready to launch your cycle?</h2>
+            <p class="mb-10 text-blue-100/80">Connect your GitHub • Run the first audit • Start building sticky experiences today.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="simulateAction('github-connect')" 
+                        class="px-10 py-6 bg-white text-blue-950 rounded-3xl font-semibold flex items-center gap-3 hover:shadow-2xl transition-all">
+                    <i class="fa-brands fa-github text-2xl"></i>
+                    <span>Connect GitHub</span>
+                </button>
+                
+                <button onclick="simulateAction('start-audit')" 
+                        class="px-10 py-6 glass border border-blue-400/50 rounded-3xl font-semibold hover:bg-white/10 transition-all">
+                    Run Smart Audit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-32 text-center text-blue-400/50 text-xs py-12">
+        <p>GamerPrise • Step 3 Prototype • Built for sovereign creators</p>
+        <p class="mt-2">HMRC Pathway Demo • Innov8tor3</p>
+    </footer>
+
+    <script>
+        // Tailwind script already loaded via CDN
+        
+        // Custom cursor
+        function initCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            if (!cursor) return;
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX - 15}px`;
+                cursor.style.top = `${e.clientY - 15}px`;
+                cursor.style.display = 'block';
+            });
+            
+            // Hide on mobile
+            if (window.innerWidth < 768) cursor.style.display = 'none';
+        }
+        
+        // Dropdown toggles
+        function toggleDropdown(el) {
+            const wasOpen = el.classList.contains('dropdown-open');
+            
+            // Close all others
+            document.querySelectorAll('.dropdown').forEach(d => {
+                d.classList.remove('dropdown-open');
+                const icon = d.querySelector('.dropdown-icon');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+            });
+            
+            if (!wasOpen) {
+                el.classList.add('dropdown-open');
+                const icon = el.querySelector('.dropdown-icon');
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        // Navigation helpers
+        function navigateToStep(step) {
+            alert(`Navigating to Step ${step} (connect this in full pathway)`);
+            // In real version: window.location = `step-${step}.html`
+        }
+        
+        function simulateAction(action) {
+            if (action === 'github-connect') {
+                alert("✅ GitHub connected!\n\nYour repositories are now being analyzed by the Soulbound Valuation Engine.");
+            } else if (action === 'start-audit') {
+                alert("🚀 Smart Audit initiated...\n\nScanning for depth, gaps, and security vectors.");
+            }
+        }
+        
+        function toggleDarkMode() {
+            alert("Theme toggle active (midnight blue is default for this prototype)");
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+                e.preventDefault();
+                const firstCard = document.querySelector('.dropdown');
+                if (firstCard) toggleDropdown(firstCard);
+            }
+        });
+        
+        // Initialize everything
+        window.onload = function() {
+            initCursor();
+            
+            // Auto-open Smart section
+            setTimeout(() => {
+                const smart = document.getElementById('smart-section');
+                if (smart) toggleDropdown(smart);
+            }, 800);
+            
+            console.log('%cGamerPrise Step 3 Prototype loaded successfully ✨', 'color:#4169E1; font-family:monospace');
+        };
+    </script>
+</body>
+</html>
