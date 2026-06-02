@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT ENGINE • QUEST MAP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --bg: #1a0f00;
+            --accent: #cc5500;
+            --panel: rgba(255, 100, 20, 0.12);
+            --glass: rgba(255, 120, 40, 0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #1a0f00 0%, #2b1a00 100%);
+            color: #f5e6d0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(204, 85, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1.25rem 0;
+        }
+        
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ff8c00;
+            text-shadow: 0 0 20px rgba(204, 85, 0, 0.5);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(26,15,0,0.75), rgba(26,15,0,0.9));
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ff8c00, #ffb366);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.35rem;
+            max-width: 620px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .status-bar {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .status {
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .ready { background: rgba(34, 197, 151, 0.2); color: #4ade80; }
+        .building { background: rgba(234, 179, 8, 0.2); color: #fcd34d; }
+        
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .level {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 100px;
+        }
+        
+        .level-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--panel);
+            border-radius: 20px;
+            border: 1px solid rgba(204, 85, 0, 0.3);
+            backdrop-filter: blur(12px);
+        }
+        
+        .level-number {
+            width: 68px;
+            height: 68px;
+            background: linear-gradient(135deg, #cc5500, #ff8c00);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 10px 30px rgba(204, 85, 0, 0.4);
+        }
+        
+        .level-title {
+            flex: 1;
+        }
+        
+        .level-title h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.1rem;
+            color: #ffaa66;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .game-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 140, 0, 0.25);
+            border-radius: 24px;
+            padding: 1.75rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-12px);
+            border-color: #ff8c00;
+            box-shadow: 0 25px 50px -12px rgba(204, 85, 0, 0.35);
+        }
+        
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #cc5500, #ffaa33);
+        }
+        
+        .game-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(204, 85, 0, 0.8);
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .game-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 1rem;
+            color: #ffd4aa;
+        }
+        
+        .game-card p {
+            margin-bottom: 1.5rem;
+            opacity: 0.85;
+            font-size: 1.02rem;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(90deg, #cc5500, #ff7700);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(204, 85, 0, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.04);
+            box-shadow: 0 15px 30px rgba(204, 85, 0, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a {
+            color: #f5e6d0;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <div class="logo">PROJECT<span style="color:#ffaa66;">ENGINE</span></div>
+            <div class="nav-links">
+                <a href="#level1">Level 1</a>
+                <a href="#level2">Level 2</a>
+                <a href="#level3">Level 3</a>
+                <a href="#level4">Level 4</a>
+                <a href="#level5">Level 5</a>
+                <a href="#level6">Level 6</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>THE GREAT REPO QUEST</h1>
+            <p>Level up your GitHub journey • Turn exploration into adventure • Build in public with joy</p>
+            
+            <div class="status-bar">
+                <div class="status ready">✅ Levels 1 &amp; 2 — Launch Ready</div>
+                <div class="status building">🔨 Level 3 — Under Construction</div>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- LEVEL 1 -->
+        <div id="level1" class="level">
+            <div class="level-header">
+                <div class="level-number">1</div>
+                <div class="level-title">
+                    <h2>IGNITE THE SPARK</h2>
+                    <p>Identify your passion and unique project to fill a marketplace gap</p>
+                </div>
+                <div class="status ready" style="font-size:0.9rem;">LAUNCH READY</div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-badge">Quest</div>
+                    <h3>Quest Discovery Scavenger Hunt</h3>
+                    <p>Navigate founder-quests/ and action-stories/ to collect 5–7 treasures. Forge your personal Quest Statement.</p>
+                    <button onclick="submitGame(1,1)" class="submit-btn">SUBMIT YOUR QUEST EVIDENCE →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Mixer</div>
+                    <h3>Passion-to-Project Mixer</h3>
+                    <p>Remix one repo adventure with your own fire. Create a short story or one-slide vision.</p>
+                    <button onclick="submitGame(1,2)" class="submit-btn">SUBMIT YOUR MIX →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Bingo</div>
+                    <h3>Gap Filler Bingo</h3>
+                    <p>Complete the bingo card using repo signposts while defining your unique gap project.</p>
+                    <button onclick="submitGame(1,3)" class="submit-btn">CLAIM YOUR BINGO WIN →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 2 -->
+        <div id="level2" class="level">
+            <div class="level-header">
+                <div class="level-number">2</div>
+                <div class="level-title">
+                    <h2>SLAY THE TECH DRAGON</h2>
+                    <p>Master GitHub and build your own fortified repository</p>
+                </div>
+                <div class="status ready" style="font-size:0.9rem;">LAUNCH READY</div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-badge">Slayer</div>
+                    <h3>Dragon Slayer Checklist Quest</h3>
+                    <p>Follow the sacred scrolls and create your base repo with proper structure and protections.</p>
+                    <button onclick="submitGame(2,1)" class="submit-btn">SUBMIT YOUR FORTRESS →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Speedrun</div>
+                    <h3>Repo Setup Speedrun</h3>
+                    <p>Time-boxed challenge: mirror the Project Engine structure and tame the dragon fast.</p>
+                    <button onclick="submitGame(2,2)" class="submit-btn">LOG YOUR SPEEDRUN →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Badge</div>
+                    <h3>Tech Dragon Badge Hunt</h3>
+                    <p>Complete micro-quests: LICENSE, Issues, Pages, and more. Earn your badges.</p>
+                    <button onclick="submitGame(2,3)" class="submit-btn">CLAIM YOUR BADGES →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 3 -->
+        <div id="level3" class="level">
+            <div class="level-header">
+                <div class="level-number">3</div>
+                <div class="level-title">
+                    <h2>BUILD THE DEPTH VAULT</h2>
+                    <p>Create smart, sticky (fun) and secure content layers</p>
+                </div>
+                <div class="status building" style="font-size:0.9rem;">UNDER CONSTRUCTION</div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-badge">Dungeon</div>
+                    <h3>Content Depth Dungeon</h3>
+                    <p>Descend into the vault and craft 2–3 powerful assets inspired by the repo templates.</p>
+                    <button onclick="submitGame(3,1)" class="submit-btn">ENTER THE DUNGEON →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Build-Off</div>
+                    <h3>Fun &amp; Secure Build-Off</h3>
+                    <p>Design one sticky fun element and one iron-clad security practice.</p>
+                    <button onclick="submitGame(3,2)" class="submit-btn">SHOW YOUR BUILD →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Layered</div>
+                    <h3>Layered Asset Challenge</h3>
+                    <p>Map your content with tokenisation and sustainability layers.</p>
+                    <button onclick="submitGame(3,3)" class="submit-btn">SUBMIT YOUR LAYERS →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 4 -->
+        <div id="level4" class="level">
+            <div class="level-header">
+                <div class="level-number">4</div>
+                <div class="level-title">
+                    <h2>AWAKEN YOUR TRIBE</h2>
+                    <p>Find and engage your critical audience</p>
+                </div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-badge">Avatar</div>
+                    <h3>Audience Avatar Quest</h3>
+                    <p>Craft 2–3 detailed personas and craft your first outreach spells.</p>
+                    <button onclick="submitGame(4,1)" class="submit-btn">SUBMIT YOUR AVATARS →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Spark</div>
+                    <h3>Engagement Spark Hunt</h3>
+                    <p>Create irresistible calls-to-action and spark conversations.</p>
+                    <button onclick="submitGame(4,2)" class="submit-btn">IGNITE YOUR SPARK →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Map</div>
+                    <h3>Traction Map Mini-Game</h3>
+                    <p>Chart your audience touchpoints and take your first real-world action.</p>
+                    <button onclick="submitGame(4,3)" class="submit-btn">MAP YOUR TRACTION →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 5 -->
+        <div id="level5" class="level">
+            <div class="level-header">
+                <div class="level-number">5</div>
+                <div class="level-title">
+                    <h2>ENTER THE ARENA</h2>
+                    <p>Compete for attention three times yearly</p>
+                </div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-badge">Pitch-Off</div>
+                    <h3>Quarterly Pitch-Off</h3>
+                    <p>Prepare your progress pitch using the sacred templates and shine in the arena.</p>
+                    <button onclick="submitGame(5,1)" class="submit-btn">ENTER THE PITCH-OFF →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Showdown</div>
+                    <h3>Milestone Showdown</h3>
+                    <p>Document your victories and declare what makes your quest legendary.</p>
+                    <button onclick="submitGame(5,2)" class="submit-btn">DECLARE YOUR SHOWDOWN →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Arena</div>
+                    <h3>Attention Arena Entry</h3>
+                    <p>Create a shareable highlight and set your engagement goals.</p>
+                    <button onclick="submitGame(5,3)" class="submit-btn">STEP INTO THE ARENA →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEVEL 6 -->
+        <div id="level6" class="level">
+            <div class="level-header">
+                <div class="level-number">6</div>
+                <div class="level-title">
+                    <h2>SPREAD YOUR WINGS</h2>
+                    <p>Scale into the wider world and leave a legacy</p>
+                </div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-badge">Expansion</div>
+                    <h3>Wings Expansion Log</h3>
+                    <p>Outline your next-level moves and take one bold action into the world.</p>
+                    <button onclick="submitGame(6,1)" class="submit-btn">LOG YOUR EXPANSION →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Flight</div>
+                    <h3>Impact Story Flight</h3>
+                    <p>Craft and share your founder story that inspires others to fly.</p>
+                    <button onclick="submitGame(6,2)" class="submit-btn">TAKE FLIGHT →</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-badge">Legacy</div>
+                    <h3>Legacy Token Challenge</h3>
+                    <p>Propose one tokenised asset or gift that keeps giving to the community.</p>
+                    <button onclick="submitGame(6,3)" class="submit-btn">CREATE YOUR LEGACY →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Made for the <strong>innov8tor3/project-engine</strong> community • Simple Google Forms submissions • Real progress, real fun</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Levels 1 &amp; 2 are live. More adventures coming soon.</p>
+    </footer>
+
+    <script>
+        function submitGame(level, game) {
+            alert(`🚀 Game ${game} from Level ${level} submission portal opening soon!\n\nYou'll be redirected to the secure Google Form when ready.`);
+            // Future: window.open(formUrl, '_blank');
+        }
+        
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Keyboard shortcut hint
+        console.log('%cProject Engine Quest Map ready! Press "/" to search levels (future feature).', 'color: #ff8c00; font-family: monospace');
+    </script>
+</body>
+</html>
