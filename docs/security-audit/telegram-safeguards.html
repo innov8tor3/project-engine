@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Guardian • Secure &amp; Welcoming Communities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --deep-green: #0A1F1C;
+            --sea-green: #20B2AA;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sea-panel {
+            background: rgba(32, 178, 170, 0.12);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(32, 178, 170, 0.3);
+        }
+
+        .step-circle {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .active-step {
+            background-color: #20B2AA;
+            box-shadow: 0 0 0 6px rgba(32, 178, 170, 0.3);
+        }
+
+        .code-block {
+            font-family: ui-monospace, monospace;
+        }
+    </style>
+</head>
+<body class="bg-[#0A1F1C] text-gray-200 min-h-screen">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-12">
+            <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center text-2xl shadow-lg">
+                    🛡️
+                </div>
+                <div>
+                    <h1 class="heading-font text-4xl font-semibold tracking-tight text-white">Telegram Guardian</h1>
+                    <p class="text-teal-300 text-sm">Secure • Onboard • Thrive</p>
+                </div>
+            </div>
+            <a href="#setup" 
+               class="px-6 py-3 bg-teal-500 hover:bg-teal-400 transition-colors rounded-2xl font-medium flex items-center gap-2 text-black">
+                <i class="fas fa-arrow-down"></i>
+                Start Setup
+            </a>
+        </div>
+
+        <!-- Hero -->
+        <div class="glass rounded-3xl p-10 mb-16 text-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(at_center,#20B2AA22_0%,transparent_70%)]"></div>
+            <div class="relative">
+                <span class="inline-flex items-center gap-2 px-4 py-2 rounded-3xl bg-white/10 text-teal-300 text-sm mb-6">
+                    <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
+                    READY FOR GITHUB PAGES
+                </span>
+                <h2 class="heading-font text-6xl font-bold text-white leading-none mb-6">
+                    Build Safe &amp;<br>Welcoming Communities
+                </h2>
+                <p class="max-w-lg mx-auto text-xl text-gray-300">
+                    Automated moderation + smart onboarding with Google Docs. 
+                    Minimal policing, maximum safety and sociability.
+                </p>
+                <div class="flex justify-center gap-6 mt-10 text-sm">
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check text-teal-400"></i>
+                        <span>Rose Bot + Combot</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check text-teal-400"></i>
+                        <span>Google Docs Onboarding</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fas fa-check text-teal-400"></i>
+                        <span>Zero Manual Spam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-3 gap-6 mb-16">
+            <div class="sea-panel rounded-3xl p-6 text-center">
+                <div class="text-4xl font-bold text-teal-300">95%</div>
+                <div class="text-sm text-gray-400 mt-1">Automated moderation</div>
+            </div>
+            <div class="sea-panel rounded-3xl p-6 text-center">
+                <div class="text-4xl font-bold text-teal-300">2</div>
+                <div class="text-sm text-gray-400 mt-1">Core bots recommended</div>
+            </div>
+            <div class="sea-panel rounded-3xl p-6 text-center">
+                <div class="text-4xl font-bold text-teal-300">&lt;10min</div>
+                <div class="text-sm text-gray-400 mt-1">Initial setup time</div>
+            </div>
+        </div>
+
+        <!-- Step Progress -->
+        <div id="setup" class="mb-16">
+            <h2 class="heading-font text-3xl font-semibold mb-8 text-white flex items-center gap-3">
+                <span class="text-teal-400">Step-by-Step Setup</span>
+            </h2>
+            
+            <div class="relative">
+                <!-- Progress Line -->
+                <div class="absolute left-8 top-6 bottom-6 w-0.5 bg-white/10"></div>
+                
+                <!-- Steps -->
+                <div class="space-y-10">
+                    <!-- Step 1 -->
+                    <div class="flex gap-8 group">
+                        <div onclick="toggleStep(1)" id="step-dot-1"
+                             class="step-circle cursor-pointer w-16 h-16 rounded-2xl bg-[#0F2A27] border border-teal-500/30 flex-shrink-0 flex items-center justify-center text-2xl shadow-inner active-step">
+                            1
+                        </div>
+                        <div class="flex-1 glass rounded-3xl p-8">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="uppercase tracking-widest text-teal-400 text-xs font-medium mb-2">STEP 01</div>
+                                    <h3 class="text-2xl font-semibold text-white">Add &amp; Promote Bots</h3>
+                                    <p class="text-gray-400 mt-3 max-w-md">Add Miss Rose and Combot as administrators.</p>
+                                </div>
+                                <div class="text-5xl opacity-20 group-hover:opacity-40 transition-all">🛡️</div>
+                            </div>
+                            <div class="mt-6 grid grid-cols-2 gap-4 text-sm">
+                                <button onclick="copyToClipboard('@missrose_bot')" 
+                                        class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 transition-colors rounded-2xl py-4 px-6">
+                                    <i class="fas fa-robot"></i>
+                                    <span>@missrose_bot</span>
+                                </button>
+                                <button onclick="copyToClipboard('@combot')" 
+                                        class="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 transition-colors rounded-2xl py-4 px-6">
+                                    <i class="fas fa-robot"></i>
+                                    <span>@combot</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex gap-8 group">
+                        <div onclick="toggleStep(2)" id="step-dot-2"
+                             class="step-circle cursor-pointer w-16 h-16 rounded-2xl bg-[#0F2A27] border border-teal-500/30 flex-shrink-0 flex items-center justify-center text-2xl shadow-inner">
+                            2
+                        </div>
+                        <div class="flex-1 glass rounded-3xl p-8">
+                            <div class="uppercase tracking-widest text-teal-400 text-xs font-medium mb-2">STEP 02</div>
+                            <h3 class="text-2xl font-semibold text-white">Configure Permissions</h3>
+                            <ul class="mt-6 space-y-4 text-gray-300">
+                                <li class="flex gap-3"><span class="text-teal-400">→</span> Delete messages</li>
+                                <li class="flex gap-3"><span class="text-teal-400">→</span> Ban &amp; restrict users</li>
+                                <li class="flex gap-3"><span class="text-teal-400">→</span> Pin messages</li>
+                                <li class="flex gap-3"><span class="text-teal-400">→</span> Manage video chats (optional)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex gap-8 group">
+                        <div onclick="toggleStep(3)" id="step-dot-3"
+                             class="step-circle cursor-pointer w-16 h-16 rounded-2xl bg-[#0F2A27] border border-teal-500/30 flex-shrink-0 flex items-center justify-center text-2xl shadow-inner">
+                            3
+                        </div>
+                        <div class="flex-1 glass rounded-3xl p-8">
+                            <div class="uppercase tracking-widest text-teal-400 text-xs font-medium mb-2">STEP 03</div>
+                            <h3 class="text-2xl font-semibold text-white">Set Up Onboarding with Google Docs</h3>
+                            <div class="mt-6 p-6 sea-panel rounded-2xl">
+                                <p class="text-sm mb-4">Recommended Welcome Message:</p>
+                                <pre onclick="copyWelcome()" class="code-block text-xs bg-black/40 p-5 rounded-2xl cursor-pointer hover:bg-black/60 transition-colors overflow-auto">
+Welcome {first}! 👋
+
+Please review our full community guidelines here:
+[Your Google Docs Link]
+
+React with ✅ below once you've read them.
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex gap-8 group">
+                        <div onclick="toggleStep(4)" id="step-dot-4"
+                             class="step-circle cursor-pointer w-16 h-16 rounded-2xl bg-[#0F2A27] border border-teal-500/30 flex-shrink-0 flex items-center justify-center text-2xl shadow-inner">
+                            4
+                        </div>
+                        <div class="flex-1 glass rounded-3xl p-8">
+                            <div class="uppercase tracking-widest text-teal-400 text-xs font-medium mb-2">STEP 04</div>
+                            <h3 class="text-2xl font-semibold text-white">Activate Security Rules</h3>
+                            <div class="flex flex-wrap gap-3 mt-6">
+                                <span onclick="quickCommand('/setrules')" class="cursor-pointer px-5 py-2 bg-white/5 hover:bg-teal-500/20 rounded-2xl text-sm transition-colors">/setrules</span>
+                                <span onclick="quickCommand('/setwelcome')" class="cursor-pointer px-5 py-2 bg-white/5 hover:bg-teal-500/20 rounded-2xl text-sm transition-colors">/setwelcome</span>
+                                <span onclick="quickCommand('/captcha on')" class="cursor-pointer px-5 py-2 bg-white/5 hover:bg-teal-500/20 rounded-2xl text-sm transition-colors">Enable CAPTCHA</span>
+                                <span onclick="quickCommand('/lock link')" class="cursor-pointer px-5 py-2 bg-white/5 hover:bg-teal-500/20 rounded-2xl text-sm transition-colors">Lock links</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bot Cards -->
+        <h2 class="heading-font text-3xl font-semibold mb-8 text-white">Recommended Bots</h2>
+        <div class="grid md:grid-cols-2 gap-8 mb-20">
+            <!-- Rose -->
+            <div class="glass rounded-3xl p-8 hover:scale-[1.02] transition-transform">
+                <div class="flex justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl flex items-center justify-center text-3xl">🌹</div>
+                        <div>
+                            <h3 class="font-semibold text-xl">Miss Rose Bot</h3>
+                            <p class="text-teal-300 text-sm">@missrose_bot</p>
+                        </div>
+                    </div>
+                    <span class="text-xs px-4 py-2 bg-pink-500/20 text-pink-300 rounded-3xl h-fit">Best for Moderation</span>
+                </div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Advanced CAPTCHA</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Smart filters &amp; blocklists</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Warning system</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Rules &amp; welcome messages</li>
+                </ul>
+            </div>
+
+            <!-- Combot -->
+            <div class="glass rounded-3xl p-8 hover:scale-[1.02] transition-transform">
+                <div class="flex justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl">📊</div>
+                        <div>
+                            <h3 class="font-semibold text-xl">Combot</h3>
+                            <p class="text-teal-300 text-sm">@combot</p>
+                        </div>
+                    </div>
+                    <span class="text-xs px-4 py-2 bg-blue-500/20 text-blue-300 rounded-3xl h-fit">Best for Analytics</span>
+                </div>
+                <ul class="mt-8 space-y-3 text-sm">
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Anti-spam + reputation</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Engagement tracking</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Custom triggers</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check text-teal-400"></i> Community insights</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sample Rules -->
+        <div class="glass rounded-3xl p-10 mb-16">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                <i class="fas fa-scroll text-teal-400"></i>
+                Sample Community Rules (Copy to Google Doc)
+            </h3>
+            <div id="rules-text" class="prose prose-invert max-w-none text-gray-300 text-[15px] leading-relaxed">
+                <ol class="list-decimal pl-6 space-y-4">
+                    <li><strong>Respect everyone.</strong> No harassment, hate speech, or personal attacks.</li>
+                    <li><strong>No spam or unsolicited promotions.</strong></li>
+                    <li><strong>Stay on topic.</strong> Use topics/threads when available.</li>
+                    <li><strong>New members:</strong> Review the full guidelines and confirm by reacting.</li>
+                    <li>Violations are handled with warnings → temporary mute → ban.</li>
+                </ol>
+            </div>
+            <button onclick="copyRules()" 
+                    class="mt-8 flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl transition-all">
+                <i class="fas fa-copy"></i>
+                <span>Copy Rules to Clipboard</span>
+            </button>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="sea-panel rounded-3xl p-10">
+            <h3 class="text-2xl font-semibold mb-8">Pro Tips for Success</h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="flex gap-5">
+                        <div class="text-4xl">🔐</div>
+                        <div>
+                            <div class="font-medium">Enable CAPTCHA on join</div>
+                            <div class="text-sm text-gray-400">Prevents bot spam instantly</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="text-4xl">📌</div>
+                        <div>
+                            <div class="font-medium">Pin the rules</div>
+                            <div class="text-sm text-gray-400">Always visible reference</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex gap-5">
+                        <div class="text-4xl">📊</div>
+                        <div>
+                            <div class="font-medium">Check Combot analytics weekly</div>
+                            <div class="text-sm text-gray-400">Spot issues before they grow</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="text-4xl">🌱</div>
+                        <div>
+                            <div class="font-medium">Use positive filters</div>
+                            <div class="text-sm text-gray-400">Reward greetings and helpful messages</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-xs text-gray-500 mt-16">
+            Made for safe &amp; vibrant Telegram communities • Ready for GitHub Pages
+        </div>
+    </div>
+
+    <script>
+        function toggleStep(n) {
+            document.querySelectorAll('.step-circle').forEach(dot => {
+                dot.classList.remove('active-step');
+            });
+            const active = document.getElementById(`step-dot-${n}`);
+            if (active) active.classList.add('active-step');
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const orig = event.target.innerHTML;
+                event.target.innerHTML = `<i class="fas fa-check"></i> Copied!`;
+                setTimeout(() => {
+                    event.target.innerHTML = orig;
+                }, 2000);
+            });
+        }
+
+        function copyWelcome() {
+            const welcome = `Welcome {first}! 👋\n\nPlease review our full community guidelines here:\n[Your Google Docs Link]\n\nReact with ✅ below once you've read them.`;
+            navigator.clipboard.writeText(welcome).then(() => alert("Welcome message copied!"));
+        }
+
+        function copyRules() {
+            const rules = document.getElementById('rules-text').innerText;
+            navigator.clipboard.writeText(rules).then(() => {
+                alert("Rules copied to clipboard!");
+            });
+        }
+
+        function quickCommand(cmd) {
+            alert(`Command ready to use in your group:\n\n${cmd}\n\nJust send this in your Telegram group chat.`);
+        }
+
+        // Tailwind script already included via CDN
+        console.log("%cTelegram Guardian Guide loaded successfully 🌿", "color:#20B2AA; font-family:monospace");
+    </script>
+</body>
+</html>
