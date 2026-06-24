@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotionPlay Web • AI Dance Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --midnight: #0a1428;
+            --deepblue: #1e2a44;
+            --accent: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .glass {
+            background: rgba(30, 42, 68, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0a1428 0%, #1e2a44 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgb(59 130 246 / 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-[#0a1428] text-white hero-bg min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-blue-500/20">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 bg-blue-500 rounded-2xl flex items-center justify-center text-2xl">💃</div>
+                <h1 class="heading text-2xl font-semibold tracking-tight">MotionPlay Web</h1>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm">
+                <a href="#tech" class="nav-link">The Tech</a>
+                <a href="#audiences" class="nav-link">Audiences</a>
+                <a href="#where" class="nav-link">Find Them</a>
+                <a href="https://tensorflow-dance-game.rork.app/" target="_blank" 
+                   class="bg-blue-600 hover:bg-blue-500 px-6 py-2.5 rounded-2xl font-medium transition-colors flex items-center gap-2">
+                    <i class="fas fa-play"></i> Play Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-blue-900/50 text-blue-300 text-sm px-5 py-2 rounded-3xl mb-6 border border-blue-500/30">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                </span>
+                Built with TensorFlow.js • Real-time Pose Detection
+            </div>
+            
+            <h1 class="heading text-6xl md:text-7xl font-bold leading-tight tracking-tighter mb-6">
+                Match Your Moves.<br>
+                <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Master the Beat.</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-xl text-blue-200 mb-10">
+                A browser-based AI dance game that turns your webcam into a motion tracker. 
+                No apps. No hardware. Just pure movement and real-time feedback.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://tensorflow-dance-game.rork.app/" target="_blank" 
+                   class="bg-blue-600 hover:bg-blue-500 px-10 py-4 rounded-3xl text-lg font-semibold flex items-center justify-center gap-3 group">
+                    Launch the Game
+                    <i class="fas fa-arrow-right group-active:translate-x-1 transition"></i>
+                </a>
+                <a href="#audiences" 
+                   class="border border-blue-400/50 hover:border-blue-400 px-8 py-4 rounded-3xl text-lg font-medium flex items-center justify-center gap-2">
+                    Who It's For
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Section -->
+    <section id="tech" class="py-20 px-6 bg-[#0f1b38]">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass rounded-3xl p-10 md:p-16">
+                <h2 class="heading text-4xl font-semibold mb-8 text-center">The Technology</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex-shrink-0 flex items-center justify-center text-2xl">🧠</div>
+                            <div>
+                                <h3 class="font-semibold text-xl">TensorFlow.js + MoveNet / BlazePose</h3>
+                                <p class="text-blue-200">Real-time human pose estimation directly in your browser. Tracks 33+ keypoints with high accuracy.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex-shrink-0 flex items-center justify-center text-2xl">🎮</div>
+                            <div>
+                                <h3 class="font-semibold text-xl">Interactive Dance Gameplay</h3>
+                                <p class="text-blue-200">Score points by matching on-screen moves. Instant feedback and visual overlays.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex-shrink-0 flex items-center justify-center text-2xl">🌐</div>
+                            <div>
+                                <h3 class="font-semibold text-xl">Built with Rork</h3>
+                                <p class="text-blue-200">Rapidly prototyped and deployed as a full web experience with AI-assisted development tools.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-2xl flex-shrink-0 flex items-center justify-center text-2xl">📱</div>
+                            <div>
+                                <h3 class="font-semibold text-xl">Privacy-First &amp; Accessible</h3>
+                                <p class="text-blue-200">Everything runs client-side. Works on most modern devices with a webcam.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audiences -->
+    <section id="audiences" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="heading text-5xl font-semibold text-center mb-4">Perfect Match For</h2>
+            <p class="text-center text-blue-200 text-xl mb-16">Who will love MotionPlay Web</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass rounded-3xl p-8 card-hover">
+                    <div class="text-5xl mb-6">🏋️‍♀️💃</div>
+                    <h3 class="text-2xl font-semibold mb-3">Fitness &amp; Dance Enthusiasts</h3>
+                    <p class="text-blue-200">Gamified home workouts, rhythm training, and fun calorie-burning sessions.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="glass rounded-3xl p-8 card-hover">
+                    <div class="text-5xl mb-6">👩‍🏫🧑‍💻</div>
+                    <h3 class="text-2xl font-semibold mb-3">Educators &amp; Students</h3>
+                    <p class="text-blue-200">Interactive STEM demos for computer vision, ML, and human-computer interaction.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="glass rounded-3xl p-8 card-hover">
+                    <div class="text-5xl mb-6">🤖🕹️</div>
+                    <h3 class="text-2xl font-semibold mb-3">AI/ML &amp; Indie Developers</h3>
+                    <p class="text-blue-200">Inspiration and starter project for TensorFlow.js, pose detection, and browser games.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to Find Them -->
+    <section id="where" class="py-20 px-6 bg-[#0f1b38]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="heading text-5xl font-semibold text-center mb-16">Where to Reach Them</h2>
+            
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-16">
+                <div>
+                    <h3 class="text-blue-400 text-xl font-medium mb-6 flex items-center gap-3"><i class="fas fa-dumbbell"></i> Fitness &amp; Dance</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> TikTok &amp; Instagram Reels (#DanceChallenge, #HomeWorkout)</li>
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> Reddit: r/dance, r/Zumba, r/Fitness, r/XXFitness</li>
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> Facebook Dance &amp; Fitness Groups</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-blue-400 text-xl font-medium mb-6 flex items-center gap-3"><i class="fas fa-robot"></i> Tech &amp; Education</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> Reddit: r/tensorflow, r/MachineLearning, r/webdev, r/learnprogramming</li>
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> X / Twitter: #TensorFlow #AI #WebML #EdTech</li>
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> Hugging Face, TensorFlow forums, Discord ML servers</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-blue-400 text-xl font-medium mb-6 flex items-center gap-3"><i class="fas fa-gamepad"></i> Gamers &amp; Makers</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> Reddit: r/rhythmgames, r/IndieGaming, r/justdance</li>
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> Indie Hackers, Product Hunt, Maker communities</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-blue-400 text-xl font-medium mb-6 flex items-center gap-3"><i class="fas fa-family"></i> Families &amp; More</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start gap-3"><span class="text-blue-400 mt-1">•</span> Parent groups, YouTube family channels, Pinterest activity boards</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Footer -->
+    <footer class="py-16 px-6 border-t border-blue-500/20">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-2xl mb-8">Ready to move with AI?</p>
+            <a href="https://tensorflow-dance-game.rork.app/" target="_blank" 
+               class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-cyan-400 text-black font-semibold text-xl px-12 py-6 rounded-3xl hover:scale-105 transition">
+                <i class="fas fa-play-circle text-3xl"></i>
+                Start Dancing Now
+            </a>
+            <p class="text-blue-400 mt-12 text-sm">MotionPlay Web • Powered by TensorFlow.js • Built fast with Rork</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple tailwind script already included via CDN
+        // Add any extra interactivity if desired
+    </script>
+</body>
+</html>
