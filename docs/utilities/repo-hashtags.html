@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#ProjectEngine Hashtag Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --gold: #f5c842;
+            --gold-dark: #d4a017;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1400 50%, #0f0c00 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.2rem;
+            background: linear-gradient(90deg, #f5c842, #fff, #f5c842);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(245, 200, 66, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            padding: 32px;
+            margin-bottom: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-panel:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 50px rgba(245, 200, 66, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .gold-header {
+            background: linear-gradient(90deg, #f5c842, #d4a017);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .hashtag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .hashtag-card {
+            background: rgba(20, 18, 10, 0.6);
+            border: 1px solid rgba(245, 200, 66, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .hashtag-card:hover {
+            border-color: var(--gold);
+            transform: scale(1.03);
+        }
+        
+        .hashtag {
+            font-family: monospace;
+            font-size: 1.35rem;
+            color: #f5c842;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .category {
+            color: #aaa;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        button.copy-btn {
+            background: rgba(245, 200, 66, 0.15);
+            color: #f5c842;
+            border: 1px solid rgba(245, 200, 66, 0.4);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        button.copy-btn:hover {
+            background: #f5c842;
+            color: #111;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .interactive-tip {
+            font-size: 0.9rem;
+            background: rgba(245, 200, 66, 0.1);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f5c842;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>#ProjectEngine</h1>
+            <p class="subtitle">Unified Hashtag System for Consistent Discovery &amp; Community Building</p>
+        </header>
+
+        <div class="glass-panel">
+            <h2 class="gold-header">🌟 Primary Hashtags (Use on Nearly All Pages)</h2>
+            <div class="hashtag-grid">
+                <div class="hashtag-card">
+                    <span class="hashtag">#ProjectEngine</span>
+                    <p><strong>Core identifier</strong> for the entire ecosystem. Every page should include this.</p>
+                </div>
+                <div class="hashtag-card">
+                    <span class="hashtag">#TokenisedProjects</span>
+                    <p>Emphasises the tokenisation of project assets to feed other projects.</p>
+                </div>
+                <div class="hashtag-card">
+                    <span class="hashtag">#ProtoFounder</span>
+                    <p>Focus on founders, quests, and early-stage empowerment.</p>
+                </div>
+                <div class="hashtag-card">
+                    <span class="hashtag">#AIVibeCoding</span>
+                    <p>Highlights collaborative AI-assisted development and innovation.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2 class="gold-header">📍 Tiered / Contextual Hashtags</h2>
+            <div class="hashtag-grid">
+                <div class="hashtag-card">
+                    <span class="category">Roadmap Phases</span>
+                    <p>#QuestDefinition #BuildSustainability #GainTraction #ScaleUp</p>
+                </div>
+                <div class="hashtag-card">
+                    <span class="category">Security &amp; Quality</span>
+                    <p>#GitHubSafety #SecureByDesign #CSPAudit</p>
+                </div>
+                <div class="hashtag-card">
+                    <span class="category">Content Types</span>
+                    <p>#PitchDeck #ActionStories #RepoRestructure #ContributorValuation #Report2025</p>
+                </div>
+                <div class="hashtag-card">
+                    <span class="category">Vision &amp; Impact</span>
+                    <p>#SustainableProjects #Web3Assets #ImpactScale</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2 class="gold-header">💡 How to Use This System</h2>
+            <div class="interactive-tip">
+                <strong>Recommended pattern (90%+ of pages):</strong><br>
+                #ProjectEngine [Primary] [1-2 Contextual]<br><br>
+                <strong>Examples:</strong><br>
+                • Pitch page: #ProjectEngine #PitchDeck #ProtoFounder #TokenisedProjects<br>
+                • Security page: #ProjectEngine #GitHubSafety #SecureByDesign<br>
+                • Roadmap: #ProjectEngine #BuildSustainability #AIVibeCoding
+            </div>
+            
+            <p style="margin-top: 24px; text-align: center;">
+                <button class="copy-btn" onclick="copyAllHashtags()">
+                    📋 Copy Full Hashtag Reference
+                </button>
+            </p>
+        </div>
+
+        <footer>
+            Project Engine Hashtag Asset • Ready for GitHub Pages • Modern Glassmorphic Design<br>
+            <span style="color: #f5c842;">Made for easy reference &amp; community consistency</span>
+        </footer>
+    </div>
+
+    <script>
+        function copyAllHashtags() {
+            const text = `#ProjectEngine Hashtag System
+
+Primary (use on nearly all pages):
+#ProjectEngine #TokenisedProjects #ProtoFounder #AIVibeCoding
+
+Contextual:
+Roadmap: #QuestDefinition #BuildSustainability #GainTraction #ScaleUp
+Security: #GitHubSafety #SecureByDesign #CSPAudit
+Content: #PitchDeck #ActionStories #RepoRestructure #ContributorValuation
+Vision: #SustainableProjects #Web3Assets #ImpactScale`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const original = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                setTimeout(() => btn.innerHTML = original, 2000);
+            });
+        }
+
+        // Add subtle interactivity
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('%c#ProjectEngine Hashtag Guide loaded successfully ✨', 'color: #f5c842; font-family: monospace;');
+        });
+    </script>
+</body>
+</html>
