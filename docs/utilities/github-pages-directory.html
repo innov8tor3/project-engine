@@ -566,6 +566,34 @@
     </div>
 
     <script>
+        <!-- === UPGRADE STEP 1: HASHTAG SYSTEM INTEGRATION === -->
+// Hashtag Guide Reference
+const HASHTAG_GUIDE_URL = "https://innov8tor3.github.io/project-engine/utilities/repo-hashtags.html";
+
+// Core logic to suggest hashtags for a file based on path + title
+function suggestHashtagsForFile(filePath, pageTitle = "") {
+    let tags = ["#ProjectEngine"];
+    
+    const lowerPath = filePath.toLowerCase();
+    const lowerTitle = (pageTitle || "").toLowerCase();
+    
+    // Primary
+    if (lowerPath.includes("pitch") || lowerTitle.includes("pitch")) tags.push("#PitchDeck");
+    if (lowerPath.includes("safety") || lowerPath.includes("secure") || lowerTitle.includes("security")) 
+        tags.push("#GitHubSafety", "#SecureByDesign");
+    if (lowerPath.includes("quest") || lowerTitle.includes("quest")) tags.push("#QuestDefinition");
+    if (lowerPath.includes("sustain") || lowerTitle.includes("sustain")) tags.push("#BuildSustainability");
+    if (lowerPath.includes("traction") || lowerTitle.includes("traction")) tags.push("#GainTraction");
+    if (lowerPath.includes("scale") || lowerTitle.includes("scale")) tags.push("#ScaleUp");
+    
+    // Default primary additions
+    if (tags.length === 1) {
+        tags.push("#TokenisedProjects", "#ProtoFounder");
+    }
+    
+    return tags.join(" ");
+}
+
         const form = document.getElementById('repoForm');
         const submitBtn = document.getElementById('submitBtn');
         const btnText = document.getElementById('btnText');
