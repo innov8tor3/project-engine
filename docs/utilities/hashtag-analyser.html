@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Project Engine Repo Enquiry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --gold: #f5c842;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1400 100%);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #f5c842, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(245, 200, 66, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        input, button, select {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(245, 200, 66, 0.4);
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+        }
+        
+        button {
+            background: var(--gold);
+            color: #111;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        button:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(245, 200, 66, 0.2);
+        }
+        
+        th {
+            background: rgba(245, 200, 66, 0.1);
+            color: var(--gold);
+        }
+        
+        .age-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .copy-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .progress {
+            margin: 20px 0;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enhanced Repo Enquiry</h1>
+        <p class="subtitle">Full directory listing with Titles, Smart Hashtags, Age colouring + Copiable Table</p>
+
+        <div class="glass">
+            <h2>⚙️ Settings &amp; Controls</h2>
+            <p><strong>Hashtag Guide:</strong> 
+                <a href="https://innov8tor3.github.io/project-engine/utilities/repo-hashtags.html" target="_blank" style="color:var(--gold);">View Hashtag System</a>
+            </p>
+            
+            <div style="display:flex; gap:15px; flex-wrap:wrap; margin-top:20px;">
+                <div>
+                    <label>Start Letter (for pagination):</label><br>
+                    <input type="text" id="startLetter" value="" placeholder="e.g. a" maxlength="1" style="width:80px;">
+                </div>
+                <div>
+                    <button onclick="startScan()">🚀 Start / Resume Scan</button>
+                </div>
+                <div>
+                    <button onclick="copyAllResults()" class="copy-btn">📋 Copy Full Results as Markdown Table</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass">
+            <h2>Scanning Progress</h2>
+            <div class="progress" id="progress">
+                Directories Scanned: <span id="dirs">0</span><br>
+                Files Found: <span id="files">0</span><br>
+                API Calls: <span id="api">0</span>
+            </div>
+        </div>
+
+        <div class="glass">
+            <h2>Results</h2>
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Title</th>
+                        <th>Hashtags</th>
+                        <th>Age</th>
+                        <th>GitHub Pages URL</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // ==================== CONFIG ====================
+        const OWNER = "innov8tor3";
+        const REPO = "project-engine";
+        const HASHTAG_GUIDE_URL = "https://innov8tor3.github.io/project-engine/utilities/repo-hashtags.html";
+        
+        let allResults = [];
+        let apiCalls = 0;
+        let currentStart = "";
+
+        // ==================== HASHTAG SUGGESTION ====================
+        function suggestHashtags(filePath, pageTitle = "") {
+            let tags = ["#ProjectEngine"];
+            const p = (filePath + " " + pageTitle).toLowerCase();
+            
+            if (p.includes("pitch")) tags.push("#PitchDeck");
+            if (p.includes("safety") || p.includes("secure")) tags.push("#GitHubSafety", "#SecureByDesign");
+            if (p.includes("quest")) tags.push("#QuestDefinition");
+            if (p.includes("sustain")) tags.push("#BuildSustainability");
+            if (p.includes("traction")) tags.push("#GainTraction");
+            if (p.includes("scale")) tags.push("#ScaleUp");
+            if (p.includes("report")) tags.push("#Report2025");
+            
+            if (tags.length === 1) tags.push("#TokenisedProjects", "#ProtoFounder");
+            return tags.join(" ");
+        }
+
+        // ==================== AGE FUNCTION ====================
+        function getAgeInfo(dateStr) {
+            if (!dateStr) return { label: "—", color: "#888" };
+            const now = new Date();
+            const d = new Date(dateStr);
+            const months = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+            
+            let color = "#4488ff";
+            if (months <= 2) color = "#ff4444";
+            else if (months <= 4) color = "#ff8800";
+            else if (months <= 6) color = "#ffcc00";
+            else if (months <= 8) color = "#44ff88";
+            else if (months <= 10) color = "#00cccc";
+            
+            return { label: months + " mo", color: color };
+        }
+
+        // ==================== MAIN SCAN ====================
+        async function startScan() {
+            currentStart = document.getElementById("startLetter").value.trim().toLowerCase();
+            document.getElementById("resultsBody").innerHTML = "";
+            allResults = [];
+            
+            await scanDirectory("");
+        }
+
+        async function scanDirectory(path) {
+            const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`;
+            const headers = currentStart ? {} : {}; // Add token logic here if needed
+            
+            try {
+                apiCalls++;
+                document.getElementById("api").textContent = apiCalls;
+                
+                const res = await fetch(url, { headers });
+                if (!res.ok) throw new Error("Rate limit or error");
+                
+                const items = await res.json();
+                
+                for (const item of items) {
+                    if (item.type === "dir") {
+                        document.getElementById("dirs").textContent = parseInt(document.getElementById("dirs").textContent) + 1;
+                        await scanDirectory(item.path);
+                    } 
+                    else if (item.name.endsWith(".html")) {
+                        await processFile(item);
+                    }
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Scan interrupted (API limit?). Use Start Letter to resume.");
+            }
+        }
+
+        async function processFile(file) {
+            const pagesUrl = `https://innov8tor3.github.io/project-engine/${file.path}`;
+            let title = file.name;
+            let lastCommit = null;
+            
+            // Try to get title
+            try {
+                const htmlRes = await fetch(`https://raw.githubusercontent.com/${OWNER}/${REPO}/main/${file.path}`);
+                const html = await htmlRes.text();
+                const titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
+                if (titleMatch) title = titleMatch[1].trim();
+            } catch(e) {}
+            
+            // Simple last commit (optional - can be expanded)
+            const ageInfo = getAgeInfo(lastCommit);
+            
+            const hashtags = suggestHashtags(file.path, title);
+            
+            const row = {
+                name: file.name,
+                path: file.path,
+                title: title,
+                hashtags: hashtags,
+                ageLabel: ageInfo.label,
+                ageColor: ageInfo.color,
+                url: pagesUrl
+            };
+            
+            allResults.push(row);
+            document.getElementById("files").textContent = allResults.length;
+            renderRow(row);
+        }
+
+        function renderRow(row) {
+            const tbody = document.getElementById("resultsBody");
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${row.name}</td>
+                <td>${row.title}</td>
+                <td style="font-family:monospace;">${row.hashtags}</td>
+                <td><span class="age-dot" style="background:${row.ageColor}"></span> ${row.ageLabel}</td>
+                <td><a href="${row.url}" target="_blank" style="color:var(--gold);">${row.url}</a></td>
+            `;
+            tbody.appendChild(tr);
+        }
+
+        // ==================== COPY FUNCTION ====================
+        function copyAllResults() {
+            if (allResults.length === 0) {
+                alert("No results yet.");
+                return;
+            }
+            
+            let md = "| File | Title | Hashtags | Age | GitHub Pages URL |\n";
+            md += "|------|-------|----------|-----|------------------|\n";
+            
+            allResults.forEach(r => {
+                md += `| ${r.name} | ${r.title.replace(/\|/g,'\\|')} | ${r.hashtags} | ${r.ageLabel} | ${r.url} |\n`;
+            });
+            
+            navigator.clipboard.writeText(md).then(() => {
+                alert("✅ Markdown table copied! Paste into Google Docs, Notion, etc.");
+            });
+        }
+    </script>
+</body>
+</html>
