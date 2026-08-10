@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source URL Scoring Protocol | Glass Protocol</title>
+    <style>
+        :root {
+            --bg-deep: #0d0518;
+            --bg-panel: rgba(28, 12, 48, 0.55);
+            --border-glass: rgba(180, 120, 255, 0.25);
+            --accent: #c084fc;
+            --accent-soft: #a855f7;
+            --text-primary: #f3e8ff;
+            --text-secondary: #d8b4fe;
+            --glow: 0 0 40px rgba(168, 85, 247, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(ellipse at 20% 20%, rgba(88, 28, 135, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(126, 34, 206, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(76, 29, 149, 0.1) 0%, transparent 70%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2.5rem 2rem;
+            background: var(--bg-panel);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: var(--glow);
+        }
+
+        header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e9d5ff, #c084fc, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            margin-top: 1.25rem;
+            padding: 0.35rem 1rem;
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(192, 132, 252, 0.4);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 0.03em;
+        }
+
+        section {
+            margin-bottom: 1.75rem;
+        }
+
+        .panel {
+            background: var(--bg-panel);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 1.75rem 1.6rem;
+            box-shadow: var(--glow);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .panel:hover {
+            transform: translateY(-3px);
+            border-color: rgba(192, 132, 252, 0.45);
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.22);
+        }
+
+        .criterion-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .num {
+            flex-shrink: 0;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, rgba(168, 85, 247, 0.35), rgba(126, 34, 206, 0.25));
+            border: 1px solid rgba(192, 132, 252, 0.4);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #e9d5ff;
+        }
+
+        .criterion-header h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            flex-grow: 1;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .panel.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .panel.open .content {
+            max-height: 800px;
+            opacity: 1;
+            padding-top: 0.25rem;
+        }
+
+        .content p, .content ul {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .content ul {
+            margin: 0.75rem 0 0.5rem 1.25rem;
+        }
+
+        .content li {
+            margin-bottom: 0.4rem;
+        }
+
+        .score-scale {
+            margin-top: 1rem;
+            padding: 0.9rem 1rem;
+            background: rgba(15, 5, 30, 0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            font-size: 0.9rem;
+        }
+
+        .score-scale strong {
+            color: var(--accent);
+        }
+
+        .total-box {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .total-box h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            color: #e9d5ff;
+        }
+
+        .total-box .formula {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .process {
+            margin-top: 3.5rem;
+            padding: 2.25rem 1.75rem;
+            background: linear-gradient(160deg, rgba(40, 15, 70, 0.65), rgba(25, 8, 45, 0.7));
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+        }
+
+        .process h2 {
+            font-size: 1.45rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #e9d5ff;
+        }
+
+        .steps {
+            display: grid;
+            gap: 1.1rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem 1.15rem;
+            background: rgba(20, 8, 40, 0.45);
+            border-radius: 14px;
+            border: 1px solid rgba(168, 85, 247, 0.18);
+            transition: background 0.2s ease;
+        }
+
+        .step:hover {
+            background: rgba(40, 15, 70, 0.5);
+        }
+
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-soft);
+            color: #1a0a2e;
+            font-weight: 700;
+            border-radius: 50%;
+            font-size: 0.95rem;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .apology {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #a78bfa;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(168, 85, 247, 0.15);
+            color: #7c3aed;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem 1rem 3rem; }
+            header { padding: 1.75rem 1.25rem; }
+            .panel { padding: 1.35rem 1.15rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Source URL Scoring Protocol</h1>
+            <p>A structured evaluation algorithm for assessing websites, apps, and projects against nine core dimensions of market potential, founder strength, product quality, and ecosystem engagement.</p>
+            <span class="badge">v1.0 · Glass Protocol</span>
+        </header>
+
+        <!-- Criterion 1 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">1</div>
+                    <h2>TAM / SAM / SOM Market Evaluations</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Assess whether the source provides (or enables inference of) Total Addressable Market, Serviceable Addressable Market, and Serviceable Obtainable Market estimates grounded in reputable analyst projections.</p>
+                    <ul>
+                        <li>Presence of explicit TAM/SAM/SOM figures with sources</li>
+                        <li>Citation of leading practitioners (McKinsey, Gartner, IDC, CB Insights, PitchBook, etc.)</li>
+                        <li>Logical derivation of SOM from SAM and realistic capture assumptions</li>
+                        <li>Currency and geographic relevance of the data</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> 0 = no market sizing · 3–4 = vague or unsourced claims · 6–7 = solid secondary data · 9–10 = clear, sourced, multi-layer TAM/SAM/SOM with credible projections
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 2 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">2</div>
+                    <h2>Founder Status Multiplier (Grok / Public Repo Signals)</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Evaluate founder / team track record using publicly observable signals (GitHub/GitLab activity, prior exits, domain expertise visibility, long-term contribution history). Treat this as a multiplier or weighted indicator of execution probability.</p>
+                    <ul>
+                        <li><strong>OG / Proven:</strong> Multiple prior successes, deep domain history, strong public technical footprint</li>
+                        <li><strong>Intermediate:</strong> Relevant experience, some shipped products, moderate visibility</li>
+                        <li><strong>Beginner / First-time:</strong> Limited public track record</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10 (or multiplier 0.7×–1.3×):</strong> Beginner ≈ 3–5 · Intermediate ≈ 6–8 · OG / serial ≈ 9–10. Apply as a soft multiplier on the overall total if desired.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 3 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">3</div>
+                    <h2>Authenticity &amp; Originality</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Judge how genuine and distinctive the offering appears. Look for unique insights, non-templated positioning, original research or data, and avoidance of generic marketing language.</p>
+                    <ul>
+                        <li>Evidence of original thinking vs. copy-paste industry tropes</li>
+                        <li>Transparency about limitations and real user stories</li>
+                        <li>Distinctive voice, design, or technical approach</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> High scores require clear differentiation and credible, non-hype communication.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 4 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">4</div>
+                    <h2>Depth of Subject Knowledge</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Measure demonstrated expertise in the domain. Depth is evidenced by technical documentation quality, accurate use of domain terminology, nuanced discussion of edge cases, and references to primary sources or standards.</p>
+                    <ul>
+                        <li>Quality of whitepapers, docs, or blog content</li>
+                        <li>Handling of complexity and edge conditions</li>
+                        <li>Alignment with established domain frameworks</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> Surface-level marketing = low · Practitioner-level insight with supporting evidence = high.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 5 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">5</div>
+                    <h2>Gamification of UX</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Evaluate the presence and sophistication of game-design elements that increase engagement without feeling manipulative: progress systems, meaningful rewards, challenges, feedback loops, and social proof mechanics that feel native to the product.</p>
+                    <ul>
+                        <li>Progression, badges, levels, or streaks that serve a real purpose</li>
+                        <li>Delightful micro-interactions and feedback</li>
+                        <li>Balance between motivation and user autonomy</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> None or pure dark-pattern gamification = low · Thoughtful, value-aligned systems = high.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 6 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">6</div>
+                    <h2>Security Provision in App / Product</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Assess visible and documented security posture: authentication options, data protection claims, compliance mentions (SOC 2, GDPR, ISO, etc.), transparent security pages, bug-bounty or responsible-disclosure programs, and architectural signals of care.</p>
+                    <ul>
+                        <li>Auth methods, encryption statements, privacy policy quality</li>
+                        <li>Public security documentation or trust center</li>
+                        <li>History of responsible vulnerability handling (if observable)</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> Minimal or absent signals = low · Comprehensive, verifiable security practices = high.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 7 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">7</div>
+                    <h2>Community Building</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Gauge the health and intentionality of the community around the project: active forums, Discord/Slack/Telegram presence, user-generated content, events, contribution pathways, and evidence of two-way engagement.</p>
+                    <ul>
+                        <li>Activity levels and quality of discussion</li>
+                        <li>Official community channels and moderation quality</li>
+                        <li>Opportunities for users to contribute or co-create</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> No community or ghost town = low · Vibrant, well-tended community with clear ownership = high.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 8 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">8</div>
+                    <h2>Competitions Entered &amp; Results</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Look for participation in accelerators, hackathons, startup competitions, awards, or ranked lists, and note placement or recognition received.</p>
+                    <ul>
+                        <li>Named competitions, cohorts, or award programs</li>
+                        <li>Finalist / winner / notable mention status</li>
+                        <li>Recency and relevance of the competitions</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> No evidence = 0–2 · Participation = mid · Strong placements or multiple recognitions = high.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Criterion 9 -->
+        <section>
+            <div class="panel" onclick="toggle(this)">
+                <div class="criterion-header">
+                    <div class="num">9</div>
+                    <h2>Partnerships with Sector Bodies</h2>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="content">
+                    <p>Evaluate formal or publicly acknowledged partnerships, memberships, or collaborations with industry associations, standards bodies, regulators, universities, or established sector organisations.</p>
+                    <ul>
+                        <li>Named partners and nature of the relationship</li>
+                        <li>Joint initiatives, certifications, or co-developed assets</li>
+                        <li>Strategic vs. purely promotional partnerships</li>
+                    </ul>
+                    <div class="score-scale">
+                        <strong>Score 0–10:</strong> None = low · Credible, active partnerships with recognised bodies = high.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Total -->
+        <div class="panel total-box">
+            <h2>Total Score</h2>
+            <p class="formula">Sum of Categories 1–9 (each 0–10) → Maximum 90</p>
+            <p style="margin-top: 0.75rem; color: var(--text-secondary); font-size: 0.95rem;">
+                Optional: apply Founder Status as a multiplier (0.7×–1.3×) to the total.<br>
+                Interpret bands roughly as: 0–30 emerging · 31–55 solid · 56–75 strong · 76–90 exceptional.
+            </p>
+        </div>
+
+        <!-- Process -->
+        <div class="process">
+            <h2>How to Use This Protocol</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Copy the URL of this algorithm / protocol page.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Copy the submission website (or app / project) URL you wish to evaluate.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Ask Grok (or another capable AI) to evaluate the source URL against this algorithm URL. Request individual scores for each of the nine categories plus a total score, with brief justifications.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Review the returned scores. Iterate or request deeper evidence if any category appears under-supported.</p>
+                </div>
+            </div>
+            <p class="apology">Apologies for the non-funded, slightly clunky UX — this page prioritises clarity and portability over polish.</p>
+        </div>
+
+        <footer>
+            Glass Protocol · Designed for instant GitHub Pages publishing · Copy the entire HTML and push to any repo
+        </footer>
+    </div>
+
+    <script>
+        function toggle(panel) {
+            panel.classList.toggle('open');
+        }
+        // Open first panel by default for discoverability
+        document.querySelector('.panel').classList.add('open');
+    </script>
+</body>
+</html>
