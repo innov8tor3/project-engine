@@ -6,7 +6,7 @@ title: Home
 # Welcome to GamerPrise
 Six Levels of Game Play to Create Your Enterprise
 
-<br>Level 1 - Find Your Passion Project - Some Examples and Ways to Begin Your Niche Journey
+<br>**Level 1 - Find Your Passion Project** - Some Examples and Ways to Begin Your Niche Journey
 
 <table>
   <tr>
@@ -16,7 +16,7 @@ Six Levels of Game Play to Create Your Enterprise
   </tr>
 </table>
 
-<br>Level 2 - Tame The Tech Dragon - The Simple Trusted Way to Get Visible Online
+<br>**Level 2 - Tame The Tech Dragon** - The Simple Trusted Way to Get Visible Online
 
 <table>
   <tr>
@@ -26,7 +26,7 @@ Six Levels of Game Play to Create Your Enterprise
   </tr>
 </table>
 
-<br>Level 3 - Developing Depth - Smart Content, Sticky Gaming and Secure Safety
+<br>**Level 3 - Developing Depth** - Smart Content, Sticky Gaming and Secure Safety
 
 <table>
   <tr>
@@ -36,7 +36,7 @@ Six Levels of Game Play to Create Your Enterprise
   </tr>
 </table>
 
-<br>Level 4 - Finding Community - Fellow Travellers, Service Provision and Comms
+<br>**Level 4 - Finding Community** - Fellow Travellers, Service Provision and Comms
 
 <table>
   <tr>
@@ -46,7 +46,7 @@ Six Levels of Game Play to Create Your Enterprise
   </tr>
 </table>
 
-<br>Level 5 - Competition - TBD
+<br>**Level 5 - Competition** - TBD
 
 <table>
   <tr>
@@ -56,16 +56,17 @@ Six Levels of Game Play to Create Your Enterprise
   </tr>
 </table>
 
-<br>Level 6 - Facing the Wider World - Fellow Travellers, Service Provision and Comms
+<br>**Level 6 - Facing the Wider World** - Fellow Travellers, Service Provision and Comms
 
 <table>
   <tr>
-    <td>🧮 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Community Service</a><br><br>Those difficult human cost projects</td>
+    <td>🧮 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Community Service</a><br><br>Those difficult human customers</td>
     <td>🧮 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Proof of Work</a><br><br>Digital applications for day jobs</td>
     <td>🔬 <a href="https://innov8tor3.github.io/project-engine/backup/test.html">Seeking Funding</a><br><br>Supporting growth, where needed</td>
   </tr>
 </table>
 
+<br>
 # SAFETY WARNING
 Do not click on random URL links, instead copy the link and test using a suitable generic AI
 
