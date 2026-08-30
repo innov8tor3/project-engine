@@ -3,9 +3,10 @@ layout: default
 title: Home
 ---
 
-# Welcome to GamerPrise - Six Levels of Game Play to Create Your Enterprise
+# Welcome to GamerPrise
+Six Levels of Game Play to Create Your Enterprise
 
-Level 1 - Find Your Passion Project - Some Examples and Ways to Begin Your Niche Journey
+<br>Level 1 - Find Your Passion Project - Some Examples and Ways to Begin Your Niche Journey
 
 <table>
   <tr>
@@ -15,7 +16,7 @@ Level 1 - Find Your Passion Project - Some Examples and Ways to Begin Your Niche
   </tr>
 </table>
 
-Level 2 - Tame The Tech Dragon - The Simple Trusted Way to Get Visible Online
+<br>Level 2 - Tame The Tech Dragon - The Simple Trusted Way to Get Visible Online
 
 <table>
   <tr>
@@ -25,7 +26,7 @@ Level 2 - Tame The Tech Dragon - The Simple Trusted Way to Get Visible Online
   </tr>
 </table>
 
-Level 3 - Developing Depth - Smart Content, Sticky Gaming and Secure Safety
+<br>Level 3 - Developing Depth - Smart Content, Sticky Gaming and Secure Safety
 
 <table>
   <tr>
@@ -35,7 +36,7 @@ Level 3 - Developing Depth - Smart Content, Sticky Gaming and Secure Safety
   </tr>
 </table>
 
-Level 4 - Finding Community - Fellow Travellers, Service Provision and Comms
+<br>Level 4 - Finding Community - Fellow Travellers, Service Provision and Comms
 
 <table>
   <tr>
@@ -45,7 +46,7 @@ Level 4 - Finding Community - Fellow Travellers, Service Provision and Comms
   </tr>
 </table>
 
-Level 5 - Competition - TBD
+<br>Level 5 - Competition - TBD
 
 <table>
   <tr>
@@ -55,7 +56,7 @@ Level 5 - Competition - TBD
   </tr>
 </table>
 
-Level 6 - Facing the Wider World - Fellow Travellers, Service Provision and Comms
+<br>Level 6 - Facing the Wider World - Fellow Travellers, Service Provision and Comms
 
 <table>
   <tr>
@@ -65,9 +66,11 @@ Level 6 - Facing the Wider World - Fellow Travellers, Service Provision and Comm
   </tr>
 </table>
 
-# SAFETY WARNING - Do not click on random URL links, instead copy the link and test using a suitable generic AI
+# SAFETY WARNING
+Do not click on random URL links, instead copy the link and test using a suitable generic AI
 
-# SAFETY ADVICE - For a website, app or even GitHub Repo, ask generic AI to evaluate the whole site for safety
+# SAFETY ADVICE
+For a website, app or even GitHub Repo, ask generic AI to evaluate the whole site for safety
 
 <br>
 ⚔ <a href="https://innov8tor3.github.io/project-engine/github-safety/github-safety.html">Online Safety</a> ✅ <a href="https://innov8tor3.github.io/project-engine/about/about.html">About</a> 🤳 [Contact](contact.md)
