@@ -67,6 +67,7 @@ Six Levels of Game Play to Create Your Enterprise
 </table>
 
 <br>
+
 # SAFETY WARNING
 Do not click on random URL links, instead copy the link and test using a suitable generic AI
 
