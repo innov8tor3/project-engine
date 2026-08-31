@@ -6,7 +6,7 @@ title: Home
 # GamerPrise Passion Projects
 Passion Projects keep you going when others give up
 
-<br>**Passion Project - Quests** - Excite others with your journey
+<br>**Passion Projects - Quests** - Excite others with your journey
 
 <table>
   <tr>
