@@ -4,15 +4,15 @@ title: Home
 ---
 
 # GamerPrise Passion Projects
-Six Levels of Game Play to create your enterprise
+Passion Projects keep you going when others give up
 
 <br>**Passion Project - Quests** - Excite others with your journey
 
 <table>
   <tr>
     <td>💛 <a href="https://innov8tor3.github.io/project-engine/pitch/pitch.html">Passions</a><br><br>What propels you out of bed?</td>
-    <td>❤ <a href="https://innov8tor3.github.io/project-engine/ops-hub/ops-hub.html">Winning UX</a><br><br>Communicate next level</td>
-    <td>💜 <a href="https://innov8tor3.github.io/project-engine/scale-up/scale-up.html">Action Stories</a><br><br>Show how to progress</td>
+    <td>🎖 <a href="https://innov8tor3.github.io/project-engine/ops-hub/ops-hub.html">Winning UX</a><br><br>Communicate next level</td>
+    <td>📈 <a href="https://innov8tor3.github.io/project-engine/scale-up/scale-up.html">Action Stories</a><br><br>Show how to progress</td>
   </tr>
 </table>
 
@@ -20,9 +20,9 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>🧗 <a href="https://innov8tor3.github.io/project-engine/action-stories/action-stories.html">Entertainment</a><br><br>Making it fun to take part</td>
-    <td>🧗 <a href="https://innov8tor3.github.io/project-engine/action-stories/action-stories.html">Competition</a><br><br>Pushing ourselves to be better</td>
-    <td>👀 <a href="https://innov8tor3.github.io/project-engine/founder-quests/founder-quest.html">Events</a><br><br>Meet people IRL</td>
+    <td>🪩 <a href="https://innov8tor3.github.io/project-engine/action-stories/action-stories.html">Entertainment</a><br><br>Making it fun to take part</td>
+    <td>🏃 <a href="https://innov8tor3.github.io/project-engine/action-stories/action-stories.html">Competition</a><br><br>Pushing ourselves to be better</td>
+    <td>🤝 <a href="https://innov8tor3.github.io/project-engine/founder-quests/founder-quest.html">Events</a><br><br>Meet people IRL</td>
   </tr>
 </table>
 
@@ -30,9 +30,9 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>🤖 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">Trading & Exchange</a><br><br>Money and services power economies</td>
-    <td>🎆 <a href="https://innov8tor3.github.io/project-engine/dev-envt/dev-envt.html">Agentic AI</a><br><br>A token drive explosion in capacity</td>
-    <td>🛡 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/repo-restructure.html">GitHub Utility</a><br><br>GitHub as an under utilised hub</td>
+    <td>⚡ <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">Trading & Exchange</a><br><br>Money and services power economies</td>
+    <td>🤖 <a href="https://innov8tor3.github.io/project-engine/dev-envt/dev-envt.html">Agentic AI</a><br><br>A token driven explosion in capacity</td>
+    <td>🛠 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/repo-restructure.html">GitHub Utility</a><br><br>GitHub as an under utilised hub</td>
   </tr>
 </table>
 
@@ -40,7 +40,7 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>🤖 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">YouTube Explainer</a><br><br>Basic safety measures online</td>
+    <td>🛡 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">YouTube Explainer</a><br><br>Basic safety measures online</td>
   </tr>
 </table>
 <br>
