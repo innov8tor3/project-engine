@@ -31,7 +31,7 @@ Six Levels of Game Play to create your enterprise
 <table>
   <tr>
     <td>🤖 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">Trading & Exchange</a><br><br>Money and services power economies</td>
-    <td>🎆 <a href="https://innov8tor3.github.io/project-engine/dev-envt/dev-envt.html">Agentic AI/a><br><br>A token drive explosion in capacity</td>
+    <td>🎆 <a href="https://innov8tor3.github.io/project-engine/dev-envt/dev-envt.html">Agentic AI</a><br><br>A token drive explosion in capacity</td>
     <td>🛡 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/repo-restructure.html">GitHub Utility</a><br><br>GitHub as an under utilised hub</td>
   </tr>
 </table>
