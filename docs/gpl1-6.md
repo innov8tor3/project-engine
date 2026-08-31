@@ -6,7 +6,7 @@ title: Home
 # Welcome to GamerPrise
 A distinct project within Project Engine
 
-Six Levels of Game Play to Create Your Enterprise
+Six Levels of Game Play to create your enterprise
 
 <br>**Level 1 - Find Your Passion Project** - Some Examples and Ways to Begin Your Niche Journey
 
