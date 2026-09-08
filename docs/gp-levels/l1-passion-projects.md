@@ -6,7 +6,7 @@ title: Home
 # GamerPrise Passion Projects
 Passion Projects keep you going when others give up
 
-<br>**Passion Projects - Quests** - Excite others with your journey
+<br>**🏆 Passion Projects - Quests** - Excite others with your journey
 
 <table>
   <tr>
@@ -16,7 +16,7 @@ Passion Projects keep you going when others give up
   </tr>
 </table>
 
-<br>**Passion Projects - Gaming** - Making the complicated and arduous fun to navigate, or just having fun
+<br>**🎲 Passion Projects - Gaming** - Making the complicated and arduous fun to navigate, or just having fun
 
 <table>
   <tr>
@@ -26,7 +26,7 @@ Passion Projects keep you going when others give up
   </tr>
 </table>
 
-<br>**Passion Projects - DeFi** - Tokens engage audiences and enable funding, and very many projects
+<br>**💰 Passion Projects - DeFi** - Tokens engage audiences and enable funding, and very many projects
 
 <table>
   <tr>
@@ -36,11 +36,11 @@ Passion Projects keep you going when others give up
   </tr>
 </table>
 
-<br>**Passion Projects - Security** - Bizarrely, a project poor relation, when it is so fundamental to community life
+<br>**🛡 Passion Projects - Security** - Bizarrely, a project poor relation, when it is so fundamental to community life
 
 <table>
   <tr>
-    <td>🛡 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">YouTube Explainer</a><br><br>Basic safety measures online</td>
+    <td>🥷 <a href="https://innov8tor3.github.io/project-engine/backend/repo-restructure/infra.html">YouTube Explainer</a><br><br>Basic safety measures online</td>
   </tr>
 </table>
 <br>
