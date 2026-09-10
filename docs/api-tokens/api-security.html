@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe AI API Tokens — Free Tiers, Providers & Hard Limits</title>
+  <meta name="description" content="Practical guide to AI API token providers, free renewable tiers, spend protection, and key hygiene. Built for developers who want speed without surprise bills.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #070012;
+      --bg-purple: #12001f;
+      --panel: rgba(78, 28, 128, 0.28);
+      --panel-strong: rgba(95, 35, 155, 0.38);
+      --border: rgba(190, 140, 255, 0.22);
+      --border-bright: rgba(210, 170, 255, 0.38);
+      --text: #efe6ff;
+      --text-soft: #c9b8e8;
+      --text-muted: #9b87c4;
+      --accent: #c084fc;
+      --accent-2: #a78bfa;
+      --glow: rgba(168, 85, 247, 0.35);
+      --success: #86efac;
+      --warning: #fcd34d;
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated dark purple mesh background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(88, 28, 135, 0.45), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 85% 20%, rgba(109, 40, 217, 0.25), transparent 45%),
+        radial-gradient(ellipse 60% 40% at 50% 90%, rgba(67, 20, 110, 0.4), transparent 50%),
+        linear-gradient(180deg, #070012 0%, #0f001c 40%, #12001f 100%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* Glass panel */
+    .glass {
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .glass-strong {
+      background: var(--panel-strong);
+      border-color: var(--border-bright);
+    }
+
+    /* Header */
+    header {
+      padding: 2.5rem 0 1.5rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(1.85rem, 5vw, 2.65rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      background: linear-gradient(135deg, #f5f0ff 0%, #d8b4fe 45%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.85rem;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+      max-width: 36rem;
+      margin: 0 auto 2rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    nav a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+      background: rgba(168, 85, 247, 0.15);
+      border-color: var(--border);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 1.1em;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      border-radius: 2px;
+    }
+
+    .panel {
+      padding: 1.5rem 1.6rem;
+    }
+
+    .panel + .panel {
+      margin-top: 1rem;
+    }
+
+    p {
+      color: var(--text-soft);
+      margin-bottom: 0.9rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    ul, ol {
+      padding-left: 1.25rem;
+      color: var(--text-soft);
+    }
+
+    li {
+      margin-bottom: 0.55rem;
+    }
+
+    li::marker {
+      color: var(--accent-2);
+    }
+
+    /* Provider cards */
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      padding: 1.25rem 1.35rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .card p {
+      font-size: 0.925rem;
+      margin-bottom: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-free {
+      background: rgba(134, 239, 172, 0.15);
+      color: var(--success);
+      border: 1px solid rgba(134, 239, 172, 0.3);
+    }
+
+    .tag-paid {
+      background: rgba(252, 211, 77, 0.12);
+      color: var(--warning);
+      border: 1px solid rgba(252, 211, 77, 0.25);
+    }
+
+    .tag-agg {
+      background: rgba(167, 139, 250, 0.15);
+      color: var(--accent-2);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+    }
+
+    /* Policy steps */
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .steps li {
+      position: relative;
+      padding-left: 3rem;
+      margin-bottom: 1.35rem;
+      counter-increment: step;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;
+      height: 2rem;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(126, 34, 206, 0.5));
+      border: 1px solid var(--border-bright);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .steps li strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1.02rem;
+    }
+
+    /* Stack highlight */
+    .stack {
+      border: 1px solid rgba(192, 132, 252, 0.35);
+      background: linear-gradient(145deg, rgba(88, 28, 135, 0.35), rgba(55, 15, 95, 0.25));
+    }
+
+    .stack h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+
+    /* Glossary */
+    .glossary {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 600px) {
+      .glossary {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .term {
+      padding: 1rem 1.15rem;
+    }
+
+    .term dt {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .term dd {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem 3rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--accent-2);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      border-left: 3px solid var(--accent-2);
+      padding-left: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.15em 0.4em;
+      border-radius: 5px;
+      color: #e9d5ff;
+    }
+
+    @media (max-width: 480px) {
+      .panel {
+        padding: 1.2rem 1.15rem;
+      }
+      .steps li {
+        padding-left: 2.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Developer Guide · 2026</div>
+      <h1>Safe AI API Tokens</h1>
+      <p class="subtitle">
+        Free renewable tiers, real provider options, and a hard policy so you never accidentally run up a huge bill — or hand a high-limit key to the wrong place.
+      </p>
+      <nav>
+        <a href="#providers">Providers</a>
+        <a href="#policy">Safe Policy</a>
+        <a href="#stack">Starter Stack</a>
+        <a href="#glossary">Glossary</a>
+      </nav>
+    </header>
+
+    <!-- Intro -->
+    <section>
+      <div class="glass panel">
+        <p>
+          API tokens are the currency of modern AI development. The goal is simple:
+          <strong>usable free capacity that renews on a clear schedule</strong>, plus
+          iron-clad spend controls and key hygiene so a leaked or over-used key cannot
+          create a surprise invoice or security incident.
+        </p>
+        <p class="note">
+          Limits and free tiers change. Always confirm the current numbers in each provider’s official console before building production reliance on them.
+        </p>
+      </div>
+    </section>
+
+    <!-- Providers -->
+    <section id="providers">
+      <h2 class="section-title">Major Providers</h2>
+
+      <div class="glass panel" style="margin-bottom: 1rem;">
+        <h3 style="margin-bottom: 0.75rem; font-size: 1.05rem;">Frontier / Proprietary</h3>
+        <div class="grid grid-2">
+          <div class="glass card">
+            <span class="tag tag-paid">Trial / Paid</span>
+            <h3>OpenAI</h3>
+            <p>GPT family. Small trial credits common. Strong spend limits, usage tiers, and billing alerts. Data-sharing options may offer limited free daily tokens.</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-paid">Trial / Paid</span>
+            <h3>Anthropic (Claude)</h3>
+            <p>Small one-time credits typical. Clear usage tiers with monthly spend caps and rate limits (RPM / ITPM / OTPM).</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-free">Strong Free Tier</span>
+            <h3>Google Gemini</h3>
+            <p>One of the best permanent free tiers (Flash / Flash-Lite). No card required. Daily quotas usually reset at midnight Pacific. Higher limits on paid.</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-paid">Credits / Paid</span>
+            <h3>xAI (Grok)</h3>
+            <p>Promotional credits for new accounts; data-sharing programs sometimes add monthly credits. Pay-as-you-go thereafter.</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-paid">Cheap Paid</span>
+            <h3>DeepSeek</h3>
+            <p>Very low token prices. New accounts often receive a one-time token grant. Excellent cost-to-capability after the trial.</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-paid">Trial / Paid</span>
+            <h3>Mistral &amp; Cohere</h3>
+            <p>Limited free or trial access; move quickly to paid for sustained use.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass panel">
+        <h3 style="margin-bottom: 0.75rem; font-size: 1.05rem;">Fast / Open-Model Hosts</h3>
+        <div class="grid grid-2">
+          <div class="glass card">
+            <span class="tag tag-free">Permanent Free</span>
+            <h3>Groq</h3>
+            <p>No card required. Rate-limited free access (~30 RPM, model-specific TPM/TPD, daily request caps). Extremely fast inference on open models.</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-agg">Aggregator</span>
+            <h3>OpenRouter</h3>
+            <p>One key, many models. Free <code>:free</code> variants: ~20 RPM and 50 RPD (rises to 1,000 RPD after a one-time $10 credit purchase).</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-free">Free / Prototyping</span>
+            <h3>Cerebras · NVIDIA NIM · Cloudflare</h3>
+            <p>Generous free or evaluation tiers, often no card. Useful for large context or specialised workloads.</p>
+          </div>
+          <div class="glass card">
+            <span class="tag tag-agg">Multi-host</span>
+            <h3>Others</h3>
+            <p>Together AI, Fireworks, Hugging Face, GitHub Models, ModelScope, Zhipu/GLM, Alibaba/Qwen endpoints — many offer free or ultra-low-cost open-model access.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policy -->
+    <section id="policy">
+      <h2 class="section-title">Strong Acquisition &amp; Safety Policy</h2>
+      <div class="glass panel glass-strong">
+        <ol class="steps">
+          <li>
+            <strong>Prefer permanent free renewable tiers first</strong>
+            Start with providers that publish clear, ongoing free quotas that reset on a predictable schedule (daily for Gemini and Groq-style hosts, or after a simple unlock for OpenRouter free models). Use these for development, testing, and light production.
+          </li>
+          <li>
+            <strong>Treat one-time trial credits as temporary</strong>
+            Exhaust OpenAI / Anthropic / DeepSeek / xAI starter credits on non-critical work, then decide whether to add a payment method.
+          </li>
+          <li>
+            <strong>Set hard spend limits and alerts before any paid usage</strong>
+            Cap monthly spend low while testing ($5–$20). Enable alerts at 50 %, 75 %, and 90–100 %. Prefer per-key or per-project budgets when available. Most major providers will block further requests once the hard limit is reached.
+          </li>
+          <li>
+            <strong>Key hygiene &amp; least privilege</strong>
+            Create separate keys per project and environment. Never reuse a high-limit key. Never commit keys to git or paste them into untrusted tools. Use environment variables or a secrets manager. Rotate on any suspicion of exposure. For third-party tools that require a key, give them only a restricted free-tier or low-cap key.
+          </li>
+          <li>
+            <strong>Operational safeguards</strong>
+            Add client-side rate limits, max tokens per request, and iteration caps on agents. Cache repeated prompts. Route simple work to cheap/free models and reserve frontier models for hard problems. Monitor dashboards for anomalies.
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Starter Stack -->
+    <section id="stack">
+      <h2 class="section-title">Practical Safe Starting Stack</h2>
+      <div class="glass panel stack">
+        <h3>Recommended combination</h3>
+        <ul>
+          <li><strong>Free renewable baseline</strong> — Google Gemini free tier + Groq free tier + OpenRouter free models (optionally unlock higher daily free quota with a one-time $10 purchase).</li>
+          <li><strong>Cheap paid fallback</strong> — DeepSeek (or similar ultra-low-cost models) with a hard $5–10 monthly cap.</li>
+          <li><strong>Frontier when needed</strong> — OpenAI / Anthropic / xAI using dedicated low-privilege keys and strict spend limits.</li>
+        </ul>
+        <p style="margin-top: 1rem;">
+          This stack gives most individual developers and small teams substantial capacity with near-zero bill risk while keeping the chance of catastrophic accidental spend or public-key abuse very low.
+        </p>
+      </div>
+    </section>
+
+    <!-- Glossary -->
+    <section id="glossary">
+      <h2 class="section-title">Glossary</h2>
+      <div class="glossary">
+        <div class="glass term">
+          <dt>API</dt>
+          <dd>Application Programming Interface — the programmatic way to call a model provider.</dd>
+        </div>
+        <div class="glass term">
+          <dt>BYOK</dt>
+          <dd>Bring Your Own Key — you supply your own provider API key to a third-party tool instead of using the tool’s shared credits.</dd>
+        </div>
+        <div class="glass term">
+          <dt>LLM</dt>
+          <dd>Large Language Model — the underlying neural network that generates text, code, etc.</dd>
+        </div>
+        <div class="glass term">
+          <dt>RPM</dt>
+          <dd>Requests Per Minute — maximum number of API calls allowed in any 60-second window.</dd>
+        </div>
+        <div class="glass term">
+          <dt>RPD</dt>
+          <dd>Requests Per Day — maximum number of API calls allowed in a 24-hour period (reset time varies by provider).</dd>
+        </div>
+        <div class="glass term">
+          <dt>TPM</dt>
+          <dd>Tokens Per Minute — maximum number of tokens (input + output) that may be processed per minute.</dd>
+        </div>
+        <div class="glass term">
+          <dt>TPD</dt>
+          <dd>Tokens Per Day — maximum number of tokens allowed in a 24-hour period.</dd>
+        </div>
+        <div class="glass term">
+          <dt>ITPM / OTPM</dt>
+          <dd>Input Tokens Per Minute / Output Tokens Per Minute — separate limits some providers apply to prompt vs. completion tokens.</dd>
+        </div>
+        <div class="glass term">
+          <dt>Token</dt>
+          <dd>The basic unit of text that models process. Roughly 1 token ≈ 0.75 English words, though this varies by language and model.</dd>
+        </div>
+        <div class="glass term">
+          <dt>Rate limit</dt>
+          <dd>A hard ceiling on how fast or how much you can call an API. Exceeding it returns HTTP 429.</dd>
+        </div>
+        <div class="glass term">
+          <dt>Spend limit / hard cap</dt>
+          <dd>A monetary ceiling set in the provider console. When reached, further requests are blocked until the next billing period or the limit is raised.</dd>
+        </div>
+        <div class="glass term">
+          <dt>Free tier</dt>
+          <dd>Usage granted at $0. Can be permanent (renewable daily/monthly) or one-time trial credits.</dd>
+        </div>
+        <div class="glass term">
+          <dt>OpenAI-compatible</dt>
+          <dd>An API that accepts the same request/response shape as OpenAI’s Chat Completions endpoint, making provider switching easier.</dd>
+        </div>
+        <div class="glass term">
+          <dt>Context window</dt>
+          <dd>Maximum number of tokens a model can consider in a single request (prompt + history + output).</dd>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Free tiers and rate limits change. Verify current values on each provider’s official documentation.<br>
+        This page is designed for static hosting (GitHub Pages, Netlify, etc.).
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
