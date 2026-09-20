@@ -12,13 +12,13 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>💛 <a href="https://innov8tor3.github.io/project-engine/pitch/pitch.html">Quests</a><br><br>Excite others with your journey</td>
+    <td>💛 <a href="https://innov8tor3.github.io/project-engine/pitch/pitch.html">Quests</a><br><br>Excite others with your big journey</td>
     <td>❤ <a href="https://innov8tor3.github.io/project-engine/ops-hub/ops-hub.html">Gaming</a><br><br>People love to be entertained</td>
     <td>💜 <a href="https://innov8tor3.github.io/project-engine/scale-up/scale-up.html">DeFi</a><br><br>Thousands of projects in blockchain</td>
   </tr>
 </table>
 
-<br>**Level 2 - Tame The Tech Dragon** - The Simple Trusted Way to Get Visible Online
+<br>**Level 2 - Tame The Tech Dragon** - GitHub - The Simple Trusted Way to Get Visible Online
 
 <table>
   <tr>
@@ -42,7 +42,7 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>🚜 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Community Build</a><br><br>Leading builder communities</td>
+    <td>🚜 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Community Build</a><br><br>Leading builder network communities</td>
     <td>🤝 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Service Provision</a><br><br>The realities of consumer communities</td>
     <td>🔊 <a href="https://innov8tor3.github.io/project-engine/backup/test.html">Communications</a><br><br>Keeping everyone in the loop</td>
   </tr>
