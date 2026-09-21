@@ -72,9 +72,9 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>1⃣ <a href="https://innov8tor3.github.io/project-engine/proto-founders/home-page-v01.html">Version 0.1</a><br><br>Stylish, but doom scrolling</td>
-    <td>2⃣ <a href="https://innov8tor3.github.io/project-engine/gaming/gaming-overview.html">Version 0.2</a><br><br>More succinct, gamified</td>
-    <td>3⃣ <a href="https://gamer-prise-path.base44.app/">Version 0.3</a><br><br>Mistaken turn onto proprietary platform</td>
+    <td>🌱 <a href="https://innov8tor3.github.io/project-engine/proto-founders/home-page-v01.html">Version 0.1</a><br><br>Stylish, but doom scrolling</td>
+    <td>🌾 <a href="https://innov8tor3.github.io/project-engine/gaming/gaming-overview.html">Version 0.2</a><br><br>More succinct, gamified</td>
+    <td>🌳 <a href="https://gamer-prise-path.base44.app/">Version 0.3</a><br><br>Mistaken turn onto proprietary platform</td>
   </tr>
 </table>
 
