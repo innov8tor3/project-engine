@@ -68,6 +68,16 @@ Six Levels of Game Play to create your enterprise
   </tr>
 </table>
 
+<br>**Landing Page Evolution** - Version 0.1-0.3 - 0.4 Under Construction
+
+<table>
+  <tr>
+    <td>🗣 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Version 0.1</a><br><br>Stylish, but doom scrolling</td>
+    <td>🏵 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Version 0.2</a><br><br>More succinct, gamified</td>
+    <td>📈 <a href="https://gamer-prise-path.base44.app/">Version 0.3</a><br><br>Mistaken turn onto proprietary platform</td>
+  </tr>
+</table>
+
 <br>
 
 # SAFETY WARNING
