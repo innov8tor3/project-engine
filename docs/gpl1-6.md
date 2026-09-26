@@ -42,13 +42,13 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>🚜 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Community Build</a><br><br>Leading builder network communities</td>
+    <td>🏗️ <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Community Build</a><br><br>Leading builder network communities</td>
     <td>🤝 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Service Provision</a><br><br>The realities of consumer communities</td>
-    <td>🔊 <a href="https://innov8tor3.github.io/project-engine/backup/test.html">Communications</a><br><br>Keeping everyone in the loop</td>
+    <td>🫂 <a href="https://innov8tor3.github.io/project-engine/backup/test.html">Communications</a><br><br>Keeping everyone in the loop</td>
   </tr>
   <tr>
     <td>🔊 <a href="https://x.com/innov8tor3?lang=en">Start Building Community</a><br><br>Share your work - @ start in X</td>
-    <td>🔊 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-rubric.html">Community Immunity Commit</a><br><br>Work with others for a safer community</td>
+    <td>🛡️ <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-rubric.html">Community Immunity Commit</a><br><br>Work with others for a safer community</td>
   </tr>  
 </table>
 
