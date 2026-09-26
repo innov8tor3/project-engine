@@ -48,7 +48,7 @@ Six Levels of Game Play to create your enterprise
   </tr>
   <tr>
     <td>🔊 <a href="https://x.com/innov8tor3?lang=en">Start Building Community</a><br><br>Share your work - @ start in X</td>
-    <td>🔊 <a href="https://x.com/innov8tor3?lang=en">Start Building Community</a><br><br>Share your work - @ start in X</td>
+    <td>🔊 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-rubric.html">Community Immunity Commit</a><br><br>Work with others for a safer community</td>
   </tr>  
 </table>
 
