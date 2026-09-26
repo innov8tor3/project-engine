@@ -48,6 +48,7 @@ Six Levels of Game Play to create your enterprise
   </tr>
   <tr>
     <td>🔊 <a href="https://x.com/innov8tor3?lang=en">Start Building Community</a><br><br>Share your work - @ start in X</td>
+    <td>🔊 <a href="https://x.com/innov8tor3?lang=en">Start Building Community</a><br><br>Share your work - @ start in X</td>
   </tr>  
 </table>
 
@@ -55,9 +56,10 @@ Six Levels of Game Play to create your enterprise
 
 <table>
   <tr>
-    <td>📏 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Tracking Competitors</a><br><br>Project still in development</td>
-    <td>🧬 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Soulbound Service</a><br><br>Project still in development</td>
-    <td>🏁 <a href="https://innov8tor3.github.io/project-engine/backup/test.html">Entering Hackathons</a><br><br>Project still in development</td>
+    <td>💊 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Tracking Competitors</a><br><br>What most needs fixing - TBD</td>
+    <td>🧬 <a href="https://innov8tor3.github.io/project-engine/contrib-valun/contrib-valun.html">Soulbound Service</a><br><br>Apply your DNA - TBD</td>
+    <td>🏁 <a href="https://innov8tor3.github.io/project-engine/backup/test.html">Entering Hackathons</a><br>
+<br>The attention economy - TBD</td>
   </tr>
 </table>
 
