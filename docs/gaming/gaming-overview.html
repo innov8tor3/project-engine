@@ -249,6 +249,133 @@
             font-weight: 500;
         }
     </style>
+
+    <!-- GamerPrise Universal CTA & Prompt Accordion Styles -->
+    <style>
+      /* CTA Container Card */
+      .gp-cta-card {
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 12px;
+        padding: 24px;
+        max-width: 720px;
+        margin: 40px auto 20px auto;
+        font-family: inherit;
+        color: #f8fafc;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      }
+    
+      .gp-cta-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    
+      .gp-cta-badge {
+        background: #3b82f6;
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        display: inline-block;
+      }
+    
+      .gp-cta-title {
+        margin: 10px 0 6px 0;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #ffffff;
+      }
+    
+      .gp-cta-sub {
+        margin: 0;
+        font-size: 0.875rem;
+        color: #94a3b8;
+        line-height: 1.4;
+      }
+    
+      .gp-cta-tiers {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+    
+      .gp-cta-group {
+        background: #1e293b;
+        padding: 14px;
+        border-radius: 8px;
+        border: 1px solid #475569;
+      }
+    
+      .gp-group-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #38bdf8;
+        margin-bottom: 10px;
+        letter-spacing: 0.05em;
+      }
+    
+      .gp-btn-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 8px;
+      }
+    
+      .gp-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.825rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        color: #ffffff;
+        background: #334155;
+        text-align: center;
+      }
+    
+      .gp-btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.15);
+      }
+    
+      /* Specific Platform Branding Colors */
+      .gp-btn-linkedin { background: #0a66c2; }
+      .gp-btn-x { background: #000000; border: 1px solid #555; }
+      .gp-btn-substack { background: #ff6719; }
+      .gp-btn-github { background: #24292e; }
+      .gp-btn-telegram { background: #229ed9; }
+      .gp-btn-discord { background: #5865f2; }
+    
+      /* AI Prompt Accordion Styling for Game Cards */
+      .gp-prompt-toggle {
+        margin: 12px 0;
+        background: #1e293b;
+        border: 1px solid #334155;
+        border-radius: 6px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        color: #e2e8f0;
+      }
+    
+      .gp-prompt-toggle summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: #38bdf8;
+      }
+    
+      .gp-prompt-list {
+        margin: 10px 0 0 0;
+        padding-left: 18px;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: #cbd5e1;
+      }
+    </style>
 </head>
 <body>
     <header>
@@ -473,7 +600,38 @@
             </div>
         </div>
     </main>
-
+    
+    <!-- GamerPrise Universal Community CTA Block -->
+    <section id="community-cta" class="gp-cta-card">
+      <div class="gp-cta-header">
+        <span class="gp-cta-badge">LEVEL UP YOUR QUEST</span>
+        <h3 class="gp-cta-title">Join the GamerPrise Builder Ecosystem</h3>
+        <p class="gp-cta-sub">Share your proof of work, connect with proto-founders, or join our secure AI-supported channels.</p>
+      </div>
+      
+      <div class="gp-cta-tiers">
+        <!-- Tier 1: Safe / Open Channels -->
+        <div class="gp-cta-group">
+          <span class="gp-group-label">🛡️ LEVEL 1: SAFE • PROOF OF WORK</span>
+          <div class="gp-btn-grid">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="gp-btn gp-btn-linkedin">LinkedIn Travelog</a>
+            <a href="https://x.com" target="_blank" rel="noopener" class="gp-btn gp-btn-x">X / Twitter</a>
+            <a href="https://substack.com" target="_blank" rel="noopener" class="gp-btn gp-btn-substack">Substack Articles</a>
+            <a href="https://github.com/innov8tor3/project-engine" target="_blank" rel="noopener" class="gp-btn gp-btn-github">GitHub Repos</a>
+          </div>
+        </div>
+    
+        <!-- Tier 2: AI Supported / Community Direct -->
+        <div class="gp-cta-group">
+          <span class="gp-group-label">⚡ LEVEL 2: AI SUPPORTED • COMMUNITY DIRECT</span>
+          <div class="gp-btn-grid">
+            <a href="https://t.me" target="_blank" rel="noopener" class="gp-btn gp-btn-telegram">Telegram (Rose Bot)</a>
+            <a href="https://discord.com" target="_blank" rel="noopener" class="gp-btn gp-btn-discord">Discord Arena</a>
+          </div>
+        </div>
+      </div>
+    </section>
+        
     <footer class="footer">
         <p>Made for the <strong>innov8tor3/project-engine</strong> community • Simple Google Forms submissions • Real progress, real fun</p>
         <p style="margin-top: 1rem; font-size: 0.9rem;">Levels 1 &amp; 2 are live. More adventures coming soon.</p>
